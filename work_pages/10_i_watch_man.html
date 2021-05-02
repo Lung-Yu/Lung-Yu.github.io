@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Personal</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+	<!--
+			CSS
+			============================================= -->
+	<link rel="stylesheet" href="../resource/css/linearicons.css">
+	<link rel="stylesheet" href="../resource/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../resource/css/bootstrap.css">
+	<link rel="stylesheet" href="../resource/css/magnific-popup.css">
+	<link rel="stylesheet" href="../resource/css/nice-select.css">
+	<link rel="stylesheet" href="../resource/css/animate.min.css">
+	<link rel="stylesheet" href="../resource/css/owl.carousel.css">
+	<link rel="stylesheet" href="../resource/css/jquery-ui.css">
+	<link rel="stylesheet" href="../resource/css/main.css">
+</head>
+
+<body>
+	<header id="header">
+		<div class="container main-menu">
+			<div class="row align-items-center justify-content-between d-flex">
+				<div id="logo">
+					<a href="index.html"><img src="resource/img/logo.png" alt="" title="" /></a>
+				</div>
+				<nav id="nav-menu-container">
+					<ul class="nav-menu">
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="../license.html">License</a></li>
+						<li class="menu-has-children"><a href="#">Projects</a>
+							<ul>
+								<li class="menu-has-children"><a href="blog-home.html">At University</a>
+									<ul>
+										<li><a href="1_simplified_version_database.html">C/Java實作簡易資料庫軟體</a></li>
+										<li><a href="2_bluetooth_remote_control_car.html">手機藍芽多功能遙控車</a></li>
+										<li><a href="3_cloud_file_manager.html">雲端文件管理系統</a></li>
+										<li><a href="4_Private_ASUS_Storage_Cloud_System.html">資源分享平台 by Private ASUS
+												Cloud</a></li>
+										<li><a href="5_multimedia_advertising_wall.html">多媒體廣告牆</a></li>
+										<li><a href="7_hackathon_app.html">行動 APP - 動吃台南</a></li>
+
+									</ul>
+								</li>
+								<li class="menu-has-children"><a href="blog-home.html">At Work</a>
+									<ul>
+										<li><a href="1_simplified_version_database.html">自動填單(網頁)表單工具</a></li>
+									</ul>
+								</li>
+								<li><a href="blog-single.html">Blog Single</a></li>
+							</ul>
+						</li>
+						<li><a href="../about.html">About</a></li>
+					</ul>
+				</nav><!-- #nav-menu-container -->
+			</div>
+		</div>
+	</header><!-- #header -->
+
+	<!-- start banner Area -->
+	<section class="relative about-banner" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white">
+						區網守護者（I－Watch Man）
+					</h1>
+					<p class="text-white link-nav">
+						<a href="index.html">Home</a>
+						<span class="lnr lnr-arrow-right"></span>
+						<a href="#">At School</a>
+						<span class="lnr lnr-arrow-right"></span>
+						<a href="#"> 區網守護者（I－Watch Man）</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+	<!-- Start Sample Area -->
+	<section class="sample-text-area">
+		<div class="container">
+			<h3 class="text-heading">創作背景</h3>
+			<p class="sample-text">
+				身為大學生到外地求學並在外租屋已是常態，在外租屋確實常遇到網路突然無法使用的狀況是非常令人困擾的，然而造成網路終止服務的原因卻是其他租屋的學生，因分不清楚WLAN與LAN隨意插入網路孔造成網路異常發生DHCP
+				spoofing(如下圖)，房東雖可從中架設具有DHCP snooping的Layer 2 Switch即可解決此問題，但是因本考量而無法付諸行動，因此有了創作I
+				Watchman的想法，用更低廉的價格解決此問題。
+			</p>
+			<a href="../related_data/projects/10_i_watch_man/DHCP_Spoofing情境說明圖.png" class="img-pop-up">
+
+				<img src="../related_data/projects//10_i_watch_man/DHCP_Spoofing情境說明圖.png" alt="" class="img-fluid">
+			</a>
+		</div>
+	</section>
+	<!-- End Sample Area -->
+
+	<!-- Start Align Area -->
+	<div class="whole-wrap">
+		<div class="container">
+			<div class="section-top-border">
+				<div class="row">
+					<div class="col-md-6">
+						<p class="sample-text">
+						<h3 class="text-heading">情境說明</h3>
+						在使用DHCP的環境中，終端使用者不循正常方式使用DHCP，例如:私自架設的DHCP伺服器在網路上配發IP，這種狀況一旦出現，將會造成正常DHCP使用者無法連線，然而DHCP
+						snooping的功能主要是防止因DHCP spoofing而造成的不當DHCP租用行為。
+						DHCP Snooping 原理是Switch 會監看 DHCP 的活動，只允許指定的 Switch Port 放行 DHCP Server回應封包，其他的DHCP
+						Server一律不准。為解決此惡意DHCP Server問題，網路設備廠商在Layer2實現DHCP Snooping機制解決此問題。
+						</p>
+						<a href="../related_data/projects/10_i_watch_man/系統硬體建置圖.png" class="img-pop-up">
+
+							<img src="../related_data/projects//10_i_watch_man/系統硬體建置圖.png" alt="" class="img-fluid">
+						</a>
+					</div>
+					<div class="col-md-6">
+						<h3 class="text-heading">系統軟體關鍵技術</h3>
+						<p class="sample-text">
+							I Watchman OS裝載Kali Linux，如偵測網路異常先由I Watchman發送Email通知網路管理者，再針對惡意DHCP Server進行DHCP
+							Starvation Attack，偽造大量Mac address針對惡意DHCP Server租用DHCP，使惡意DHCP
+							Server癱瘓而不再配發IP給正常使用者。偵測封包工具可使用tshark或snort，DHCP Starvation Attack可使用dhcpstarv或Yersinia。
+							DHCP Starvation Attack能篡改封包標頭中的Source MAC位址（綠色段）以欺騙網路上的電腦及裝置
+						</p>
+						<a href="../related_data/projects/10_i_watch_man/消耗惡意DHCP Service 示意圖.png" class="img-pop-up">
+
+							<img src="../related_data/projects/10_i_watch_man/消耗惡意DHCP Service 示意圖.png" alt=""
+								class="img-fluid">
+						</a>
+					</div>
+				</div>
+				<br />
+				<div class="row">
+
+					<div class="col-md-12">
+						<h3 class="text-heading">標準的使用</h3>
+						<p class="sample-text">
+							使用者於區域網路Router下層路由器建置I Watchman並設定完成後，即可啟動網路偵測模組，當終端使用者在區域網路內架設分享器設定錯誤出現DHCP spoofing將導致網路癱瘓時，I Watchman將會寄送Email通知使用者，並終止該終端使用者架設分享器配發IP。
+						</p>
+						<p class="sample-text">
+							Step.1 使用者於區域網路Router下層路由器建置I Watchman（如下圖 右）<br/>
+							Step2. 透過I Watchman LCD顯示獲取I Watchman IP，並開啟Web輸入I Watchman IP ，預設帳號admin、預設密碼admin。<br/>
+							Step3. 取得正常DHCP Server IP。</br>
+							Step4. 於I Watchman Web輸入正常DHCP Server IP，並輸入區域網路發生DHCP spoofing時將寄送之Email（如下圖左）<br/>
+							Step5. 開始網路偵測後即完成I Watchman設定<br/>
+							Step6. 如網路狀態正常，I Watchman為偵測模式<br/>
+							Step7. 如網路狀態異常，I Watchman啟動區域網路防禦機制</br>
+							Step8. 當終端使用者在區域網路內架設分享器設定錯誤出現DHCP spoofing時，I Watchman將會寄送Email通知使用者<br>
+							<br>
+						</p>
+						<div class="row">
+							<div class="col-md-6">
+								<a href="../related_data/projects/10_i_watch_man/操作畫面圖.png" class="img-pop-up">
+
+									<img src="../related_data/projects/10_i_watch_man/操作畫面圖.png" alt=""
+										class="img-fluid">
+								</a>
+							</div>
+							<div class="col-md-6">
+								<a href="../related_data/projects/10_i_watch_man/系統硬體建置圖.png" class="img-pop-up">
+
+									<img src="../related_data/projects/10_i_watch_man/系統硬體建置圖.png" alt=""
+										class="img-fluid">
+								</a>
+							</div>
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Align Area -->
+
+	<!-- start footer Area -->
+	<footer class="footer-area section-gap">
+		<div class="container">
+		</div>
+	</footer>
+	<!-- End footer Area -->
+
+	<script src="../resource/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="../resource/js/popper.min.js"></script>
+	<script src="../resource/js/vendor/bootstrap.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="../resource/js/easing.min.js"></script>
+	<script src="../resource/js/hoverIntent.js"></script>
+	<script src="../resource/js/superfish.min.js"></script>
+	<script src="../resource/js/jquery.ajaxchimp.min.js"></script>
+	<script src="../resource/js/jquery.magnific-popup.min.js"></script>
+	<script src="../resource/js/jquery.tabs.min.js"></script>
+	<script src="../resource/js/jquery.nice-select.min.js"></script>
+	<script src="../resource/js/isotope.pkgd.min.js"></script>
+	<script src="../resource/js/waypoints.min.js"></script>
+	<script src="../resource/js/jquery.counterup.min.js"></script>
+	<script src="../resource/js/simple-skillbar.js"></script>
+	<script src="../resource/js/owl.carousel.min.js"></script>
+	<script src="../resource/js/mail-script.js"></script>
+	<script src="../resource/js/main.js"></script>
+</body>
+
+</html>
