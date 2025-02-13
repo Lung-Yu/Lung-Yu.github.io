@@ -37,7 +37,7 @@ function App() {
         </Routes>
       </main>
       <footer id="contact">
-        <p>聯絡我：<a href="mailto:your-email@example.com">your-email@example.com</a></p>
+        <p>聯絡我：<a href="mailto:workfile975@gmail.com">workfile975@gmail</a></p>
       </footer>
       <Modal modalImage={modalImage} closeModal={closeModal} />
     </Router>
