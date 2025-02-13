@@ -1,4 +1,3 @@
-import React from 'react';
 import projectData from '../data/projectData';
 
 const Projects = ({ openModal }: { openModal: (image: string) => void }) => (
