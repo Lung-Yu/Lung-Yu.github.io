@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import AboutMe from './components/AboutMe';
 import Projects from './components/Projects';
 import Modal from './components/Modal';
+import CV from './components/CV';
 import './styles/App.css';
 
 function App() {
@@ -17,21 +19,28 @@ function App() {
   };
 
   return (
-    <>
+    <Router>
       <Header />
       <main>
-        <section id="about-me">
-          <AboutMe />
-        </section>
-        <section id="projects">
-          <Projects openModal={openModal} />
-        </section>
+        <Routes>
+          <Route path="/" element={
+            <>
+              <section id="about-me">
+                <AboutMe />
+              </section>
+              <section id="projects">
+                <Projects openModal={openModal} />
+              </section>
+            </>
+          } />
+          <Route path="/cv" element={<CV />} />
+        </Routes>
       </main>
       <footer id="contact">
         <p>聯絡我：<a href="mailto:your-email@example.com">your-email@example.com</a></p>
       </footer>
       <Modal modalImage={modalImage} closeModal={closeModal} />
-    </>
+    </Router>
   );
 }
 
