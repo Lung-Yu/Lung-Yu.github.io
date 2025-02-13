@@ -1,17 +1,5 @@
 import React from 'react';
-
-const projectData = [
-  {
-    title: '作品一',
-    image: '/src/assets/images/default-images.jpg',
-    description: '這是一個使用 React 和 Vite 開發的範例項目。',
-  },
-  {
-    title: '作品二',
-    image: '/src/assets/images/default-images.jpg',
-    description: '這是一個使用 TypeScript 和 CSS 開發的範例項目。',
-  },
-];
+import projectData from '../data/projectData';
 
 const Projects = ({ openModal }: { openModal: (image: string) => void }) => (
   <section className="projects">
