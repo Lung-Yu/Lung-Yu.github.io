@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import AboutMe from './components/AboutMe';
 import Projects from './components/Projects';
+import Certificates from './components/Certificates';
 import Modal from './components/Modal';
 import CV from './components/CV';
 import './styles/App.css';
@@ -30,6 +31,9 @@ function App() {
               </section>
               <section id="projects">
                 <Projects openModal={openModal} />
+              </section>
+              <section id="certificates">
+                <Certificates openModal={openModal} />
               </section>
             </>
           } />
