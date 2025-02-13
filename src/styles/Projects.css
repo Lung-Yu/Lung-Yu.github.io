@@ -1,0 +1,11 @@
+.projects .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  
+  .projects .project img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
