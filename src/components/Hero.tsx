@@ -1,4 +1,3 @@
-// src/components/Hero.tsx
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +8,7 @@ const Hero = () => {
         <section className="hero">
             <div className="hero-background">
                 <div className="hero-gradient"></div>
-                <div className="hero-grid"></div>
+                <div className="hero-pattern"></div>
             </div>
 
             <div className="hero-content">
@@ -32,13 +31,13 @@ const Hero = () => {
                             </a>
                         </div>
                         <div className="social-links">
-                            <a href="https://github.com/Lung-Yu" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/Lung-Yu" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                                 <FontAwesomeIcon icon={faGithub} />
                             </a>
-                            <a href="https://www.linkedin.com/in/lung-yu-tsai-633865100/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.linkedin.com/in/lung-yu-tsai-633865100/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                                 <FontAwesomeIcon icon={faLinkedin} />
                             </a>
-                            <a href="mailto:workfile975@gmail.com">
+                            <a href="mailto:workfile975@gmail.com" aria-label="Email">
                                 <FontAwesomeIcon icon={faEnvelope} />
                             </a>
                         </div>
