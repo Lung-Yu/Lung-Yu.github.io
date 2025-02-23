@@ -26,15 +26,15 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <section id="about-me">
+              <div id="about-me"> 
                 <AboutMe />
-              </section>
-              <section id="projects">
+              </div>
+              <div id="projects"> 
                 <Projects />
-              </section>
-              <section id="certificates">
+              </div>
+              <div id="certificates"> 
                 <Certificates />
-              </section>
+              </div>
             </>
           } />
           <Route path="/cv" element={<CV />} />
