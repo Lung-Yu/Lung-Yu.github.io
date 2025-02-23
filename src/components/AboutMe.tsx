@@ -1,6 +1,5 @@
-import React from 'react';
 import '../styles/AboutMe.css';
-import profileImage from '../assets/images/profile.jpg'; // 添加個人專業形象的照片
+import profileImage from '../assets/images/default-images.jpg'; // 添加個人專業形象的照片
 
 const AboutMe = () => (
   <section className="about-me">

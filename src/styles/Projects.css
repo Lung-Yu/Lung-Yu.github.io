@@ -1,52 +1,30 @@
 .projects {
-  position: relative;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.projects-header {
-  position: relative;
+.projects h2 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.projects-background {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  opacity: 0.3; /* 調整透明度 */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-.projects h2 {
-  position: relative;
-  z-index: 1;
-  color: var(--primary-color);
-  font-size: 2.5em;
-  margin: 0;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
-  border-radius: 10px;
-}
-
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .project {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 10px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  width: 300px;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -56,16 +34,21 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.project img {
-  width: 100%;
+.project-image {
+  max-width: 100%;
   height: auto;
   border-radius: 5px;
 }
 
-.project h3 {
+.project-info {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.project-info h3 {
   margin: 10px 0;
 }
 
-.project p {
+.project-info p {
   color: #555;
 }

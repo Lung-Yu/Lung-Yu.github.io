@@ -4,7 +4,7 @@ import Header from './components/Header';
 import AboutMe from './components/AboutMe';
 import Projects from './components/Projects';
 import Certificates from './components/Certificates';
-import Modal from './components/Modal';
+import Modal from './components/modal/Modal';
 import CV from './components/CV';
 import './styles/App.css';
 
@@ -30,7 +30,7 @@ function App() {
                 <AboutMe />
               </section>
               <section id="projects">
-                <Projects openModal={openModal} />
+                <Projects />
               </section>
               <section id="certificates">
                 <Certificates />

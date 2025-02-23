@@ -5,6 +5,6 @@ const Modal = ({ modalImage, closeModal }: { modalImage: string | null, closeMod
             <img className="modal-content" src={modalImage} alt="預覽圖片" />
         </div>
     ) : null
-)
+);
 
-export default Modal
+export default Modal;
