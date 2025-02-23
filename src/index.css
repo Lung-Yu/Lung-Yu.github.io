@@ -9,6 +9,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --primary-color: #1e3a8a; /* 深藍色 */
+  --secondary-color: #f9f9f9; /* 淺灰色背景 */
+  --accent-color: #ff6b6b; /* 跳色 */
 }
 
 body {
@@ -17,33 +20,33 @@ body {
   flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #f9f9f9;
+  background-color: var(--secondary-color);
 }
 
 a {
   font-weight: 500;
-  color: #007bff;
+  color: var(--primary-color);
   text-decoration: none;
 }
 a:hover {
-  color: #0056b3;
+  color: var(--accent-color);
 }
 
 h1, h2, h3 {
-  color: #333;
+  color: var(--primary-color);
 }
 
 button {
   border-radius: 5px;
   border: none;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: var(--primary-color);
   color: white;
   cursor: pointer;
   transition: background-color 0.2s, box-shadow 0.2s;
 }
 button:hover {
-  background-color: #0056b3;
+  background-color: var(--accent-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -58,6 +61,6 @@ section {
 footer {
   text-align: center;
   padding: 20px;
-  background-color: #333;
+  background-color: var(--primary-color);
   color: #fff;
 }

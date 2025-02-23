@@ -1,17 +1,46 @@
 .projects {
+  position: relative;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.projects .gallery {
+.projects-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.projects-background {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  opacity: 0.3; /* 調整透明度 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.projects h2 {
+  position: relative;
+  z-index: 1;
+  color: var(--primary-color);
+  font-size: 2.5em;
+  margin: 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+  border-radius: 10px;
+}
+
+.gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
 }
 
-.projects .project {
+.project {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,21 +51,21 @@
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.projects .project:hover {
+.project:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.projects .project img {
+.project img {
   width: 100%;
   height: auto;
   border-radius: 5px;
 }
 
-.projects .project h3 {
+.project h3 {
   margin: 10px 0;
 }
 
-.projects .project p {
+.project p {
   color: #555;
 }
