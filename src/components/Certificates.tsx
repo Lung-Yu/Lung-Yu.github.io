@@ -1,5 +1,5 @@
 import certificateData, { Certificate } from '../data/certificateData';
-import '../styles/Certificates.css';
+import '../styles/certificate/Certificates.css';
 import { useState } from 'react';
 import CertificateModal from './modal/certificate/CertificateModal';
 
