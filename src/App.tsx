@@ -5,6 +5,7 @@ import AboutMe from './components/AboutMe';
 import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import Modal from './components/modal/Modal';
+import Hero from './components/Hero';
 import CV from './components/pages/CV';
 import './styles/App.css';
 
@@ -22,6 +23,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <Hero />
       <main>
         <Routes>
           <Route path="/" element={
