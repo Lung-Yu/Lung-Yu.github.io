@@ -10,9 +10,13 @@ interface CertificateModalProps {
 const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClose }) => {
     if (!certificate) return null;
 
+    const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
+    };
+
     return (
-        <div className="modal">
-            <div className="modal-content">
+        <div className="modal" onClick={onClose}>
+            <div className="modal-content" onClick={handleModalClick}>
                 <span className="close" onClick={onClose}>&times;</span>
                 <div className="modal-header">
                     <h2>{certificate.title}</h2>
