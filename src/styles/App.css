@@ -1,0 +1,50 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* 移除 section 的樣式，改為使用 id 選擇器 */
+#about-me,
+#projects,
+#certificates {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+footer {
+  width: 100%;
+  padding: 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
