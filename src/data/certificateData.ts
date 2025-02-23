@@ -28,10 +28,10 @@ const certificateData: Certificate[] = [
     institution: 'BSI',
     image: '/src/assets/images/certifications/ISO/ISO_27001_2022_LA.png',
     description: 'The ISO 27001 Lead Auditor training course will equip participants with the skills and ability to perform audits by applying widely recognized audit principles, procedures and techniques. During this training course, participants will acquire the knowledge and skills to plan and carry out internal and external audits in compliance with ISO 19011 and ISO/IEC 17021-1 certification process.',
-    fullName: 'ISO 27001:2022 Lead Auditor',
+    fullName: 'ISO/IEC 27001:2022 Auditor Conversion ( Information Security Management Systems ) Training Couse',
     abbreviation: 'ISO 27001:2022 LA',
     obtainedAt: '2023-06-26',
-    expiryDate: 'present',
+    expiryDate: '-',
   },
   {
     title: 'CSSLP',
