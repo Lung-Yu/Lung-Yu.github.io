@@ -1,7 +1,7 @@
 import certificateData, { Certificate } from '../data/certificateData';
 import '../styles/Certificates.css';
 import { useState } from 'react';
-import CertificateModal from './CertificateModal';
+import CertificateModal from './modal/certificate/CertificateModal';
 
 const Certificates = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>('All');

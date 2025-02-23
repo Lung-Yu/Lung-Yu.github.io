@@ -1,6 +1,6 @@
 import React from 'react';
-import { Certificate } from '../data/certificateData';
-import '../styles/CertificateModal.css';
+import { Certificate } from '../../../data/certificateData';
+import '../../../styles/CertificateModal.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
