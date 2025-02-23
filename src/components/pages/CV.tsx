@@ -1,5 +1,4 @@
-import React from 'react';
-import '../styles/CV.css';
+import '../../styles/CV.css';
 
 const CV = () => (
   <section className="cv">
