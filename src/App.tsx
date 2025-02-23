@@ -5,7 +5,7 @@ import AboutMe from './components/AboutMe';
 import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import Modal from './components/modal/Modal';
-import CV from './components/CV';
+import CV from './components/pages/CV';
 import './styles/App.css';
 
 function App() {
