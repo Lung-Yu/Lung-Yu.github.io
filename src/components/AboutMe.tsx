@@ -19,6 +19,6 @@ const AboutMe = () => (
             <li>資安分析師 - [公司名稱] (20XX - 20XX)</li>
         </ul>
     </section>
-)
+);
 
-export default AboutMe
+export default AboutMe;

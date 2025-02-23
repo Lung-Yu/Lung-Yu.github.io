@@ -1,19 +1,19 @@
-import React from 'react'
+import projectData from '../data/projectData.json';
+import '../styles/Projects.css';
 
 const Projects = ({ openModal }: { openModal: (image: string) => void }) => (
   <section className="projects">
     <h2>我的作品</h2>
-    <div className="project">
-      <h3>作品一</h3>
-      <img src="/src/assets/images/image1.jpg" alt="作品一" onClick={() => openModal('/src/assets/images/image1.jpg')} />
-      <p>這是一個使用 React 和 Vite 開發的範例項目。</p>
-    </div>
-    <div className="project">
-      <h3>作品二</h3>
-      <img src="/src/assets/images/image2.jpg" alt="作品二" onClick={() => openModal('/src/assets/images/image2.jpg')} />
-      <p>這是一個使用 TypeScript 和 CSS 開發的範例項目。</p>
+    <div className="gallery">
+      {projectData.map((project: { title: string; image: string; description: string }, index: number) => (
+        <div className="project" key={index}>
+          <h3>{project.title}</h3>
+          <img src={project.image} alt={project.title} onClick={() => openModal(project.image)} />
+          <p>{project.description}</p>
+        </div>
+      ))}
     </div>
   </section>
-)
+);
 
-export default Projects
+export default Projects;

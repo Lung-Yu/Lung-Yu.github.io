@@ -33,7 +33,7 @@ function App() {
                 <Projects openModal={openModal} />
               </section>
               <section id="certificates">
-                <Certificates openModal={openModal} />
+                <Certificates />
               </section>
             </>
           } />
@@ -41,9 +41,9 @@ function App() {
         </Routes>
       </main>
       <footer id="contact">
-        <p>聯絡我：<a href="mailto:workfile975@gmail.com">workfile975@gmail</a></p>
+        <p>聯絡我：<a href="mailto:workfile975@gmail.com">workfile975@gmail.com</a></p>
       </footer>
-      <Modal modalImage={modalImage} closeModal={closeModal} />
+      {modalImage && <Modal modalImage={modalImage} closeModal={closeModal} />}
     </Router>
   );
 }

@@ -1,6 +1,6 @@
-import reactLogo from '../assets/react.svg'
-import viteLogo from '../assets/images/vite.svg'
-import '../styles/Header.css'
+import reactLogo from '../assets/react.svg';
+import viteLogo from '../assets/images/vite.svg';
+import '../styles/Header.css';
 
 const Header = () => (
   <header className="header">
@@ -18,11 +18,12 @@ const Header = () => (
         <ul className="nav-list">
           <li><a href="#about-me">關於我</a></li>
           <li><a href="#projects">我的作品</a></li>
+          <li><a href="#certificates">我的證照</a></li>
           <li><a href="#contact">聯絡我</a></li>
         </ul>
       </nav>
     </div>
   </header>
-)
+);
 
-export default Header
+export default Header;
