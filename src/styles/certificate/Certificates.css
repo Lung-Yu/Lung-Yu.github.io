@@ -1,71 +1,74 @@
 .certificates {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .categories {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .categories button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.2s, box-shadow 0.2s;
-  }
-  
-  .categories button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .certificate {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 300px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .certificate:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .certificate-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
-  .certificate-info {
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  .certificate-info h3 {
-    margin: 10px 0;
-  }
-  
-  .certificate-info p {
-    color: #555;
-  }
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.certificates h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.categories button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.categories button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.certificate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.certificate:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.certificate-info {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.certificate-info h3 {
+  margin: 10px 0;
+}
+
+.certificate-info p {
+  color: #555;
+}
