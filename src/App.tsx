@@ -28,13 +28,10 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <div id="about-me"> 
-                <AboutMe />
-              </div>
-              <div id="projects"> 
+              <div id="projects">
                 <Projects />
               </div>
-              <div id="certificates"> 
+              <div id="certificates">
                 <Certificates />
               </div>
             </>

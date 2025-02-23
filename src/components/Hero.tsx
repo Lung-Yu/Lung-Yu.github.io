@@ -19,12 +19,15 @@ const Hero = () => {
                             <span>Security Expert & Developer</span>
                         </h1>
                         <p>
-                            專注於IoT應用開發與資安領域，擁有多張國際認證。
-                            致力於將安全性融入開發流程，打造更安全的數位世界。
+                            專注於軟體開發與資安領域，擁有多張國際認證。
+                            致力於將安全性融入開發流程，打造更安全且穩定的軟體系統。
                         </p>
                         <div className="hero-buttons">
                             <a href="#projects" className="btn primary">
                                 查看作品
+                            </a>
+                            <a href="#certificates" className="btn secondary">
+                                查看證照
                             </a>
                             <a href="#contact" className="btn secondary">
                                 聯絡我
