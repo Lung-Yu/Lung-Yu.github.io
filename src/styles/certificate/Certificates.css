@@ -1,14 +1,17 @@
 .certificates {
     padding: 20px;
-}
-
-.categories {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .categories {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-}
-
-.categories button {
+  }
+  
+  .categories button {
     margin: 0 10px;
     padding: 10px 20px;
     border: none;
@@ -16,19 +19,21 @@
     color: white;
     cursor: pointer;
     border-radius: 5px;
-}
-
-.categories button:hover {
+    transition: background-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .categories button:hover {
     background-color: #0056b3;
-}
-
-.gallery {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.certificate {
+  }
+  
+  .certificate {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,28 +43,29 @@
     border-radius: 5px;
     width: 300px;
     cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.certificate:hover {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .certificate:hover {
     transform: scale(1.05);
-}
-
-.certificate-image {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .certificate-image {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
-}
-
-.certificate-info {
+  }
+  
+  .certificate-info {
     text-align: center;
     margin-top: 10px;
-}
-
-.certificate-info h3 {
+  }
+  
+  .certificate-info h3 {
     margin: 10px 0;
-}
-
-.certificate-info p {
+  }
+  
+  .certificate-info p {
     color: #555;
-}
+  }
