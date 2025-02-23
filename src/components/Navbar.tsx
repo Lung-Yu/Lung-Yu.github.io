@@ -1,4 +1,6 @@
+// src/components/Navbar.tsx
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
@@ -13,38 +15,44 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
-
-  const closeNav = () => {
-    setIsNavOpen(false);
-  };
+  const menuItems = [
+    { title: '關於我', href: '#about' },
+    { title: '作品集', href: '#projects' },
+    { title: '證照資歷', href: '#certificates' },
+    { title: '聯絡我', href: '#contact' }
+  ];
 
   return (
-    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="container">
-        <h1>我的個人作品集</h1>
-        <button className="nav-toggle" onClick={toggleNav}>
-          {isNavOpen ? '✕' : '☰'}
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="nav-container">
+        <Link to="/" className="nav-logo">
+          Tygrus
+        </Link>
+
+        <button 
+          className="nav-toggle" 
+          onClick={() => setIsNavOpen(!isNavOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
         </button>
-        <nav className={`nav ${isNavOpen ? 'open' : ''}`}>
-          <ul className="nav-list">
-            {['關於我', '作品集', '證照資歷', '聯絡我'].map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item}`}
-                  onClick={closeNav}
-                  className={isScrolled ? 'scrolled' : ''}
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+
+        <div className={`nav-menu ${isNavOpen ? 'active' : ''}`}>
+          {menuItems.map(item => (
+            <a
+              key={item.title}
+              href={item.href}
+              className="nav-link"
+              onClick={() => setIsNavOpen(false)}
+            >
+              {item.title}
+            </a>
+          ))}
+        </div>
       </div>
-    </header>
+    </nav>
   );
 };
 
