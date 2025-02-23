@@ -1,5 +1,5 @@
 import '../styles/AboutMe.css';
-import profileImage from '../assets/images/default-images.jpg'; // 添加個人專業形象的照片
+import profileImage from '../assets/images/aboutme/profile.png'; // 添加個人專業形象的照片
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
