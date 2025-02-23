@@ -65,3 +65,45 @@
 .nav-link:hover::after {
   width: 100%;
 }
+
+.scroll-top-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  z-index: 900;
+}
+
+.scroll-top-button.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top-button:hover {
+  transform: translateY(-4px);
+  background-color: var(--color-primary-dark);
+}
+
+@media (max-width: 768px) {
+  .scroll-top-button {
+    bottom: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+  }
+}
