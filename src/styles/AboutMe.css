@@ -96,6 +96,7 @@
 @media (max-width: 768px) {
   .about-me {
     grid-template-columns: 1fr;
+    padding: 10px; /* 調整內邊距 */
   }
 
   .profile-image {
@@ -105,5 +106,21 @@
 
   .bio p {
     font-size: 1em;
+  }
+}
+
+/* iPhone 12 Pro */
+@media (max-width: 390px) {
+  .about-me {
+    padding: 5px; /* 調整內邊距 */
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .bio p {
+    font-size: 0.9em;
   }
 }

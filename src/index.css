@@ -21,6 +21,8 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  align-items: center; /* 使內容居中 */
+  justify-content: center; /* 使內容垂直居中 */
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--secondary-color);
@@ -59,6 +61,11 @@ section {
   margin: 20px 0;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* 確保 section 佔滿可用寬度 */
+  max-width: 1200px; /* 設置最大寬度 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 使卡片內容居中 */
 }
 
 footer {
@@ -66,6 +73,7 @@ footer {
   padding: 20px;
   background-color: var(--primary-color);
   color: #fff;
+  width: 100%; /* 確保 footer 佔滿可用寬度 */
 }
 
 /* 響應式設計 */
@@ -85,5 +93,65 @@ footer {
 
   button {
     padding: 8px 16px;
+  }
+}
+
+/* iPhone 12 Pro */
+@media (max-width: 390px) {
+  body {
+    padding: 5px;
+  }
+
+  section {
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2em;
+  }
+
+  button {
+    padding: 6px 12px;
+  }
+}
+
+/* iPad */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    padding: 15px;
+  }
+
+  section {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.8em;
+  }
+
+  button {
+    padding: 10px 18px;
+  }
+}
+
+/* MacBook */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  body {
+    padding: 20px;
+  }
+
+  section {
+    padding: 20px;
+    margin: 20px 0;
+  }
+
+  h1, h2, h3 {
+    font-size: 2em;
+  }
+
+  button {
+    padding: 12px 20px;
   }
 }
