@@ -33,10 +33,12 @@ const Certificates = () => {
             </div>
             <div className="gallery">
                 {filteredCertificates.map((certificate: Certificate, index: number) => (
-                    <div className="certificate" key={index}>
-                        <h3>{certificate.title}</h3>
-                        <img src={certificate.image} alt={certificate.title} onClick={() => openModal(certificate)} />
-                        <p>{certificate.description}</p>
+                    <div className="certificate" key={index} onClick={() => openModal(certificate)}>
+                        <img src={certificate.image} alt={certificate.title} className="certificate-image" />
+                        <div className="certificate-info">
+                            <h3>{certificate.title}</h3>
+                            <p>{certificate.description}</p>
+                        </div>
                     </div>
                 ))}
             </div>
