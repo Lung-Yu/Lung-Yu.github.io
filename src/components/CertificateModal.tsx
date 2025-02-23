@@ -18,7 +18,9 @@ const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClos
                     <h2>{certificate.title}</h2>
                 </div>
                 <div className="modal-body">
-                    <img src={certificate.image} alt={certificate.title} className="modal-image" />
+                    <div className="modal-image-container">
+                        <img src={certificate.image} alt={certificate.title} className="modal-image" />
+                    </div>
                     <div className="modal-details">
                         <p>{certificate.description}</p>
                         <p><strong>Institution:</strong> {certificate.institution}</p>

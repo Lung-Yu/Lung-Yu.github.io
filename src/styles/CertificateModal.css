@@ -9,11 +9,12 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8); /* 加深背景色 */
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #fff; /* 白色背景 */
+    color: #333; /* 深色文字 */
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -22,6 +23,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    border-radius: 10px; /* 圓角 */
 }
 
 .close {
@@ -45,17 +47,29 @@
 
 .modal-body {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.modal-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    margin-right: 20px;
 }
 
 .modal-image {
     max-width: 100%;
     height: auto;
-    margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 .modal-details {
+    flex: 2;
     text-align: left;
-    width: 100%;
+}
+
+.modal-details p {
+    margin: 10px 0;
 }
