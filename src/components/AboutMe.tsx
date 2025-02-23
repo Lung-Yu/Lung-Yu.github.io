@@ -30,39 +30,9 @@ const AboutMe = () => (
         </div>
       </div>
     </div>
-    <p>你好，我是 XXX，一名資安顧問和前端開發者，擅長使用 React 和 TypeScript。我熱衷於技術創新，並且在資安領域有豐富的經驗。</p>
-    <h3>專業技能</h3>
-    <ul>
-      <li>資安分析與風險評估</li>
-      <li>滲透測試與漏洞修補</li>
-      <li>前端開發 (React, TypeScript, JavaScript, HTML, CSS)</li>
-      <li>後端開發 (Node.js, Express)</li>
-      <li>雲端服務 (AWS, Azure)</li>
-      <li>資料庫管理 (MySQL, MongoDB)</li>
-    </ul>
-    <h3>經歷</h3>
-    <div className="timeline">
-      <div className="timeline-item">
-        <div className="timeline-icon"></div>
-        <div className="timeline-content">
-          <h4>資安顧問 - XXX 公司</h4>
-          <p>(20XX - 現在)</p>
-        </div>
-      </div>
-      <div className="timeline-item">
-        <div className="timeline-icon"></div>
-        <div className="timeline-content">
-          <h4>前端開發者 - XXX 公司</h4>
-          <p>(20XX - 20XX)</p>
-        </div>
-      </div>
-      <div className="timeline-item">
-        <div className="timeline-icon"></div>
-        <div className="timeline-content">
-          <h4>資安分析師 - XXX 公司</h4>
-          <p>(20XX - 20XX)</p>
-        </div>
-      </div>
+    <div className="bio">
+      <p>Tygrus 目前在果核數位服務，主要從事安全軟體開發的工作。過去累積了 IoT 應用、手機 App、網站系統及雲端服務等開發經驗，也接觸過影像/音訊識別與 AI 模型建立的專案。在資安領域中，曾參與資安評估、弱點檢測及風險評估等相關工作。</p>
+      <p>擁有 CISSP、CSSLP、ISO 27001:2022、CEH、MCSD、SCWCD 和 RHCVA 等認證。曾於 iThome CyberSec 2023 與 DevOpsDays 2024 擔任講者。目前專注在安全軟體開發流程的實踐與改善。</p>
     </div>
   </section>
 );

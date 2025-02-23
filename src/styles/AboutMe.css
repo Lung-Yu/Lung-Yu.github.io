@@ -53,74 +53,17 @@
   color: var(--accent-color);
 }
 
-.about-me p {
+.bio {
+  margin-top: 20px;
+}
+
+.bio h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.bio p {
   font-size: 1.2em;
   line-height: 1.6;
-}
-
-.about-me ul {
-  list-style-type: disc;
-  padding-left: 20px;
-}
-
-.about-me li {
-  font-size: 1.2em;
-  margin-bottom: 5px;
-}
-
-.about-me a {
-  color: var(--primary-color);
-  text-decoration: none;
-}
-
-.about-me a:hover {
-  color: var(--accent-color);
-}
-
-.timeline {
-  position: relative;
-  padding-left: 40px;
-  margin-bottom: 20px;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 20px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--primary-color);
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.timeline-icon {
-  position: absolute;
-  left: 10px;
-  top: 0;
-  width: 20px;
-  height: 20px;
-  background: var(--primary-color);
-  border-radius: 50%;
-}
-
-.timeline-content {
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.timeline-content h4 {
-  margin: 0;
-  font-size: 1.2em;
-}
-
-.timeline-content p {
-  margin: 5px 0 0;
-  color: #555;
+  margin-bottom: 10px;
 }
