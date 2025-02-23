@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
+import { menuItems } from '../data/menuItemData';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,40 +16,6 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const menuItems = [
-    {
-      title: '首頁',
-      href: '/',
-      isExact: true
-    },
-    {
-      title: '專業技能',
-      href: '#skills',
-      isExact: false
-    },
-    {
-      title: '作品集',
-      href: '#projects',
-      isExact: false
-    },
-    {
-      title: '證照資歷',
-      href: '#certificates',
-      isExact: false
-    },
-    {
-      title: '聯絡我',
-      href: '#contact',
-      isExact: false
-    },
-    {
-      title: 'CV',
-      href: '/cv',
-      isExact: true,
-      isNewTab: true
-    }
-  ];
 
   const handleNavClick = (href: string) => {
     setIsNavOpen(false);
