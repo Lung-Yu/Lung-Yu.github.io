@@ -1,6 +1,8 @@
 import React from 'react';
 import { Certificate } from '../data/certificateData';
 import '../styles/CertificateModal.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 interface CertificateModalProps {
     certificate: Certificate | null;
@@ -17,7 +19,9 @@ const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClos
     return (
         <div className="modal" onClick={onClose}>
             <div className="modal-content" onClick={handleModalClick}>
-                <span className="close" onClick={onClose}>&times;</span>
+                <span className="close" onClick={onClose}>
+                    <FontAwesomeIcon icon={faTimes} />
+                </span>
                 <div className="modal-header">
                     <h2>{certificate.title}</h2>
                 </div>

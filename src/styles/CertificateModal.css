@@ -27,17 +27,19 @@
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    color: #333; /* 深色文字 */
+    background-color: transparent; /* 透明背景 */
+    border: none;
+    font-size: 24px;
     cursor: pointer;
-    transition: color 0.3s;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: #000; /* 黑色文字 */
     text-decoration: none;
 }
 
