@@ -1,3 +1,5 @@
+/* src/styles/Projects.css */
+
 .projects {
   padding: 20px;
   background-color: #fff;
@@ -49,4 +51,11 @@
 
 .project-info p {
   color: #555;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
 }

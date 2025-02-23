@@ -1,3 +1,5 @@
+/* src/styles/AboutMe.css */
+
 .about-me {
   padding: 20px;
   background-color: #fff;
@@ -88,4 +90,20 @@
   font-size: 1.2em;
   line-height: 1.6;
   margin-bottom: 10px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .about-me {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .bio p {
+    font-size: 1em;
+  }
 }
