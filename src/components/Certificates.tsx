@@ -1,15 +1,25 @@
 import certificateData, { Certificate } from '../data/certificateData';
 import '../styles/Certificates.css';
 import { useState } from 'react';
+import CertificateModal from './CertificateModal';
 
-const Certificates = ({ openModal }: { openModal: (image: string) => void }) => {
+const Certificates = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>('All');
+    const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
 
     const categories = ['All', ...new Set(certificateData.map((certificate: Certificate) => certificate.category))];
 
     const filteredCertificates = selectedCategory === 'All'
         ? certificateData
         : certificateData.filter((certificate: Certificate) => certificate.category === selectedCategory);
+
+    const openModal = (certificate: Certificate) => {
+        setSelectedCertificate(certificate);
+    };
+
+    const closeModal = () => {
+        setSelectedCertificate(null);
+    };
 
     return (
         <section className="certificates">
@@ -25,11 +35,12 @@ const Certificates = ({ openModal }: { openModal: (image: string) => void }) => 
                 {filteredCertificates.map((certificate: Certificate, index: number) => (
                     <div className="certificate" key={index}>
                         <h3>{certificate.title}</h3>
-                        <img src={certificate.image} alt={certificate.title} onClick={() => openModal(certificate.image)} />
+                        <img src={certificate.image} alt={certificate.title} onClick={() => openModal(certificate)} />
                         <p>{certificate.description}</p>
                     </div>
                 ))}
             </div>
+            <CertificateModal certificate={selectedCertificate} onClose={closeModal} />
         </section>
     );
 };
