@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Projects from './components/Projects';
-import Certificates from './components/Certificates';
+import Navbar from './components/layout/Navbar';
+import Projects from './components/layout/Projects';
+import Certificates from './components/layout/Certificates';
 import Modal from './components/modal/Modal';
-import Hero from './components/Hero';
+import Hero from './components/layout/Hero';
 import CV from './components/pages/CV';
 import './styles/App.css';
 
