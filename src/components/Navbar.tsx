@@ -6,16 +6,26 @@ import { menuItems } from '../data/menuItemData';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      setShowScrollTop(window.scrollY > 400); // 顯示回到頂部按鈕的閾值
     };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    
+    // 防止導航選單打開時滾動
+    if (isNavOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isNavOpen]);
 
   const handleNavClick = (href: string) => {
     setIsNavOpen(false);
@@ -25,23 +35,16 @@ const Navbar = () => {
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
   return (
     <>
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
-          <Link to="/" className="nav-logo">
+          <Link to="/" className="nav-logo" onClick={() => setIsNavOpen(false)}>
             Tygrus
           </Link>
 
           <button
-            className="nav-toggle"
+            className={`nav-toggle ${isNavOpen ? 'active' : ''}`}
             onClick={() => setIsNavOpen(!isNavOpen)}
             aria-label="Toggle menu"
           >
@@ -77,13 +80,11 @@ const Navbar = () => {
         </div>
       </nav>
       
-      <button 
-        className={`scroll-top-button ${showScrollTop ? 'visible' : ''}`}
-        onClick={scrollToTop}
-        aria-label="Scroll to top"
-      >
-        ↑
-      </button>
+      {/* 背景遮罩 */}
+      <div 
+        className={`nav-overlay ${isNavOpen ? 'active' : ''}`}
+        onClick={() => setIsNavOpen(false)}
+      />
     </>
   );
 };
