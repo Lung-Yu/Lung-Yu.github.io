@@ -8,6 +8,7 @@ export interface Certificate {
   abbreviation: string;
   obtainedAt: string;
   expiryDate?: string; // Optional field for expiry date
+  value: number; // Added value field for market value
 }
 
 const certificateData: Certificate[] = [
@@ -21,6 +22,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'CEH',
     obtainedAt: '2013-06-30',
     expiryDate: '2023-06-30',
+    value: 8,
   },
   {
     title: 'ISO 27001:2022 Lead Auditor',
@@ -32,6 +34,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'ISO 27001:2022 LA',
     obtainedAt: '2023-06-26',
     expiryDate: '-',
+    value: 8,
   },
   {
     title: 'CSSLP',
@@ -43,6 +46,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'CSSLP',
     obtainedAt: '2024-06-01',
     expiryDate: '2027-05-31',
+    value: 9,
   },
   {
     title: 'CISSP',
@@ -54,8 +58,8 @@ const certificateData: Certificate[] = [
     abbreviation: 'CISSP',
     obtainedAt: '2022-11-01',
     expiryDate: '2025-10-31',
+    value: 10,
   },
-
   {
     title: 'iPAS 資安初級',
     category: 'Cyber Security',
@@ -66,6 +70,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'iPAS Security Engineer L1',
     obtainedAt: '2022-01-20',
     expiryDate: '-',
+    value: 5,
   },
   {
     title: 'MCSD: Web Applications',
@@ -77,6 +82,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'MCSD',
     obtainedAt: '2015-05-24',
     expiryDate: '-',
+    value: 6,
   },
   {
     title: 'MCP',
@@ -88,6 +94,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'MCP',
     obtainedAt: '2014-01-03',
     expiryDate: '-',
+    value: 4,
   },
   {
     title: 'Microsoft Specialist: C#',
@@ -99,6 +106,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'MS: C#',
     obtainedAt: '2014-04-19',
     expiryDate: '-',
+    value: 4,
   },
   {
     title: 'Microsoft Specialist: HTML5, JS, CSS3',
@@ -110,6 +118,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'MS: Web',
     obtainedAt: '2014-01-03',
     expiryDate: '-',
+    value: 4,
   },
   {
     title: 'MTA: Database',
@@ -121,6 +130,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'MTA: DB',
     obtainedAt: '2014-01-14',
     expiryDate: '-',
+    value: 3,
   },
   {
     title: 'MTA: Networking',
@@ -132,6 +142,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'MTA: Network',
     obtainedAt: '2012-12-26',
     expiryDate: '-',
+    value: 3,
   },
   {
     title: 'OCPJWCD',
@@ -143,6 +154,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'OCPJWCD',
     obtainedAt: '2014-07-29',
     expiryDate: '-',
+    value: 6,
   },
   {
     title: 'OCJP',
@@ -154,6 +166,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'OCJP',
     obtainedAt: '2013-07-09',
     expiryDate: '-',
+    value: 6,
   },
   {
     title: 'Andes Advanced Engineer',
@@ -165,6 +178,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'ACE Advanced',
     obtainedAt: '2014-07-10',
     expiryDate: '-',
+    value: 5,
   },
   {
     title: 'Andes Intermediate Engineer',
@@ -176,6 +190,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'ACE Intermediate',
     obtainedAt: '2014-07-10',
     expiryDate: '-',
+    value: 4,
   },
   {
     title: 'RHCVA',
@@ -187,6 +202,7 @@ const certificateData: Certificate[] = [
     abbreviation: 'RHCVA',
     obtainedAt: '2013-11-08',
     expiryDate: '-',
+    value: 7,
   },
   {
     title: 'Big Data Knowledge',
@@ -198,7 +214,16 @@ const certificateData: Certificate[] = [
     abbreviation: 'BDKT',
     obtainedAt: '2016-04-24',
     expiryDate: '-',
+    value: 5,
   }
 ];
+
+// Sort by value (descending) and then by obtainedAt (descending)
+certificateData.sort((a, b) => {
+  if (b.value === a.value) {
+    return new Date(b.obtainedAt).getTime() - new Date(a.obtainedAt).getTime();
+  }
+  return b.value - a.value;
+});
 
 export default certificateData;
