@@ -215,6 +215,18 @@ const certificateData: Certificate[] = [
     obtainedAt: '2016-04-24',
     expiryDate: '-',
     value: 5,
+  },
+  {
+    title: 'HP ATA Networks',
+    category: 'Infrastructure',
+    institution: 'HP',
+    image: '/src/assets/images/certifications/hp_ata/HPATA-Networks.jpg',
+    description: 'HP Accredited Technical Associate (ATA) Networks certification validates foundational networking knowledge and skills with HP networking solutions.',
+    fullName: 'HP Accredited Technical Associate - Networks',
+    abbreviation: 'HP ATA',
+    obtainedAt: '2014-01-03',
+    expiryDate: '-',
+    value: 4,
   }
 ];
 
