@@ -227,7 +227,19 @@ const certificateData: Certificate[] = [
     obtainedAt: '2014-01-03',
     expiryDate: '-',
     value: 4,
-  }
+  },
+  // {
+  //   title: 'Zero Trust & NIST Cybersecurity Framework',
+  //   category: 'Cyber Security',
+  //   institution: 'BSI',
+  //   image: '/src/assets/images/certifications/cybrary/BSI_Zero Trust & NIST Cybersecurity Framework Awareness Training Certificate.png',
+  //   description: 'Zero Trust & NIST Cybersecurity Framework certification validates understanding of Zero Trust security model and NIST Cybersecurity Framework.',
+  //   fullName: 'Zero Trust & NIST Cybersecurity Framework',
+  //   abbreviation: 'Zero Trust & NIST CSF',
+  //   obtainedAt: '2022-06-30',
+  //   expiryDate: '-',
+  //   value: 3,
+  // },
 ];
 
 // Sort by value (descending) and then by obtainedAt (descending)
