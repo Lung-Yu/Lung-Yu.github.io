@@ -13,6 +13,7 @@ export interface CVData {
       description: string[];
     }[];
     education: {
+      description: any;
       school: string;
       degree: string;
       period: string;
