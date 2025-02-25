@@ -1,9 +1,10 @@
 // src/components/Projects.tsx
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/Projects.css';
 import { projects } from '../../data/projectData';
+import { Link } from 'react-router-dom';
 
 
 const Projects = () => {
@@ -26,12 +27,19 @@ const Projects = () => {
                 />
                 <div className="project-overlay">
                   <div className="project-links">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                      <FontAwesomeIcon icon={faGithub} />
-                    </a>
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link">
-                      <FontAwesomeIcon icon={faExternalLinkAlt} />
-                    </a>
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                        <FontAwesomeIcon icon={faGithub} />
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link">
+                        <FontAwesomeIcon icon={faExternalLinkAlt} />
+                      </a>
+                    )}
+                    <Link to={`/project/${project.detailPath}`} className="project-link">
+                      <FontAwesomeIcon icon={faInfoCircle} />
+                    </Link>
                   </div>
                 </div>
               </div>
