@@ -1,11 +1,13 @@
 import { useParams } from 'react-router-dom';
-import { projects } from '../../data/projectData';
 import { useState } from 'react';
-import Modal from '../modal/Modal';
+import { useProjects } from '../hooks/useProjects';
+import Modal from '../../../components/modal/Modal';
+import '../styles/ProjectDetail.css';
 
 const ProjectDetail = () => {
   const { projectPath } = useParams();
   const [modalImage, setModalImage] = useState<string | null>(null);
+  const { projects } = useProjects();
   
   const project = projects.find(p => p.detailPath === projectPath);
 
