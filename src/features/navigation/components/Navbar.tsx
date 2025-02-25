@@ -18,7 +18,6 @@ const Navbar = () => {
   return (
     <>
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-        <LanguageSwitcher />
         <div className="nav-container">
           <Link to="/" className="nav-logo" onClick={() => setIsNavOpen(false)}>
             Tygrus
@@ -43,6 +42,7 @@ const Navbar = () => {
               />
             ))}
           </div>
+          <LanguageSwitcher />
         </div>
       </nav>
       
