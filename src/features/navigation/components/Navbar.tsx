@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useNavigation } from '../hooks/useNavigation';
 import NavLink from './NavLink';
 import '../styles/Navbar.css';
+import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 
 const Navbar = () => {
   const { isScrolled, isNavOpen, setIsNavOpen, menuItems } = useNavigation();
@@ -17,6 +18,7 @@ const Navbar = () => {
   return (
     <>
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+        <LanguageSwitcher />
         <div className="nav-container">
           <Link to="/" className="nav-logo" onClick={() => setIsNavOpen(false)}>
             Tygrus

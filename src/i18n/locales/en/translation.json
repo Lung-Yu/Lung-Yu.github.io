@@ -1,0 +1,11 @@
+{
+    "hero": {
+      "greeting": "Hello, I'm",
+      "role": "Security Expert & Developer",
+      "description": "Focused on software development and information security, holding multiple international certifications. Dedicated to integrating security into development processes to build safer and more stable software systems.",
+      "cta": {
+        "portfolio": "Portfolio",
+        "contact": "Contact Me"
+      }
+    }
+  }
