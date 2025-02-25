@@ -1,0 +1,77 @@
+main {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+  padding-top: 64px;
+}
+
+.home-page {
+  margin-top: -64px; /* 保持這個負邊距以抵消 navbar 的高度 */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* 添加整體間距控制 */
+}
+
+section {
+  margin: 2rem 0; /* 減少 section 之間的間距 */
+  padding: 2rem 0; /* 添加內部間距 */
+}
+
+/* 特別處理 Hero section 的間距 */
+.hero {
+  margin-bottom: 0; /* 移除底部間距 */
+  min-height: 90vh; /* 稍微縮短 hero 的高度 */
+  display: flex;
+  align-items: center;
+}
+
+/* 為其他 section 添加過渡效果 */
+#projects,
+#consulting,
+#certificates {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+footer {
+  width: 100%;
+  padding: var(--spacing-md);
+  background-color: var(--color-gray-50);
+  color: var(--color-text);
+  text-align: center;
+  margin-top: var(--spacing-lg);
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: var(--radius-md);
+}
+
+.close {
+  color: var(--color-background);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.close:hover {
+  opacity: 1;
+}

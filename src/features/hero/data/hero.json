@@ -1,0 +1,14 @@
+{
+    "hero": {
+        "greeting": "Hello, I'm",
+        "name": "Tygrus",
+        "title": "Security Expert & Developer",
+        "description": "專注於軟體開發與資安領域，擁有多張國際認證。致力於將安全性融入開發流程，打造更安全且穩定的軟體系統。",
+        "profileImage": "/src/assets/images/aboutme/profile.png",
+        "social": {
+            "github": "https://github.com/Lung-Yu",
+            "linkedin": "https://www.linkedin.com/in/lung-yu-tsai-633865100/",
+            "email": "workfile975@gmail.com"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "menuItems": [
+      {
+        "title": "首頁",
+        "href": "/",
+        "isExact": true
+      },
+      {
+        "title": "專業技能",
+        "href": "#skills",
+        "isExact": false
+      },
+      {
+        "title": "作品集",
+        "href": "#projects",
+        "isExact": false
+      },
+      {
+        "title": "證照資歷",
+        "href": "#certificates",
+        "isExact": false
+      },
+      {
+        "title": "聯絡我",
+        "href": "#contact",
+        "isExact": false
+      },
+      {
+        "title": "CV",
+        "href": "/cv",
+        "isExact": true,
+        "isNewTab": true
+      }
+    ]
+  }
