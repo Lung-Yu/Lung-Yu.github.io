@@ -1,4 +1,4 @@
-folder_name = $1
+folder_name=$1
 
 if [ -z "$folder_name" ]; then
     echo "Folder name is required"
