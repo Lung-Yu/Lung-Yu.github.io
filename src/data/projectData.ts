@@ -53,6 +53,19 @@ const projects: Project[] = [
       "/src/assets/images/projects/20_Auto-fill_web_form_tool/rawdata.png"
     ]
   },
+  {
+    id: 4,
+    title: "File Monitor 目錄監控系統",
+    description: "一套系統目錄監控工具，用於偵測未經授權的檔案修改，能即時發現可能的資安事件，適合監控線上系統是否遭受駭客入侵或惡意更改。",
+    image: "/src/assets/images/projects/file_monitor/file_monitor.png",
+    tags: ["資安監控", "系統防護", "Python", "檔案完整性"],
+    github: "https://github.com/Lung-Yu/File-Monitor",
+    detailPath: "file-monitor",
+    gallery: [
+      "/src/assets/images/projects/file_monitor/screenshot1.png",
+      "/src/assets/images/projects/file_monitor/screenshot2.png"
+    ]
+  }
   // ... 其他專案
 ];
 
