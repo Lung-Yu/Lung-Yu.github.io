@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import AboutMe from './components/AboutMe';
-import Projects from './components/Projects';
-import Certificates from './components/Certificates';
+import Navbar from './components/layout/Navbar';
+import Projects from './components/layout/Projects';
+import Certificates from './components/layout/Certificates';
 import Modal from './components/modal/Modal';
+import Hero from './components/layout/Hero';
 import CV from './components/pages/CV';
 import './styles/App.css';
 
@@ -21,18 +21,16 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      <Navbar />
+      <Hero />
       <main>
         <Routes>
           <Route path="/" element={
             <>
-              <div id="about-me"> 
-                <AboutMe />
-              </div>
-              <div id="projects"> 
+              <div id="projects">
                 <Projects />
               </div>
-              <div id="certificates"> 
+              <div id="certificates">
                 <Certificates />
               </div>
             </>
