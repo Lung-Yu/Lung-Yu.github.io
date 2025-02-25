@@ -1,17 +1,5 @@
+import { Certificate } from '../types/Certificate';
 import certificatesJson from './certificates.json';
-
-export interface Certificate {
-  title: string;
-  institution: string; 
-  category: string;
-  image: string;
-  description: string;
-  fullName: string;
-  abbreviation: string;
-  obtainedAt: string;
-  expiryDate?: string;
-  value: number;
-}
 
 // 將JSON資料轉換為Certificate型別
 const certificateData: Certificate[] = certificatesJson.certificates;

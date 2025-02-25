@@ -10,6 +10,7 @@ import './../styles/App.css';
 import ProjectDetail from '../components/pages/ProjectDetail';
 import Consulting from '../components/layout/Consulting';
 import ConsultingDetail from '../components/pages/ConsultingDetail';
+import { CertificateList } from '../features/certificates';
 
 function App() {
   const [modalImage, setModalImage] = useState<string | null>(null);
@@ -37,7 +38,8 @@ function App() {
                 <Consulting />
               </div>
               <div id="certificates">
-                <Certificates />
+                {/* <Certificates /> */}
+                <CertificateList />
               </div>
             </div>
           } />
