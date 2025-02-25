@@ -5,10 +5,10 @@ import Modal from '../components/modal/Modal';
 import Hero from '../components/layout/Hero';
 import CV from '../components/pages/CV';
 import './../styles/App.css';
-import Consulting from '../components/layout/Consulting';
-import ConsultingDetail from '../components/pages/ConsultingDetail';
 import { CertificateList } from '../features/certificates';
 import { ProjectList, ProjectDetail } from '../features/projects';
+import { ConsultingList, ConsultingDetail } from '../features/consultant';
+
 
 function App() {
   const [modalImage, setModalImage] = useState<string | null>(null);
@@ -33,7 +33,7 @@ function App() {
                 <ProjectList />
               </div>
               <div id="consulting">
-                <Consulting />
+                <ConsultingList />
               </div>
               <div id="certificates">
                 <CertificateList />
