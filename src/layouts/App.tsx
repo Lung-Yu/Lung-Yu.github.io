@@ -11,6 +11,8 @@ import ProjectDetail from '../components/pages/ProjectDetail';
 import Consulting from '../components/layout/Consulting';
 import ConsultingDetail from '../components/pages/ConsultingDetail';
 import { CertificateList } from '../features/certificates';
+import { ProjectList } from '../features/projects';
+
 
 function App() {
   const [modalImage, setModalImage] = useState<string | null>(null);
@@ -32,7 +34,8 @@ function App() {
             <div className="home-page">
               <Hero />
               <div id="projects">
-                <Projects />
+                {/* <Projects /> */}
+                <ProjectList />
               </div>
               <div id="consulting"> {/* 新增顧問服務區塊 */}
                 <Consulting />
