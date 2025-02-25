@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './../styles/App.css';
+import './../features/apps/styles/App.css';
 import { CertificateList } from '../features/certificates';
 import { ProjectList, ProjectDetail } from '../features/projects';
 import { ConsultingList, ConsultingDetail } from '../features/consultant';
