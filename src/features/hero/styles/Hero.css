@@ -1,10 +1,12 @@
+/* 主要容器樣式 */
 .hero {
-  min-height: 90vh; /* 調整為 90vh */
+  min-height: 90vh;
   position: relative;
   overflow: hidden;
-  padding: 2rem 0; /* 添加上下內距 */
+  padding: 2rem 0;
 }
 
+/* 背景相關樣式 */
 .hero-background {
   position: absolute;
   top: 0;
@@ -12,12 +14,93 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+  overflow: hidden;
 }
 
+.hero-background::before,
+.hero-background::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0070f3 0%, #00a6ff 100%);
+  opacity: 0.05;
+  filter: blur(40px);
+  animation: float 20s infinite ease-in-out;
+}
+
+.hero-background::before {
+  width: 50vh;
+  height: 50vh;
+  top: -10vh;
+  right: -10vh;
+  transform: rotate(-15deg);
+}
+
+.hero-background::after {
+  width: 40vh;
+  height: 40vh;
+  bottom: -15vh;
+  left: -10vh;
+  transform: rotate(30deg);
+}
+
+/* 漸層背景 */
+.hero-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0, 112, 243, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(0, 166, 255, 0.05) 0%, transparent 40%);
+  z-index: -1;
+}
+
+/* 背景圖案 */
+.hero-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(30deg, rgba(0, 112, 243, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(0, 112, 243, 0.03) 87.5%, rgba(0, 112, 243, 0.03)),
+    linear-gradient(150deg, rgba(0, 112, 243, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(0, 112, 243, 0.03) 87.5%, rgba(0, 112, 243, 0.03));
+  background-size: 60px 60px;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* 不規則形狀裝飾 */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+.hero::before {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, rgba(0, 112, 243, 0.1), rgba(0, 166, 255, 0.1));
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  top: 10%;
+  right: -100px;
+  animation: morphing 15s ease-in-out infinite;
+}
+
+.hero::after {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(-45deg, rgba(0, 166, 255, 0.1), rgba(0, 112, 243, 0.1));
+  border-radius: 58% 42% 38% 62% / 42% 55% 45% 58%;
+  bottom: 10%;
+  left: -100px;
+  animation: morphing 12s ease-in-out infinite reverse;
+}
+
+/* 內容區域樣式 */
 .hero-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem; /* 只保留左右內距 */
+  padding: 0 2rem;
   height: 100%;
   display: flex;
   align-items: center;
@@ -30,42 +113,7 @@
   width: 100%;
 }
 
-.social-links {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.social-links a {
-  color: var(--text-primary);
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-  color: var(--primary-color);
-}
-
-.btn {
-  padding: 0.8rem 1.5rem;
-  border-radius: 5px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn.primary {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-}
-
-.btn.secondary {
-  background-color: transparent;
-  color: var(--text-primary);
-  border: 2px solid var(--text-primary);
-}
-
+/* 文字區域樣式 */
 .hero-text {
   display: flex;
   flex-direction: column;
@@ -80,7 +128,6 @@
 
 h1 {
   font-size: 3.5rem;
-  /* 稍微調整標題大小 */
   margin: 0.5rem 0;
 }
 
@@ -100,6 +147,7 @@ h1 {
   margin: 1rem 0;
 }
 
+/* 圖片區域樣式 */
 .hero-image {
   position: relative;
   width: 100%;
@@ -112,14 +160,12 @@ h1 {
 
 .hero-image img {
   width: 360px;
-  /* 稍微放大照片 */
   height: 360px;
   object-fit: cover;
   border-radius: 16px;
   position: relative;
   z-index: 1;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  /* 增強陰影效果 */
 }
 
 .image-backdrop {
@@ -129,13 +175,11 @@ h1 {
   background: linear-gradient(135deg, #0070f3 0%, #00a6ff 100%);
   border-radius: 16px;
   transform: rotate(-6deg) translateY(4px);
-  /* 調整旋轉角度和位置 */
   opacity: 0.08;
-  /* 微調透明度 */
   filter: blur(2px);
-  /* 添加模糊效果 */
 }
 
+/* 按鈕樣式 */
 .hero-cta {
   display: flex;
   gap: 1.25rem;
@@ -150,6 +194,19 @@ h1 {
   font-size: 1rem;
 }
 
+.btn.primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.btn.secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--text-primary);
+}
+
+/* 社交連結樣式 */
 .social-links {
   margin-top: 2rem;
   display: flex;
@@ -162,6 +219,11 @@ h1 {
   transition: all 0.3s ease;
 }
 
+.social-links a:hover {
+  color: var(--primary-color);
+}
+
+/* 動畫效果 */
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -174,15 +236,35 @@ h1 {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
   }
-  to {
-    opacity: 1;
+  50% {
+    transform: translateY(-20px) rotate(5deg);
   }
 }
 
-/* 響應式調整 */
+@keyframes morphing {
+  0% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transform: rotate(0deg);
+  }
+  50% {
+    border-radius: 58% 42% 38% 62% / 42% 55% 45% 58%;
+    transform: rotate(180deg);
+  }
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transform: rotate(360deg);
+  }
+}
+
+/* 響應式設計 */
 @media (max-width: 1024px) {
   .hero-grid-container {
     gap: 1.5rem;
@@ -218,5 +300,15 @@ h1 {
   .hero-image {
     justify-content: center;
     margin-top: 2rem;
+  }
+
+  .hero-background::before {
+    width: 30vh;
+    height: 30vh;
+  }
+  
+  .hero-background::after {
+    width: 25vh;
+    height: 25vh;
   }
 }
