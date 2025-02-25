@@ -8,6 +8,53 @@
       "contact": "聯絡我"
     }
   },
+  "cv": {
+    "sections": {
+      "skills": "專業技能",
+      "experience": "工作經驗",
+      "education": "教育背景"
+    },
+    "title": "資安工程師 & 全端開發者",
+    "summary": "專注於軟體開發與資安領域，擁有多張國際認證。致力於將安全性融入開發流程，打造更安全且穩定的軟體系統。",
+    "skills": {
+      "categories": {
+        "security": "資安技能",
+        "development": "開發技能",
+        "management": "管理技能"
+      }
+    },
+    "experience": {
+      "0": {
+        "position": "Assistant Manager of ISRD",
+        "company": "果核數位股份有限公司",
+        "period": "2024/08 - 現在"
+      },
+      "1": {
+        "position": "Assistant Manager of SDS",
+        "company": "果核數位股份有限公司",
+        "period": "2023/04 - 2024/07"
+      },
+      "2": {
+        "position": "Security Consultant",
+        "company": "資誠",
+        "period": "2020/09 - 2021/09"
+      }
+    },
+    "education": {
+      "0": {
+        "school": "國立雲林科技大學",
+        "degree": "碩士",
+        "major": "資訊工程學系",
+        "period": "2016 - 2019"
+      },
+      "1": {
+        "school": "崑山科技大學",
+        "degree": "學士",
+        "major": "資訊工程學系",
+        "period": "2012 - 2016"
+      }
+    }
+  },
   "projects": {
     "title": "作品集",
     "description": "展示我的最新項目和工作成果，每個專案都反映了我對技術的熱情和追求完美的態度。",
