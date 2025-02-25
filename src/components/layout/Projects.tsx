@@ -1,13 +1,16 @@
-// src/components/Projects.tsx
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faExternalLinkAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt, faInfoCircle, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/Projects.css';
 import { projects } from '../../data/projectData';
 import { Link } from 'react-router-dom';
 
-
 const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
+  const initialDisplayCount = 6;
+  const displayedProjects = showAll ? projects : projects.slice(0, initialDisplayCount);
+
   return (
     <section className="projects">
       <div className="projects-container">
@@ -17,7 +20,7 @@ const Projects = () => {
         </div>
 
         <div className="projects-grid">
-          {projects.map((project) => (
+          {displayedProjects.map((project) => (
             <div key={project.id} className="project-card">
               <div className="project-image-container">
                 <img
@@ -57,6 +60,27 @@ const Projects = () => {
             </div>
           ))}
         </div>
+
+        {projects.length > initialDisplayCount && (
+          <div className="show-more-container">
+            <button
+              className="show-more-button"
+              onClick={() => setShowAll(!showAll)}
+            >
+              {showAll ? (
+                <>
+                  <span>顯示較少</span>
+                  <FontAwesomeIcon icon={faChevronUp} />
+                </>
+              ) : (
+                <>
+                  <span>顯示更多</span>
+                  <FontAwesomeIcon icon={faChevronDown} />
+                </>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
