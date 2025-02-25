@@ -1,13 +1,14 @@
+// src/features/apps/components/App.tsx
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './../features/apps/styles/App.css';
-import { CertificateList } from '../features/certificates';
-import { ProjectList, ProjectDetail } from '../features/projects';
-import { ConsultingList, ConsultingDetail } from '../features/consultant';
-import { Navbar } from '../features/navigation'; 
-import { Hero } from '../features/hero';
-import { CV } from '../features/cv';
-import { Modal } from '../shared/components/modal'; 
+import '../styles/App.css';
+import { CertificateList } from '../../certificates';
+import { ProjectList, ProjectDetail } from '../../projects';
+import { ConsultingList, ConsultingDetail } from '../../consultant';
+import { Navbar } from '../../navigation';
+import { Hero } from '../../hero';
+import { CV } from '../../cv';
+import { Modal } from '../../../shared/components/modal';
 
 function App() {
   const [modalImage, setModalImage] = useState<string | null>(null);
