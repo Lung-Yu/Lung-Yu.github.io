@@ -8,6 +8,8 @@ import Hero from '../components/layout/Hero';
 import CV from '../components/pages/CV';
 import './../styles/App.css';
 import ProjectDetail from '../components/pages/ProjectDetail';
+import Consulting from '../components/layout/Consulting';
+import ConsultingDetail from '../components/pages/ConsultingDetail';
 
 function App() {
   const [modalImage, setModalImage] = useState<string | null>(null);
@@ -31,6 +33,9 @@ function App() {
               <div id="projects">
                 <Projects />
               </div>
+              <div id="consulting"> {/* 新增顧問服務區塊 */}
+                <Consulting />
+              </div>
               <div id="certificates">
                 <Certificates />
               </div>
@@ -38,6 +43,7 @@ function App() {
           } />
           <Route path="/cv" element={<CV />} />
           <Route path="/project/:projectPath" element={<ProjectDetail />} />
+          <Route path="/consulting/:consultingPath" element={<ConsultingDetail />} />
         </Routes>
       </main>
       <footer id="contact">
