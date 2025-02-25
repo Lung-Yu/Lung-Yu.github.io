@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Modal from '../components/modal/Modal';
-// import Hero from '../components/layout/Hero';
-// import CV from '../components/pages/CV';
 import './../styles/App.css';
 import { CertificateList } from '../features/certificates';
 import { ProjectList, ProjectDetail } from '../features/projects';
@@ -10,6 +7,7 @@ import { ConsultingList, ConsultingDetail } from '../features/consultant';
 import { Navbar } from '../features/navigation'; 
 import { Hero } from '../features/hero';
 import { CV } from '../features/cv';
+import { Modal } from '../shared/components/modal'; 
 
 function App() {
   const [modalImage, setModalImage] = useState<string | null>(null);

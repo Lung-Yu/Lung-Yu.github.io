@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useProjects } from '../hooks/useProjects';
-import Modal from '../../../components/modal/Modal';
+import { Modal } from '../../../shared/components/modal';
 import '../styles/ProjectDetail.css';
 
 const ProjectDetail = () => {
