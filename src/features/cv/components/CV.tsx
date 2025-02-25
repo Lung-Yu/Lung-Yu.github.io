@@ -51,6 +51,13 @@ const CV = () => {
             <div className="period">
               {edu.degree} - {edu.major} ({edu.period})
             </div>
+            {edu.description && (
+              <ul className="education-description">
+                {edu.description.map((desc, descIndex) => (
+                  <li key={descIndex}>{desc}</li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </section>

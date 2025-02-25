@@ -18,4 +18,8 @@ export interface CVData {
       period: string;
       major: string;
     }[];
+    conferences: {
+      title: string;
+      date: string;
+    }[];
   }

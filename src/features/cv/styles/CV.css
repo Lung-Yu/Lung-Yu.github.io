@@ -96,6 +96,47 @@
     left: -1.5rem;
 }
 
+.conferences {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--color-gray-50);
+    border-radius: var(--radius-md);
+}
+
+.conference-item {
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.conference-item:last-child {
+    border-bottom: none;
+}
+
+.conference-date {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+}
+.education-description {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.education-description li {
+    margin: 0.5rem 0;
+    position: relative;
+    color: var(--color-text);
+    font-size: 1rem;
+}
+
+.education-description li::before {
+    content: "•";
+    color: var(--color-primary);
+    position: absolute;
+    left: -1.5rem;
+}
+
 @media (max-width: 768px) {
     .cv-container {
         padding: 1rem;
