@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import menuItemsJson from '../data/menuItems.json';
+import navigationData from '../data/navigations.json';
 import type { MenuItem } from '../types';
 
 export const useNavigation = () => {
@@ -25,7 +25,7 @@ export const useNavigation = () => {
     };
   }, [isNavOpen]);
 
-  const menuItems: MenuItem[] = menuItemsJson.menuItems;
+  const menuItems: MenuItem[] = navigationData.menuItems;
 
   return {
     isScrolled,
