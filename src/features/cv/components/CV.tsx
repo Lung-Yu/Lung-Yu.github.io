@@ -6,6 +6,10 @@ const CV = () => {
   const { t } = useTranslation();
   const { cvData } = useCV();
 
+  if (!cvData) {
+    return <div className="cv-container">Loading...</div>;
+  }
+
   return (
     <div className="cv-container">
       <header className="cv-header">
