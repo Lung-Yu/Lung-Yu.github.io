@@ -19,7 +19,6 @@ const ProjectList = () => {
         <div className="projects-gradient"></div>
         <div className="projects-pattern"></div>
       </div>
-
       <div className="projects-container">
         <div className="projects-header">
           <h2>作品集</h2>
