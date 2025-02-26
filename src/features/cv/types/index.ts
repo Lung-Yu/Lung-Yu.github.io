@@ -1,25 +1,26 @@
 export interface CVData {
-    name: string;
+  name: string;
+  title: string;
+  summary: string;
+  skills: Array<{
+    category: string;
+    items: string[];
+  }>;
+  experiences: Array<{
+    company: string;
+    position: string;
+    period: string;
+    description: string[];
+  }>;
+  education: Array<{
+    school: string;
+    degree: string;
+    period: string;
+    major: string;
+    description?: string[];
+  }>;
+  conferences?: Array<{
     title: string;
-    summary: string;
-    skills: {
-      category: string;
-      items: string[];
-    }[];
-    experiences: {
-      company: string;
-      position: string;
-      period: string;
-      description: string[];
-    }[];
-    education: {
-      school: string;
-      degree: string;
-      period: string;
-      major: string;
-    }[];
-    conferences: {
-      title: string;
-      date: string;
-    }[];
-  }
+    date: string;
+  }>;
+}

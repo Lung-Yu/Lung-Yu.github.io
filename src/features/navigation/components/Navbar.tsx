@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useNavigation } from '../hooks/useNavigation';
 import NavLink from './NavLink';
 import '../styles/Navbar.css';
+import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 
 const Navbar = () => {
   const { isScrolled, isNavOpen, setIsNavOpen, menuItems } = useNavigation();
@@ -41,6 +42,7 @@ const Navbar = () => {
               />
             ))}
           </div>
+          <LanguageSwitcher />
         </div>
       </nav>
       

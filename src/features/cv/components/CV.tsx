@@ -1,8 +1,14 @@
+import { useTranslation } from 'react-i18next';
 import { useCV } from '../hooks/useCV';
 import '../styles/CV.css';
 
 const CV = () => {
+  const { t } = useTranslation();
   const { cvData } = useCV();
+
+  if (!cvData) {
+    return <div className="cv-container">Loading...</div>;
+  }
 
   return (
     <div className="cv-container">
@@ -13,11 +19,11 @@ const CV = () => {
       </header>
 
       <section className="cv-section">
-        <h2>專業技能</h2>
+        <h2>{t('cv.sections.skills')}</h2>
         <div className="skills-grid">
           {cvData.skills.map((skillGroup, index) => (
             <div key={index} className="skill-category">
-              <h3>{skillGroup.category}</h3>
+              <h3>{t(`cv.skills.categories.${skillGroup.category}`, { defaultValue: skillGroup.category })}</h3>
               <ul className="skill-list">
                 {skillGroup.items.map((skill, skillIndex) => (
                   <li key={skillIndex}>{skill}</li>
@@ -29,7 +35,7 @@ const CV = () => {
       </section>
 
       <section className="cv-section">
-        <h2>工作經驗</h2>
+        <h2>{t('cv.sections.experience')}</h2>
         {cvData.experiences.map((exp, index) => (
           <div key={index} className="experience-item">
             <h3>{exp.position} - {exp.company}</h3>
@@ -44,9 +50,9 @@ const CV = () => {
       </section>
 
       <section className="cv-section">
-        <h2>教育背景</h2>
+        <h2>{t('cv.sections.education')}</h2>
         {cvData.education.map((edu, index) => (
-          <div key={index} className="experience-item">
+          <div key={index} className="education-item">
             <h3>{edu.school}</h3>
             <div className="period">
               {edu.degree} - {edu.major} ({edu.period})
@@ -61,6 +67,20 @@ const CV = () => {
           </div>
         ))}
       </section>
+
+      {cvData.conferences && (
+        <section className="cv-section">
+          <h2>{t('cv.sections.conferences')}</h2>
+          <div className="conferences-grid">
+            {cvData.conferences.map((conf, index) => (
+              <div key={index} className="conference-item">
+                <h4>{conf.title}</h4>
+                <span className="date">{conf.date}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 };

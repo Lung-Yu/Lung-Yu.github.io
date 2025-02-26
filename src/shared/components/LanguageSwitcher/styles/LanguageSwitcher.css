@@ -1,0 +1,74 @@
+.language-switcher {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .lang-select-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+  }
+  
+  .lang-select-btn:hover {
+    background: rgba(0, 112, 243, 0.1);
+  }
+  
+  .arrow {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .arrow.up {
+    transform: rotate(180deg);
+  }
+  
+  .lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    background: white;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+  
+  .lang-option {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .lang-option:hover {
+    background: var(--color-gray-100);
+  }
+  
+  .lang-option.active {
+    color: var(--color-primary);
+    background: rgba(0, 112, 243, 0.1);
+  }
+  
+  /* 手機版適配 */
+  @media (max-width: 768px) {
+    .lang-dropdown {
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 120px;
+    }
+  }

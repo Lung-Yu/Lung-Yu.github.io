@@ -1,0 +1,42 @@
+{
+  "hero": {
+    "greeting": "你好，我是",
+    "role": "資安專家 & 開發者",
+    "description": "專注於軟體開發與資安領域，擁有多張國際認證。致力於將安全性融入開發流程，打造更安全且穩定的軟體系統。",
+    "cta": {
+      "portfolio": "作品集",
+      "contact": "聯絡我"
+    }
+  },
+  "cv": {
+    "sections": {
+      "skills": "專業技能",
+      "experience": "工作經驗",
+      "education": "教育背景",
+      "conferences": "演講與分享"
+    },
+    "skills": {
+      "categories": {
+        "security": "資安技能",
+        "development": "開發技能",
+        "management": "管理技能"
+      }
+    },
+    "experience": {
+      "position": "職位",
+      "company": "公司",
+      "period": "時間"
+    },
+    "education": {
+      "degree": "學位",
+      "major": "科系",
+      "period": "時間"
+    }
+  },
+  "projects": {
+    "title": "作品集",
+    "description": "展示我的最新項目和工作成果，每個專案都反映了我對技術的熱情和追求完美的態度。",
+    "showMore": "顯示更多",
+    "showLess": "顯示較少"
+  }
+}

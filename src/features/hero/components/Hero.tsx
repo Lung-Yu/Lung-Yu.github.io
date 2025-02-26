@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useHero } from '../hooks/useHero';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -5,6 +6,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Hero.css';
 
 const Hero = () => {
+  const { t } = useTranslation();
   const { heroContent } = useHero();
 
   const scrollToSection = (sectionId: string) => {
@@ -23,37 +25,37 @@ const Hero = () => {
         <div className="hero-grid-container">
           <div className="hero-text">
             <div className="hero-title">
-              <span className="greeting">{heroContent.greeting}</span>
+              <span className="greeting">{t('hero.greeting')}</span>
               <h1>{heroContent.name}</h1>
-              <span className="role">{heroContent.title}</span>
+              <span className="role">{t('hero.role')}</span>
             </div>
-            <p className="hero-description">{heroContent.description}</p>
+            <p className="hero-description">{t('hero.description')}</p>
 
             <div className="hero-cta">
               <button className="btn primary" onClick={() => scrollToSection('#projects')}>
-                作品集
+                {t('hero.cta.portfolio')}
               </button>
               <button className="btn secondary" onClick={() => scrollToSection('#contact')}>
-                聯絡我
+                {t('hero.cta.contact')}
               </button>
             </div>
 
             <div className="social-links">
-              <a 
+              <a
                 href="https://github.com/Lung-Yu"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub">
                 <FontAwesomeIcon icon={faGithub} />
               </a>
-              <a 
+              <a
                 href="https://www.linkedin.com/in/lung-yu-tsai-633865100/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn">
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
-              <a 
+              <a
                 href="mailto:workfile975@gmail.com"
                 aria-label="Email">
                 <FontAwesomeIcon icon={faEnvelope} />
