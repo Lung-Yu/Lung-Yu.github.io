@@ -10,12 +10,11 @@
   },
   "cv": {
     "sections": {
-      "skills": "Professional Skills",
-      "experience": "Work Experience",
-      "education": "Education"
+      "skills": "Skills",
+      "experience": "Experience",
+      "education": "Education",
+      "conferences": "Conferences"
     },
-    "title": "Security Engineer & Full Stack Developer",
-    "summary": "Focused on software development and information security, holding multiple international certifications. Dedicated to integrating security into development processes to build safer and more stable software systems.",
     "skills": {
       "categories": {
         "security": "Security Skills",
@@ -24,35 +23,14 @@
       }
     },
     "experience": {
-      "0": {
-        "position": "Assistant Manager of ISRD",
-        "company": "Goocore Digital Co., Ltd.",
-        "period": "Aug 2024 - Present"
-      },
-      "1": {
-        "position": "Assistant Manager of SDS",
-        "company": "Goocore Digital Co., Ltd.",
-        "period": "Apr 2023 - Jul 2024"
-      },
-      "2": {
-        "position": "Security Consultant",
-        "company": "PwC Taiwan",
-        "period": "Sep 2020 - Sep 2021"
-      }
+      "position": "Position",
+      "company": "Company",
+      "period": "Period"
     },
     "education": {
-      "0": {
-        "school": "National Yunlin University of Science and Technology",
-        "degree": "Master",
-        "major": "Computer Science and Information Engineering",
-        "period": "2016 - 2019"
-      },
-      "1": {
-        "school": "Kun Shan University",
-        "degree": "Bachelor",
-        "major": "Computer Science and Information Engineering",
-        "period": "2012 - 2016"
-      }
+      "degree": "Degree",
+      "major": "Major",
+      "period": "Period"
     }
   }
 }
