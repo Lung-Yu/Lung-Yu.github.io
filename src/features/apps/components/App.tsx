@@ -1,16 +1,13 @@
-// src/features/apps/components/App.tsx
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import '../styles/App.css';
 import { CertificateList } from '../../certificates';
 import { ProjectList, ProjectDetail } from '../../projects';
 import { ConsultingList, ConsultingDetail } from '../../consultant';
-import { Navbar } from '../../navigation';
+import { NavigationBar } from '../../navigation';
 import { Hero } from '../../hero';
 import { CV } from '../../cv';
 import { Modal } from '../../../shared/components/modal';
-
-
 
 const scrollToSection = (elementId: string) => {
   const element = document.getElementById(elementId);
@@ -68,7 +65,7 @@ function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <Navbar />
+        <NavigationBar />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useNavigation } from '../hooks/useNavigation';
 import NavLink from './NavLink';
-import '../styles/Navbar.css';
+import '../styles/NavigationBar.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 
-const Navbar = () => {
+const NavigationBar = () => {
   const { isScrolled, isNavOpen, setIsNavOpen, menuItems } = useNavigation();
 
   const handleNavClick = (href: string) => {
@@ -54,4 +54,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavigationBar;
