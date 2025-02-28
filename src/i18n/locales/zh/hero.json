@@ -1,0 +1,15 @@
+{
+  "greeting": "嗨，我是",
+  "name": "Tygrus Tsai",
+  "role": "資深資安工程師",
+  "description": "專注於資訊安全與軟體開發，擁有多年的系統開發和資安防護經驗。致力於打造安全可靠的數位環境。",
+  "buttons": {
+    "viewProjects": "查看作品",
+    "contactMe": "聯絡我"
+  },
+  "socialLinks": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "電子郵件"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "聯絡我",
+  "subtitle": "讓我們開始合作吧",
+  "form": {
+    "name": "姓名",
+    "email": "電子郵件",
+    "subject": "主旨",
+    "message": "訊息內容",
+    "submit": "發送訊息"
+  },
+  "validation": {
+    "required": "此欄位為必填",
+    "invalidEmail": "請輸入有效的電子郵件"
+  },
+  "success": "訊息已成功發送！",
+  "error": "發送失敗，請稍後再試。"
+}

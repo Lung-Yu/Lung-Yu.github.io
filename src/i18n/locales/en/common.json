@@ -1,0 +1,22 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "language": {
+    "en": "English",
+    "tw": "Traditional Chinese"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
+  },
+  "footer": {
+    "copyright": "© 2025 Lung-Yu Kung. All rights reserved.",
+    "poweredBy": "Powered by React & Next.js"
+  }
+}

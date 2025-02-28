@@ -1,0 +1,21 @@
+{
+  "title": "作品集",
+  "subtitle": "我的專案作品",
+  "description": "這裡展示了我的主要作品和專案。每個專案都代表了不同的技術挑戰和解決方案。",
+  "filters": {
+    "all": "全部",
+    "webApp": "網頁應用",
+    "security": "資安工具",
+    "automation": "自動化工具"
+  },
+  "projectCard": {
+    "viewProject": "查看專案",
+    "sourceCode": "原始碼",
+    "liveDemo": "線上展示"
+  },
+  "categories": {
+    "featured": "精選專案",
+    "recent": "最新作品",
+    "archived": "歷史專案"
+  }
+}

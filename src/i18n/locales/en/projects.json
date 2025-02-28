@@ -1,0 +1,21 @@
+{
+    "title": "Portfolio",
+    "subtitle": "My Project Works",
+    "description": "This showcases my main works and projects. Each project represents different technical challenges and solutions.",
+    "filters": {
+        "all": "All",
+        "webApp": "Web Application",
+        "security": "Security Tools",
+        "automation": "Automation Tools"
+    },
+    "projectCard": {
+        "viewProject": "View Project",
+        "sourceCode": "Source Code",
+        "liveDemo": "Live Demo"
+    },
+    "categories": {
+        "featured": "Featured Projects",
+        "recent": "Recent Works",
+        "archived": "Archived Projects"
+    }
+}

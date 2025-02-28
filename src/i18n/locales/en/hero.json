@@ -1,0 +1,15 @@
+{
+  "greeting": "Hi, I'm",
+  "name": "Tygrus Tsai",
+  "role": "Senior Security Engineer",
+  "description": "Focused on information security and software development, with years of experience in system development and security protection. Dedicated to creating secure and reliable digital environments.",
+  "buttons": {
+    "viewProjects": "View Projects",
+    "contactMe": "Contact Me"
+  },
+  "socialLinks": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email"
+  }
+}

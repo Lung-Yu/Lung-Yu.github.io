@@ -1,0 +1,24 @@
+{
+  "title": "About Me",
+  "subtitle": "My Professional Background",
+  "introduction": {
+    "title": "Hi, I'm Lung-Yu Kung",
+    "description": "With over 10 years of experience in information security and software development, focusing on network security, system architecture, and automation solutions.",
+    "mission": "Dedicated to helping organizations build more secure digital environments and promoting security awareness."
+  },
+  "experience": {
+    "title": "Experience",
+    "years": "{{count}} Years Experience",
+    "projects": "{{count}}+ Projects Completed",
+    "clients": "{{count}}+ Clients Served"
+  },
+  "expertise": {
+    "title": "Expertise",
+    "areas": {
+      "security": "Information Security",
+      "development": "Software Development",
+      "consulting": "Security Consulting",
+      "training": "Training & Education"
+    }
+  }
+}

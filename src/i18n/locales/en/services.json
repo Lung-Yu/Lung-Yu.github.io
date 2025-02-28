@@ -1,0 +1,35 @@
+{
+  "title": "Services",
+  "subtitle": "Professional Services",
+  "categories": {
+    "security": {
+      "title": "Security Consulting",
+      "description": "Comprehensive security assessment and recommendations",
+      "services": {
+        "audit": "Security Audit",
+        "assessment": "Vulnerability Assessment",
+        "pentesting": "Penetration Testing",
+        "consultation": "Security Consultation"
+      }
+    },
+    "training": {
+      "title": "Training",
+      "description": "Customized security awareness and technical training",
+      "services": {
+        "awareness": "Security Awareness",
+        "technical": "Technical Training",
+        "compliance": "Compliance Training",
+        "workshops": "Practical Workshops"
+      }
+    },
+    "development": {
+      "title": "Secure Development",
+      "description": "Secure software development and code review",
+      "services": {
+        "secureSDLC": "Secure SDLC",
+        "codeReview": "Code Review",
+        "security": "Security Integration"
+      }
+    }
+  }
+}
