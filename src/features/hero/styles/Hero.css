@@ -1,71 +1,22 @@
+:root {
+  --primary-color: #0070f3;
+  --secondary-color: #00a6ff;
+  --text-primary: #4a5568;
+  --spacing-small: 1.25rem;
+  --spacing-medium: 2rem;
+  --spacing-large: 2.2rem;
+  --font-size-large: 3.5rem;
+  --font-size-medium: 1.4rem;
+  --font-size-small: 1.1rem;
+  --line-height: 1.8;
+}
+
 /* 主要容器樣式 */
 .hero {
   min-height: 90vh;
   position: relative;
   overflow: hidden;
-  padding: 2rem 0;
-}
-
-/* 背景相關樣式 */
-.hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.hero-background::before,
-.hero-background::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #0070f3 0%, #00a6ff 100%);
-  opacity: 0.05;
-  filter: blur(40px);
-  animation: float 20s infinite ease-in-out;
-}
-
-.hero-background::before {
-  width: 50vh;
-  height: 50vh;
-  top: -10vh;
-  right: -10vh;
-  transform: rotate(-15deg);
-}
-
-.hero-background::after {
-  width: 40vh;
-  height: 40vh;
-  bottom: -15vh;
-  left: -10vh;
-  transform: rotate(30deg);
-}
-
-/* 漸層背景 */
-.hero-gradient {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(0, 112, 243, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(0, 166, 255, 0.05) 0%, transparent 40%);
-  z-index: -1;
-}
-
-/* 背景圖案 */
-.hero-pattern {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(30deg, rgba(0, 112, 243, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(0, 112, 243, 0.03) 87.5%, rgba(0, 112, 243, 0.03)),
-    linear-gradient(150deg, rgba(0, 112, 243, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(0, 112, 243, 0.03) 87.5%, rgba(0, 112, 243, 0.03));
-  background-size: 60px 60px;
-  opacity: 0.3;
-  z-index: -1;
+  padding: var(--spacing-medium) 0;
 }
 
 /* 不規則形狀裝飾 */
@@ -100,7 +51,7 @@
 .hero-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--spacing-medium);
   height: 100%;
   display: flex;
   align-items: center;
@@ -109,7 +60,7 @@
 .hero-grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: var(--spacing-medium);
   width: 100%;
 }
 
@@ -117,8 +68,8 @@
 .hero-text {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  padding-right: 2rem;
+  gap: var(--spacing-small);
+  padding-right: var(--spacing-medium);
   animation: slideUp 0.8s ease forwards;
 }
 
@@ -127,22 +78,22 @@
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: var(--font-size-large);
   margin: 0.5rem 0;
 }
 
 .role {
-  font-size: 1.4rem;
-  background: linear-gradient(90deg, #0070f3, #00a6ff);
+  font-size: var(--font-size-medium);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 600;
 }
 
 .hero-description {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #4a5568;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height);
+  color: var(--text-primary);
   max-width: 500px;
   margin: 1rem 0;
 }
@@ -158,110 +109,26 @@ h1 {
   animation: fadeIn 1s ease forwards;
 }
 
-.hero-image img {
+.hero-image img,
+.image-backdrop {
   width: 360px;
   height: 360px;
-  object-fit: cover;
   border-radius: 16px;
+}
+
+.hero-image img {
   position: relative;
   z-index: 1;
+  object-fit: cover;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .image-backdrop {
   position: absolute;
-  width: 360px;
-  height: 360px;
-  background: linear-gradient(135deg, #0070f3 0%, #00a6ff 100%);
-  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   transform: rotate(-6deg) translateY(4px);
   opacity: 0.08;
   filter: blur(2px);
-}
-
-/* 按鈕樣式 */
-.hero-cta {
-  display: flex;
-  gap: 1.25rem;
-  margin-top: 1.5rem;
-}
-
-.btn {
-  padding: 0.9rem 2.2rem;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-}
-
-.btn.primary {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-}
-
-.btn.secondary {
-  background-color: transparent;
-  color: var(--text-primary);
-  border: 2px solid var(--text-primary);
-}
-
-/* 社交連結樣式 */
-.social-links {
-  margin-top: 2rem;
-  display: flex;
-  gap: 2rem;
-}
-
-.social-links a {
-  color: #4a5568;
-  font-size: 1.6rem;
-  transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-  color: var(--primary-color);
-}
-
-/* 動畫效果 */
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) rotate(0);
-  }
-  50% {
-    transform: translateY(-20px) rotate(5deg);
-  }
-}
-
-@keyframes morphing {
-  0% {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    transform: rotate(0deg);
-  }
-  50% {
-    border-radius: 58% 42% 38% 62% / 42% 55% 45% 58%;
-    transform: rotate(180deg);
-  }
-  100% {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    transform: rotate(360deg);
-  }
 }
 
 /* 響應式設計 */
@@ -301,14 +168,44 @@ h1 {
     justify-content: center;
     margin-top: 2rem;
   }
+}
 
-  .hero-background::before {
-    width: 30vh;
-    height: 30vh;
+/* 動畫效果 */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  
-  .hero-background::after {
-    width: 25vh;
-    height: 25vh;
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes morphing {
+  0% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transform: rotate(0deg);
+  }
+
+  50% {
+    border-radius: 58% 42% 38% 62% / 42% 55% 45% 58%;
+    transform: rotate(180deg);
+  }
+
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transform: rotate(360deg);
   }
 }

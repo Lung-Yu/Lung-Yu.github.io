@@ -1,0 +1,96 @@
+/* src/features/floatingOrbs/styles/FloatingOrbs.css */
+.floating-orbs-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(20px);
+    z-index: -1;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+/* 大小變化 */
+.orb-xl {
+    width: 600px;
+    height: 600px;
+}
+
+.orb-lg {
+    width: 400px;
+    height: 400px;
+}
+
+.orb-md {
+    width: 300px;
+    height: 300px;
+}
+
+/* 顏色變化 */
+.orb-blue {
+    background: linear-gradient(135deg, rgba(0, 112, 243, 0.05), rgba(0, 166, 255, 0.05));
+}
+
+.orb-purple {
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.05), rgba(192, 132, 252, 0.05));
+}
+
+.orb-rose {
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.05), rgba(251, 113, 133, 0.05));
+}
+
+/* 動畫效果 */
+.float-1 {
+    animation: float-1 20s ease-in-out infinite;
+}
+
+.float-2 {
+    animation: float-2 25s ease-in-out infinite;
+}
+
+.float-3 {
+    animation: float-3 30s ease-in-out infinite;
+}
+
+@keyframes float-1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(30px, -30px) rotate(5deg);
+    }
+}
+
+@keyframes float-2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(-20px, -20px) rotate(-5deg);
+    }
+}
+
+@keyframes float-3 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(15px, -25px) rotate(10deg);
+    }
+}

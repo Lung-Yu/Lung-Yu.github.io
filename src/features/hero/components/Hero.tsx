@@ -4,8 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Hero.css';
+import { FloatingOrbs } from '../../floatingOrbs';
 
-const Hero = () => {
+/**
+ * Hero 組件 - 網站首頁的主要展示區域
+ */
+const Hero: React.FC = () => {
   const { t } = useTranslation();
   const { heroContent } = useHero();
 
@@ -16,13 +20,10 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      <div className="hero-background">
-        <div className="hero-gradient"></div>
-        <div className="hero-pattern"></div>
-      </div>
-
+      <FloatingOrbs />
       <div className="hero-content">
         <div className="hero-grid-container">
+          {/* 文字內容區 */}
           <div className="hero-text">
             <div className="hero-title">
               <span className="greeting">{t('hero.greeting')}</span>
@@ -31,15 +32,25 @@ const Hero = () => {
             </div>
             <p className="hero-description">{t('hero.description')}</p>
 
+            {/* 按鈕區域 */}
             <div className="hero-cta">
-              <button className="btn primary" onClick={() => scrollToSection('#projects')}>
+              <button 
+                className="btn primary" 
+                onClick={() => scrollToSection('#projects')}
+                aria-label={t('hero.cta.portfolio')}
+              >
                 {t('hero.cta.portfolio')}
               </button>
-              <button className="btn secondary" onClick={() => scrollToSection('#contact')}>
+              <button 
+                className="btn secondary" 
+                onClick={() => scrollToSection('#contact')}
+                aria-label={t('hero.cta.contact')}
+              >
                 {t('hero.cta.contact')}
               </button>
             </div>
 
+            {/* 社交連結 */}
             <div className="social-links">
               <a
                 href="https://github.com/Lung-Yu"
@@ -63,9 +74,14 @@ const Hero = () => {
             </div>
           </div>
 
+          {/* 圖片區域 */}
           <div className="hero-image">
-            <div className="image-backdrop"></div>
-            <img src={heroContent.profileImage} alt={heroContent.name} />
+            <div className="image-backdrop" />
+            <img 
+              src={heroContent.profileImage} 
+              alt={heroContent.name}
+              loading="eager"
+            />
           </div>
         </div>
       </div>
