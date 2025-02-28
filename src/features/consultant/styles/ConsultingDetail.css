@@ -1,6 +1,8 @@
 .consulting-detail {
     padding: 4rem 0;
     background-color: var(--secondary-color);
+    position: relative;
+    overflow: hidden;
 }
 
 .consulting-detail-container {
@@ -15,6 +17,7 @@
     background: linear-gradient(90deg, #0070f3, #00a6ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-align: center;
 }
 
 .consulting-detail-content {
@@ -114,5 +117,47 @@
 
     .consulting-detail h1 {
         font-size: 2rem;
+    }
+}
+
+/* Background Effects */
+.consulting-detail::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(45deg, rgba(0, 112, 243, 0.1), rgba(0, 166, 255, 0.1));
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    top: 10%;
+    right: -100px;
+    animation: morphing 15s ease-in-out infinite;
+    z-index: -1;
+}
+
+.consulting-detail::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(-45deg, rgba(0, 166, 255, 0.1), rgba(0, 112, 243, 0.1));
+    border-radius: 58% 42% 38% 62% / 42% 55% 45% 58%;
+    bottom: 10%;
+    left: -100px;
+    animation: morphing 12s ease-in-out infinite reverse;
+    z-index: -1;
+}
+
+@keyframes morphing {
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(0deg);
+    }
+    50% {
+        border-radius: 58% 42% 38% 62% / 42% 55% 45% 58%;
+        transform: rotate(180deg);
+    }
+    100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(360deg);
     }
 }
