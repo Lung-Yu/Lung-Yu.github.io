@@ -1,13 +1,16 @@
+// src/features/hero/components/Hero.tsx
 import { useTranslation } from 'react-i18next';
 import { useHero } from '../hooks/useHero';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import HeroButtons from './HeroButtons';
 import '../styles/Hero.css';
+import '../styles/HeroButtons.css';
 import { FloatingOrbs } from '../../floatingOrbs';
 
 /**
- * Hero 組件 - 網站首頁的主要展示區域
+ * Hero component - Main showcase area of the homepage
  */
 const Hero: React.FC = () => {
   const { t } = useTranslation();
@@ -23,7 +26,7 @@ const Hero: React.FC = () => {
       <FloatingOrbs />
       <div className="hero-content">
         <div className="hero-grid-container">
-          {/* 文字內容區 */}
+          {/* Text content area */}
           <div className="hero-text">
             <div className="hero-title">
               <span className="greeting">{t('hero.greeting')}</span>
@@ -32,49 +35,39 @@ const Hero: React.FC = () => {
             </div>
             <p className="hero-description">{t('hero.description')}</p>
 
-            {/* 按鈕區域 */}
-            <div className="hero-cta">
-              <button 
-                className="btn primary" 
-                onClick={() => scrollToSection('#projects')}
-                aria-label={t('hero.cta.portfolio')}
-              >
-                {t('hero.cta.portfolio')}
-              </button>
-              <button 
-                className="btn secondary" 
-                onClick={() => scrollToSection('#contact')}
-                aria-label={t('hero.cta.contact')}
-              >
-                {t('hero.cta.contact')}
-              </button>
-            </div>
+            <HeroButtons onNavigate={scrollToSection} />
 
-            {/* 社交連結 */}
-            <div className="social-links">
-              <a
-                href="https://github.com/Lung-Yu"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub">
-                <FontAwesomeIcon icon={faGithub} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/lung-yu-tsai-633865100/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn">
-                <FontAwesomeIcon icon={faLinkedin} />
-              </a>
-              <a
-                href="mailto:workfile975@gmail.com"
-                aria-label="Email">
-                <FontAwesomeIcon icon={faEnvelope} />
-              </a>
-            </div>
+          {/* Social links */}
+          <div className="social-links">
+            <a
+              href="https://github.com/Lung-Yu"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              data-tooltip="GitHub"
+            >
+              <FontAwesomeIcon icon={faGithub} className="icon" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/lung-yu-tsai-633865100/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              data-tooltip="LinkedIn"
+            >
+              <FontAwesomeIcon icon={faLinkedin} className="icon" />
+            </a>
+            <a
+              href="mailto:workfile975@gmail.com"
+              aria-label="Email"
+              data-tooltip="Email"
+            >
+              <FontAwesomeIcon icon={faEnvelope} className="icon" />
+            </a>
           </div>
+        </div>
 
-          {/* 圖片區域 */}
+          {/* Image area */}
           <div className="hero-image">
             <div className="image-backdrop" />
             <img 

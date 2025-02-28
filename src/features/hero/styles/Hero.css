@@ -131,6 +131,65 @@ h1 {
   filter: blur(2px);
 }
 
+/* 社交連結容器 */
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  /* 增加圖示間距 */
+  margin-top: 2rem;
+  /* 與上方元素保持適當距離 */
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  /* 加大點擊區域 */
+  height: 48px;
+  border-radius: 50%;
+  color: var(--primary-color);
+  background: rgba(0, 112, 243, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 112, 243, 0.2);
+}
+
+/* 圖示大小調整 */
+.social-links .icon {
+  font-size: 1.5rem;
+}
+
+/* 添加工具提示 */
+.social-links a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) scale(1);
+}
+
 /* 響應式設計 */
 @media (max-width: 1024px) {
   .hero-grid-container {
@@ -167,6 +226,11 @@ h1 {
   .hero-image {
     justify-content: center;
     margin-top: 2rem;
+  }
+
+  .social-links {
+    justify-content: center;
+    margin-top: 1.5rem;
   }
 }
 
