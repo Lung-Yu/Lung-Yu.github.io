@@ -1,6 +1,6 @@
 .consulting-detail {
     padding: 4rem 0;
-    background-color: var(--secondary-color);
+    background-color: var(--color-background); /* 修改背景顏色 */
     position: relative;
     overflow: hidden;
 }
@@ -14,7 +14,7 @@
 .consulting-detail h1 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    background: linear-gradient(90deg, #0070f3, #00a6ff);
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); /* 修改文字顏色 */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
@@ -60,7 +60,7 @@
 }
 
 .consulting-detail-section h2 {
-    color: #0070f3;
+    color: var(--primary-color); /* 修改文字顏色 */
     margin-bottom: 1rem;
     font-size: 1.5rem;
 }
@@ -79,7 +79,7 @@
 
 .consulting-detail-section li::before {
     content: "•";
-    color: #0070f3;
+    color: var(--primary-color); /* 修改標籤顏色 */
     position: absolute;
     left: 0;
 }
