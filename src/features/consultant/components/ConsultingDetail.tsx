@@ -1,10 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useConsulting } from '../hooks/useConsulting';
 import { Modal } from '../../../shared/components/modal';
 import '../styles/ConsultingDetail.css';
 
 const ConsultingDetail = () => {
+  const { t } = useTranslation('consultant');
   const { consultingPath } = useParams();
   const [modalImage, setModalImage] = useState<string | null>(null);
   const { consulting } = useConsulting();
@@ -12,16 +14,11 @@ const ConsultingDetail = () => {
   const project = consulting.find(p => p.detailPath === consultingPath);
 
   if (!project) {
-    return <div className="consulting-detail-error">專案不存在</div>;
+    return <div className="consulting-detail-error">{t('detail.notFound')}</div>;
   }
 
-  const openModal = (image: string) => {
-    setModalImage(image);
-  };
-
-  const closeModal = () => {
-    setModalImage(null);
-  };
+  const openModal = (image: string) => setModalImage(image);
+  const closeModal = () => setModalImage(null);
 
   return (
     <div className="consulting-detail">
@@ -39,12 +36,12 @@ const ConsultingDetail = () => {
 
           <div className="consulting-detail-info">
             <div className="consulting-description">
-              <h2>專案概述</h2>
+              <h2>{t('detail.projectOverview')}</h2>
               <p>{project.description}</p>
             </div>
 
             <div className="consulting-services">
-              <h2>服務內容</h2>
+              <h2>{t('detail.services')}</h2>
               <ul>
                 {project.services.map((service, index) => (
                   <li key={index}>{service}</li>
@@ -54,7 +51,7 @@ const ConsultingDetail = () => {
 
             {project.results && (
               <div className="consulting-results">
-                <h2>專案成果</h2>
+                <h2>{t('detail.results')}</h2>
                 <ul>
                   {project.results.map((result, index) => (
                     <li key={index}>{result}</li>
@@ -69,22 +66,6 @@ const ConsultingDetail = () => {
               ))}
             </div>
           </div>
-
-          {project.gallery && (
-            <div className="consulting-gallery">
-              <h2>專案相關圖片</h2>
-              <div className="gallery-grid">
-                {project.gallery.map((image, index) => (
-                  <img
-                    key={index}
-                    src={image}
-                    alt={`${project.title} 圖片 ${index + 1}`}
-                    onClick={() => openModal(image)}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </div>
       {modalImage && <Modal modalImage={modalImage} closeModal={closeModal} />}

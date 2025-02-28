@@ -17,6 +17,8 @@ import servicesEN from './locales/en/services.json';
 import servicesTW from './locales/zh/services.json';
 import projectsDataEN from './locales/en/projectsData.json';
 import projectsDataTW from './locales/zh/projectsData.json';
+import consultantEN from './locales/en/consultant.json';
+import consultantTW from './locales/zh/consultant.json';
 
 const resources = {
   en: {
@@ -26,7 +28,8 @@ const resources = {
     about: aboutEN,
     experience: experienceEN,
     services: servicesEN,
-    projectsData: projectsDataEN
+    projectsData: projectsDataEN,
+    consultant: consultantEN
   },
   tw: {
     common: commonTW,
@@ -35,7 +38,8 @@ const resources = {
     about: aboutTW,
     experience: experienceTW,
     services: servicesTW,
-    projectsData: projectsDataTW
+    projectsData: projectsDataTW,
+    consultant: consultantTW
   }
 };
 
