@@ -12,5 +12,10 @@
     "linkedin": "https://www.linkedin.com/in/lung-yu-tsai-633865100/",
     "email": "workfile975@gmail.com"
   },
-  "profileImage": "/src/assets/images/aboutme/profile.png"
+  "profileImage": "/src/assets/images/aboutme/profile.png",
+  "cta": {
+    "portfolio": "View Portfolio",
+    "contact": "Contact Me"
+  },
+  "heroButton": "Click Here"
 }

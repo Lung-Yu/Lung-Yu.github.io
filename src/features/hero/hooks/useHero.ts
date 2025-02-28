@@ -13,6 +13,10 @@ export const useHero = () => {
       github: t('socialLinks.github'),
       linkedin: t('socialLinks.linkedin'),
       email: t('socialLinks.email')
+    },
+    cta: {
+      portfolio: t('cta.portfolio'),
+      contact: t('cta.contact')
     }
   };
 
