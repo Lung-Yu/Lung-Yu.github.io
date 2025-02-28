@@ -1,15 +1,16 @@
 {
-  "greeting": "嗨，我是",
-  "name": "Tygrus Tsai",
-  "role": "資深資安工程師",
-  "description": "專注於資訊安全與軟體開發，擁有多年的系統開發和資安防護經驗。致力於打造安全可靠的數位環境。",
+  "greeting": "你好，我是",
+  "name": "Tygrus",
+  "role": "資安專家 & 開發者",
+  "description": "專注於軟體開發與資安領域，擁有多張國際認證。致力於將安全性融入開發流程，打造更安全且穩定的軟體系統。",
   "buttons": {
     "viewProjects": "查看作品",
     "contactMe": "聯絡我"
   },
   "socialLinks": {
-    "github": "GitHub",
-    "linkedin": "LinkedIn",
-    "email": "電子郵件"
-  }
+    "github": "https://github.com/Lung-Yu",
+    "linkedin": "https://www.linkedin.com/in/lung-yu-tsai-633865100/",
+    "email": "workfile975@gmail.com"
+  },
+  "profileImage": "/src/assets/images/aboutme/profile.png"
 }

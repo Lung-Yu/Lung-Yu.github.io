@@ -1,15 +1,16 @@
 {
-  "greeting": "Hi, I'm",
-  "name": "Tygrus Tsai",
-  "role": "Senior Security Engineer",
-  "description": "Focused on information security and software development, with years of experience in system development and security protection. Dedicated to creating secure and reliable digital environments.",
+  "greeting": "Hello, I'm",
+  "name": "Tygrus",
+  "role": "Security Expert & Developer",
+  "description": "Focused on software development and cybersecurity, holding multiple international certifications. Dedicated to integrating security into the development process to create safer and more stable software systems.",
   "buttons": {
     "viewProjects": "View Projects",
     "contactMe": "Contact Me"
   },
   "socialLinks": {
-    "github": "GitHub",
-    "linkedin": "LinkedIn",
-    "email": "Email"
-  }
+    "github": "https://github.com/Lung-Yu",
+    "linkedin": "https://www.linkedin.com/in/lung-yu-tsai-633865100/",
+    "email": "workfile975@gmail.com"
+  },
+  "profileImage": "/src/assets/images/aboutme/profile.png"
 }

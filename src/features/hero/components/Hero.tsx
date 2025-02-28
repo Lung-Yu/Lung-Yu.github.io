@@ -1,6 +1,4 @@
-// src/features/hero/components/Hero.tsx
 import { useTranslation } from 'react-i18next';
-import { useHero } from '../hooks/useHero';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -9,12 +7,9 @@ import '../styles/Hero.css';
 import '../styles/HeroButtons.css';
 import { FloatingOrbs } from '../../floatingOrbs';
 
-/**
- * Hero component - Main showcase area of the homepage
- */
 const Hero: React.FC = () => {
-  const { t } = useTranslation();
-  const { heroContent } = useHero();
+  // 修改 useTranslation 使用方式，明確指定使用的翻譯檔案
+  const { t } = useTranslation(['hero', 'common']); 
 
   const scrollToSection = (sectionId: string) => {
     const element = document.querySelector(sectionId);
@@ -29,18 +24,18 @@ const Hero: React.FC = () => {
           {/* Text content area */}
           <div className="hero-text">
             <div className="hero-title">
-              <span className="greeting">{t('hero.greeting')}</span>
-              <h1>{heroContent.name}</h1>
-              <span className="role">{t('hero.role')}</span>
+              <span className="greeting">{t('greeting')}</span>
+              <h1>{t('name')}</h1>
+              <span className="role">{t('role')}</span>
             </div>
-            <p className="hero-description">{t('hero.description')}</p>
+            <p className="hero-description">{t('description')}</p>
 
             <HeroButtons onNavigate={scrollToSection} />
 
           {/* Social links */}
           <div className="social-links">
             <a
-              href="https://github.com/Lung-Yu"
+              href={t('socialLinks.github')}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -52,15 +47,15 @@ const Hero: React.FC = () => {
               href="https://www.linkedin.com/in/lung-yu-tsai-633865100/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              data-tooltip="LinkedIn"
+              aria-label={t('socialLinks.linkedin')}
+              data-tooltip={t('socialLinks.linkedin')}
             >
               <FontAwesomeIcon icon={faLinkedin} className="icon" />
             </a>
             <a
               href="mailto:workfile975@gmail.com"
-              aria-label="Email"
-              data-tooltip="Email"
+              aria-label={t('socialLinks.email')}
+              data-tooltip={t('socialLinks.email')}
             >
               <FontAwesomeIcon icon={faEnvelope} className="icon" />
             </a>
@@ -71,8 +66,8 @@ const Hero: React.FC = () => {
           <div className="hero-image">
             <div className="image-backdrop" />
             <img 
-              src={heroContent.profileImage} 
-              alt={heroContent.name}
+              src={t('profileImage')} 
+              alt={t('name')}
               loading="eager"
             />
           </div>

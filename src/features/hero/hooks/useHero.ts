@@ -1,11 +1,12 @@
-import { useMemo } from 'react';
-import heroJson from '../data/hero.json';
-import type { HeroContent } from '../types';
+import { useTranslation } from 'react-i18next';
 
 export const useHero = () => {
-  const heroContent = useMemo(() => {
-    return heroJson.hero as HeroContent;
-  }, []);
+  const { t } = useTranslation();
+
+  const heroContent = {
+    name: t('hero.name'),
+    profileImage: t('hero.profileImage')
+  };
 
   return { heroContent };
 };
