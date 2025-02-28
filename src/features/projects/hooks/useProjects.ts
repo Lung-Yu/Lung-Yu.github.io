@@ -4,8 +4,7 @@ import { Project } from '../types';
 export const useProjects = () => {
   const { t } = useTranslation('projectsData');
   
-  // 從翻譯檔案獲取專案資料
-  const projects: Project[] = t('projects', { returnObjects: true });
+  const projects: Project[] = t('projects', { returnObjects: true }) as Project[];
 
   return { projects };
 };
