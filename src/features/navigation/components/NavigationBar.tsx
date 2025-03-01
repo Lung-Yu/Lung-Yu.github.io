@@ -36,7 +36,7 @@ const NavigationBar = () => {
           </button>
 
           <div className={`nav-menu ${isNavOpen ? 'active' : ''}`}>
-            {menuItems.map(item => (
+            {menuItems.filter(item => item.title !== 'navigation.cv').map(item => (
               <NavLink 
                 key={item.title} 
                 item={item} 

@@ -1,5 +1,6 @@
 import { useCV } from '../hooks/useCV';
 import '../styles/CV.css';
+import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 
 const CV = () => {
   const { cvData, isLoading } = useCV();
@@ -20,6 +21,7 @@ const CV = () => {
           <div className="title">{cvData.title}</div>
           <p>{cvData.summary}</p>
         </div>
+        <LanguageSwitcher />
       </header>
 
       <section className="cv-section">

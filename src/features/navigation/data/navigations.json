@@ -24,12 +24,6 @@
         "title": "navigation.contact",
         "href": "#contact",
         "isExact": false
-      },
-      {
-        "title": "navigation.cv",
-        "href": "/cv",
-        "isExact": true,
-        "isNewTab": true
       }
     ]
 }
