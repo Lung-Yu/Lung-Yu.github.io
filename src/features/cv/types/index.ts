@@ -25,7 +25,7 @@ export interface CVData {
     major: string;
     description?: string[];
   }>;
-  conferences?: Array<{
+  conferences: Array<{
     title: string;
     date: string;
   }>;

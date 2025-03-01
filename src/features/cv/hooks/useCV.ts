@@ -1,23 +1,38 @@
 // src/features/cv/hooks/useCV.ts
-import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import cvTW from '../data/cv.tw.json';
-import cvEN from '../data/cv.en.json';
 import type { CVData } from '../types';
 
 export const useCV = () => {
-  const { i18n } = useTranslation();
-  
-  const cvData = useMemo(() => {
-    try {
-      const data = i18n.language === 'en' ? cvEN.cv : cvTW.cv;
-      console.log('CV Data:', data);
-      return data as CVData;
-    } catch (error) {
-      console.error('Error loading CV data:', error);
-      return null;
-    }
-  }, [i18n.language]);
+  const { t, ready } = useTranslation('cv');
 
-  return { cvData };
+  const getTranslatedArray = <T>(key: string): T[] => {
+    try {
+      const data = t(key, { returnObjects: true });
+      return Array.isArray(data) ? data : [];
+    } catch (error) {
+      console.error(`Translation error for key ${key}:`, error);
+      return [];
+    }
+  };
+
+  const cvData: CVData = {
+    name: t('name', { defaultValue: '' }),
+    title: t('title', { defaultValue: '' }),
+    summary: t('summary', { defaultValue: '' }),
+    sections: {
+      skills: t('sections.skills', { defaultValue: '技能' }),
+      experience: t('sections.experience', { defaultValue: '經歷' }),
+      education: t('sections.education', { defaultValue: '學歷' }),
+      conferences: t('sections.conferences', { defaultValue: '演講/議程' })
+    },
+    skills: getTranslatedArray<CVData['skills'][0]>('skills'),
+    experiences: getTranslatedArray<CVData['experiences'][0]>('experiences'),
+    education: getTranslatedArray<CVData['education'][0]>('education'),
+    conferences: getTranslatedArray<CVData['conferences'][0]>('conferences')
+  };
+
+  return { 
+    cvData,
+    isLoading: !ready 
+  };
 };

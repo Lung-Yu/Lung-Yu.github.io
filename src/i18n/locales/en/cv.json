@@ -1,0 +1,50 @@
+{
+  "name": "Tygrus",
+  "title": "Cybersecurity Expert & Full Stack Developer",
+  "summary": "Focused on software development and cybersecurity, with multiple international certifications. Dedicated to integrating security into the development process to create more secure and stable software systems.",
+  "sections": {
+    "skills": "Skills",
+    "experience": "Experience",
+    "education": "Education",
+    "conferences": "Conferences"
+  },
+  "skills": [
+    {
+      "category": "Cybersecurity Skills",
+      "items": [
+        "Security analysis and risk assessment",
+        "Penetration testing and vulnerability scanning",
+        "Incident response handling",
+        "Secure software development lifecycle",
+        "Security architecture planning and evaluation",
+        "Regulatory compliance and auditing"
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "company": "Digicentre Co., Ltd.",
+      "position": "Assistant Manager of ISRD",
+      "period": "2024/08 - Present",
+      "description": [
+        "Software project development leadership",
+        "Software architecture security assessment",
+        "Secure code improvement consulting services"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "National Yunlin University of Science and Technology",
+      "degree": "Master's",
+      "period": "2016 - 2019",
+      "major": "Computer Science and Information Engineering"
+    }
+  ],
+  "conferences": [
+    {
+      "title": "DevOps + Sec: Powerful Ally or Troublemaker",
+      "date": "2024/07/10"
+    }
+  ]
+}

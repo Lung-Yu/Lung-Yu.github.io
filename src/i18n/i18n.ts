@@ -19,6 +19,8 @@ import projectsDataEN from './locales/en/projectsData.json';
 import projectsDataTW from './locales/zh-TW/projectsData.json';
 import consultantEN from './locales/en/consultant.json';
 import consultantTW from './locales/zh-TW/consultant.json';
+import cvEN from './locales/en/cv.json';
+import cvTW from './locales/zh-TW/cv.json';
 
 const resources = {
   en: {
@@ -29,9 +31,10 @@ const resources = {
     experience: experienceEN,
     services: servicesEN,
     projectsData: projectsDataEN,
-    consultant: consultantEN
+    consultant: consultantEN,
+    cv: cvEN
   },
-  tw: {
+  'zh-TW': {
     common: commonTW,
     hero: heroTW,
     projects: projectsTW,
@@ -39,7 +42,8 @@ const resources = {
     experience: experienceTW,
     services: servicesTW,
     projectsData: projectsDataTW,
-    consultant: consultantTW
+    consultant: consultantTW,
+    cv: cvTW
   }
 };
 
@@ -49,7 +53,8 @@ i18n
   .init({
     resources,
     defaultNS: 'common',
-    fallbackLng: 'tw',
+    fallbackLng: 'zh-TW',
+    debug: true,
     interpolation: {
       escapeValue: false
     }
