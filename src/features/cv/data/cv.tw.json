@@ -3,6 +3,12 @@
         "name": "Tygrus",
         "title": "資安工程師 & 全端開發者",
         "summary": "專注於軟體開發與資安領域，擁有多張國際認證。致力於將安全性融入開發流程，打造更安全且穩定的軟體系統。",
+        "sections": {
+            "skills": "技能",
+            "experience": "經歷",
+            "education": "學歷",
+            "conferences": "演講/議程"
+        },
         "skills": [
             {
                 "category": "資安技能",

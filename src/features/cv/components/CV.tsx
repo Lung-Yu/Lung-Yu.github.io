@@ -19,7 +19,7 @@ const CV = () => {
       </header>
 
       <section className="cv-section">
-        <h2>{t('cv.sections.skills')}</h2>
+        <h2>{cvData.sections.skills}</h2>
         <div className="skills-grid">
           {cvData.skills.map((skillGroup, index) => (
             <div key={index} className="skill-category">
@@ -35,7 +35,7 @@ const CV = () => {
       </section>
 
       <section className="cv-section">
-        <h2>{t('cv.sections.experience')}</h2>
+        <h2>{cvData.sections.experience}</h2>
         {cvData.experiences.map((exp, index) => (
           <div key={index} className="experience-item">
             <h3>{exp.position} - {exp.company}</h3>
@@ -50,7 +50,7 @@ const CV = () => {
       </section>
 
       <section className="cv-section">
-        <h2>{t('cv.sections.education')}</h2>
+        <h2>{cvData.sections.education}</h2>
         {cvData.education.map((edu, index) => (
           <div key={index} className="education-item">
             <h3>{edu.school}</h3>
@@ -70,7 +70,7 @@ const CV = () => {
 
       {cvData.conferences && (
         <section className="cv-section">
-          <h2>{t('cv.sections.conferences')}</h2>
+          <h2>{cvData.sections.conferences}</h2>
           <div className="conferences-grid">
             {cvData.conferences.map((conf, index) => (
               <div key={index} className="conference-item">
