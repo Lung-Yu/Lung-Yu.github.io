@@ -76,21 +76,6 @@ function App() {
             <Route path="/consulting/:consultingPath" element={<ConsultingDetail />} />
           </Routes>
         </main>
-        <footer id="contact" className="bg-gray-50 py-8">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center space-y-4">
-              <p className="text-gray-600">
-                聯絡我：
-                <a 
-                  href="mailto:workfile975@gmail.com"
-                  className="text-blue-600 hover:text-blue-700 transition-colors"
-                >
-                  workfile975@gmail.com
-                </a>
-              </p>
-            </div>
-          </div>
-        </footer>
         {modalImage && <Modal modalImage={modalImage} closeModal={closeModal} />}
       </div>
     </Router>
