@@ -3,12 +3,17 @@ import { useCV } from '../hooks/useCV';
 import '../styles/CV.css';
 
 const CV = () => {
+  const { cvData, isLoading } = useCV();
   const { t } = useTranslation();
-  const { cvData } = useCV();
 
-  if (!cvData) {
+  if (isLoading) {
     return <div className="cv-container">Loading...</div>;
   }
+
+  // 防護性檢查
+  const experiences = Array.isArray(cvData.experiences) ? cvData.experiences : [];
+  const education = Array.isArray(cvData.education) ? cvData.education : [];
+  const skills = Array.isArray(cvData.skills) ? cvData.skills : [];
 
   return (
     <div className="cv-container">
@@ -21,11 +26,11 @@ const CV = () => {
       <section className="cv-section">
         <h2>{cvData.sections.skills}</h2>
         <div className="skills-grid">
-          {cvData.skills.map((skillGroup, index) => (
+          {skills.map((skillGroup, index) => (
             <div key={index} className="skill-category">
-              <h3>{t(`cv.skills.categories.${skillGroup.category}`, { defaultValue: skillGroup.category })}</h3>
+              <h3>{skillGroup.category}</h3>
               <ul className="skill-list">
-                {skillGroup.items.map((skill, skillIndex) => (
+                {skillGroup.items?.map((skill, skillIndex) => (
                   <li key={skillIndex}>{skill}</li>
                 ))}
               </ul>
@@ -36,7 +41,7 @@ const CV = () => {
 
       <section className="cv-section">
         <h2>{cvData.sections.experience}</h2>
-        {cvData.experiences.map((exp, index) => (
+        {experiences.map((exp, index) => (
           <div key={index} className="experience-item">
             <h3>{exp.position} - {exp.company}</h3>
             <div className="period">{exp.period}</div>
@@ -51,7 +56,7 @@ const CV = () => {
 
       <section className="cv-section">
         <h2>{cvData.sections.education}</h2>
-        {cvData.education.map((edu, index) => (
+        {education.map((edu, index) => (
           <div key={index} className="education-item">
             <h3>{edu.school}</h3>
             <div className="period">
