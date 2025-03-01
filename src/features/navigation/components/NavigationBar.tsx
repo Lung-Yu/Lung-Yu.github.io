@@ -43,6 +43,9 @@ const NavigationBar = () => {
                 onNavClick={handleNavClick} 
               />
             ))}
+            <Link to="/cv" className="nav-link" onClick={() => setIsNavOpen(false)}>
+              {t('navigation.cv')}
+            </Link>
           </div>
           <LanguageSwitcher />
         </div>

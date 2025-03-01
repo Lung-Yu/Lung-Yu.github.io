@@ -21,7 +21,9 @@ const CV = () => {
           <div className="title">{cvData.title}</div>
           <p>{cvData.summary}</p>
         </div>
-        <LanguageSwitcher />
+        <div className="language-switcher-container">
+          <LanguageSwitcher />
+        </div>
       </header>
 
       <section className="cv-section">

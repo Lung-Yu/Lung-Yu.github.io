@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import '../styles/App.css';
 import { CertificateList } from '../../certificates';
 import { ProjectList, ProjectDetail } from '../../projects';
@@ -88,13 +88,6 @@ function App() {
                   workfile975@gmail.com
                 </a>
               </p>
-              <Routes>
-                <Route path="/cv" element={
-                  <Link to="/" className="text-blue-600 hover:text-blue-700 transition-colors">
-                    返回網站
-                  </Link>
-                } />
-              </Routes>
             </div>
           </div>
         </footer>

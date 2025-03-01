@@ -35,3 +35,39 @@ section {
   transform: none;
   animation: none;
 }
+
+.back-to-home-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-home-button:hover {
+  transform: scale(1.1);
+  background-color: var(--color-primary-dark);
+}
+
+.floating-back-to-home-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.floating-back-to-home-button:hover {
+  transform: scale(1.1);
+  background-color: var(--color-primary-dark);
+}
