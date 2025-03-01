@@ -3,6 +3,8 @@
     margin: 0 auto;
     padding: 2rem;
     background-color: var(--color-background);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 .cv-header {
@@ -39,6 +41,17 @@
     gap: 2rem;
 }
 
+.skill-category {
+    background-color: var(--color-gray-50);
+    padding: 1rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: scale(1.05);
+}
+
 .skill-category h3 {
     font-size: 1.3rem;
     color: var(--color-secondary);
@@ -65,6 +78,14 @@
 
 .experience-item {
     margin-bottom: 2rem;
+    background-color: var(--color-gray-50);
+    padding: 1rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: scale(1.05);
 }
 
 .experience-item h3 {
@@ -107,6 +128,11 @@
     margin-bottom: 1rem;
     padding: 0.5rem 0;
     border-bottom: 1px solid var(--color-gray-200);
+    transition: transform 0.3s ease;
+}
+
+.conference-item:hover {
+    transform: scale(1.05);
 }
 
 .conference-item:last-child {
@@ -117,6 +143,7 @@
     color: var(--color-secondary);
     font-size: 0.9rem;
 }
+
 .education-description {
     list-style: none;
     padding-left: 1.5rem;
