@@ -1,35 +1,35 @@
 {
     "menuItems": [
       {
-        "title": "首頁",
+        "title": "navigation.home",
         "href": "/",
         "isExact": true
       },
       {
-        "title": "專業技能",
+        "title": "navigation.skills",
         "href": "#skills",
         "isExact": false
       },
       {
-        "title": "作品集",
+        "title": "navigation.projects",
         "href": "#projects",
         "isExact": false
       },
       {
-        "title": "證照資歷",
+        "title": "navigation.certificates",
         "href": "#certificates",
         "isExact": false
       },
       {
-        "title": "聯絡我",
+        "title": "navigation.contact",
         "href": "#contact",
         "isExact": false
       },
       {
-        "title": "CV",
+        "title": "navigation.cv",
         "href": "/cv",
         "isExact": true,
         "isNewTab": true
       }
     ]
-  }
+}

@@ -1,11 +1,11 @@
 {
   "navigation": {
     "home": "Home",
-    "about": "About",
     "skills": "Skills",
     "projects": "Projects",
-    "experience": "Experience",
-    "contact": "Contact"
+    "certificates": "Certificates",
+    "contact": "Contact",
+    "cv": "CV"
   },
   "language": {
     "en": "English",

@@ -1,11 +1,11 @@
 {
   "navigation": {
     "home": "首頁",
-    "about": "關於我",
-    "skills": "技能",
+    "skills": "專業技能",
     "projects": "作品集",
-    "experience": "經驗",
-    "contact": "聯絡我"
+    "certificates": "證照資歷",
+    "contact": "聯絡我",
+    "cv": "CV"
   },
   "language": {
     "en": "English",
