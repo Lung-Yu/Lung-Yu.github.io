@@ -1,6 +1,6 @@
 {
   "name": "Tygrus",
-  "title": "Cybersecurity Expert & Full Stack Developer",
+  "title": "Cybersecurity Expert and Full-Stack Developer",
   "summary": "Focused on software development and cybersecurity, with multiple international certifications. Dedicated to integrating security into the development process to create more secure and stable software systems.",
   "sections": {
     "skills": "Skills",
@@ -19,17 +19,62 @@
         "Security architecture planning and evaluation",
         "Regulatory compliance and auditing"
       ]
+    },
+    {
+      "category": "Development Skills",
+      "items": [
+        "Frontend development (React, TypeScript, JavaScript)",
+        "Backend development (Node.js, Python, Java, C#)",
+        "Database design and optimization",
+        "CI/CD pipeline setup",
+        "System architecture design",
+        "Code modularization and performance tuning"
+      ]
+    },
+    {
+      "category": "Management Skills",
+      "items": [
+        "Project management and progress control",
+        "Team leadership and technical guidance",
+        "Cross-department communication and coordination",
+        "Technical education and training planning"
+      ]
     }
   ],
   "experiences": [
     {
       "company": "Digicentre Co., Ltd.",
-      "position": "Assistant Manager of ISRD",
+      "position": "Deputy Manager of Technical Development Department II",
       "period": "2024/08 - Present",
       "description": [
-        "Software project development leadership",
+        "Leading software project development",
         "Software architecture security assessment",
-        "Secure code improvement consulting services"
+        "Consulting services for secure code improvement"
+      ]
+    },
+    {
+      "company": "Digicentre Co., Ltd.",
+      "position": "Deputy Manager of Software Development Security Department",
+      "period": "2023/04 - 2024/07",
+      "description": [
+        "Leading and managing software project development",
+        "Challenges in secure development faced by enterprises (2023/04/12 speech)",
+        "Journey to upgrade enterprise secure development processes (2023/05/09 speech)",
+        "Stories of auditors and auditees (2023/09/15 speech)",
+        "Security requirements we need to know (2023/10/19 speech)",
+        "2023 Gama Star Award (2024/01/26)"
+      ]
+    },
+    {
+      "company": "PwC Taiwan",
+      "position": "Security Consultant",
+      "period": "2020/09 - 2021/09",
+      "description": [
+        "Security testing and remediation (VA/PT/malware analysis)",
+        "Internal control and IT management consulting",
+        "Software security consulting",
+        "Development of automated analysis tools",
+        "Regulatory compliance review (financial institution cybersecurity regulations)"
       ]
     }
   ],
@@ -38,13 +83,37 @@
       "school": "National Yunlin University of Science and Technology",
       "degree": "Master's",
       "period": "2016 - 2019",
-      "major": "Computer Science and Information Engineering"
+      "major": "Department of Computer Science and Information Engineering",
+      "description": [
+        "Research topics include image processing, audio processing, machine learning, and deep learning.",
+        "Baby cry detection and recognition system",
+        "License plate recognition development and performance tuning on Android APP",
+        "Paper form text recognition development on Android APP",
+        "CVGIP 2017"
+      ]
+    },
+    {
+      "school": "Kun Shan University",
+      "degree": "Bachelor's",
+      "period": "2012 - 2016",
+      "major": "Department of Computer Science and Information Engineering",
+      "description": [
+        "National College Smart Electronics Integration Talent Cultivation Competition 3C-3C Electronic Creativity Group Excellence Award"
+      ]
     }
   ],
   "conferences": [
     {
-      "title": "DevOps + Sec: Powerful Ally or Troublemaker",
+      "title": "DevOps + Sec: Powerful Allies or Trouble Makers",
       "date": "2024/07/10"
+    },
+    {
+      "title": "DevSecOps and AI: Challenges and Opportunities of a Double-Edged Sword",
+      "date": "2024/08/30"
+    },
+    {
+      "title": "Common Software and Enterprise Security Threat Analysis",
+      "date": "2024/09/25"
     }
   ]
 }
