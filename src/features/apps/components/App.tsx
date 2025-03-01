@@ -1,14 +1,55 @@
-// src/features/apps/components/App.tsx
-import { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import '../styles/App.css';
 import { CertificateList } from '../../certificates';
 import { ProjectList, ProjectDetail } from '../../projects';
 import { ConsultingList, ConsultingDetail } from '../../consultant';
-import { Navbar } from '../../navigation';
+import { NavigationBar } from '../../navigation';
 import { Hero } from '../../hero';
 import { CV } from '../../cv';
 import { Modal } from '../../../shared/components/modal';
+
+const scrollToSection = (elementId: string) => {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+};
+
+// 主頁面組件
+const HomePage = () => {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      // 移除 # 符號
+      const sectionId = hash.replace('#', '');
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [hash]);
+
+  return (
+    <div className="home-page">
+      <Hero />
+      <section id="projects" className="section-padding scroll-mt-20">
+        <ProjectList />
+      </section>
+      <section id="consulting" className="section-padding scroll-mt-20">
+        <ConsultingList />
+      </section>
+      <section id="certificates" className="section-padding scroll-mt-20">
+        <CertificateList />
+      </section>
+    </div>
+  );
+};
 
 function App() {
   const [modalImage, setModalImage] = useState<string | null>(null);
@@ -23,32 +64,33 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={
-            <div className="home-page">
-              <Hero />
-              <div id="projects">
-                <ProjectList />
-              </div>
-              <div id="consulting">
-                <ConsultingList />
-              </div>
-              <div id="certificates">
-                <CertificateList />
-              </div>
+      <div className="flex flex-col min-h-screen">
+        <NavigationBar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/cv" element={<CV />} />
+            <Route path="/project/:projectPath" element={<ProjectDetail />} />
+            <Route path="/consulting/:consultingPath" element={<ConsultingDetail />} />
+          </Routes>
+        </main>
+        <footer id="contact" className="bg-gray-50 py-8">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col items-center space-y-4">
+              <p className="text-gray-600">
+                聯絡我：
+                <a 
+                  href="mailto:workfile975@gmail.com"
+                  className="text-blue-600 hover:text-blue-700 transition-colors"
+                >
+                  workfile975@gmail.com
+                </a>
+              </p>
             </div>
-          } />
-          <Route path="/cv" element={<CV />} />
-          <Route path="/project/:projectPath" element={<ProjectDetail />} />
-          <Route path="/consulting/:consultingPath" element={<ConsultingDetail />} />
-        </Routes>
-      </main>
-      <footer id="contact">
-        <p>聯絡我：<a href="mailto:workfile975@gmail.com">workfile975@gmail.com</a></p>
-      </footer>
-      {modalImage && <Modal modalImage={modalImage} closeModal={closeModal} />}
+          </div>
+        </footer>
+        {modalImage && <Modal modalImage={modalImage} closeModal={closeModal} />}
+      </div>
     </Router>
   );
 }

@@ -1,3 +1,3 @@
-export { default as Navbar } from './components/Navbar';
+export { default as NavigationBar } from './components/NavigationBar';
 export type { MenuItem } from './types';
 export { useNavigation } from './hooks/useNavigation';

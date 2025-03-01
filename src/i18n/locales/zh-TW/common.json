@@ -1,0 +1,22 @@
+{
+  "navigation": {
+    "home": "首頁",
+    "skills": "專業技能",
+    "projects": "作品集",
+    "certificates": "證照資歷",
+    "contact": "聯絡我",
+    "cv": "CV"
+  },
+  "language": {
+    "en": "English",
+    "tw": "繁體中文"
+  },
+  "theme": {
+    "light": "淺色模式",
+    "dark": "深色模式"
+  },
+  "footer": {
+    "copyright": "© 2025 龔隆裕. 保留所有權利.",
+    "poweredBy": "Powered by React & Next.js"
+  }
+}

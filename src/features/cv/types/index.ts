@@ -2,6 +2,12 @@ export interface CVData {
   name: string;
   title: string;
   summary: string;
+  sections: {
+    skills: string;
+    experience: string;
+    education: string;
+    conferences: string;
+  };
   skills: Array<{
     category: string;
     items: string[];
@@ -19,7 +25,7 @@ export interface CVData {
     major: string;
     description?: string[];
   }>;
-  conferences?: Array<{
+  conferences: Array<{
     title: string;
     date: string;
   }>;

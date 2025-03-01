@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import type { MenuItem } from '../types';
 
 interface NavLinkProps {
@@ -7,6 +8,8 @@ interface NavLinkProps {
 }
 
 const NavLink: React.FC<NavLinkProps> = ({ item, onNavClick }) => {
+  const { t } = useTranslation('common');
+
   if (item.isExact) {
     return (
       <Link
@@ -15,7 +18,7 @@ const NavLink: React.FC<NavLinkProps> = ({ item, onNavClick }) => {
         onClick={() => onNavClick(item.href)}
         {...(item.isNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       >
-        {item.title}
+        {t(item.title)}
       </Link>
     );
   }
@@ -26,7 +29,7 @@ const NavLink: React.FC<NavLinkProps> = ({ item, onNavClick }) => {
       className="nav-link"
       onClick={() => onNavClick(item.href)}
     >
-      {item.title}
+      {t(item.title)}
     </a>
   );
 };

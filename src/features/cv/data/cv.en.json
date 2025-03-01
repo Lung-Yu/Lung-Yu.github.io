@@ -3,6 +3,12 @@
         "name": "Tygrus",
         "title": "Cybersecurity Security Expert & Full Stack Developer",
         "summary": "Focused on software development and cybersecurity, with multiple international certifications. Dedicated to integrating security into the development process to create more secure and stable software systems.",
+        "sections": {
+            "skills": "Skills",
+            "experience": "Experience",
+            "education": "Education",
+            "conferences": "Conferences"
+        },
         "skills": [
             {
                 "category": "Cybersecurity Skills",

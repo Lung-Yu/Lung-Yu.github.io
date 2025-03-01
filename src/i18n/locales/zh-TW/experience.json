@@ -1,0 +1,29 @@
+{
+  "title": "工作經驗",
+  "description": "我的職業生涯歷程",
+  "workHistory": {
+    "title": "工作歷程",
+    "current": "現職",
+    "previous": "曾任職務"
+  },
+  "education": {
+    "title": "教育背景",
+    "degree": "學位",
+    "major": "主修",
+    "university": "學校"
+  },
+  "certifications": {
+    "title": "專業認證",
+    "list": {
+      "cissp": "CISSP - 資訊系統安全專家",
+      "ceh": "CEH - 認證道德駭客",
+      "oscp": "OSCP - 進階滲透測試專家"
+    }
+  },
+  "achievements": {
+    "title": "專業成就",
+    "publications": "發表文章",
+    "speaking": "演講經驗",
+    "awards": "獲獎紀錄"
+  }
+}

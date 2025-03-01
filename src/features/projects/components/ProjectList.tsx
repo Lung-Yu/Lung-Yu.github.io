@@ -6,19 +6,21 @@ import { faExternalLinkAlt, faInfoCircle, faChevronDown, faChevronUp } from '@fo
 import { useProjects } from '../hooks/useProjects';
 import { Project } from '../types';
 import '../styles/Projects.css';
+import { useTranslation } from 'react-i18next';
 
-const ProjectList = () => {
-  const { projects } = useProjects();
+const ProjectList: React.FC = () => {
+  const { t } = useTranslation(['projects', 'projectsData']);
   const [showAll, setShowAll] = useState(false);
+  const { projects } = useProjects();
   const initialDisplayCount = 6;
   const displayedProjects = showAll ? projects : projects.slice(0, initialDisplayCount);
 
   return (
-    <section className="projects">
+    <section className="projects" id="projects">
       <div className="projects-container">
         <div className="projects-header">
-          <h2>作品集</h2>
-          <p>展示我的最新項目和工作成果，每個專案都反映了我對技術的熱情和追求完美的態度。</p>
+          <h2>{t('title')}</h2>
+          <p>{t('description')}</p>
         </div>
 
         <div className="projects-grid">
@@ -33,12 +35,24 @@ const ProjectList = () => {
                 <div className="project-overlay">
                   <div className="project-links">
                     {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                      <a 
+                        href={project.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="project-link"
+                        title={t('actions.viewGithub')}
+                      >
                         <FontAwesomeIcon icon={faGithub} />
                       </a>
                     )}
                     {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link">
+                      <a 
+                        href={project.demo} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="project-link"
+                        title={t('actions.viewDemo')}
+                      >
                         <FontAwesomeIcon icon={faExternalLinkAlt} />
                       </a>
                     )}
@@ -69,17 +83,8 @@ const ProjectList = () => {
               className="show-more-button"
               onClick={() => setShowAll(!showAll)}
             >
-              {showAll ? (
-                <>
-                  <span>顯示較少</span>
-                  <FontAwesomeIcon icon={faChevronUp} />
-                </>
-              ) : (
-                <>
-                  <span>顯示更多</span>
-                  <FontAwesomeIcon icon={faChevronDown} />
-                </>
-              )}
+              {showAll ? t('projectCard.showLess') : t('projectCard.showMore')}
+              <FontAwesomeIcon icon={showAll ? faChevronUp : faChevronDown} />
             </button>
           </div>
         )}

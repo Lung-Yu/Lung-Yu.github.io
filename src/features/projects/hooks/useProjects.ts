@@ -1,19 +1,10 @@
-import { useMemo } from 'react';
-import projectsJson from '../data/projects.json';
-import type { Project } from '../types';
+import { useTranslation } from 'react-i18next';
+import { Project } from '../types';
 
 export const useProjects = () => {
-  const projects = useMemo(() => {
-    const data: Project[] = projectsJson.projects;
-    return data;
-  }, []);
+  const { t } = useTranslation('projectsData');
+  
+  const projects: Project[] = t('projects', { returnObjects: true }) as Project[];
 
-  const tags = useMemo(() => {
-    return [...new Set(projects.flatMap(project => project.tags))];
-  }, [projects]);
-
-  return {
-    projects,
-    tags
-  };
+  return { projects };
 };

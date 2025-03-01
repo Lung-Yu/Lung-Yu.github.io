@@ -1,0 +1,22 @@
+{
+  "title": "Skills",
+  "description": "My Technical Expertise and Professional Fields",
+  "categories": {
+    "security": {
+      "title": "Information Security",
+      "description": "Security Assessment and Protection"
+    },
+    "development": {
+      "title": "Software Development",
+      "description": "Full-stack Development Skills"
+    },
+    "devops": {
+      "title": "DevOps",
+      "description": "Automation and Deployment"
+    }
+  },
+  "certifications": {
+    "title": "Certifications",
+    "viewAll": "View All"
+  }
+}
