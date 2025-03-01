@@ -4,21 +4,21 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 // 引入所有頁面的語系檔
 import commonEN from './locales/en/common.json';
-import commonTW from './locales/zh/common.json';
+import commonTW from './locales/zh-TW/common.json';
 import heroEN from './locales/en/hero.json';
-import heroTW from './locales/zh/hero.json';
+import heroTW from './locales/zh-TW/hero.json';
 import projectsEN from './locales/en/projects.json'; // Ensure this file exists at the specified path
-import projectsTW from './locales/zh/projects.json';
+import projectsTW from './locales/zh-TW/projects.json';
 import aboutEN from './locales/en/about.json';
-import aboutTW from './locales/zh/about.json';
+import aboutTW from './locales/zh-TW/about.json';
 import experienceEN from './locales/en/experience.json';
-import experienceTW from './locales/zh/experience.json';
+import experienceTW from './locales/zh-TW/experience.json';
 import servicesEN from './locales/en/services.json';
-import servicesTW from './locales/zh/services.json';
+import servicesTW from './locales/zh-TW/services.json';
 import projectsDataEN from './locales/en/projectsData.json';
-import projectsDataTW from './locales/zh/projectsData.json';
+import projectsDataTW from './locales/zh-TW/projectsData.json';
 import consultantEN from './locales/en/consultant.json';
-import consultantTW from './locales/zh/consultant.json';
+import consultantTW from './locales/zh-TW/consultant.json';
 
 const resources = {
   en: {
