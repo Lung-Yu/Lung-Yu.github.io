@@ -68,7 +68,12 @@ const ConsultingDetail = () => {
           </div>
         </div>
       </div>
-      {modalImage && <Modal modalImage={modalImage} closeModal={closeModal} />}
+      {modalImage && (
+        <Modal 
+          image={modalImage} 
+          onClose={closeModal} 
+        />
+      )}
     </div>
   );
 };
