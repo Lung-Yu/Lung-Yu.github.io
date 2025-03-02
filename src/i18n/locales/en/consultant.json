@@ -7,7 +7,7 @@
         "id": 1,
         "title": "Enterprise Security Risk Assessment",
         "description": "Conducted comprehensive information security risk assessment for a tech company, including system vulnerability scanning, penetration testing, and security policy review.",
-        "image": "/src/assets/images/consulting/risk-assessment.jpg",
+        "image": "images/consulting/risk-assessment.jpg",
         "tags": [
           "Security Assessment",
           "Penetration Testing",
@@ -31,7 +31,7 @@
         "id": 2,
         "title": "Bank Security Assessment",
         "description": "Conducted security assessment for a bank, including penetration testing, malware analysis, packet capture, and compliance review.",
-        "image": "/src/assets/images/consulting/bank-security.jpg",
+        "image": "images/consulting/bank-security.jpg",
         "tags": [
           "Security Assessment",
           "Penetration Testing",
@@ -58,7 +58,7 @@
         "id": 3,
         "title": "Gaming Website Security Review",
         "description": "Conducted security testing and review for a major gaming website to ensure security and stability under high traffic.",
-        "image": "/src/assets/images/consulting/game-site-security.jpg",
+        "image": "images/consulting/game-site-security.jpg",
         "tags": [
           "Security Testing",
           "Website Security",
@@ -78,8 +78,8 @@
           "Established security monitoring system"
         ],
         "gallery": [
-          "/src/assets/images/consulting/game-site-security-1.jpg",
-          "/src/assets/images/consulting/game-site-security-2.jpg"
+          "images/consulting/game-site-security-1.jpg",
+          "images/consulting/game-site-security-2.jpg"
         ]
       }
     ]
