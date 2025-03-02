@@ -168,6 +168,18 @@
     color: var(--color-primary);
 }
 
+.conference-organizer {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.conference-organizer i {
+    margin-right: 0.5rem;
+    color: var(--color-secondary);
+}
+
 .conference-tags {
     display: flex;
     flex-wrap: wrap;

@@ -86,6 +86,11 @@ const CV = () => {
                   <h4>{conf.title}</h4>
                   <span className="conference-date">{conf.date}</span>
                 </div>
+                {conf.organizer && (
+                  <div className="conference-organizer">
+                    <i className="fas fa-users"></i> {conf.organizer}
+                  </div>
+                )}
                 {conf.venue && (
                   <div className="conference-venue">
                     <i className="fas fa-map-marker-alt"></i> {conf.venue}

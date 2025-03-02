@@ -29,6 +29,7 @@ export interface CVData {
     title: string;
     date: string;
     venue?: string;
+    organizer?: string;
     tags?: string[];
   }>;
 }
