@@ -6,7 +6,7 @@ export const useConsulting = () => {
   const { t } = useTranslation('consultant');
   
   const consulting = useMemo(() => {
-    const data: ConsultingProject[] = t('consultingData.list', { returnObjects: true });
+    const data = t('consultingData.list', { returnObjects: true }) as ConsultingProject[];
     return data;
   }, [t]);
 
