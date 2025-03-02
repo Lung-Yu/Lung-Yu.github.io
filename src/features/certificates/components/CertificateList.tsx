@@ -3,8 +3,10 @@ import { useCertificates } from '../hooks/useCertificates';
 import { Certificate } from '../types';
 import CertificateModal from './CertificateModal';
 import '../styles/Certificates.css';
+import { useTranslation } from 'react-i18next';
 
 const CertificateList = () => {
+  const { t } = useTranslation('certificates');
   const { certificates, categories } = useCertificates();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
@@ -15,11 +17,16 @@ const CertificateList = () => {
 
   return (
     <section className="certificates">
-      <h2>我的證照</h2>
+      <h2>{t('title')}</h2>
+      <p>{t('description')}</p>
       <div className="categories">
         {categories.map((category, index) => (
-          <button key={index} onClick={() => setSelectedCategory(category)}>
-            {category}
+          <button
+            key={index}
+            onClick={() => setSelectedCategory(category)}
+            className={selectedCategory === category ? 'active' : ''}
+          >
+            {t(`categories.${category.toLowerCase().replace(' ', '-')}`)}
           </button>
         ))}
       </div>

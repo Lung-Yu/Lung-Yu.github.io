@@ -3,6 +3,7 @@ import { Certificate } from '../types';
 import '../styles/CertificateModal.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 interface CertificateModalProps {
     certificate: Certificate | null;
@@ -10,6 +11,8 @@ interface CertificateModalProps {
 }
 
 const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClose }) => {
+    const { t } = useTranslation('certificates');
+
     if (!certificate) return null;
 
     const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -31,11 +34,11 @@ const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClos
                     </div>
                     <div className="modal-details">
                         <p>{certificate.description}</p>
-                        <p><strong>Institution:</strong> {certificate.institution}</p>
-                        <p><strong>Full Name:</strong> {certificate.fullName}</p>
-                        <p><strong>Abbreviation:</strong> {certificate.abbreviation}</p>
-                        <p><strong>Obtained At:</strong> {certificate.obtainedAt}</p>
-                        {certificate.expiryDate && <p><strong>Expiry Date:</strong> {certificate.expiryDate}</p>}
+                        <p><strong>{t('institution')}:</strong> {certificate.institution}</p>
+                        <p><strong>{t('fullName')}:</strong> {certificate.fullName}</p>
+                        <p><strong>{t('abbreviation')}:</strong> {certificate.abbreviation}</p>
+                        <p><strong>{t('obtainedAt')}:</strong> {certificate.obtainedAt}</p>
+                        {certificate.expiryDate && <p><strong>{t('expiryDate')}:</strong> {certificate.expiryDate}</p>}
                     </div>
                 </div>
             </div>
