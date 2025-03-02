@@ -8,7 +8,7 @@ const ProjectDetail = () => {
   const { projectPath } = useParams();
   const [modalImage, setModalImage] = useState<string | null>(null);
   const { projects } = useProjects();
-  
+
   const project = projects.find(p => p.detailPath === projectPath);
 
   if (!project) {
@@ -29,7 +29,7 @@ const ProjectDetail = () => {
         <h1>{project.title}</h1>
         <div className="project-detail-content">
           <p>{project.description}</p>
-          
+
           <div className="project-detail-tags">
             {project.tags.map(tag => (
               <span key={tag} className="project-tag">{tag}</span>
@@ -68,7 +68,16 @@ const ProjectDetail = () => {
           )}
         </div>
       </div>
-      {modalImage && <Modal modalImage={modalImage} closeModal={closeModal} />}
+      {modalImage && (
+        <Modal
+          isOpen={!!modalImage}
+          onClose={closeModal}
+        >
+          {modalImage && (
+            <img src={modalImage} alt="預覽圖片" className="modal-image" />
+          )}
+        </Modal>
+      )}
     </div>
   );
 };

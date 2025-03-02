@@ -54,10 +54,6 @@ const HomePage = () => {
 function App() {
   const [modalImage, setModalImage] = useState<string | null>(null);
 
-  const openModal = (image: string) => {
-    setModalImage(image);
-  };
-
   const closeModal = () => {
     setModalImage(null);
   };
@@ -76,7 +72,14 @@ function App() {
             <Route path="/consulting/:consultingPath" element={<ConsultingDetail />} />
           </Routes>
         </main>
-        {modalImage && <Modal modalImage={modalImage} closeModal={closeModal} />}
+        <Modal
+          isOpen={!!modalImage}
+          onClose={closeModal}
+        >
+          {modalImage && (
+            <img src={modalImage} alt="預覽圖片" className="modal-image" />
+          )}
+        </Modal>
       </div>
     </Router>
   );
