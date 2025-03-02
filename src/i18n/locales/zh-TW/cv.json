@@ -104,65 +104,57 @@
   ],
   "conferences": [
     {
-      "title": "DevSecOps和自動化安全檢測的敏捷導入",
-      "date": "2025/04/17",
-      "venue": "南港展覽館",
-      "organizer": "CyberRes 2025 臺灣資安大會",
-      "tags": ["DevSecOps", "自動化安全檢測", "敏捷開發"]
-    },
-    {
-      "title": "常見軟體與企業安全威脅分析",
-      "date": "2024/09/25",
-      "venue": "寒色艾麗",
-      "organizer": "OpenText & 果核數位 資安論壇",
-      "tags": ["資安威脅", "企業安全", "威脅分析"]
-    },
-    {
       "title": "DevSecOps 與 AI：雙面刃的挑戰與機遇",
       "date": "2024/08/30",
-      "venue": "中華軟協會總部",
-      "organizer": "中華軟體協會",
+      "venue": "線上直播",
+      "organizer": "CISA中華民國資訊軟體協會",
       "tags": ["DevSecOps", "AI", "安全開發"]
     },
     {
-      "title": "DevOps + Sec：強力援手還是搗亂者",
+      "title": "DevOps + Sec 是強力援手還是搗亂者",
       "date": "2024/07/10",
       "venue": "瓶蓋工廠",
       "organizer": "DevOpsDays Taipei 2024",
       "tags": ["DevOps", "Security", "開發流程"]
     },
     {
-      "title": "我們需要知道的安全需求",
+      "title": "那些沒有被說出口的資安需求",
       "date": "2023/10/19",
       "venue": "果核數位總部",
       "organizer": "果核數位內部技術分享會",
       "tags": ["安全需求", "需求分析", "安全開發"]
     },
     {
-      "title": "稽核員與被稽核者的故事",
+      "title": "稽核與被稽核的那些事",
       "date": "2023/09/15",
       "venue": "果核數位總部",
-      "tags": ["安全稽核", "合規", "稽核經驗"]
+      "organizer": "果核數位內部技術分享會",
+      "tags": ["安全稽核", "合規", "稽核經驗"],
+      "url": "https://www.ithome.com.tw/pr/159495"
     },
     {
-      "title": "升級企業安全開發流程的旅程",
+      "title": "企業安全開發流程升級之路",
       "date": "2023/05/09",
       "venue": "南港展覽館",
-      "organizer": "CyberRes 2024 臺灣資安大會",
-      "tags": ["安全開發", "流程優化", "企業實踐"]
+      "organizer": "CyberRes 2023 臺灣資安大會",
+      "tags": ["安全開發", "流程優化", "企業實踐"],
+      "url": "https://cyber.ithome.com.tw/2023/session-page/1858"
     },
     {
       "title": "企業面臨的安全開發挑戰",
       "date": "2023/04/12",
       "venue": "果核數位總部",
-      "tags": ["企業安全", "開發挑戰", "最佳實踐"]
+      "organizer": "果核數位內部技術分享會",
+      "tags": ["企業安全", "開發挑戰", "最佳實踐"],
+      "url": "https://www.ithome.com.tw/pr/156836"
     },
     {
-      "title": "開發者與資安專家之間的有效溝通是安全軟體的起點",
+      "title": "開發與資安的合作之路從互相理解開始",
       "date": "2023/03/18",
       "venue": "果核數位總部",
       "organizer": "果核數位 Hacker Talk 論壇",
-      "tags": ["團隊溝通", "安全開發", "跨部門合作"]
+      "tags": ["團隊溝通", "安全開發", "跨部門合作"],
+      "url": "https://www.ithome.com.tw/pr/156206"
     }
   ]
 }

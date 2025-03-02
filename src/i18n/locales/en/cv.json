@@ -119,44 +119,55 @@
     {
       "title": "DevSecOps and AI: Challenges and Opportunities of a Double-Edged Sword",
       "date": "2024/08/30",
-      "venue": "Digicentre Headquarters",
+      "venue": "on Live Stream",
+      "organizer": "CISA中華民國資訊軟體協會",
       "tags": ["DevSecOps", "AI", "Secure Development"]
     },
     {
       "title": "DevOps + Sec: Powerful Ally or Disruptive Force?",
       "date": "2024/07/10",
-      "venue": "Digicentre Headquarters",
+      "venue": "Bottle Cap Factory",
+      "organizer": "DevOpsDays Taipei 2024",
       "tags": ["DevOps", "Security", "Development Process"]
     },
     {
-      "title": "Security Requirements We Need to Know",
+      "title": "Security Requirements That Need to be Addressed",
       "date": "2023/10/19",
       "venue": "Digicentre Headquarters",
+      "organizer": "Digicentre Internal Tech Sharing",
       "tags": ["Security Requirements", "Requirement Analysis", "Secure Development"]
     },
     {
-      "title": "A Story of Auditor and Auditee",
+      "title": "Stories of Auditors and Auditees",
       "date": "2023/09/15",
       "venue": "Digicentre Headquarters",
-      "tags": ["Security Audit", "Compliance", "Audit Experience"]
+      "organizer": "Digicentre Internal Tech Sharing",
+      "tags": ["Security Audit", "Compliance", "Audit Experience"],
+      "url": "https://www.ithome.com.tw/pr/159495"
     },
     {
       "title": "The Journey of Upgrading Enterprise Security Development Processes",
       "date": "2023/05/09",
-      "venue": "Digicentre Headquarters",
-      "tags": ["Secure Development", "Process Optimization", "Enterprise Practice"]
+      "venue": "Nangang Exhibition Center",
+      "organizer": "CyberRes 2023 Taiwan Cybersecurity Conference",
+      "tags": ["Secure Development", "Process Optimization", "Enterprise Practice"],
+      "url": "https://cyber.ithome.com.tw/2023/session-page/1858"
     },
     {
       "title": "Challenges of Enterprises Facing Secure Development",
       "date": "2023/04/12",
       "venue": "Digicentre Headquarters",
-      "tags": ["Enterprise Security", "Development Challenges", "Best Practices"]
+      "organizer": "Digicentre Internal Tech Sharing",
+      "tags": ["Enterprise Security", "Development Challenges", "Best Practices"],
+      "url": "https://www.ithome.com.tw/pr/156836"
     },
     {
-      "title": "Building Secure Software Starts with Effective Communication between Developers and Security Experts",
+      "title": "Building Secure Software Starts with Effective Communication",
       "date": "2023/03/18",
       "venue": "Digicentre Headquarters",
-      "tags": ["Team Communication", "Secure Development", "Cross-Department Collaboration"]
+      "organizer": "Digicentre Hacker Talk Forum",
+      "tags": ["Team Communication", "Secure Development", "Cross-Department Collaboration"],
+      "url": "https://www.ithome.com.tw/pr/156206"
     }
   ]
 }
