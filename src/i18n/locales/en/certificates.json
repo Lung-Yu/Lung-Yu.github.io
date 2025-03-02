@@ -1,0 +1,16 @@
+{
+  "title": "Certificates",
+  "description": "",
+  "categories": {
+    "all": "All",
+    "cyber-security": "Cyber Security",
+    "development": "Development",
+    "infrastructure": "Infrastructure",
+    "data-science": "Data Science",
+    "hardware": "Hardware"
+  },
+  "actions": {
+    "viewDetails": "View Details",
+    "close": "Close"
+  }
+}
