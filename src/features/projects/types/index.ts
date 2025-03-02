@@ -9,4 +9,6 @@ export interface Project {
     detailPath: string; // 新增詳細頁面路徑
     gallery?: string[]; // 新增圖片集
     videos?: string[]; // 新增影片集
+    startDate: string; // 新增開始日期屬性
+    endDate: string; // 新增結束日期屬性
 }

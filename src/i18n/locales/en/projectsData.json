@@ -1,4 +1,8 @@
 {
+  "title": "Projects",
+  "description": "These are the projects I have worked on.",
+  "startDate": "Start Date",
+  "endDate": "End Date",
   "projects": [
     {
       "id": 1,
@@ -15,7 +19,9 @@
         "/src/assets/images/projects/11_weather_seed/egg_print.jpg",
         "/src/assets/images/projects/11_weather_seed/box.jpg",
         "/src/assets/images/projects/11_weather_seed/prototype.jpg"
-      ]
+      ],
+      "startDate": "2023-01-01",
+      "endDate": "2023-10-01"
     },
     {
       "id": 2,
@@ -33,7 +39,9 @@
         "/src/assets/images/projects/10_i_watch_man/DHCP_Spoofing情境說明圖.png",
         "/src/assets/images/projects/10_i_watch_man/操作畫面圖.png",
         "/src/assets/images/projects/10_i_watch_man/系統硬體建置圖.png"
-      ]
+      ],
+      "startDate": "2014-01-01",
+      "endDate": "2014-10-01"
     },
     {
       "id": 3,
@@ -51,7 +59,9 @@
         "/src/assets/images/projects/20_Auto-fill_web_form_tool/auto_fill_2.png",
         "/src/assets/images/projects/20_Auto-fill_web_form_tool/load_data.png",
         "/src/assets/images/projects/20_Auto-fill_web_form_tool/rawdata.png"
-      ]
+      ],
+      "startDate": "2019-08-01",
+      "endDate": "2019-9-30"
     },
     {
       "id": 4,
@@ -69,7 +79,9 @@
       "gallery": [
         "/src/assets/images/projects/file_monitor/screenshot1.png",
         "/src/assets/images/projects/file_monitor/screenshot2.png"
-      ]
+      ],
+      "startDate": "2020-01-01",
+      "endDate": "2020-10-01"
     }
   ]
 }
