@@ -1,8 +1,6 @@
 {
   "title": "專案",
   "description": "這些是我參與的專案。",
-  "startDate": "開始日期",
-  "endDate": "結束日期",
   "projects": [
     {
       "id": 1,

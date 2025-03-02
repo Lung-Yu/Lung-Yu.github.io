@@ -1,8 +1,6 @@
 {
   "title": "Projects",
   "description": "These are the projects I have worked on.",
-  "startDate": "Start Date",
-  "endDate": "End Date",
   "projects": [
     {
       "id": 1,

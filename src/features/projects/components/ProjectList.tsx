@@ -65,8 +65,9 @@ const ProjectList: React.FC = () => {
               <div className="project-content">
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
-                <p>{t('projectsData:startDate')}: {project.startDate}</p>
-                <p>{t('projectsData:endDate')}: {project.endDate}</p>
+                <p className="project-dates">
+                  {project.startDate} ~ {project.endDate || 'presents'}
+                </p>
                 <div className="project-tags">
                   {project.tags.map((tag) => (
                     <span key={tag} className="project-tag">
