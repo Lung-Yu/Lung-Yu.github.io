@@ -104,16 +104,36 @@
   ],
   "conferences": [
     {
-      "title": "DevOps + Sec: Powerful Allies or Trouble Makers",
-      "date": "2024/07/10"
+      "title": "Common Software and Enterprise Security Threat Analysis",
+      "date": "2024/09/25"
     },
     {
       "title": "DevSecOps and AI: Challenges and Opportunities of a Double-Edged Sword",
       "date": "2024/08/30"
     },
     {
-      "title": "Common Software and Enterprise Security Threat Analysis",
-      "date": "2024/09/25"
+      "title": "DevOps + Sec: Powerful Ally or Disruptive Force?",
+      "date": "2024/07/10"
+    },
+    {
+      "title": "Security Requirements We Need to Know",
+      "date": "2023/10/19"
+    },
+    {
+      "title": "A Story of Auditor and Auditee",
+      "date": "2023/09/15"
+    },
+    {
+      "title": "The Journey of Upgrading Enterprise Security Development Processes",
+      "date": "2023/05/09"
+    },
+    {
+      "title": "Challenges of Enterprises Facing Secure Development",
+      "date": "2023/04/12"
+    },
+    {
+      "title": "Building Secure Software Starts with Effective Communication between Developers and Security Experts",
+      "date": "2023/03/18"
     }
   ]
 }
