@@ -123,3 +123,54 @@
         padding: var(--spacing-sm);
     }
 }
+
+/* RWD Adjustments */
+@media (max-width: 1200px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .certificates h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .certificates {
+        padding: var(--spacing-md);
+    }
+
+    .categories button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .certificate-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .certificate-info p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .certificates h2 {
+        font-size: 1.75rem;
+    }
+
+    .certificate img {
+        height: 180px;
+    }
+}

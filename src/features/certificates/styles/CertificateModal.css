@@ -76,3 +76,152 @@
 .modal-details p {
     margin: 10px 0;
 }
+
+/* RWD Adjustments */
+@media (max-width: 1200px) {
+    .modal-content {
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .modal-image-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .modal-details {
+        padding: 0 15px;
+        width: 100%;
+    }
+
+    .modal-image {
+        max-height: 50vh;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .modal-header {
+        margin-bottom: 15px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.3rem;
+        margin-right: 25px; /* 為關閉按鈕留出空間 */
+    }
+
+    .modal-details {
+        padding: 0 10px;
+    }
+
+    .modal-details p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 8px 0;
+    }
+
+    .close {
+        top: 12px;
+        right: 12px;
+        font-size: 20px;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-content {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        padding: 12px;
+        margin: 0;
+    }
+
+    .modal {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-image-container {
+        margin-bottom: 15px;
+    }
+
+    .modal-image {
+        max-height: 35vh;
+    }
+
+    .modal-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .modal-details p {
+        font-size: 0.9rem;
+        margin: 6px 0;
+    }
+}
+
+/* 橫向螢幕優化 */
+@media (max-height: 600px) and (orientation: landscape) {
+    .modal-content {
+        max-height: 95vh;
+    }
+
+    .modal-body {
+        flex-direction: row;
+    }
+
+    .modal-image {
+        max-height: 70vh;
+    }
+}
+
+/* 針對較矮的螢幕做優化 */
+@media (max-height: 600px) {
+    .modal-content {
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
+    .modal-image {
+        max-height: 45vh;
+    }
+
+    .modal-body {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .modal-image-container {
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    .modal-details {
+        flex: 1;
+    }
+}
+
+/* 針對 iPad 等平板直向顯示優化 */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .modal-image {
+        max-height: 45vh;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+        overflow-y: auto;
+    }
+}
