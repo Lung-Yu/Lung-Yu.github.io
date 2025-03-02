@@ -105,35 +105,51 @@
   "conferences": [
     {
       "title": "Common Software and Enterprise Security Threat Analysis",
-      "date": "2024/09/25"
+      "date": "2024/09/25",
+      "venue": "Digicentre Headquarters",
+      "tags": ["Security Threats", "Enterprise Security", "Threat Analysis"]
     },
     {
       "title": "DevSecOps and AI: Challenges and Opportunities of a Double-Edged Sword",
-      "date": "2024/08/30"
+      "date": "2024/08/30",
+      "venue": "Digicentre Headquarters",
+      "tags": ["DevSecOps", "AI", "Secure Development"]
     },
     {
       "title": "DevOps + Sec: Powerful Ally or Disruptive Force?",
-      "date": "2024/07/10"
+      "date": "2024/07/10",
+      "venue": "Digicentre Headquarters",
+      "tags": ["DevOps", "Security", "Development Process"]
     },
     {
       "title": "Security Requirements We Need to Know",
-      "date": "2023/10/19"
+      "date": "2023/10/19",
+      "venue": "Digicentre Headquarters",
+      "tags": ["Security Requirements", "Requirement Analysis", "Secure Development"]
     },
     {
       "title": "A Story of Auditor and Auditee",
-      "date": "2023/09/15"
+      "date": "2023/09/15",
+      "venue": "Digicentre Headquarters",
+      "tags": ["Security Audit", "Compliance", "Audit Experience"]
     },
     {
       "title": "The Journey of Upgrading Enterprise Security Development Processes",
-      "date": "2023/05/09"
+      "date": "2023/05/09",
+      "venue": "Digicentre Headquarters",
+      "tags": ["Secure Development", "Process Optimization", "Enterprise Practice"]
     },
     {
       "title": "Challenges of Enterprises Facing Secure Development",
-      "date": "2023/04/12"
+      "date": "2023/04/12",
+      "venue": "Digicentre Headquarters",
+      "tags": ["Enterprise Security", "Development Challenges", "Best Practices"]
     },
     {
       "title": "Building Secure Software Starts with Effective Communication between Developers and Security Experts",
-      "date": "2023/03/18"
+      "date": "2023/03/18",
+      "venue": "Digicentre Headquarters",
+      "tags": ["Team Communication", "Secure Development", "Cross-Department Collaboration"]
     }
   ]
 }

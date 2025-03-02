@@ -82,8 +82,24 @@ const CV = () => {
           <div className="conferences-grid">
             {cvData.conferences.map((conf, index) => (
               <div key={index} className="conference-item">
-                <h4>{conf.title}</h4>
-                <span className="date">{conf.date}</span>
+                <div className="conference-header">
+                  <h4>{conf.title}</h4>
+                  <span className="conference-date">{conf.date}</span>
+                </div>
+                {conf.venue && (
+                  <div className="conference-venue">
+                    <i className="fas fa-map-marker-alt"></i> {conf.venue}
+                  </div>
+                )}
+                {conf.tags && (
+                  <div className="conference-tags">
+                    {conf.tags.map((tag, tagIndex) => (
+                      <span key={tagIndex} className="tag">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>

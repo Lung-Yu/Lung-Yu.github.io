@@ -28,5 +28,7 @@ export interface CVData {
   conferences: Array<{
     title: string;
     date: string;
+    venue?: string;
+    tags?: string[];
   }>;
 }
