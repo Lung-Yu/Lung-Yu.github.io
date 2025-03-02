@@ -15,7 +15,7 @@
       "id": 1,
       "title": "Weather Seed",
       "description": "With the rising focus on green sustainability, our team identified air quality as a crucial issue. We collect environmental data through sensors and present it through visualization.",
-      "image": "/src/assets/images/projects/11_weather_seed/prototype.jpg",
+      "image": "/images/projects/11_weather_seed/prototype.jpg",
       "tags": [
         "IoT",
         "Arduino",
@@ -23,9 +23,9 @@
       ],
       "detailPath": "weather-seed",
       "gallery": [
-        "/src/assets/images/projects/11_weather_seed/egg_print.jpg",
-        "/src/assets/images/projects/11_weather_seed/box.jpg",
-        "/src/assets/images/projects/11_weather_seed/prototype.jpg"
+        "/images/projects/11_weather_seed/egg_print.jpg",
+        "/images/projects/11_weather_seed/box.jpg",
+        "/images/projects/11_weather_seed/prototype.jpg"
       ],
       "startDate": "2023-01-01",
       "endDate": "2023-10-01"
@@ -34,7 +34,7 @@
       "id": 2,
       "title": "iWatchMan Network Security Monitoring System",
       "description": "A Raspberry Pi-based network security monitoring system designed to detect and defend against malicious DHCP server attacks, protecting local network security.",
-      "image": "/src/assets/images/projects/10_i_watch_man/架構圖.png",
+      "image": "/images/projects/10_i_watch_man/架構圖.png",
       "tags": [
         "Network Security",
         "Raspberry Pi",
@@ -42,10 +42,10 @@
       ],
       "detailPath": "i-watch-man",
       "gallery": [
-        "/src/assets/images/projects/10_i_watch_man/架構圖.png",
-        "/src/assets/images/projects/10_i_watch_man/DHCP_Spoofing情境說明圖.png",
-        "/src/assets/images/projects/10_i_watch_man/操作畫面圖.png",
-        "/src/assets/images/projects/10_i_watch_man/系統硬體建置圖.png"
+        "/images/projects/10_i_watch_man/架構圖.png",
+        "/images/projects/10_i_watch_man/DHCP_Spoofing情境說明圖.png",
+        "/images/projects/10_i_watch_man/操作畫面圖.png",
+        "/images/projects/10_i_watch_man/系統硬體建置圖.png"
       ],
       "startDate": "2014-01-01",
       "endDate": "2014-10-01"
@@ -54,7 +54,7 @@
       "id": 3,
       "title": "Web Form Auto-fill Tool",
       "description": "A tool that automatically fills web forms by reading data from existing system support files, significantly improving data entry efficiency.",
-      "image": "/src/assets/images/projects/20_Auto-fill_web_form_tool/auto_fill.png",
+      "image": "/images/projects/20_Auto-fill_web_form_tool/auto_fill.png",
       "tags": [
         "Automation Tool",
         "Web Scraping",
@@ -62,10 +62,10 @@
       ],
       "detailPath": "auto-fill-web-form",
       "gallery": [
-        "/src/assets/images/projects/20_Auto-fill_web_form_tool/auto_fill.png",
-        "/src/assets/images/projects/20_Auto-fill_web_form_tool/auto_fill_2.png",
-        "/src/assets/images/projects/20_Auto-fill_web_form_tool/load_data.png",
-        "/src/assets/images/projects/20_Auto-fill_web_form_tool/rawdata.png"
+        "/images/projects/20_Auto-fill_web_form_tool/auto_fill.png",
+        "/images/projects/20_Auto-fill_web_form_tool/auto_fill_2.png",
+        "/images/projects/20_Auto-fill_web_form_tool/load_data.png",
+        "/images/projects/20_Auto-fill_web_form_tool/rawdata.png"
       ],
       "startDate": "2019-08-01",
       "endDate": "2019-9-30"
@@ -74,7 +74,7 @@
       "id": 4,
       "title": "File Monitor System",
       "description": "A system directory monitoring tool for detecting unauthorized file modifications, capable of real-time detection of potential security incidents, suitable for monitoring online systems for hacker intrusions or malicious changes.",
-      "image": "/src/assets/images/projects/file_monitor/file_monitor.png",
+      "image": "/images/projects/file_monitor/file_monitor.png",
       "tags": [
         "Security Monitoring",
         "System Protection",
@@ -84,8 +84,8 @@
       "github": "https://github.com/Lung-Yu/File-Monitor",
       "detailPath": "file-monitor",
       "gallery": [
-        "/src/assets/images/projects/file_monitor/screenshot1.png",
-        "/src/assets/images/projects/file_monitor/screenshot2.png"
+        "/images/projects/file_monitor/screenshot1.png",
+        "/images/projects/file_monitor/screenshot2.png"
       ],
       "startDate": "2020-01-01",
       "endDate": "2020-10-01"
