@@ -66,6 +66,25 @@ const ProjectDetail = () => {
               </div>
             </div>
           )}
+
+          <div className="project-dates">
+            <h2>專案時間</h2>
+            <p>開始日期: {project.startDate}</p>
+            <p>結束日期: {project.endDate || '進行中'}</p>
+          </div>
+
+          <div className="project-links">
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noopener noreferrer">
+                GitHub 原始碼
+              </a>
+            )}
+            {project.demo && (
+              <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                線上展示
+              </a>
+            )}
+          </div>
         </div>
       </div>
       {modalImage && (
