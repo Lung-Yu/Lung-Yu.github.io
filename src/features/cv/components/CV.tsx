@@ -84,27 +84,34 @@ const CV = () => {
               <div key={index} className="conference-item">
                 <div className="conference-header">
                   <h4>{conf.title}</h4>
-                  <span className="conference-date">{conf.date}</span>
+                  {conf.tags && (
+                    <div className="conference-tags">
+                      {conf.tags.map((tag, tagIndex) => (
+                        <span key={tagIndex} className="tag">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                {conf.organizer && (
-                  <div className="conference-organizer">
-                    <i className="fas fa-users"></i> {conf.organizer}
-                  </div>
-                )}
-                {conf.venue && (
-                  <div className="conference-venue">
-                    <i className="fas fa-map-marker-alt"></i> {conf.venue}
-                  </div>
-                )}
-                {conf.tags && (
-                  <div className="conference-tags">
-                    {conf.tags.map((tag, tagIndex) => (
-                      <span key={tagIndex} className="tag">
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                <div className="conference-info">
+                  {conf.organizer && (
+                    <div className="conference-organizer">
+                      <i className="fas fa-users-gear"></i>
+                      {conf.organizer}
+                    </div>
+                  )}
+                  <span className="conference-date">
+                    <i className="fas fa-calendar"></i>
+                    {conf.date}
+                  </span>
+                  {conf.venue && (
+                    <div className="conference-venue">
+                      <i className="fas fa-location-dot"></i>
+                      {conf.venue}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
