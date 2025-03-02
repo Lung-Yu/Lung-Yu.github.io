@@ -48,7 +48,7 @@ git remote add origin "$REPO_URL"
 
 # 直接推送到 gh-pages 分支
 echo -e "${GREEN}推送到 GitHub Pages...${NC}"
-git push -f origin main:gh-pages || handle_error "推送失敗"
+git push -f origin HEAD:gh-pages || handle_error "推送失敗"
 
 cd ..
 
