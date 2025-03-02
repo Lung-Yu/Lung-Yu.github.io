@@ -37,7 +37,7 @@ git commit -m "deploy: 更新 GitHub Pages"
 
 # 推送到 gh-pages 分支
 echo -e "${GREEN}推送到 GitHub Pages...${NC}"
-git push -f origin gh-pages || handle_error "推送失敗"
+git push -f origin feature/publish:gh-pages || handle_error "推送失敗"
 
 cd ..
 
