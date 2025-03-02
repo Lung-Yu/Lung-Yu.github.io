@@ -1,6 +1,15 @@
 {
   "title": "專案",
   "description": "這些是我參與的專案。",
+  "projectNotFound": "專案不存在",
+  "projectImages": "專案圖片",
+  "projectVideos": "相關影片",
+  "projectDates": "專案時間",
+  "startDate": "開始日期",
+  "endDate": "結束日期",
+  "ongoing": "進行中",
+  "githubSource": "GitHub 原始碼",
+  "onlineDemo": "線上展示",
   "projects": [
     {
       "id": 1,
@@ -79,6 +88,42 @@
       ],
       "startDate": "2020-01-01",
       "endDate": "2020-10-01"
+    },
+    {
+      "id": 5,
+      "title": "任務管理系統",
+      "description": "一個基於 Web 的任務管理系統，允許用戶創建、編輯和追蹤任務，並設置截止日期和優先級。",
+      "image": "/src/assets/images/projects/task_manager/task_manager.png",
+      "tags": [
+        "任務管理",
+        "Web 開發",
+        "React"
+      ],
+      "detailPath": "task-manager",
+      "gallery": [
+        "/src/assets/images/projects/task_manager/task_manager.png",
+        "/src/assets/images/projects/task_manager/task_list.png"
+      ],
+      "startDate": "2021-05-01",
+      "endDate": "2021-12-01"
+    },
+    {
+      "id": 6,
+      "title": "電子商務平台",
+      "description": "一個完整的電子商務平台，提供商品展示、購物車、訂單管理和支付功能。",
+      "image": "/src/assets/images/projects/ecommerce_platform/ecommerce.png",
+      "tags": [
+        "電子商務",
+        "Web 開發",
+        "Node.js"
+      ],
+      "detailPath": "ecommerce-platform",
+      "gallery": [
+        "/src/assets/images/projects/ecommerce_platform/ecommerce.png",
+        "/src/assets/images/projects/ecommerce_platform/product_page.png"
+      ],
+      "startDate": "2022-02-01",
+      "endDate": "2022-11-01"
     }
   ]
 }

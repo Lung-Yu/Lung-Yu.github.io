@@ -26,6 +26,17 @@
     box-shadow: var(--shadow-md);
 }
 
+.project-detail-content h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+    color: var(--primary-color);
+}
+
+.project-detail-content p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
 .project-detail-tags {
     margin: 1rem 0;
     display: flex;
@@ -70,6 +81,27 @@
 .videos-grid video {
     width: 100%;
     border-radius: var(--radius-sm);
+}
+
+.project-dates {
+    margin: 1rem 0;
+}
+
+.project-links {
+    margin: 1rem 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.project-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.project-links a:hover {
+    color: var(--secondary-color);
 }
 
 @media (max-width: 768px) {

@@ -1,6 +1,15 @@
 {
   "title": "Projects",
   "description": "These are the projects I have worked on.",
+  "projectNotFound": "Project not found",
+  "projectImages": "Project Images",
+  "projectVideos": "Related Videos",
+  "projectDates": "Project Dates",
+  "startDate": "Start Date",
+  "endDate": "End Date",
+  "ongoing": "Ongoing",
+  "githubSource": "GitHub Source",
+  "onlineDemo": "Online Demo",
   "projects": [
     {
       "id": 1,
@@ -80,6 +89,42 @@
       ],
       "startDate": "2020-01-01",
       "endDate": "2020-10-01"
+    },
+    {
+      "id": 5,
+      "title": "Task Management System",
+      "description": "A web-based task management system that allows users to create, edit, and track tasks, set deadlines, and prioritize.",
+      "image": "/src/assets/images/projects/task_manager/task_manager.png",
+      "tags": [
+        "Task Management",
+        "Web Development",
+        "React"
+      ],
+      "detailPath": "task-manager",
+      "gallery": [
+        "/src/assets/images/projects/task_manager/task_manager.png",
+        "/src/assets/images/projects/task_manager/task_list.png"
+      ],
+      "startDate": "2021-05-01",
+      "endDate": "2021-12-01"
+    },
+    {
+      "id": 6,
+      "title": "E-commerce Platform",
+      "description": "A comprehensive e-commerce platform offering product display, shopping cart, order management, and payment functionalities.",
+      "image": "/src/assets/images/projects/ecommerce_platform/ecommerce.png",
+      "tags": [
+        "E-commerce",
+        "Web Development",
+        "Node.js"
+      ],
+      "detailPath": "ecommerce-platform",
+      "gallery": [
+        "/src/assets/images/projects/ecommerce_platform/ecommerce.png",
+        "/src/assets/images/projects/ecommerce_platform/product_page.png"
+      ],
+      "startDate": "2022-02-01",
+      "endDate": "2022-11-01"
     }
   ]
 }
