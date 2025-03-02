@@ -104,6 +104,13 @@
   ],
   "conferences": [
     {
+      "title": "Agile Introduction of DevSecOps and Automated Security Testing",
+      "date": "2025/04/17",
+      "venue": "Nangang Exhibition Center",
+      "organizer": "CyberRes 2025 Taiwan Cybersecurity Conference",
+      "tags": ["DevSecOps", "Automated Security Testing", "Agile Development"]
+    },
+    {
       "title": "Common Software and Enterprise Security Threat Analysis",
       "date": "2024/09/25",
       "venue": "Digicentre Headquarters",

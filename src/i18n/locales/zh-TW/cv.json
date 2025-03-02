@@ -104,6 +104,13 @@
   ],
   "conferences": [
     {
+      "title": "DevSecOps和自動化安全檢測的敏捷導入",
+      "date": "2025/04/17",
+      "venue": "南港展覽館",
+      "organizer": "CyberRes 2025 臺灣資安大會",
+      "tags": ["DevSecOps", "自動化安全檢測", "敏捷開發"]
+    },
+    {
       "title": "常見軟體與企業安全威脅分析",
       "date": "2024/09/25",
       "venue": "寒色艾麗",
