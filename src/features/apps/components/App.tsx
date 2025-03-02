@@ -63,6 +63,8 @@ function App() {
       <div className="flex flex-col min-h-screen">
         <Routes>
           <Route path="/" element={<NavigationBar />} />
+          <Route path="/project/*" element={<NavigationBar />} />
+          <Route path="/consulting/*" element={<NavigationBar />} />
         </Routes>
         <main className="flex-grow">
           <Routes>
