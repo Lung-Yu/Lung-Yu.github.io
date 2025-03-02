@@ -54,10 +54,6 @@ const HomePage = () => {
 function App() {
   const [modalImage, setModalImage] = useState<string | null>(null);
 
-  const openModal = (image: string) => {
-    setModalImage(image);
-  };
-
   const closeModal = () => {
     setModalImage(null);
   };
@@ -65,7 +61,11 @@ function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <NavigationBar />
+        <Routes>
+          <Route path="/" element={<NavigationBar />} />
+          <Route path="/project/*" element={<NavigationBar />} />
+          <Route path="/consulting/*" element={<NavigationBar />} />
+        </Routes>
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -74,22 +74,14 @@ function App() {
             <Route path="/consulting/:consultingPath" element={<ConsultingDetail />} />
           </Routes>
         </main>
-        <footer id="contact" className="bg-gray-50 py-8">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center space-y-4">
-              <p className="text-gray-600">
-                聯絡我：
-                <a 
-                  href="mailto:workfile975@gmail.com"
-                  className="text-blue-600 hover:text-blue-700 transition-colors"
-                >
-                  workfile975@gmail.com
-                </a>
-              </p>
-            </div>
-          </div>
-        </footer>
-        {modalImage && <Modal modalImage={modalImage} closeModal={closeModal} />}
+        <Modal
+          isOpen={!!modalImage}
+          onClose={closeModal}
+        >
+          {modalImage && (
+            <img src={modalImage} alt="預覽圖片" className="modal-image" />
+          )}
+        </Modal>
       </div>
     </Router>
   );

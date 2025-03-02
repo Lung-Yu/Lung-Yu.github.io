@@ -1,4 +1,15 @@
 {
+  "title": "專案",
+  "description": "這些是我參與的專案。",
+  "projectNotFound": "專案不存在",
+  "projectImages": "專案圖片",
+  "projectVideos": "相關影片",
+  "projectDates": "專案時間",
+  "startDate": "開始日期",
+  "endDate": "結束日期",
+  "ongoing": "進行中",
+  "githubSource": "GitHub 原始碼",
+  "onlineDemo": "線上展示",
   "projects": [
     {
       "id": 1,
@@ -15,7 +26,9 @@
         "/src/assets/images/projects/11_weather_seed/egg_print.jpg",
         "/src/assets/images/projects/11_weather_seed/box.jpg",
         "/src/assets/images/projects/11_weather_seed/prototype.jpg"
-      ]
+      ],
+      "startDate": "2023-01-01",
+      "endDate": "2023-10-01"
     },
     {
       "id": 2,
@@ -33,7 +46,9 @@
         "/src/assets/images/projects/10_i_watch_man/DHCP_Spoofing情境說明圖.png",
         "/src/assets/images/projects/10_i_watch_man/操作畫面圖.png",
         "/src/assets/images/projects/10_i_watch_man/系統硬體建置圖.png"
-      ]
+      ],
+      "startDate": "2014-01-01",
+      "endDate": "2014-10-01"
     },
     {
       "id": 3,
@@ -51,13 +66,15 @@
         "/src/assets/images/projects/20_Auto-fill_web_form_tool/auto_fill_2.png",
         "/src/assets/images/projects/20_Auto-fill_web_form_tool/load_data.png",
         "/src/assets/images/projects/20_Auto-fill_web_form_tool/rawdata.png"
-      ]
+      ],
+      "startDate": "2019-08-01",
+      "endDate": "2019-9-30"
     },
     {
       "id": 4,
       "title": "File Monitor 目錄監控系統",
       "description": "一套系統目錄監控工具，用於偵測未經授權的檔案修改，能即時發現可能的資安事件，適合監控線上系統是否遭受駭客入侵或惡意更改。",
-      "image": "/src/assets/images/projects/file_monitor/file_monitor.png",
+      "image": "/src/assets/images/default-images.jpg",
       "tags": [
         "資安監控",
         "系統防護",
@@ -67,9 +84,10 @@
       "github": "https://github.com/Lung-Yu/File-Monitor",
       "detailPath": "file-monitor",
       "gallery": [
-        "/src/assets/images/projects/file_monitor/screenshot1.png",
-        "/src/assets/images/projects/file_monitor/screenshot2.png"
-      ]
+        "/src/assets/images/default-images.jpg"
+      ],
+      "startDate": "2020-01-01",
+      "endDate": "2020-10-01"
     }
   ]
 }

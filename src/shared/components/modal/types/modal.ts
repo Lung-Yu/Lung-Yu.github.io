@@ -1,4 +1,5 @@
 export interface ModalProps {
-    modalImage: string | null;
-    closeModal: () => void;
+  isOpen: boolean; 
+  onClose: () => void;
+  children: React.ReactNode;
 }

@@ -28,8 +28,7 @@
       {
         "title": "navigation.cv",
         "href": "/cv",
-        "isExact": true,
-        "isNewTab": true
+        "isExact": false
       }
     ]
 }

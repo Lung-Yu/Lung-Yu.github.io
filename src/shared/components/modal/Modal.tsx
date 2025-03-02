@@ -1,13 +1,27 @@
-import { ModalProps } from '../../types/modal';
 import './styles/modal.css';
 
-const Modal = ({ modalImage, closeModal }: { modalImage: string | null, closeModal: () => void }) => (
-  modalImage ? (
-      <div className="modal" onClick={closeModal}>
-          <span className="close">&times;</span>
-          <img className="modal-content" src={modalImage} alt="預覽圖片" />
+interface CommonModalProps {
+  isOpen?: boolean;
+  image?: string;
+  onClose: () => void;
+  children?: React.ReactNode;
+}
+
+const Modal = ({ isOpen = true, image, onClose, children }: CommonModalProps) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal" onClick={onClose}>
+      <span className="close">&times;</span>
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
+        {image ? (
+          <img src={image} alt="Modal content" className="modal-image" />
+        ) : (
+          children
+        )}
       </div>
-  ) : null
-);
+    </div>
+  );
+};
 
 export default Modal;

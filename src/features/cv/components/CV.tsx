@@ -1,16 +1,14 @@
-import { useTranslation } from 'react-i18next';
 import { useCV } from '../hooks/useCV';
 import '../styles/CV.css';
+import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 
 const CV = () => {
   const { cvData, isLoading } = useCV();
-  const { t } = useTranslation();
 
   if (isLoading) {
     return <div className="cv-container">Loading...</div>;
   }
 
-  // 防護性檢查
   const experiences = Array.isArray(cvData.experiences) ? cvData.experiences : [];
   const education = Array.isArray(cvData.education) ? cvData.education : [];
   const skills = Array.isArray(cvData.skills) ? cvData.skills : [];
@@ -18,9 +16,14 @@ const CV = () => {
   return (
     <div className="cv-container">
       <header className="cv-header">
-        <h1>{cvData.name}</h1>
-        <div className="title">{cvData.title}</div>
-        <p>{cvData.summary}</p>
+        <div>
+          <h1>{cvData.name}</h1>
+          <div className="title">{cvData.title}</div>
+          <p>{cvData.summary}</p>
+        </div>
+        <div className="language-switcher-container">
+          <LanguageSwitcher />
+        </div>
       </header>
 
       <section className="cv-section">
