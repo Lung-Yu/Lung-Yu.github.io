@@ -1,7 +1,8 @@
 .project-detail {
     padding: 2rem 0;
-    background-color: var(--color-gray-100);
+    background-color: var(--color-background); /* 修改背景顏色 */
     min-height: calc(100vh - 64px); /* 確保最小高度 */
+    padding-top: 4rem; /* 添加上方內邊距，避免與 NavigationBar 重疊 */
 }
 
 .project-detail-container {
@@ -12,12 +13,14 @@
 
 .project-detail h1 {
     font-size: 2.5rem;
-    color: var(--color-primary);
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); /* 修改文字顏色 */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 2rem;
 }
 
 .project-detail-content {
-    background: var(--color-background);
+    background: white;
     padding: 2rem;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
@@ -31,7 +34,7 @@
 }
 
 .project-tag {
-    background-color: var(--color-primary);
+    background-color: var(--primary-color);
     color: var(--color-background);
     padding: 0.5rem 1rem;
     border-radius: var(--radius-sm);
