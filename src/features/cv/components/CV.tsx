@@ -1,6 +1,8 @@
 import { useCV } from '../hooks/useCV';
 import '../styles/CV.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 const CV = () => {
   const { cvData, isLoading } = useCV();
@@ -82,8 +84,48 @@ const CV = () => {
           <div className="conferences-grid">
             {cvData.conferences.map((conf, index) => (
               <div key={index} className="conference-item">
-                <h4>{conf.title}</h4>
-                <span className="date">{conf.date}</span>
+                <div className="conference-header">
+                  <h4>
+                    {conf.title}
+                    {conf.url && (
+                      <a
+                        href={conf.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="conference-link"
+                      >
+                        <FontAwesomeIcon icon={faExternalLinkAlt} className="external-link-icon" />
+                      </a>
+                    )}
+                  </h4>
+                  {conf.tags && (
+                    <div className="conference-tags">
+                      {conf.tags.map((tag, tagIndex) => (
+                        <span key={tagIndex} className="tag">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div className="conference-info">
+                  {conf.organizer && (
+                    <div className="conference-organizer">
+                      <i className="fas fa-users-gear"></i>
+                      {conf.organizer}
+                    </div>
+                  )}
+                  <span className="conference-date">
+                    <i className="fas fa-calendar"></i>
+                    {conf.date}
+                  </span>
+                  {conf.venue && conf.venue !== '-' && (
+                    <div className="conference-venue">
+                      <i className="fas fa-location-dot"></i>
+                      {conf.venue}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>

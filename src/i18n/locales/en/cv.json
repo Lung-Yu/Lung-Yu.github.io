@@ -104,16 +104,64 @@
   ],
   "conferences": [
     {
-      "title": "DevOps + Sec: Powerful Allies or Trouble Makers",
-      "date": "2024/07/10"
-    },
-    {
-      "title": "DevSecOps and AI: Challenges and Opportunities of a Double-Edged Sword",
-      "date": "2024/08/30"
+      "title": "DevSecOps + AI Automated Security Analysis Implementation",
+      "date": "2025/04/17",
+      "venue": "Nangang Exhibition Center",
+      "organizer": "CyberRes 2025 Taiwan Security Conference"
     },
     {
       "title": "Common Software and Enterprise Security Threat Analysis",
-      "date": "2024/09/25"
+      "date": "2024/09/25",
+      "organizer": "OpenText & Digicentre Joint Technology Sharing Session"
+    },
+    {
+      "title": "DevSecOps and AI: Challenges and Opportunities of a Double-Edged Sword",
+      "date": "2024/08/30",
+      "venue": "on Live Stream",
+      "organizer": "CISA Chinese Software Association",
+      "tags": ["DevSecOps", "AI", "Secure Development"]
+    },
+    {
+      "title": "DevOps + Sec: Powerful Ally or Disruptive Force?",
+      "date": "2024/07/10",
+      "venue": "Bottle Cap Factory",
+      "organizer": "DevOpsDays Taipei 2024",
+      "tags": ["DevOps", "Security", "Development Process"]
+    },
+    {
+      "title": "Security Requirements That Need to be Addressed",
+      "date": "2023/10/19",
+      "organizer": "OpenText & Digicentre Joint Technology Sharing Session",
+      "tags": ["Security Requirements", "Requirement Analysis", "Secure Development"]
+    },
+    {
+      "title": "Stories of Auditors and Auditees",
+      "date": "2023/09/15",
+      "organizer": "BSI & KPMG & Digicentre Joint Technology Sharing Session",
+      "tags": ["Security Audit", "Compliance", "Audit Experience"],
+      "url": "https://www.ithome.com.tw/pr/159495"
+    },
+    {
+      "title": "The Journey of Upgrading Enterprise Security Development Processes",
+      "date": "2023/05/09",
+      "venue": "Nangang Exhibition Center",
+      "organizer": "CyberRes 2023 Taiwan Cybersecurity Conference",
+      "tags": ["Secure Development", "Process Optimization", "Enterprise Practice"],
+      "url": "https://cyber.ithome.com.tw/2023/session-page/1858"
+    },
+    {
+      "title": "Challenges of Enterprises Facing Secure Development",
+      "date": "2023/04/12",
+      "organizer": "OpenText & Digicentre Joint Technology Sharing Session",
+      "tags": ["Enterprise Security", "Development Challenges", "Best Practices"],
+      "url": "https://www.ithome.com.tw/pr/156836"
+    },
+    {
+      "title": "Building Secure Software Starts with Effective Communication",
+      "date": "2023/03/18",
+      "organizer": "Digicentre Hacker Talk Forum",
+      "tags": ["Team Communication", "Secure Development", "Cross-Department Collaboration"],
+      "url": "https://www.ithome.com.tw/pr/156206"
     }
   ]
 }
