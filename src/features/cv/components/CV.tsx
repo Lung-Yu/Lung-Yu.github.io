@@ -46,17 +46,22 @@ const CV = () => {
 
       <section className="cv-section">
         <h2>{cvData.sections.experience}</h2>
-        {experiences.map((exp, index) => (
-          <div key={index} className="experience-item">
-            <h3>{exp.position} - {exp.company}</h3>
-            <div className="period">{exp.period}</div>
-            <ul>
-              {exp.description.map((desc, descIndex) => (
-                <li key={descIndex}>{desc}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <div className="experience-timeline">
+          {experiences.map((exp, index) => (
+            <div key={index} className="experience-item">
+              <div className="experience-content">
+                <div className="experience-date">{exp.period}</div>
+                <div className="experience-company">{exp.company}</div>
+                <div className="experience-position">{exp.position}</div>
+                <ul className="experience-description">
+                  {exp.description.map((desc, descIndex) => (
+                    <li key={descIndex}>{desc}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="cv-section">
