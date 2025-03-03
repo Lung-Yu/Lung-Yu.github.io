@@ -1,6 +1,8 @@
 import { useCV } from '../hooks/useCV';
 import '../styles/CV.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 const CV = () => {
   const { cvData, isLoading } = useCV();
@@ -83,7 +85,19 @@ const CV = () => {
             {cvData.conferences.map((conf, index) => (
               <div key={index} className="conference-item">
                 <div className="conference-header">
-                  <h4>{conf.title}</h4>
+                  <h4>
+                    {conf.title}
+                    {conf.url && (
+                      <a
+                        href={conf.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="conference-link"
+                      >
+                        <FontAwesomeIcon icon={faExternalLinkAlt} className="external-link-icon" />
+                      </a>
+                    )}
+                  </h4>
                   {conf.tags && (
                     <div className="conference-tags">
                       {conf.tags.map((tag, tagIndex) => (
