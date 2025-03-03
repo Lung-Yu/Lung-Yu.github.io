@@ -46,10 +46,16 @@
       "company": "Digicentre Co., Ltd.",
       "position": "Deputy Manager of Technical Development Department II",
       "period": "2024/08 - Present",
-      "description": [
-        "Leading software project development",
-        "Software architecture security assessment",
-        "Consulting services for secure code improvement"
+      "brief": [
+        "Software project development leadership and secure development process improvement",
+        "Software architecture security assessment and planning"
+      ],
+      "details": [
+        "Product Owner",
+        "Establish and optimize software development security standards",
+        "Conduct software architecture security assessments and provide improvement recommendations",
+        "Promote secure development process improvements",
+        "Establish automated security testing processes"
       ]
     },
     {
@@ -57,11 +63,10 @@
       "position": "Deputy Manager of Software Development Security Department",
       "period": "2023/04 - 2024/07",
       "description": [
-        "Leading and managing software project development",
-        "Challenges in secure development faced by enterprises (2023/04/12 speech)",
-        "Journey to upgrade enterprise secure development processes (2023/05/09 speech)",
-        "Stories of auditors and auditees (2023/09/15 speech)",
-        "Security requirements we need to know (2023/10/19 speech)",
+        "Fortify SCA automation integration and optimization",
+        "Promoting secure development process improvements",
+        "Providing secure code improvement consulting",
+        "Developing and deploying DevSecOps systems",
         "2023 Gama Star Award (2024/01/26)"
       ]
     },
