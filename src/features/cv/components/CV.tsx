@@ -132,10 +132,12 @@ const CV = () => {
                     {edu.degree} - {edu.major}
                   </div>
                   <div className="education-period">{edu.period}</div>
-                  <FontAwesomeIcon 
-                    icon={faChevronDown} 
-                    className={`toggle-icon ${expandedEdu === index ? 'expanded' : ''}`}
-                  />
+                  {edu.description && (
+                    <FontAwesomeIcon 
+                      icon={faChevronDown} 
+                      className={`toggle-icon ${expandedEdu === index ? 'expanded' : ''}`}
+                    />
+                  )}
                 </div>
                 {edu.description && (
                   <div className="education-details">
