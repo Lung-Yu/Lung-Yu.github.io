@@ -120,7 +120,7 @@
       "title": "DevSecOps and AI: Challenges and Opportunities of a Double-Edged Sword",
       "date": "2024/08/30",
       "venue": "on Live Stream",
-      "organizer": "CISA中華民國資訊軟體協會",
+      "organizer": "CISA Chinese Software Association",
       "tags": ["DevSecOps", "AI", "Secure Development"]
     },
     {
@@ -134,14 +134,14 @@
       "title": "Security Requirements That Need to be Addressed",
       "date": "2023/10/19",
       "venue": "Digicentre Headquarters",
-      "organizer": "Digicentre Internal Tech Sharing",
+      "organizer": "OpenText & Digicentre Joint Technology Sharing Session",
       "tags": ["Security Requirements", "Requirement Analysis", "Secure Development"]
     },
     {
       "title": "Stories of Auditors and Auditees",
       "date": "2023/09/15",
       "venue": "Digicentre Headquarters",
-      "organizer": "Digicentre Internal Tech Sharing",
+      "organizer": "BSI & KPMG & Digicentre Joint Technology Sharing Session",
       "tags": ["Security Audit", "Compliance", "Audit Experience"],
       "url": "https://www.ithome.com.tw/pr/159495"
     },
@@ -156,15 +156,15 @@
     {
       "title": "Challenges of Enterprises Facing Secure Development",
       "date": "2023/04/12",
-      "venue": "Digicentre Headquarters",
-      "organizer": "Digicentre Internal Tech Sharing",
+      "venue": "-",
+      "organizer": "OpenText & 果核數位 聯合技術分享會",
       "tags": ["Enterprise Security", "Development Challenges", "Best Practices"],
       "url": "https://www.ithome.com.tw/pr/156836"
     },
     {
       "title": "Building Secure Software Starts with Effective Communication",
       "date": "2023/03/18",
-      "venue": "Digicentre Headquarters",
+      "venue": "-",
       "organizer": "Digicentre Hacker Talk Forum",
       "tags": ["Team Communication", "Secure Development", "Cross-Department Collaboration"],
       "url": "https://www.ithome.com.tw/pr/156206"

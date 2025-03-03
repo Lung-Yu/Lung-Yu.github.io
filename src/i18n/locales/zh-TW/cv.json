@@ -111,6 +111,12 @@
       "tags": ["DevSecOps", "自動化安全檢測", "敏捷開發"]
     },
     {
+      "title": "常見軟體與企業安全威脅分析",
+      "date": "2024/09/25",
+      "venue": "數位中心總部",
+      "tags": ["安全威脅", "企業安全", "威脅分析"]
+    },
+    {
       "title": "DevSecOps 與 AI：雙面刃的挑戰與機遇",
       "date": "2024/08/30",
       "venue": "線上直播",
@@ -128,14 +134,14 @@
       "title": "那些沒有被說出口的資安需求",
       "date": "2023/10/19",
       "venue": "果核數位總部",
-      "organizer": "果核數位內部技術分享會",
+      "organizer": "OpenText & 果核數位 聯合技術分享會",
       "tags": ["安全需求", "需求分析", "安全開發"]
     },
     {
       "title": "稽核與被稽核的那些事",
       "date": "2023/09/15",
       "venue": "果核數位總部",
-      "organizer": "果核數位內部技術分享會",
+      "organizer": "BSI & KPMG & 果核數位 聯合技術分享會",
       "tags": ["安全稽核", "合規", "稽核經驗"],
       "url": "https://www.ithome.com.tw/pr/159495"
     },
@@ -150,15 +156,15 @@
     {
       "title": "企業面臨的安全開發挑戰",
       "date": "2023/04/12",
-      "venue": "果核數位總部",
-      "organizer": "果核數位內部技術分享會",
+      "venue": "-",
+      "organizer": "OpenText & 果核數位 聯合技術分享會",
       "tags": ["企業安全", "開發挑戰", "最佳實踐"],
       "url": "https://www.ithome.com.tw/pr/156836"
     },
     {
       "title": "開發與資安的合作之路從互相理解開始",
       "date": "2023/03/18",
-      "venue": "果核數位總部",
+      "venue": "-",
       "organizer": "果核數位 Hacker Talk 論壇",
       "tags": ["團隊溝通", "安全開發", "跨部門合作"],
       "url": "https://www.ithome.com.tw/pr/156206"
