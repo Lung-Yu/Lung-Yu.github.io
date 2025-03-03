@@ -485,3 +485,128 @@
         grid-template-columns: 1fr;
     }
 }
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.education-item {
+  background-color: var(--color-gray-50);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-gray-100);
+}
+
+.education-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-color: var(--color-gray-200);
+}
+
+.education-header {
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 1rem;
+  border-left: 3px solid var(--color-primary);
+}
+
+.education-school {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.education-degree {
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.3rem;
+}
+
+.education-period {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+.education-description {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--color-background);
+  border-radius: 8px;
+  border: 1px solid var(--color-gray-100);
+}
+
+.education-description li {
+  margin: 0.8rem 0;
+  position: relative;
+  padding-left: 1.2rem;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.education-description li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+.education-content {
+  background-color: var(--color-gray-50);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-gray-100);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.education-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-color: var(--color-gray-200);
+}
+
+.education-header {
+  position: relative;
+  padding-left: 1rem;
+  padding-right: 2.5rem;
+  border-left: 3px solid var(--color-primary);
+}
+
+.education-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+  margin-top: 0;
+}
+
+.education-content.expanded .education-details {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.education-content .toggle-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+  color: var(--color-primary);
+}
+
+.education-content.expanded .toggle-icon {
+  transform: translateY(-50%) rotate(180deg);
+}

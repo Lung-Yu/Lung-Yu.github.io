@@ -8,9 +8,14 @@ import { useState } from 'react';
 const CV = () => {
   const { cvData, isLoading } = useCV();
   const [expandedExp, setExpandedExp] = useState<number | null>(null);
+  const [expandedEdu, setExpandedEdu] = useState<number | null>(null);
 
   const toggleExperience = (index: number) => {
     setExpandedExp(expandedExp === index ? null : index);
+  };
+
+  const toggleEducation = (index: number) => {
+    setExpandedEdu(expandedEdu === index ? null : index);
   };
 
   if (isLoading) {
@@ -114,21 +119,37 @@ const CV = () => {
 
       <section className="cv-section">
         <h2>{cvData.sections.education}</h2>
-        {education.map((edu, index) => (
-          <div key={index} className="education-item">
-            <h3>{edu.school}</h3>
-            <div className="period">
-              {edu.degree} - {edu.major} ({edu.period})
+        <div className="education-grid">
+          {education.map((edu, index) => (
+            <div key={index} className="education-item">
+              <div 
+                className={`education-content ${expandedEdu === index ? 'expanded' : ''}`}
+                onClick={() => toggleEducation(index)}
+              >
+                <div className="education-header">
+                  <div className="education-school">{edu.school}</div>
+                  <div className="education-degree">
+                    {edu.degree} - {edu.major}
+                  </div>
+                  <div className="education-period">{edu.period}</div>
+                  <FontAwesomeIcon 
+                    icon={faChevronDown} 
+                    className={`toggle-icon ${expandedEdu === index ? 'expanded' : ''}`}
+                  />
+                </div>
+                {edu.description && (
+                  <div className="education-details">
+                    <ul className="education-description">
+                      {edu.description.map((desc, descIndex) => (
+                        <li key={descIndex}>{desc}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
-            {edu.description && (
-              <ul className="education-description">
-                {edu.description.map((desc, descIndex) => (
-                  <li key={descIndex}>{desc}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
 
       {cvData.conferences && (
