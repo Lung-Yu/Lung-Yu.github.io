@@ -26,6 +26,19 @@ const CV = () => {
   const education = Array.isArray(cvData.education) ? cvData.education : [];
   const skills = Array.isArray(cvData.skills) ? cvData.skills : [];
 
+  const renderDetailItem = (item: string) => {
+    if (item.startsWith('- ')) {
+      // 子項目
+      return <li className="nested-item">{item.substring(2)}</li>;
+    } else if (item.endsWith(':')) {
+      // 群組標題
+      return <li className="nested-header">{item}</li>;
+    } else {
+      // 一般項目
+      return <li>{item}</li>;
+    }
+  };
+
   const renderExperienceContent = (exp: any, index: number) => {
     if (exp.brief && exp.details) {
       return (
@@ -52,7 +65,7 @@ const CV = () => {
           <div className="experience-details">
             <ul>
               {exp.details.map((item: string, idx: number) => (
-                <li key={idx}>{item}</li>
+                renderDetailItem(item)
               ))}
             </ul>
           </div>

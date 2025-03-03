@@ -47,27 +47,40 @@
       "position": "Deputy Manager of Technical Development Department II",
       "period": "2024/08 - Present",
       "brief": [
-        "Software project development leadership and secure development process improvement",
-        "Software architecture security assessment and planning"
+        "Product Owner & Technical Leadership",
+        "Secure Development Standards"
       ],
       "details": [
-        "Product Owner",
-        "Establish and optimize software development security standards",
-        "Conduct software architecture security assessments and provide improvement recommendations",
-        "Promote secure development process improvements",
-        "Establish automated security testing processes"
+        "Product Development:",
+        "- Product Owner role",
+        "- Project scheduling and requirement management",
+        "- Cross-department coordination",
+        "Secure Development:",
+        "- Establish secure development standards",
+        "- Conduct architecture security assessments",
+        "- Implement automated security testing",
+        "- Provide secure code improvement guidance"
       ]
     },
     {
       "company": "Digicentre Co., Ltd.",
       "position": "Deputy Manager of Software Development Security Department",
       "period": "2023/04 - 2024/07",
-      "description": [
-        "Fortify SCA automation integration and optimization",
-        "Promoting secure development process improvements",
-        "Providing secure code improvement consulting",
-        "Developing and deploying DevSecOps systems",
-        "2023 Gama Star Award (2024/01/26)"
+      "brief": [
+        "DevSecOps Process Optimization",
+        "Security Tools Integration"
+      ],
+      "details": [
+        "DevSecOps Implementation:",
+        "- Fortify SCA tool integration",
+        "- Automated scanning process",
+        "- Secure development workflow",
+        "Technical Promotion:",
+        "- Secure code consulting",
+        "- Training program planning",
+        "- DevSecOps platform development",
+        "Achievement:",
+        "- 2023 Gama Star Award (2024/01/26)"
       ]
     },
     {
@@ -75,25 +88,33 @@
       "position": "Security Consultant",
       "period": "2020/09 - 2021/09",
       "brief": [
-        "Cybersecurity assessment and regulatory compliance for the financial and media industries",
-        "Security testing and remediation (VA/PT/malware analysis)"
+        "Financial sector security assessment",
+        "Enterprise security testing"
       ],
       "details": [
-        "Security testing and remediation (VA/PT/malware analysis)",
-        "Internal control and IT management consulting",
-        "Software security consulting",
-        "DAST vulnerability automatic statistics script (acunetix report)",
-        "Development of automated analysis tools (Windows security configuration analysis based on GCB, Linux security configuration analysis based on CIS standards)",
-        "Regulatory compliance review : ",
-        "- Financial institution management computer system information security assessment work method",
-        "- Computer Information Security Assessment",
-        "- Guidelines for Security Measures of Financial Institutions for Electronic Banking",
-        "- Financial institutions use IoT equipment for security control",
-        "- SWIFT Customer Security Controls Framework",
-        "- Financial Institutions provided Mobile Application best practices",
-        "- Financial Institutions operational measures in Emerging Technology",
-        "- Financial institutions provide QR Code scanning payment application security control specifications",
-        "- Open application programming interface business security control operation specification"
+        "Security Testing:",
+        "- Vulnerability Assessment",
+        "- Penetration Testing ",
+        "- Malware Analysis",
+        "Automation Tools:",
+        "- DAST vulnerability statistics script",
+        "- Windows security config analysis (GCB standards)",
+        "- Linux security config analysis (CIS standards)",
+        "Security Consulting:",
+        "- Internal control establishment",
+        "- IT management consulting",
+        "- Software security consulting",
+        "Financial Regulatory Compliance Audit:",
+        "- Information Security Assessment Method for Computer Systems of Financial Institutions",
+        "- Computer System Security Assessment Standards",
+        "- Security Control Operations Standards for Financial Institutions Handling Electronic Banking Business",
+        "- Security Control Specifications for Financial Institutions Using IoT Devices",
+        "- SWIFT Security Standards",
+        "- Operational Specifications for Financial Institutions Providing Mobile Device Applications",
+        "- Operational Specifications for Financial Institutions Using Emerging Technologies",
+        "- Security Control Specifications for Financial Institutions Providing QR Code Payment Applications",
+        "- Security Control Operations Standards for Open API Business",
+        "- OWASP Mobile checklist L2"
       ]
     }
   ],
