@@ -31,5 +31,6 @@ export interface CVData {
     venue?: string;
     organizer?: string;
     tags?: string[];
+    url?: string;
   }>;
 }
