@@ -17,6 +17,8 @@ export interface CVData {
     position: string;
     period: string;
     description: string[];
+    brief: string[];
+    details: string[];
   }>;
   education: Array<{
     school: string;

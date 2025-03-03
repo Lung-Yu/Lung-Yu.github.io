@@ -2,10 +2,16 @@ import { useCV } from '../hooks/useCV';
 import '../styles/CV.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
 const CV = () => {
   const { cvData, isLoading } = useCV();
+  const [expandedExp, setExpandedExp] = useState<number | null>(null);
+
+  const toggleExperience = (index: number) => {
+    setExpandedExp(expandedExp === index ? null : index);
+  };
 
   if (isLoading) {
     return <div className="cv-container">Loading...</div>;
@@ -14,6 +20,57 @@ const CV = () => {
   const experiences = Array.isArray(cvData.experiences) ? cvData.experiences : [];
   const education = Array.isArray(cvData.education) ? cvData.education : [];
   const skills = Array.isArray(cvData.skills) ? cvData.skills : [];
+
+  const renderExperienceContent = (exp: any, index: number) => {
+    if (exp.brief && exp.details) {
+      return (
+        <div 
+          className={`experience-content ${expandedExp === index ? 'expanded' : ''}`}
+          onClick={() => toggleExperience(index)}
+        >
+          <div className="experience-summary">
+            <div className="experience-date">{exp.period}</div>
+            <div className="experience-company">{exp.company}</div>
+            <div className="experience-position">{exp.position}</div>
+            <FontAwesomeIcon 
+              icon={faChevronDown} 
+              className={`toggle-icon ${expandedExp === index ? 'expanded' : ''}`}
+            />
+          </div>
+          <div className="experience-brief">
+            <ul>
+              {exp.brief.map((item: string, idx: number) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="experience-details">
+            <ul>
+              {exp.details.map((item: string, idx: number) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      );
+    }
+
+    // 處理舊格式的經歷資料
+    return (
+      <div className="experience-content">
+        <div className="experience-summary">
+          <div className="experience-date">{exp.period}</div>
+          <div className="experience-company">{exp.company}</div>
+          <div className="experience-position">{exp.position}</div>
+        </div>
+        <ul className="experience-description">
+          {exp.description?.map((desc: string, idx: number) => (
+            <li key={idx}>{desc}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
 
   return (
     <div className="cv-container">
@@ -49,16 +106,7 @@ const CV = () => {
         <div className="experience-timeline">
           {experiences.map((exp, index) => (
             <div key={index} className="experience-item">
-              <div className="experience-content">
-                <div className="experience-date">{exp.period}</div>
-                <div className="experience-company">{exp.company}</div>
-                <div className="experience-position">{exp.position}</div>
-                <ul className="experience-description">
-                  {exp.description.map((desc, descIndex) => (
-                    <li key={descIndex}>{desc}</li>
-                  ))}
-                </ul>
-              </div>
+              {renderExperienceContent(exp, index)}
             </div>
           ))}
         </div>
