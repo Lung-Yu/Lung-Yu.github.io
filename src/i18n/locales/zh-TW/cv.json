@@ -8,6 +8,10 @@
     "education": "學歷",
     "conferences": "演講/議程"
   },
+  "actions": {
+    "expandAll": "展開全部",
+    "collapseAll": "收合全部"
+  },
   "skills": [
     {
       "category": "資安技能",

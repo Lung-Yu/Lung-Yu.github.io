@@ -8,6 +8,10 @@
     "education": "Education",
     "conferences": "Conferences"
   },
+  "actions": {
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All"
+  },
   "skills": [
     {
       "category": "Cybersecurity Skills",

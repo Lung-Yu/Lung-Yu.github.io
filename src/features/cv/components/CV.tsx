@@ -6,7 +6,7 @@ import { faExternalLinkAlt, faChevronDown } from '@fortawesome/free-solid-svg-ic
 import { useState } from 'react';
 
 const CV = () => {
-  const { cvData, isLoading } = useCV();
+  const { cvData, isLoading, t } = useCV();
   const [expandedExp, setExpandedExp] = useState<number | null>(null);
   const [expandedEdu, setExpandedEdu] = useState<number | null>(null);
   const [allExperiencesExpanded, setAllExperiencesExpanded] = useState(false);
@@ -143,7 +143,7 @@ const CV = () => {
             className={`expand-all-button ${allExperiencesExpanded ? 'expanded' : ''}`}
             onClick={toggleAllExperiences}
           >
-            {allExperiencesExpanded ? '收合全部' : '展開全部'}
+            {allExperiencesExpanded ? t('actions.collapseAll') : t('actions.expandAll')}
             <FontAwesomeIcon
               icon={faChevronDown}
               className={`toggle-icon ${allExperiencesExpanded ? 'expanded' : ''}`}
@@ -166,7 +166,7 @@ const CV = () => {
             className={`expand-all-button ${allEducationExpanded ? 'expanded' : ''}`}
             onClick={toggleAllEducation}
           >
-            {allEducationExpanded ? '收合全部' : '展開全部'}
+            {allEducationExpanded ? t('actions.collapseAll') : t('actions.expandAll')}
             <FontAwesomeIcon
               icon={faChevronDown}
               className={`toggle-icon ${allEducationExpanded ? 'expanded' : ''}`}
