@@ -611,3 +611,43 @@
 .education-content.expanded .toggle-icon {
   transform: translateY(-50%) rotate(180deg);
 }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  margin-bottom: 0;
+}
+
+.expand-all-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  color: var(--color-primary);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.expand-all-button:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.expand-all-button .toggle-icon {
+  font-size: 0.8rem;
+  position: static;
+  transform: none;
+}
+
+.expand-all-button.expanded .toggle-icon {
+  transform: rotate(180deg);
+}

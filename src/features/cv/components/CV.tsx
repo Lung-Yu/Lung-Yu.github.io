@@ -9,6 +9,8 @@ const CV = () => {
   const { cvData, isLoading } = useCV();
   const [expandedExp, setExpandedExp] = useState<number | null>(null);
   const [expandedEdu, setExpandedEdu] = useState<number | null>(null);
+  const [allExperiencesExpanded, setAllExperiencesExpanded] = useState(false);
+  const [allEducationExpanded, setAllEducationExpanded] = useState(false);
 
   const toggleExperience = (index: number) => {
     setExpandedExp(expandedExp === index ? null : index);
@@ -16,6 +18,24 @@ const CV = () => {
 
   const toggleEducation = (index: number) => {
     setExpandedEdu(expandedEdu === index ? null : index);
+  };
+
+  const toggleAllExperiences = () => {
+    if (allExperiencesExpanded) {
+      setExpandedExp(null);
+    } else {
+      setExpandedExp(-1); // -1 表示全部展開
+    }
+    setAllExperiencesExpanded(!allExperiencesExpanded);
+  };
+
+  const toggleAllEducation = () => {
+    if (allEducationExpanded) {
+      setExpandedEdu(null);
+    } else {
+      setExpandedEdu(-1); // -1 表示全部展開
+    }
+    setAllEducationExpanded(!allEducationExpanded);
   };
 
   if (isLoading) {
@@ -43,7 +63,7 @@ const CV = () => {
     if (exp.brief && exp.details) {
       return (
         <div 
-          className={`experience-content ${expandedExp === index ? 'expanded' : ''}`}
+          className={`experience-content ${(expandedExp === index || expandedExp === -1) ? 'expanded' : ''}`}
           onClick={() => toggleExperience(index)}
         >
           <div className="experience-summary">
@@ -52,19 +72,19 @@ const CV = () => {
             <div className="experience-position">{exp.position}</div>
             <FontAwesomeIcon 
               icon={faChevronDown} 
-              className={`toggle-icon ${expandedExp === index ? 'expanded' : ''}`}
+              className={`toggle-icon ${(expandedExp === index || expandedExp === -1) ? 'expanded' : ''}`}
             />
           </div>
           <div className="experience-brief">
             <ul>
-              {exp.brief.map((item: string, idx: number) => (
-                <li key={idx}>{item}</li>
+              {exp.brief.map((item: string, _idx: number) => (
+                <li key={_idx}>{item}</li>
               ))}
             </ul>
           </div>
           <div className="experience-details">
             <ul>
-              {exp.details.map((item: string, idx: number) => (
+              {exp.details.map((item: string, _idx: number) => (
                 renderDetailItem(item)
               ))}
             </ul>
@@ -82,8 +102,8 @@ const CV = () => {
           <div className="experience-position">{exp.position}</div>
         </div>
         <ul className="experience-description">
-          {exp.description?.map((desc: string, idx: number) => (
-            <li key={idx}>{desc}</li>
+          {exp.description?.map((desc: string, _idx: number) => (
+            <li key={_idx}>{desc}</li>
           ))}
         </ul>
       </div>
@@ -120,7 +140,19 @@ const CV = () => {
       </section>
 
       <section className="cv-section">
-        <h2>{cvData.sections.experience}</h2>
+        <div className="section-header">
+          <h2>{cvData.sections.experience}</h2>
+          <button
+            className={`expand-all-button ${allExperiencesExpanded ? 'expanded' : ''}`}
+            onClick={toggleAllExperiences}
+          >
+            {allExperiencesExpanded ? '收合全部' : '展開全部'}
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              className={`toggle-icon ${allExperiencesExpanded ? 'expanded' : ''}`}
+            />
+          </button>
+        </div>
         <div className="experience-timeline">
           {experiences.map((exp, index) => (
             <div key={index} className="experience-item">
@@ -131,12 +163,24 @@ const CV = () => {
       </section>
 
       <section className="cv-section">
-        <h2>{cvData.sections.education}</h2>
+        <div className="section-header">
+          <h2>{cvData.sections.education}</h2>
+          <button
+            className={`expand-all-button ${allEducationExpanded ? 'expanded' : ''}`}
+            onClick={toggleAllEducation}
+          >
+            {allEducationExpanded ? '收合全部' : '展開全部'}
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              className={`toggle-icon ${allEducationExpanded ? 'expanded' : ''}`}
+            />
+          </button>
+        </div>
         <div className="education-grid">
           {education.map((edu, index) => (
             <div key={index} className="education-item">
-              <div 
-                className={`education-content ${expandedEdu === index ? 'expanded' : ''}`}
+              <div
+                className={`education-content ${(expandedEdu === index || expandedEdu === -1) ? 'expanded' : ''}`}
                 onClick={() => toggleEducation(index)}
               >
                 <div className="education-header">
