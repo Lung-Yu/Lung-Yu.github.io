@@ -65,6 +65,7 @@ function App() {
           <Route path="/" element={<NavigationBar />} />
           <Route path="/project/*" element={<NavigationBar />} />
           <Route path="/consulting/*" element={<NavigationBar />} />
+          <Route path="/cv" element={<NavigationBar />} />  {/* 新增這行 */}
         </Routes>
         <main className="flex-grow">
           <Routes>
