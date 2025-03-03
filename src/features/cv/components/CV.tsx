@@ -38,6 +38,27 @@ const CV = () => {
     setAllEducationExpanded(!allEducationExpanded);
   };
 
+  const calculateExperienceYears = (period: string): { years: number; months: number } => {
+    const [start, end] = period.split(' - ');
+    const startDate = new Date(start.replace('/', '-'));
+    const endDate = end === '現在' ? new Date() : new Date(end.replace('/', '-'));
+    
+    const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
+    const totalMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.44));
+    
+    return {
+      years: Math.floor(totalMonths / 12),
+      months: totalMonths % 12
+    };
+  };
+
+  const formatExperienceDuration = (duration: { years: number; months: number }): string => {
+    const { years, months } = duration;
+    if (years === 0) return `${months}個月`;
+    if (months === 0) return `${years}年`;
+    return `${years}年${months}個月`;
+  };
+
   if (isLoading) {
     return <div className="cv-container">Loading...</div>;
   }
@@ -57,6 +78,10 @@ const CV = () => {
   };
 
   const renderExperienceContent = (exp: any, index: number) => {
+    const duration = calculateExperienceYears(exp.period);
+    const durationText = formatExperienceDuration(duration);
+    const isCurrentJob = exp.period.includes('現在');
+
     if (exp.brief && exp.details) {
       return (
         <div 
@@ -64,9 +89,17 @@ const CV = () => {
           onClick={() => toggleExperience(index)}
         >
           <div className="experience-summary">
-            <div className="experience-date">{exp.period}</div>
-            <div className="experience-company">{exp.company}</div>
-            <div className="experience-position">{exp.position}</div>
+            <div className="experience-header">
+              <div className="experience-date">
+                {exp.period}
+                <span className="experience-duration">
+                  ({durationText})
+                  {isCurrentJob && <span className="current-job-badge">目前</span>}
+                </span>
+              </div>
+              <div className="experience-company">{exp.company}</div>
+              <div className="experience-position">{exp.position}</div>
+            </div>
             <FontAwesomeIcon 
               icon={faChevronDown} 
               className={`toggle-icon ${(expandedExp === index || expandedExp === -1) ? 'expanded' : ''}`}

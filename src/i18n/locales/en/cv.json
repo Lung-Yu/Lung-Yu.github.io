@@ -8,10 +8,6 @@
     "education": "Education",
     "conferences": "Conferences"
   },
-  "actions": {
-    "expandAll": "Expand All",
-    "collapseAll": "Collapse All"
-  },
   "skills": [
     {
       "category": "Cybersecurity Skills",
@@ -69,7 +65,7 @@
     {
       "company": "Digicentre Co., Ltd.",
       "position": "Deputy Manager of Software Development Security Department",
-      "period": "2023/04 - 2024/07",
+      "period": "2021/09 - 2024/07",
       "brief": [
         "DevSecOps Process Optimization",
         "Security Tools Integration"
