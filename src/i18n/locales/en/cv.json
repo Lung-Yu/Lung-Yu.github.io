@@ -74,12 +74,26 @@
       "company": "PwC Taiwan",
       "position": "Security Consultant",
       "period": "2020/09 - 2021/09",
-      "description": [
+      "brief": [
+        "Cybersecurity assessment and regulatory compliance for the financial and media industries",
+        "Security testing and remediation (VA/PT/malware analysis)"
+      ],
+      "details": [
         "Security testing and remediation (VA/PT/malware analysis)",
         "Internal control and IT management consulting",
         "Software security consulting",
-        "Development of automated analysis tools",
-        "Regulatory compliance review (financial institution cybersecurity regulations)"
+        "DAST vulnerability automatic statistics script (acunetix report)",
+        "Development of automated analysis tools (Windows security configuration analysis based on GCB, Linux security configuration analysis based on CIS standards)",
+        "Regulatory compliance review : ",
+        "- Financial institution management computer system information security assessment work method",
+        "- Computer Information Security Assessment",
+        "- Guidelines for Security Measures of Financial Institutions for Electronic Banking",
+        "- Financial institutions use IoT equipment for security control",
+        "- SWIFT Customer Security Controls Framework",
+        "- Financial Institutions provided Mobile Application best practices",
+        "- Financial Institutions operational measures in Emerging Technology",
+        "- Financial institutions provide QR Code scanning payment application security control specifications",
+        "- Open application programming interface business security control operation specification"
       ]
     }
   ],
