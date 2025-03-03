@@ -105,7 +105,7 @@ const CV = () => {
                     <i className="fas fa-calendar"></i>
                     {conf.date}
                   </span>
-                  {conf.venue && (
+                  {conf.venue && conf.venue !== '-' && (
                     <div className="conference-venue">
                       <i className="fas fa-location-dot"></i>
                       {conf.venue}

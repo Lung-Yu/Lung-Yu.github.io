@@ -104,17 +104,15 @@
   ],
   "conferences": [
     {
-      "title": "Agile Introduction of DevSecOps and Automated Security Testing",
+      "title": "DevSecOps + AI Automated Security Analysis Implementation",
       "date": "2025/04/17",
       "venue": "Nangang Exhibition Center",
-      "organizer": "CyberRes 2025 Taiwan Cybersecurity Conference",
-      "tags": ["DevSecOps", "Automated Security Testing", "Agile Development"]
+      "organizer": "CyberRes 2025 Taiwan Security Conference"
     },
     {
       "title": "Common Software and Enterprise Security Threat Analysis",
       "date": "2024/09/25",
-      "venue": "-",
-      "tags": ["Security Threats", "Enterprise Security", "Threat Analysis"]
+      "organizer": "OpenText & Digicentre Joint Technology Sharing Session"
     },
     {
       "title": "DevSecOps and AI: Challenges and Opportunities of a Double-Edged Sword",
@@ -133,14 +131,12 @@
     {
       "title": "Security Requirements That Need to be Addressed",
       "date": "2023/10/19",
-      "venue": "-",
       "organizer": "OpenText & Digicentre Joint Technology Sharing Session",
       "tags": ["Security Requirements", "Requirement Analysis", "Secure Development"]
     },
     {
       "title": "Stories of Auditors and Auditees",
       "date": "2023/09/15",
-      "venue": "-",
       "organizer": "BSI & KPMG & Digicentre Joint Technology Sharing Session",
       "tags": ["Security Audit", "Compliance", "Audit Experience"],
       "url": "https://www.ithome.com.tw/pr/159495"
@@ -156,15 +152,13 @@
     {
       "title": "Challenges of Enterprises Facing Secure Development",
       "date": "2023/04/12",
-      "venue": "-",
-      "organizer": "OpenText & 果核數位 聯合技術分享會",
+      "organizer": "OpenText & Digicentre Joint Technology Sharing Session",
       "tags": ["Enterprise Security", "Development Challenges", "Best Practices"],
       "url": "https://www.ithome.com.tw/pr/156836"
     },
     {
       "title": "Building Secure Software Starts with Effective Communication",
       "date": "2023/03/18",
-      "venue": "-",
       "organizer": "Digicentre Hacker Talk Forum",
       "tags": ["Team Communication", "Secure Development", "Cross-Department Collaboration"],
       "url": "https://www.ithome.com.tw/pr/156206"
