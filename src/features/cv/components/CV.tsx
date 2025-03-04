@@ -2,10 +2,62 @@ import { useCV } from '../hooks/useCV';
 import '../styles/CV.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
 const CV = () => {
-  const { cvData, isLoading } = useCV();
+  const { cvData, isLoading, t } = useCV();
+  const [expandedExp, setExpandedExp] = useState<number | null>(null);
+  const [expandedEdu, setExpandedEdu] = useState<number | null>(null);
+  const [allExperiencesExpanded, setAllExperiencesExpanded] = useState(false);
+  const [allEducationExpanded, setAllEducationExpanded] = useState(false);
+
+  const toggleExperience = (index: number) => {
+    setExpandedExp(expandedExp === index ? null : index);
+  };
+
+  const toggleEducation = (index: number) => {
+    setExpandedEdu(expandedEdu === index ? null : index);
+  };
+
+  const toggleAllExperiences = () => {
+    if (allExperiencesExpanded) {
+      setExpandedExp(null);
+    } else {
+      setExpandedExp(-1); // -1 表示全部展開
+    }
+    setAllExperiencesExpanded(!allExperiencesExpanded);
+  };
+
+  const toggleAllEducation = () => {
+    if (allEducationExpanded) {
+      setExpandedEdu(null);
+    } else {
+      setExpandedEdu(-1); // -1 表示全部展開
+    }
+    setAllEducationExpanded(!allEducationExpanded);
+  };
+
+  const calculateExperienceYears = (period: string): { years: number; months: number } => {
+    const [start, end] = period.split(' - ');
+    const startDate = new Date(start.replace('/', '-'));
+    const endDate = end === '現在' ? new Date() : new Date(end.replace('/', '-'));
+    
+    const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
+    const totalMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.44));
+    
+    return {
+      years: Math.floor(totalMonths / 12),
+      months: totalMonths % 12
+    };
+  };
+
+  const formatExperienceDuration = (duration: { years: number; months: number }): string => {
+    const { years, months } = duration;
+    if (years === 0) return `${months}個月`;
+    if (months === 0) return `${years}年`;
+    return `${years}年${months}個月`;
+  };
 
   if (isLoading) {
     return <div className="cv-container">Loading...</div>;
@@ -14,6 +66,79 @@ const CV = () => {
   const experiences = Array.isArray(cvData.experiences) ? cvData.experiences : [];
   const education = Array.isArray(cvData.education) ? cvData.education : [];
   const skills = Array.isArray(cvData.skills) ? cvData.skills : [];
+
+  const renderDetailItem = (item: string, index: number) => {
+    if (item.startsWith('- ')) {
+      return <li key={index} className="nested-item">{item.substring(2)}</li>;
+    } else if (item.endsWith(':')) {
+      return <li key={index} className="nested-header">{item}</li>;
+    } else {
+      return <li key={index}>{item}</li>;
+    }
+  };
+
+  const renderExperienceContent = (exp: any, index: number) => {
+    const duration = calculateExperienceYears(exp.period);
+    const durationText = formatExperienceDuration(duration);
+    const isCurrentJob = exp.period.includes('現在');
+
+    if (exp.brief && exp.details) {
+      return (
+        <div 
+          className={`experience-content ${(expandedExp === index || expandedExp === -1) ? 'expanded' : ''}`}
+          onClick={() => toggleExperience(index)}
+        >
+          <div className="experience-summary">
+            <div className="experience-header">
+              <div className="experience-date">
+                {exp.period}
+                <span className="experience-duration">
+                  ({durationText})
+                  {isCurrentJob && <span className="current-job-badge">目前</span>}
+                </span>
+              </div>
+              <div className="experience-company">{exp.company}</div>
+              <div className="experience-position">{exp.position}</div>
+            </div>
+            <FontAwesomeIcon 
+              icon={faChevronDown} 
+              className={`toggle-icon ${(expandedExp === index || expandedExp === -1) ? 'expanded' : ''}`}
+            />
+          </div>
+          <div className="experience-brief">
+            <ul>
+              {exp.brief.map((item: string, _idx: number) => (
+                <li key={_idx}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="experience-details">
+            <ul>
+              {exp.details.map((item: string, idx: number) => (
+                renderDetailItem(item, idx)
+              ))}
+            </ul>
+          </div>
+        </div>
+      );
+    }
+
+    // 處理舊格式的經歷資料
+    return (
+      <div className="experience-content">
+        <div className="experience-summary">
+          <div className="experience-date">{exp.period}</div>
+          <div className="experience-company">{exp.company}</div>
+          <div className="experience-position">{exp.position}</div>
+        </div>
+        <ul className="experience-description">
+          {exp.description?.map((desc: string, _idx: number) => (
+            <li key={_idx}>{desc}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
 
   return (
     <div className="cv-container">
@@ -45,37 +170,75 @@ const CV = () => {
       </section>
 
       <section className="cv-section">
-        <h2>{cvData.sections.experience}</h2>
-        {experiences.map((exp, index) => (
-          <div key={index} className="experience-item">
-            <h3>{exp.position} - {exp.company}</h3>
-            <div className="period">{exp.period}</div>
-            <ul>
-              {exp.description.map((desc, descIndex) => (
-                <li key={descIndex}>{desc}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <div className="section-header">
+          <h2>{cvData.sections.experience}</h2>
+          <button
+            className={`expand-all-button ${allExperiencesExpanded ? 'expanded' : ''}`}
+            onClick={toggleAllExperiences}
+          >
+            {allExperiencesExpanded ? t('actions.collapseAll') : t('actions.expandAll')}
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              className={`toggle-icon ${allExperiencesExpanded ? 'expanded' : ''}`}
+            />
+          </button>
+        </div>
+        <div className="experience-timeline">
+          {experiences.map((exp, index) => (
+            <div key={index} className="experience-item">
+              {renderExperienceContent(exp, index)}
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="cv-section">
-        <h2>{cvData.sections.education}</h2>
-        {education.map((edu, index) => (
-          <div key={index} className="education-item">
-            <h3>{edu.school}</h3>
-            <div className="period">
-              {edu.degree} - {edu.major} ({edu.period})
+        <div className="section-header">
+          <h2>{cvData.sections.education}</h2>
+          <button
+            className={`expand-all-button ${allEducationExpanded ? 'expanded' : ''}`}
+            onClick={toggleAllEducation}
+          >
+            {allEducationExpanded ? t('actions.collapseAll') : t('actions.expandAll')}
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              className={`toggle-icon ${allEducationExpanded ? 'expanded' : ''}`}
+            />
+          </button>
+        </div>
+        <div className="education-grid">
+          {education.map((edu, index) => (
+            <div key={index} className="education-item">
+              <div
+                className={`education-content ${(expandedEdu === index || expandedEdu === -1) ? 'expanded' : ''}`}
+                onClick={() => toggleEducation(index)}
+              >
+                <div className="education-header">
+                  <div className="education-school">{edu.school}</div>
+                  <div className="education-degree">
+                    {edu.degree} - {edu.major}
+                  </div>
+                  <div className="education-period">{edu.period}</div>
+                  {edu.description && (
+                    <FontAwesomeIcon 
+                      icon={faChevronDown} 
+                      className={`toggle-icon ${expandedEdu === index ? 'expanded' : ''}`}
+                    />
+                  )}
+                </div>
+                {edu.description && (
+                  <div className="education-details">
+                    <ul className="education-description">
+                      {edu.description.map((desc, descIndex) => (
+                        <li key={descIndex}>{desc}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
-            {edu.description && (
-              <ul className="education-description">
-                {edu.description.map((desc, descIndex) => (
-                  <li key={descIndex}>{desc}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
 
       {cvData.conferences && (

@@ -33,6 +33,7 @@ export const useCV = () => {
 
   return { 
     cvData,
-    isLoading: !ready 
+    isLoading: !ready,
+    t  // 新增回傳 t 函數
   };
 };

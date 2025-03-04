@@ -46,35 +46,75 @@
       "company": "Digicentre Co., Ltd.",
       "position": "Deputy Manager of Technical Development Department II",
       "period": "2024/08 - Present",
-      "description": [
-        "Leading software project development",
-        "Software architecture security assessment",
-        "Consulting services for secure code improvement"
+      "brief": [
+        "Product Owner & Technical Leadership",
+        "Secure Development Standards"
+      ],
+      "details": [
+        "Product Development:",
+        "- Product Owner role",
+        "- Project scheduling and requirement management",
+        "- Cross-department coordination",
+        "Secure Development:",
+        "- Establish secure development standards",
+        "- Conduct architecture security assessments",
+        "- Implement automated security testing",
+        "- Provide secure code improvement guidance"
       ]
     },
     {
       "company": "Digicentre Co., Ltd.",
       "position": "Deputy Manager of Software Development Security Department",
-      "period": "2023/04 - 2024/07",
-      "description": [
-        "Leading and managing software project development",
-        "Challenges in secure development faced by enterprises (2023/04/12 speech)",
-        "Journey to upgrade enterprise secure development processes (2023/05/09 speech)",
-        "Stories of auditors and auditees (2023/09/15 speech)",
-        "Security requirements we need to know (2023/10/19 speech)",
-        "2023 Gama Star Award (2024/01/26)"
+      "period": "2021/09 - 2024/07",
+      "brief": [
+        "DevSecOps Process Optimization",
+        "Security Tools Integration"
+      ],
+      "details": [
+        "DevSecOps Implementation:",
+        "- Fortify SCA tool integration",
+        "- Automated scanning process",
+        "- Secure development workflow",
+        "Technical Promotion:",
+        "- Secure code consulting",
+        "- Training program planning",
+        "- DevSecOps platform development",
+        "Achievement:",
+        "- 2023 Gama Star Award (2024/01/26)"
       ]
     },
     {
       "company": "PwC Taiwan",
       "position": "Security Consultant",
       "period": "2020/09 - 2021/09",
-      "description": [
-        "Security testing and remediation (VA/PT/malware analysis)",
-        "Internal control and IT management consulting",
-        "Software security consulting",
-        "Development of automated analysis tools",
-        "Regulatory compliance review (financial institution cybersecurity regulations)"
+      "brief": [
+        "Financial sector security assessment",
+        "Enterprise security testing"
+      ],
+      "details": [
+        "Security Testing:",
+        "- Vulnerability Assessment",
+        "- Penetration Testing ",
+        "- Malware Analysis",
+        "Automation Tools:",
+        "- DAST vulnerability statistics script",
+        "- Windows security config analysis (GCB standards)",
+        "- Linux security config analysis (CIS standards)",
+        "Security Consulting:",
+        "- Internal control establishment",
+        "- IT management consulting",
+        "- Software security consulting",
+        "Financial Regulatory Compliance Audit:",
+        "- Information Security Assessment Method for Computer Systems of Financial Institutions",
+        "- Computer System Security Assessment Standards",
+        "- Security Control Operations Standards for Financial Institutions Handling Electronic Banking Business",
+        "- Security Control Specifications for Financial Institutions Using IoT Devices",
+        "- SWIFT Security Standards",
+        "- Operational Specifications for Financial Institutions Providing Mobile Device Applications",
+        "- Operational Specifications for Financial Institutions Using Emerging Technologies",
+        "- Security Control Specifications for Financial Institutions Providing QR Code Payment Applications",
+        "- Security Control Operations Standards for Open API Business",
+        "- OWASP Mobile checklist L2"
       ]
     }
   ],
@@ -89,7 +129,7 @@
         "Baby cry detection and recognition system",
         "License plate recognition development and performance tuning on Android APP",
         "Paper form text recognition development on Android APP",
-        "CVGIP 2017"
+        "CVGIP 2017 Conference System"
       ]
     },
     {
@@ -98,7 +138,10 @@
       "period": "2012 - 2016",
       "major": "Department of Computer Science and Information Engineering",
       "description": [
-        "National College Smart Electronics Integration Talent Cultivation Competition 3C-3C Electronic Creativity Group Excellence Award"
+        "National College Smart Electronics Integration Talent Cultivation Competition 3C-3C Electronic Creativity Group Excellence Award",
+        "iBeacon indoor positioning technology transfer project",
+        "Advertising wall advertisement management system development",
+        "ASUS Cloud File Management System"
       ]
     }
   ],
