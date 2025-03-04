@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import '../styles/App.css';
 import { CertificateList } from '../../certificates';
 import { ProjectList, ProjectDetail } from '../../projects';
