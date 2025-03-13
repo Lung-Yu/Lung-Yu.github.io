@@ -5,6 +5,11 @@ import CertificateModal from './CertificateModal';
 import '../styles/Certificates.css';
 import { useTranslation } from 'react-i18next';
 
+const getImageUrl = (url: string) => {
+  const timestamp = new Date().getTime();
+  return `${url}?v=${timestamp}`;
+};
+
 const CertificateList = () => {
   const { t } = useTranslation('certificates');
   const { certificates, categories } = useCertificates();
@@ -33,7 +38,7 @@ const CertificateList = () => {
       <div className="gallery">
         {filteredCertificates.map((certificate, index) => (
           <div className="certificate" key={index} onClick={() => setSelectedCertificate(certificate)}>
-            <img src={certificate.image} alt={certificate.title} className="certificate-image" />
+            <img src={getImageUrl(certificate.image)} alt={certificate.title} className="certificate-image" />
             <div className="certificate-info">
               <h3>{certificate.title}</h3>
               <p>{certificate.description}</p>
