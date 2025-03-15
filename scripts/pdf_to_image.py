@@ -18,8 +18,8 @@ def pdf_to_image(pdf_path, output_folder, output_format='png', watermark_text=No
             # 取得圖片尺寸
             width, height = image.size
             
-            # 計算文字大小目標 - 目標是讓文字寬度佔圖片寬度的25%~40%
-            target_text_width_percentage = 0.35  # 設定為35% (在25%~40%範圍內)
+            # 計算文字大小目標 - 目標是讓文字寬度佔圖片寬度的65%
+            target_text_width_percentage = 0.80  # 從35%提升至65%
             target_width = width * target_text_width_percentage
             
             # 使用二分搜尋法找出合適的字體大小
@@ -149,7 +149,7 @@ def pdf_to_image(pdf_path, output_folder, output_format='png', watermark_text=No
             bright_red = (255, 0, 0, 255)  # 鮮紅色，完全不透明
             
             # 調整粗體效果的偏移量根據字體大小按比例縮放
-            offset_scale = max(1, best_font_size // 20)
+            offset_scale = max(1, best_font_size // 50)  # 保持原有的粗細度計算
             
             # 在透明圖層上繪製粗體文字
             for offset in range(offset_scale):
@@ -162,15 +162,15 @@ def pdf_to_image(pdf_path, output_folder, output_format='png', watermark_text=No
             txt_draw.text((center_x, center_y), watermark_text, font=font, fill=bright_red)
             
             # 將文字圖層旋轉45度
-            rotated_txt = txt_layer.rotate(45, expand=1, resample=Image.BICUBIC)
+            rotated_txt = txt_layer.rotate(-45, expand=1, resample=Image.BICUBIC)
             
             # 調整旋轉後圖層大小，以便居中合成到原始圖像
             rotated_width, rotated_height = rotated_txt.size
-            paste_x = (width - rotated_width) // 2
-            paste_y = (height - rotated_height) // 2
             
-            # 創建一個新的圖層用於平鋪旋轉後的浮水印
-            pattern_layer = Image.new('RGBA', (width * 3, height * 3), (0, 0, 0, 0))
+            # 創建一個更大的圖層用於增加文字間距的平鋪
+            # 增大倍數，從原來的3x3改為5x5來增加文字間距
+            pattern_scale = 5  # 增加此值來增大文字間距
+            pattern_layer = Image.new('RGBA', (width * pattern_scale, height * pattern_scale), (0, 0, 0, 0))
             
             # 將旋轉的文字在中心位置貼上
             pattern_layer.paste(rotated_txt, (pattern_layer.width // 2 - rotated_width // 2, 
