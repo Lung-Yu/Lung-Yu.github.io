@@ -137,46 +137,54 @@ def pdf_to_image(pdf_path, output_folder, output_format='png', watermark_text=No
             text_width_ratio = textwidth / width * 100
             print(f"浮水印文字寬度: {textwidth}px, 佔圖寬比例: {text_width_ratio:.1f}%")
             
-            # 計算斜對角位置 - 只在對角線上繪製浮水印
-            # 計算文字間距，以確保在對角線上有適當數量的文字
-            num_watermarks = 1  # 對角線上的浮水印數量
+            # 創建一個透明圖層用於45度旋轉文字
+            txt_layer = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+            txt_draw = ImageDraw.Draw(txt_layer)
             
-            # 計算對角線長度
-            diagonal_length = math.sqrt(width**2 + height**2)
+            # 計算圖片中心 - 放置主要浮水印
+            center_x = width // 2 - textwidth // 2
+            center_y = height // 2 - textheight // 2
             
-            # 根據對角線長度和浮水印數量計算間隔
-            spacing = diagonal_length / (num_watermarks + 1)
+            # 繪製紅色粗體文字到透明圖層上
+            bright_red = (255, 0, 0, 255)  # 鮮紅色，完全不透明
             
-            # 計算對角線角度 (從左上到右下)
-            angle = math.atan2(height, width)
+            # 調整粗體效果的偏移量根據字體大小按比例縮放
+            offset_scale = max(1, best_font_size // 20)
             
-            # 繪製斜對角浮水印
-            bright_red = (255, 0, 0)  # 鮮紅色
+            # 在透明圖層上繪製粗體文字
+            for offset in range(offset_scale):
+                txt_draw.text((center_x-offset, center_y), watermark_text, font=font, fill=bright_red)
+                txt_draw.text((center_x+offset, center_y), watermark_text, font=font, fill=bright_red)
+                txt_draw.text((center_x, center_y-offset), watermark_text, font=font, fill=bright_red)
+                txt_draw.text((center_x, center_y+offset), watermark_text, font=font, fill=bright_red)
             
-            for j in range(1, num_watermarks + 1):
-                # 計算對角線上的位置
-                diagonal_pos = j * spacing
-                
-                # 轉換為x, y坐標
-                x = int(diagonal_pos * math.cos(angle)) - textwidth // 2
-                y = int(diagonal_pos * math.sin(angle)) - textheight // 2
-                
-                # 確保坐標在圖片內
-                x = max(10, min(x, width - textwidth - 10))
-                y = max(10, min(y, height - textheight - 10))
-                
-                # 調整粗體效果的偏移量根據字體大小按比例縮放
-                offset_scale = max(1, best_font_size // 20)  # 根據字體大小調整偏移量
-                
-                # 增強粗體效果 - 多次疊加相近位置的文字
-                for offset in range(offset_scale):
-                    draw.text((x-offset, y), watermark_text, font=font, fill=bright_red)
-                    draw.text((x+offset, y), watermark_text, font=font, fill=bright_red)
-                    draw.text((x, y-offset), watermark_text, font=font, fill=bright_red)
-                    draw.text((x, y+offset), watermark_text, font=font, fill=bright_red)
-                
-                # 最後繪製中心位置的文字
-                draw.text((x, y), watermark_text, font=font, fill=bright_red)
+            # 最後繪製中心位置的文字
+            txt_draw.text((center_x, center_y), watermark_text, font=font, fill=bright_red)
+            
+            # 將文字圖層旋轉45度
+            rotated_txt = txt_layer.rotate(45, expand=1, resample=Image.BICUBIC)
+            
+            # 調整旋轉後圖層大小，以便居中合成到原始圖像
+            rotated_width, rotated_height = rotated_txt.size
+            paste_x = (width - rotated_width) // 2
+            paste_y = (height - rotated_height) // 2
+            
+            # 創建一個新的圖層用於平鋪旋轉後的浮水印
+            pattern_layer = Image.new('RGBA', (width * 3, height * 3), (0, 0, 0, 0))
+            
+            # 將旋轉的文字在中心位置貼上
+            pattern_layer.paste(rotated_txt, (pattern_layer.width // 2 - rotated_width // 2, 
+                                             pattern_layer.height // 2 - rotated_height // 2), 
+                               rotated_txt)
+            
+            # 裁剪回原始大小，但保留居中的浮水印
+            crop_x = pattern_layer.width // 2 - width // 2
+            crop_y = pattern_layer.height // 2 - height // 2
+            final_watermark = pattern_layer.crop((crop_x, crop_y, crop_x + width, crop_y + height))
+            
+            # 將最終的浮水印圖層合成到原始圖像
+            image = image.convert('RGBA') if image.mode != 'RGBA' else image.copy()
+            image.paste(final_watermark, (0, 0), final_watermark)
         
         output_path = os.path.join(output_folder, f'page_{i + 1}.{output_format}')
         if output_format == 'jpg':
