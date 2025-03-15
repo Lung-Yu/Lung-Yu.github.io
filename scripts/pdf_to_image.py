@@ -3,6 +3,10 @@ from pdf2image import convert_from_path
 from PIL import Image, ImageDraw, ImageFont
 import math
 
+# 全局參數設定
+WATERMARK_OPACITY = 75  # 浮水印不透明度百分比 (0-100)
+TEXT_WIDTH_PERCENTAGE = 0.80  # 文字寬度佔圖像寬度的百分比
+
 def pdf_to_image(pdf_path, output_folder, output_format='png', watermark_text=None):
     if output_format not in ['png', 'jpg']:
         raise ValueError("Output format must be 'png' or 'jpg'")
@@ -18,9 +22,8 @@ def pdf_to_image(pdf_path, output_folder, output_format='png', watermark_text=No
             # 取得圖片尺寸
             width, height = image.size
             
-            # 計算文字大小目標 - 目標是讓文字寬度佔圖片寬度的65%
-            target_text_width_percentage = 0.80  # 從35%提升至65%
-            target_width = width * target_text_width_percentage
+            # 計算文字大小目標 - 使用全局參數設定
+            target_width = width * TEXT_WIDTH_PERCENTAGE
             
             # 使用二分搜尋法找出合適的字體大小
             font_size_min = 10
@@ -117,7 +120,7 @@ def pdf_to_image(pdf_path, output_folder, output_format='png', watermark_text=No
                 # 使用找到的最佳字體
                 if best_font:
                     font = best_font
-                    print(f"找到最佳字體大小: {best_font_size} (目標文字寬度比例: {target_text_width_percentage*100:.1f}%)")
+                    print(f"找到最佳字體大小: {best_font_size} (目標文字寬度比例: {TEXT_WIDTH_PERCENTAGE*100:.1f}%)")
                 elif font_name:
                     font = ImageFont.truetype(font_name, min(80, font_size_max))
                 elif font_path:
@@ -145,8 +148,11 @@ def pdf_to_image(pdf_path, output_folder, output_format='png', watermark_text=No
             center_x = width // 2 - textwidth // 2
             center_y = height // 2 - textheight // 2
             
-            # 繪製紅色粗體文字到透明圖層上
-            bright_red = (255, 0, 0, 255)  # 鮮紅色，完全不透明
+            # 繪製半透明紅色文字到透明圖層上
+            # 使用全局不透明度參數計算Alpha值 (0-255)
+            alpha = int(255 * WATERMARK_OPACITY / 100)  # 將百分比轉換為Alpha通道值
+            bright_red = (255, 0, 0, alpha)  # 鮮紅色，設定的不透明度
+            print(f"浮水印不透明度: {WATERMARK_OPACITY}%, Alpha值: {alpha}")
             
             # 調整粗體效果的偏移量根據字體大小按比例縮放
             offset_scale = max(1, best_font_size // 50)  # 保持原有的粗細度計算
