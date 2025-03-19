@@ -28,7 +28,7 @@
       {
         "title": "navigation.cv",
         "href": "/cv",
-        "isExact": false
+        "isExact": true
       }
     ]
 }
