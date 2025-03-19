@@ -1,0 +1,22 @@
+{
+  "title": "專業技能",
+  "description": "我的技術專長與專業領域",
+  "categories": {
+    "security": {
+      "title": "資訊安全",
+      "description": "安全評估與防護"
+    },
+    "development": {
+      "title": "軟體開發",
+      "description": "全端開發技能"
+    },
+    "devops": {
+      "title": "DevOps",
+      "description": "自動化與部署"
+    }
+  },
+  "certifications": {
+    "title": "專業認證",
+    "viewAll": "查看全部"
+  }
+}
