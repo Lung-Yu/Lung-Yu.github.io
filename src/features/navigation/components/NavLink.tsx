@@ -27,7 +27,10 @@ const NavLink: React.FC<NavLinkProps> = ({ item, onNavClick }) => {
     <a
       href={item.href}
       className="nav-link"
-      onClick={() => onNavClick(item.href)}
+      onClick={(e) => {
+        e.preventDefault();
+        onNavClick(item.href);
+      }}
     >
       {t(item.title)}
     </a>
