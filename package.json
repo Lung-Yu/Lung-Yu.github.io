@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "node scripts/updateBuildTime.js && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",

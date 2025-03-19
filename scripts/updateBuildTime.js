@@ -1,10 +1,12 @@
-const fs = require('fs');
-const path = require('path');
+import { writeFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
-const buildTime = new Date().toISOString().replace(/[-:]/g, '_').split('.')[0];
-const content = `export const BUILD_TIME = '${buildTime}';`;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-fs.writeFileSync(
-  path.join(__dirname, '../src/config/constants.ts'),
-  content
-);
+const buildTime = new Date().toISOString();
+const configPath = join(__dirname, '../src/config/buildTime.ts');
+
+const content = `export const BUILD_TIME = '${buildTime}';\n`;
+writeFileSync(configPath, content, 'utf-8');
