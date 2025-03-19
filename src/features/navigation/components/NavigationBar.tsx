@@ -36,16 +36,13 @@ const NavigationBar = () => {
           </button>
 
           <div className={`nav-menu ${isNavOpen ? 'active' : ''}`}>
-            {menuItems.filter(item => item.title !== 'navigation.cv').map(item => (
+            {menuItems.map(item => (
               <NavLink 
                 key={item.title} 
                 item={item} 
                 onNavClick={handleNavClick} 
               />
             ))}
-            <Link to="/cv" className="nav-link" onClick={() => setIsNavOpen(false)}>
-              {t('navigation.cv')}
-            </Link>
           </div>
           <LanguageSwitcher />
         </div>

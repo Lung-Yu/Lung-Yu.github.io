@@ -7,6 +7,7 @@ import { ConsultingList, ConsultingDetail } from '../../consultant';
 import { NavigationBar } from '../../navigation';
 import { Hero } from '../../hero';
 import { CV } from '../../cv';
+import { Skills } from '../../skills';
 import { Modal } from '../../../shared/components/modal';
 
 const scrollToSection = (elementId: string) => {
@@ -38,6 +39,9 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <Hero />
+      <section id="skills" className="section-padding scroll-mt-20">
+        <Skills />
+      </section>
       <section id="projects" className="section-padding scroll-mt-20">
         <ProjectList />
       </section>
