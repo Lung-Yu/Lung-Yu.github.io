@@ -39,13 +39,6 @@ const Skills = () => {
             </div>
           ))}
         </div>
-
-        <div className="certifications-section">
-          <h3>{t('certifications.title')}</h3>
-          <a href="#certificates" className="view-certificates-link">
-            {t('certifications.viewAll')}
-          </a>
-        </div>
       </div>
     </section>
   );
