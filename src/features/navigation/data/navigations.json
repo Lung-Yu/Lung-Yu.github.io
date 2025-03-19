@@ -2,8 +2,8 @@
     "menuItems": [
       {
         "title": "navigation.home",
-        "href": "/",
-        "isExact": true
+        "href": "#home",
+        "isExact": false
       },
       {
         "title": "navigation.skills",
@@ -21,14 +21,9 @@
         "isExact": false
       },
       {
-        "title": "navigation.contact",
-        "href": "#contact",
-        "isExact": false
-      },
-      {
         "title": "navigation.cv",
         "href": "/cv",
-        "isExact": false
+        "isExact": true
       }
     ]
 }
