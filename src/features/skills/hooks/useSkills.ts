@@ -21,28 +21,28 @@ export const useSkills = () => {
     },
     items: {
       security: [
-        "滲透測試與漏洞掃描",
-        "資安事件應變處理",
-        "安全軟體開發生命週期",
-        "資安架構規劃與評估",
-        "法規遵循與稽核"
+        t('items.security.pentest'),
+        t('items.security.incident'),
+        t('items.security.sdlc'),
+        t('items.security.architecture'),
+        t('items.security.compliance')
       ],
       development: [
-        "前端技術: React, TypeScript, JavaScript",
-        "後端技術: Node.js, Python, Java",
-        "資料庫設計與最佳化",
-        "RESTful API 設計",
-        "系統架構規劃"
+        t('items.development.frontend'),
+        t('items.development.backend'),
+        t('items.development.database'),
+        t('items.development.api'),
+        t('items.development.architecture')
       ],
       devops: [
-        "CI/CD Pipeline 建置",
-        "容器化技術 Docker & K8s",
-        "自動化測試與部署",
-        "雲端服務整合",
-        "監控與日誌管理"
+        t('items.devops.cicd'),
+        t('items.devops.container'),
+        t('items.devops.automation'),
+        t('items.devops.cloud'),
+        t('items.devops.monitoring')
       ]
     }
-  };
+  } as SkillsData;
 
   return { skills };
 };

@@ -15,6 +15,29 @@
       "description": "Automation and Deployment"
     }
   },
+  "items": {
+    "security": {
+      "pentest": "Penetration Testing & Vulnerability Scanning",
+      "incident": "Security Incident Response",
+      "sdlc": "Secure Software Development Lifecycle",
+      "architecture": "Security Architecture Planning & Assessment",
+      "compliance": "Regulatory Compliance & Auditing"
+    },
+    "development": {
+      "frontend": "Frontend: React, TypeScript, JavaScript",
+      "backend": "Backend: Node.js, Python, Java",
+      "database": "Database Design & Optimization",
+      "api": "RESTful API Design",
+      "architecture": "System Architecture Planning"
+    },
+    "devops": {
+      "cicd": "CI/CD Pipeline Implementation",
+      "container": "Container Technologies: Docker & K8s",
+      "automation": "Automated Testing & Deployment",
+      "cloud": "Cloud Services Integration",
+      "monitoring": "Monitoring & Log Management"
+    }
+  },
   "certifications": {
     "title": "Certifications",
     "viewAll": "View All"

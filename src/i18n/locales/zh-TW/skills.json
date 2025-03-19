@@ -4,15 +4,38 @@
   "categories": {
     "security": {
       "title": "資訊安全",
-      "description": "安全評估與防護"
+      "description": "安全防護與風險管理"
     },
     "development": {
       "title": "軟體開發",
-      "description": "全端開發技能"
+      "description": "全端開發與系統架構"
     },
     "devops": {
       "title": "DevOps",
-      "description": "自動化與部署"
+      "description": "持續整合與部署"
+    }
+  },
+  "items": {
+    "security": {
+      "pentest": "滲透測試與漏洞掃描",
+      "incident": "資安事件應變處理",
+      "sdlc": "安全軟體開發生命週期",
+      "architecture": "資安架構規劃與評估",
+      "compliance": "法規遵循與稽核"
+    },
+    "development": {
+      "frontend": "前端技術: React, TypeScript, JavaScript",
+      "backend": "後端技術: Node.js, Python, Java",
+      "database": "資料庫設計與最佳化",
+      "api": "RESTful API 設計",
+      "architecture": "系統架構規劃"
+    },
+    "devops": {
+      "cicd": "CI/CD Pipeline 建置",
+      "container": "容器化技術 Docker & K8s",
+      "automation": "自動化測試與部署",
+      "cloud": "雲端服務整合",
+      "monitoring": "監控與日誌管理"
     }
   },
   "certifications": {
