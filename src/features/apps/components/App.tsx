@@ -38,7 +38,9 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <Hero />
+      <section id="home" className="section-padding scroll-mt-20">
+        <Hero />
+      </section>
       <section id="skills" className="section-padding scroll-mt-20">
         <Skills />
       </section>
