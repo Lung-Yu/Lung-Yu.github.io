@@ -4,6 +4,8 @@ import { useProjects } from '../hooks/useProjects';
 import { Modal } from '../../../shared/components/modal';
 import { useTranslation } from 'react-i18next';
 import '../styles/ProjectDetail.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const ProjectDetail = () => {
   const { projectPath } = useParams();
@@ -138,29 +140,32 @@ const ProjectDetail = () => {
                     </button>
                   ))}
                 </div>
-                {project.demoSteps && project.demoSteps[currentDemoStep] && (
+                {project.demoSteps[currentDemoStep] && (
                   <div className="demo-content">
                     <img
-                      src={project.demoSteps[currentDemoStep].image}
-                      alt={t(`projects:details.${project.demoSteps[currentDemoStep].title}`, {
-                        defaultValue: project.demoSteps[currentDemoStep].title
+                      src={project.demoSteps[currentDemoStep]?.image}
+                      alt={t(`projects:details.${project.demoSteps[currentDemoStep]?.title}`, {
+                        defaultValue: project.demoSteps[currentDemoStep]?.title || ''
                       })}
-                      onClick={() => openModal(project.demoSteps[currentDemoStep].image)}
+                      onClick={() => project.demoSteps?.[currentDemoStep]?.image && 
+                        openModal(project.demoSteps[currentDemoStep].image)}
                     />
-                    <p>{t(`projects:details.${project.demoSteps[currentDemoStep].description}`, {
-                      defaultValue: project.demoSteps[currentDemoStep].description
+                    <p>{t(`projects:details.${project.demoSteps[currentDemoStep]?.description}`, {
+                      defaultValue: project.demoSteps[currentDemoStep]?.description || ''
                     })}</p>
                   </div>
                 )}
                 <div className="demo-navigation-buttons">
                   {currentDemoStep > 0 && (
                     <button onClick={() => setCurrentDemoStep(prev => prev - 1)}>
+                      <FontAwesomeIcon icon={faChevronLeft} />
                       {t('projects:details.previous')}
                     </button>
                   )}
                   {project.demoSteps && currentDemoStep < project.demoSteps.length - 1 && (
                     <button onClick={() => setCurrentDemoStep(prev => prev + 1)}>
                       {t('projects:details.next')}
+                      <FontAwesomeIcon icon={faChevronRight} />
                     </button>
                   )}
                 </div>
