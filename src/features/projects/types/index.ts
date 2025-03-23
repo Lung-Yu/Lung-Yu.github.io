@@ -1,17 +1,44 @@
+interface Highlight {
+    title: string;
+    description: string;
+    icon: string;
+}
+
+interface DemoStep {
+    title: string;
+    description: string;
+    image: string;
+}
+
+interface Installation {
+    steps: string[];
+}
+
+interface Configuration {
+    [section: string]: {
+        [key: string]: string;
+    };
+}
+
 export interface Project {
     id: number;
     title: string;
     description: string;
     image: string;
     tags: string[];
-    github?: string; // 改為選填
-    demo?: string;  // 改為選填
-    detailPath: string; // 新增詳細頁面路徑
-    gallery?: string[]; // 新增圖片集
-    videos?: string[]; // 新增影片集
-    startDate: string; // 新增開始日期屬性
-    endDate: string; // 新增結束日期屬性
+    github?: string;
+    demo?: string;
+    detailPath: string;
+    gallery?: string[];
+    videos?: string[];
+    startDate: string;
+    endDate: string;
     featured?: boolean;
     archived?: boolean;
-    type: 'webApp' | 'security' | 'automation';  // 新增專案類型
+    type: 'webApp' | 'security' | 'automation';
+    highlights?: Highlight[];
+    features?: string[];
+    demoSteps?: DemoStep[];
+    installation?: Installation;
+    configuration?: Configuration;
 }

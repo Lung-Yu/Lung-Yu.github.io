@@ -77,7 +77,7 @@
       "id": 4,
       "title": "File Monitor 目錄監控系統",
       "description": "一套系統目錄監控工具，用於偵測未經授權的檔案修改，能即時發現可能的資安事件，適合監控線上系統是否遭受駭客入侵或惡意更改。",
-      "image": "/images/default-images.jpg",
+      "image": "/images/projects/file_monitor/main.png",
       "tags": [
         "資安監控",
         "系統防護",
@@ -87,11 +87,47 @@
       "github": "https://github.com/Lung-Yu/File-Monitor",
       "detailPath": "file-monitor",
       "gallery": [
-        "/images/default-images.jpg"
+        "/images/projects/file_monitor/main.png",
+        "/images/projects/file_monitor/config.png",
+        "/images/projects/file_monitor/execution.png"
+      ],
+      "highlights": [
+        {
+          "title": "即時監控",
+          "description": "自動監控目錄和檔案變化，立即發現異常",
+          "icon": "monitor"
+        },
+        {
+          "title": "通知機制",
+          "description": "透過電子郵件即時通知管理者異常狀況",
+          "icon": "mail"
+        },
+        {
+          "title": "彈性配置",
+          "description": "可自訂監控範圍、通知設定與顯示方式",
+          "icon": "settings"
+        }
+      ],
+      "demoSteps": [
+        {
+          "title": "設定檔準備",
+          "description": "複製 default_config.xml 為 config.xml，並放置於執行檔目錄",
+          "image": "/images/projects/file_monitor/config.png"
+        },
+        {
+          "title": "初始化系統",
+          "description": "首次執行會建立檔案索引，作為後續比對基準",
+          "image": "/images/projects/file_monitor/execution.png"
+        },
+        {
+          "title": "開始監控",
+          "description": "系統自動執行並於發現異常時發送通知",
+          "image": "/images/projects/file_monitor/main.png"
+        }
       ],
       "startDate": "2020-01-01",
       "endDate": "2020-10-01",
-      "type": "webApp"
+      "type": "security"
     },
     {
       "id": 5,

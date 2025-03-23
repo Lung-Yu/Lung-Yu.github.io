@@ -16,5 +16,24 @@
         "collapseAll": "Collapse All",
         "showMore": "Show More",
         "showLess": "Show Less"
+    },
+    "highlights": "Highlights",
+    "features": "Features",
+    "demonstration": "Demonstration",
+    "installation": "Installation",
+    "configuration": "Configuration",
+    "details": {
+        "mailServer": "Mail Server Settings",
+        "monitorSettings": "Monitor Settings",
+        "step": "Step {{number}}",
+        "next": "Next",
+        "previous": "Previous"
+    },
+    "sections": {
+        "projectImages": "Project Images",
+        "projectDates": "Project Timeline",
+        "startDate": "Start Date",
+        "endDate": "End Date",
+        "ongoing": "Ongoing"
     }
 }

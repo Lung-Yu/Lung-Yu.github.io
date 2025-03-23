@@ -104,6 +104,71 @@
     color: var(--secondary-color);
 }
 
+.project-highlights {
+    margin: 2rem 0;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.highlight-card {
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-demo {
+    margin: 2rem 0;
+}
+
+.demo-steps {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.demo-navigation {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.step-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    color: var(--text-color);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.step-button.active {
+    border-bottom-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.demo-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.demo-content img {
+    max-width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .project-detail h1 {
         font-size: 2rem;
