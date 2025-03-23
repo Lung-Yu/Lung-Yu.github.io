@@ -11,4 +11,7 @@ export interface Project {
     videos?: string[]; // 新增影片集
     startDate: string; // 新增開始日期屬性
     endDate: string; // 新增結束日期屬性
+    featured?: boolean;
+    archived?: boolean;
+    type: 'webApp' | 'security' | 'automation';  // 新增專案類型
 }

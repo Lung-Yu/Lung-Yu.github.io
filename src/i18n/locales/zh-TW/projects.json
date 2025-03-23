@@ -8,14 +8,13 @@
     "security": "資安工具",
     "automation": "自動化工具"
   },
-  "projectCard": {
-    "viewProject": "查看專案",
-    "sourceCode": "原始碼",
-    "liveDemo": "線上展示"
-  },
-  "categories": {
-    "featured": "精選專案",
-    "recent": "最新作品",
-    "archived": "歷史專案"
+  "actions": {
+    "viewGithub": "查看 GitHub",
+    "viewDemo": "查看展示",
+    "viewDetails": "查看詳情",
+    "expandAll": "展開全部",
+    "collapseAll": "收合全部",
+    "showMore": "顯示更多",
+    "showLess": "顯示較少"
   }
 }

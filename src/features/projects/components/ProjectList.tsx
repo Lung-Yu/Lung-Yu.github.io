@@ -11,9 +11,17 @@ import { useTranslation } from 'react-i18next';
 const ProjectList: React.FC = () => {
   const { t } = useTranslation(['projects', 'projectsData']);
   const [showAll, setShowAll] = useState(false);
+  const [currentFilter, setCurrentFilter] = useState<string>('all');
   const { projects } = useProjects();
   const initialDisplayCount = 6;
-  const displayedProjects = showAll ? projects : projects.slice(0, initialDisplayCount);
+
+  const filteredProjects = projects.filter(project => {
+    return currentFilter === 'all' ? true : project.type === currentFilter;
+  });
+
+  const displayedProjects = showAll 
+    ? filteredProjects 
+    : filteredProjects.slice(0, initialDisplayCount);
 
   return (
     <section className="projects" id="projects">
@@ -21,6 +29,18 @@ const ProjectList: React.FC = () => {
         <div className="projects-header">
           <h2>{t('title')}</h2>
           <p>{t('description')}</p>
+          
+          <div className="projects-filters">
+            {Object.keys(t('filters', { returnObjects: true })).map((filter) => (
+              <button
+                key={filter}
+                className={`filter-btn ${currentFilter === filter ? 'active' : ''}`}
+                onClick={() => setCurrentFilter(filter)}
+              >
+                {t(`filters.${filter}`)}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="projects-grid">
@@ -86,7 +106,7 @@ const ProjectList: React.FC = () => {
               className="show-more-button"
               onClick={() => setShowAll(!showAll)}
             >
-              {showAll ? t('projectCard.showLess') : t('projectCard.showMore')}
+              {showAll ? t('actions.showLess') : t('actions.showMore')}
               <FontAwesomeIcon icon={showAll ? faChevronUp : faChevronDown} />
             </button>
           </div>

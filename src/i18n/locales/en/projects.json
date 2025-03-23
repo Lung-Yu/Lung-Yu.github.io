@@ -8,14 +8,13 @@
         "security": "Security Tools",
         "automation": "Automation Tools"
     },
-    "projectCard": {
-        "viewProject": "View Project",
-        "sourceCode": "Source Code",
-        "liveDemo": "Live Demo"
-    },
-    "categories": {
-        "featured": "Featured Projects",
-        "recent": "Recent Works",
-        "archived": "Archived Projects"
+    "actions": {
+        "viewGithub": "View GitHub",
+        "viewDemo": "View Demo",
+        "viewDetails": "View Details",
+        "expandAll": "Expand All",
+        "collapseAll": "Collapse All",
+        "showMore": "Show More",
+        "showLess": "Show Less"
     }
 }
