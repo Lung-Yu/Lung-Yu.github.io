@@ -28,7 +28,8 @@
         "/images/projects/11_weather_seed/prototype.jpg"
       ],
       "startDate": "2015-02-01",
-      "endDate": "2015-07-30"
+      "endDate": "2015-07-30",
+      "type": "webApp"
     },
     {
       "id": 2,
@@ -48,7 +49,8 @@
         "/images/projects/10_i_watch_man/系統硬體建置圖.png"
       ],
       "startDate": "2014-01-01",
-      "endDate": "2014-10-01"
+      "endDate": "2014-10-01",
+      "type": "webApp"
     },
     {
       "id": 3,
@@ -68,13 +70,14 @@
         "/images/projects/20_Auto-fill_web_form_tool/rawdata.png"
       ],
       "startDate": "2019-08-01",
-      "endDate": "2019-9-30"
+      "endDate": "2019-9-30",
+      "type": "webApp"
     },
     {
       "id": 4,
       "title": "File Monitor 目錄監控系統",
       "description": "一套系統目錄監控工具，用於偵測未經授權的檔案修改，能即時發現可能的資安事件，適合監控線上系統是否遭受駭客入侵或惡意更改。",
-      "image": "/images/default-images.jpg",
+      "image": "/images/projects/file_monitor/main.png",
       "tags": [
         "資安監控",
         "系統防護",
@@ -84,10 +87,154 @@
       "github": "https://github.com/Lung-Yu/File-Monitor",
       "detailPath": "file-monitor",
       "gallery": [
-        "/images/default-images.jpg"
+        "/images/projects/file_monitor/main.png",
+        "/images/projects/file_monitor/config.png",
+        "/images/projects/file_monitor/execution.png"
+      ],
+      "highlights": [
+        {
+          "title": "即時監控",
+          "description": "自動監控目錄和檔案變化，立即發現異常",
+          "icon": "monitor"
+        },
+        {
+          "title": "通知機制",
+          "description": "透過電子郵件即時通知管理者異常狀況",
+          "icon": "mail"
+        },
+        {
+          "title": "彈性配置",
+          "description": "可自訂監控範圍、通知設定與顯示方式",
+          "icon": "settings"
+        }
+      ],
+      "demoSteps": [
+        {
+          "title": "設定檔準備",
+          "description": "複製 default_config.xml 為 config.xml，並放置於執行檔目錄",
+          "image": "/images/projects/file_monitor/config.png"
+        },
+        {
+          "title": "初始化系統",
+          "description": "首次執行會建立檔案索引，作為後續比對基準",
+          "image": "/images/projects/file_monitor/execution.png"
+        },
+        {
+          "title": "開始監控",
+          "description": "系統自動執行並於發現異常時發送通知",
+          "image": "/images/projects/file_monitor/main.png"
+        }
       ],
       "startDate": "2020-01-01",
-      "endDate": "2020-10-01"
+      "endDate": "2020-10-01",
+      "type": "security"
+    },
+    {
+      "id": 5,
+      "title": "智慧校園門禁系統",
+      "description": "開發基於 RFID 與臉部辨識的混合式門禁系統，整合 AI 人臉辨識技術，提供多重身份驗證機制，並具備即時監控與異常警報功能。",
+      "image": "/images/projects/30_smart_access/system.jpg",
+      "tags": [
+        "RFID",
+        "臉部辨識",
+        "IoT",
+        "安全控制"
+      ],
+      "detailPath": "smart-campus-access",
+      "gallery": [
+        "/images/projects/30_smart_access/system.jpg",
+        "/images/projects/30_smart_access/dashboard.jpg",
+        "/images/projects/30_smart_access/recognition.jpg"
+      ],
+      "startDate": "2021-03-01",
+      "endDate": "2021-12-31",
+      "type": "webApp"
+    },
+    {
+      "id": 6,
+      "title": "區塊鏈投票系統",
+      "description": "使用以太坊智能合約開發的去中心化投票系統，確保投票過程的透明度和安全性，支援多重投票方案且具備防止重複投票機制。",
+      "image": "/images/projects/40_blockchain_vote/architecture.png",
+      "tags": [
+        "區塊鏈",
+        "以太坊",
+        "智能合約",
+        "DApp"
+      ],
+      "github": "https://github.com/yourusername/blockchain-voting",
+      "detailPath": "blockchain-voting",
+      "gallery": [
+        "/images/projects/40_blockchain_vote/architecture.png",
+        "/images/projects/40_blockchain_vote/vote.png",
+        "/images/projects/40_blockchain_vote/result.png"
+      ],
+      "startDate": "2022-01-15",
+      "endDate": "2022-06-30",
+      "type": "webApp"
+    },
+    {
+      "id": 7,
+      "title": "即時網路流量分析系統",
+      "description": "開發基於機器學習的網路流量分析系統，能夠即時偵測異常流量模式，並透過視覺化介面呈現網路使用狀況，協助管理者快速應對潛在威脅。",
+      "image": "/images/projects/50_network_analysis/dashboard.png",
+      "tags": [
+        "機器學習",
+        "網路安全",
+        "即時分析",
+        "資安監控"
+      ],
+      "detailPath": "network-traffic-analysis",
+      "gallery": [
+        "/images/projects/50_network_analysis/dashboard.png",
+        "/images/projects/50_network_analysis/alert.png",
+        "/images/projects/50_network_analysis/report.png"
+      ],
+      "startDate": "2022-08-01",
+      "endDate": "2023-02-28",
+      "type": "webApp"
+    },
+    {
+      "id": 8,
+      "title": "Docker 容器管理平台",
+      "description": "自主開發的容器管理平台，提供友善的使用者介面來管理 Docker 容器，支援自動部署、監控和擴展功能，適合中小型團隊使用。",
+      "image": "/images/projects/60_docker_platform/main.png",
+      "tags": [
+        "Docker",
+        "DevOps",
+        "容器管理",
+        "自動化部署"
+      ],
+      "github": "https://github.com/yourusername/docker-management",
+      "detailPath": "docker-management",
+      "gallery": [
+        "/images/projects/60_docker_platform/main.png",
+        "/images/projects/60_docker_platform/monitoring.png",
+        "/images/projects/60_docker_platform/deployment.png"
+      ],
+      "startDate": "2023-03-01",
+      "endDate": "2023-09-30",
+      "type": "webApp"
+    },
+    {
+      "id": 9,
+      "title": "資安事件回應平台",
+      "description": "開發整合式的資安事件回應平台，具備事件追蹤、證據收集、威脅情資分析等功能，協助資安團隊快速處理和分析安全事件。",
+      "image": "/images/projects/70_incident_response/dashboard.png",
+      "tags": [
+        "資安事件回應",
+        "威脅分析",
+        "資安管理",
+        "事件追蹤"
+      ],
+      "detailPath": "security-incident-response",
+      "gallery": [
+        "/images/projects/70_incident_response/dashboard.png",
+        "/images/projects/70_incident_response/analysis.png",
+        "/images/projects/70_incident_response/report.png"
+      ],
+      "startDate": "2023-10-01",
+      "endDate": "2024-02-28",
+      "type": "webApp"
     }
   ]
 }

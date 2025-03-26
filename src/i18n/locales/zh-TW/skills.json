@@ -41,5 +41,9 @@
   "certifications": {
     "title": "專業認證",
     "viewAll": "查看全部"
+  },
+  "skillTree": {
+    "title": "技能樹",
+    "description": "互動式技能樹展示"
   }
 }

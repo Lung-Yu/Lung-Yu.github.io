@@ -8,14 +8,32 @@
     "security": "資安工具",
     "automation": "自動化工具"
   },
-  "projectCard": {
-    "viewProject": "查看專案",
-    "sourceCode": "原始碼",
-    "liveDemo": "線上展示"
+  "actions": {
+    "viewGithub": "查看 GitHub",
+    "viewDemo": "查看展示",
+    "viewDetails": "查看詳情",
+    "expandAll": "展開全部",
+    "collapseAll": "收合全部",
+    "showMore": "顯示更多",
+    "showLess": "顯示較少"
   },
-  "categories": {
-    "featured": "精選專案",
-    "recent": "最新作品",
-    "archived": "歷史專案"
+  "highlights": "重點特色",
+  "features": "功能特點",
+  "demonstration": "使用示範",
+  "installation": "安裝說明",
+  "configuration": "配置說明",
+  "details": {
+    "mailServer": "郵件伺服器設定",
+    "monitorSettings": "監控設定",
+    "step": "步驟 {{number}}",
+    "next": "下一步",
+    "previous": "上一步"
+  },
+  "sections": {
+    "projectImages": "相關圖片",
+    "projectDates": "專案期間",
+    "startDate": "開始日期",
+    "endDate": "結束日期",
+    "ongoing": "進行中"
   }
 }
