@@ -47,7 +47,7 @@
   ],
   "experiences": [
     {
-      "company": "Digicentre Co., Ltd.",
+      "company": "Cloudforce Co., Ltd.",
       "position": "Deputy Manager of Technical Development Department II",
       "period": "2024/08 - Present",
       "brief": [
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "company": "Digicentre Co., Ltd.",
+      "company": "Cloudforce Co., Ltd.",
       "position": "Deputy Manager of Software Development Security Department",
       "period": "2021/09 - 2024/07",
       "brief": [
@@ -159,7 +159,7 @@
     {
       "title": "Common Software and Enterprise Security Threat Analysis",
       "date": "2024/09/25",
-      "organizer": "OpenText & Digicentre Joint Technology Sharing Session"
+      "organizer": "OpenText & Cloudforce Joint Technology Sharing Session"
     },
     {
       "title": "DevSecOps and AI: Challenges and Opportunities of a Double-Edged Sword",
@@ -186,7 +186,7 @@
     {
       "title": "Security Requirements That Need to be Addressed",
       "date": "2023/10/19",
-      "organizer": "OpenText & Digicentre Joint Technology Sharing Session",
+      "organizer": "OpenText & Cloudforce Joint Technology Sharing Session",
       "tags": [
         "Security Requirements",
         "Requirement Analysis",
@@ -196,7 +196,7 @@
     {
       "title": "Stories of Auditors and Auditees",
       "date": "2023/09/15",
-      "organizer": "BSI & KPMG & Digicentre Joint Technology Sharing Session",
+      "organizer": "BSI & KPMG & Cloudforce Joint Technology Sharing Session",
       "tags": [
         "Security Audit",
         "Compliance",
@@ -219,7 +219,7 @@
     {
       "title": "Challenges of Enterprises Facing Secure Development",
       "date": "2023/04/12",
-      "organizer": "OpenText & Digicentre Joint Technology Sharing Session",
+      "organizer": "OpenText & Cloudforce Joint Technology Sharing Session",
       "tags": [
         "Enterprise Security",
         "Development Challenges",
@@ -230,7 +230,7 @@
     {
       "title": "Building Secure Software Starts with Effective Communication",
       "date": "2023/03/18",
-      "organizer": "Digicentre Hacker Talk Forum",
+      "organizer": "Cloudforce Hacker Talk Forum",
       "tags": [
         "Team Communication",
         "Secure Development",
