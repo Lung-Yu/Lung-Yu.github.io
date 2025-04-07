@@ -153,7 +153,7 @@
   ],
   "conferences": [
     {
-      "title": "DevSecOps + AI Automated Security Analysis Implementation",
+      "title": "Agile Adoption of DevSecOps and Automated Security Testing",
       "date": "2025/04/17",
       "venue": "Nangang Exhibition Center",
       "organizer": "CyberRes 2025 Taiwan Security Conference"
@@ -188,7 +188,7 @@
     {
       "title": "Security Requirements That Need to be Addressed",
       "date": "2023/10/19",
-      "organizer": "OpenText & Cloudforce Joint Technology Sharing Session",
+      "organizer": "OpenText & Digicentre Joint Technology Sharing Session",
       "tags": [
         "Security Requirements",
         "Requirement Analysis",
@@ -198,7 +198,7 @@
     {
       "title": "Stories of Auditors and Auditees",
       "date": "2023/09/15",
-      "organizer": "BSI & KPMG & Cloudforce Joint Technology Sharing Session",
+      "organizer": "BSI & KPMG & Digicentre Joint Technology Sharing Session",
       "tags": [
         "Security Audit",
         "Compliance",
@@ -221,7 +221,7 @@
     {
       "title": "Challenges of Enterprises Facing Secure Development",
       "date": "2023/04/12",
-      "organizer": "OpenText & Cloudforce Joint Technology Sharing Session",
+      "organizer": "OpenText & Digicentre Joint Technology Sharing Session",
       "tags": [
         "Enterprise Security",
         "Development Challenges",
@@ -232,7 +232,7 @@
     {
       "title": "Building Secure Software Starts with Effective Communication",
       "date": "2023/03/18",
-      "organizer": "Cloudforce Hacker Talk Forum",
+      "organizer": "Digicentre Hacker Talk Forum",
       "tags": [
         "Team Communication",
         "Secure Development",

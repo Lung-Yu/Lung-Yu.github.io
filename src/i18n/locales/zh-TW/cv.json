@@ -153,7 +153,7 @@
   ],
   "conferences": [
     {
-      "title": "DevSecOps + AI 自動化資安分析實作",
+      "title": "DevSecOps 和自動化安全檢測的敏捷導入",
       "date": "2025/04/17",
       "venue": "南港展覽館",
       "organizer": "CyberRes 2025 臺灣資安大會",
@@ -162,7 +162,7 @@
     {
       "title": "常見之軟體與企業的安全威脅分析",
       "date": "2024/09/25",
-      "organizer": "OpenText & 雲力橘子 聯合技術分享會",
+      "organizer": "OpenText & 果核數位 聯合技術分享會",
       "tags": ["安全威脅", "企業安全", "威脅分析"]
     },
     {
@@ -182,13 +182,13 @@
     {
       "title": "那些沒有被說出口的資安需求",
       "date": "2023/10/19",
-      "organizer": "OpenText & 雲力橘子 聯合技術分享會",
+      "organizer": "OpenText & 果核數位 聯合技術分享會",
       "tags": ["安全需求", "需求分析", "安全開發"]
     },
     {
       "title": "稽核與被稽核的那些事",
       "date": "2023/09/15",
-      "organizer": "BSI & KPMG & 雲力橘子 聯合技術分享會",
+      "organizer": "BSI & KPMG & 果核數位 聯合技術分享會",
       "tags": ["安全稽核", "合規", "稽核經驗"],
       "url": "https://www.ithome.com.tw/pr/159495"
     },
@@ -203,14 +203,14 @@
     {
       "title": "企業面臨的安全開發挑戰",
       "date": "2023/04/12",
-      "organizer": "OpenText & 雲力橘子 聯合技術分享會",
+      "organizer": "OpenText & 果核數位 聯合技術分享會",
       "tags": ["企業安全", "開發挑戰", "最佳實踐"],
       "url": "https://www.ithome.com.tw/pr/156836"
     },
     {
       "title": "開發與資安的合作之路從互相理解開始",
       "date": "2023/03/18",
-      "organizer": "雲力橘子 Hacker Talk 論壇",
+      "organizer": "果核數位 Hacker Talk 論壇",
       "tags": ["團隊溝通", "安全開發", "跨部門合作"],
       "url": "https://www.ithome.com.tw/pr/156206"
     }
