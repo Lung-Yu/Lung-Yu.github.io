@@ -97,7 +97,14 @@ const CV = () => {
                   {isCurrentJob && <span className="current-job-badge">目前</span>}
                 </span>
               </div>
-              <div className="experience-company">{exp.company}</div>
+              <div className="experience-company">
+                {exp.company}
+                {exp.companyNote && (
+                  <span className="company-note">
+                    {exp.companyNote}
+                  </span>
+                )}
+              </div>
               <div className="experience-position">{exp.position}</div>
             </div>
             <FontAwesomeIcon 

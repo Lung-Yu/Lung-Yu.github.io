@@ -14,6 +14,7 @@ export interface CVData {
   }>;
   experiences: Array<{
     company: string;
+    companyNote?: string;  // 新增此欄位
     position: string;
     period: string;
     description: string[];
