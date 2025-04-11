@@ -15,7 +15,7 @@ Check Website Sections and Language Selector
 3. Click the language selector and select Traditional Chinese (TW)
 4. Verify the language has changed by checking some translated content on the page.
 5. Screenshot to prove the test results are successful.
-   - Save the screenshot in the `reports` directory of this project.
+   - Save the screenshot in the `tests-reports` directory of this project.
    - Include the script command used for execution in the `README.md` file.
 
 ## Expected Results
