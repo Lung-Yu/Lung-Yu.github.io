@@ -1,7 +1,7 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
-  testDir: './playwright-report',
+  testDir: './tests',
   projects: [
     {
       name: 'chromium',
