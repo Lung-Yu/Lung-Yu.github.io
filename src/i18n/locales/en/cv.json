@@ -49,8 +49,29 @@
     {
       "company": "Cloudforce Co., Ltd.",
       "companyNote": "formerly Digicentre, a subsidiary of Gamania Group",
+      "position": "Technical Manager of Technical Development Department II",
+      "period": "2025/04 - Present",
+      "brief": [
+        "Product Owner & Technical Leadership",
+        "Secure Development Standards"
+      ],
+      "details": [
+        "Product Development:",
+        "- Product Owner role",
+        "- Project scheduling and requirement management",
+        "- Cross-department coordination",
+        "Secure Development:",
+        "- Establish secure development standards",
+        "- Conduct architecture security assessments",
+        "- Implement automated security testing",
+        "- Provide secure code improvement guidance"
+      ]
+    },
+    {
+      "company": "Cloudforce Co., Ltd.",
+      "companyNote": "formerly Digicentre, a subsidiary of Gamania Group",
       "position": "Deputy Manager of Technical Development Department II",
-      "period": "2024/08 - Present",
+      "period": "2024/08 - 2025/03",
       "brief": [
         "Product Owner & Technical Leadership",
         "Secure Development Standards"
