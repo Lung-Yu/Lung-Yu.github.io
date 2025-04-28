@@ -175,7 +175,13 @@
       "title": "Agile Adoption of DevSecOps and Automated Security Testing",
       "date": "2025/04/17",
       "venue": "Nangang Exhibition Center",
-      "organizer": "CyberRes 2025 Taiwan Security Conference"
+      "organizer": "CyberRes 2025 Taiwan Security Conference",
+      "tags": [
+        "DevSecOps",
+        "Automated Security Testing",
+        "Agile Development"
+      ],
+      "url": "https://cybersec.ithome.com.tw/2025/session-page/3607"
     },
     {
       "title": "Common Software and Enterprise Security Threat Analysis",

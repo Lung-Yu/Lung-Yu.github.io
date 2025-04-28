@@ -176,7 +176,8 @@
       "date": "2025/04/17",
       "venue": "南港展覽館",
       "organizer": "CyberRes 2025 臺灣資安大會",
-      "tags": ["DevSecOps", "自動化安全檢測", "敏捷開發"]
+      "tags": ["DevSecOps", "自動化安全檢測", "敏捷開發"],
+      "url": "https://cybersec.ithome.com.tw/2025/session-page/3607"
     },
     {
       "title": "常見之軟體與企業的安全威脅分析",
