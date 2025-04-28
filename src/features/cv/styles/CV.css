@@ -160,7 +160,7 @@
   padding-left: 2rem;
 }
 
-/* 垂直時間軸線 - 美化版 */
+/* 垂直時間軸線 - 漸變效果 */
 .experience-company-positions::before {
   content: '';
   position: absolute;
