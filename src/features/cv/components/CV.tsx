@@ -77,6 +77,26 @@ const CV = () => {
     }
   };
 
+  // Group experiences by company, preserving order
+  const groupExperiencesByCompany = (experiences: any[]) => {
+    const companyMap: { [company: string]: any[] } = {};
+    const companyOrder: string[] = [];
+    experiences.forEach(exp => {
+      if (!companyMap[exp.company]) {
+        companyMap[exp.company] = [];
+        companyOrder.push(exp.company);
+      }
+      companyMap[exp.company].push(exp);
+    });
+    return companyOrder.map(company => ({
+      company,
+      companyNote: companyMap[company][0].companyNote,
+      positions: companyMap[company],
+    }));
+  };
+
+  const groupedExperiences = groupExperiencesByCompany(experiences);
+
   const renderExperienceContent = (exp: any, index: number) => {
     const duration = calculateExperienceYears(exp.period);
     const durationText = formatExperienceDuration(duration);
@@ -96,14 +116,6 @@ const CV = () => {
                   ({durationText})
                   {isCurrentJob && <span className="current-job-badge">目前</span>}
                 </span>
-              </div>
-              <div className="experience-company">
-                {exp.company}
-                {exp.companyNote && (
-                  <span className="company-note">
-                    {exp.companyNote}
-                  </span>
-                )}
               </div>
               <div className="experience-position">{exp.position}</div>
             </div>
@@ -191,9 +203,21 @@ const CV = () => {
           </button>
         </div>
         <div className="experience-timeline">
-          {experiences.map((exp, index) => (
-            <div key={index} className="experience-item">
-              {renderExperienceContent(exp, index)}
+          {groupedExperiences.map((group, groupIdx) => (
+            <div key={group.company} className="experience-company-block">
+              <div className="experience-company-header">
+                <span className="experience-company-name">{group.company}</span>
+                {group.companyNote && (
+                  <span className="company-note">{group.companyNote}</span>
+                )}
+              </div>
+              <div className="experience-company-positions">
+                {group.positions.map((exp, idx) => (
+                  <div key={idx} className="experience-item">
+                    {renderExperienceContent(exp, experiences.indexOf(exp))}
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
