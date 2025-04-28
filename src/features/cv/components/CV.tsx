@@ -2,6 +2,7 @@ import { useCV } from '../hooks/useCV';
 import '../styles/CV.css';
 import '../styles/experience-details.css';
 import '../styles/section-controls.css';
+import '../styles/company-duration.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt, faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -58,9 +59,19 @@ const CV = () => {
 
   const formatExperienceDuration = (duration: { years: number; months: number }): string => {
     const { years, months } = duration;
-    if (years === 0) return `${months}個月`;
-    if (months === 0) return `${years}年`;
-    return `${years}年${months}個月`;
+    // 判斷當前語言的簡單方法：檢查 cvData 中的標題，如果包含中文就是中文界面
+    const isEnglish = cvData.title.includes('Full-Stack');
+    
+    if (isEnglish) {
+      if (years === 0) return `${months} ${months === 1 ? 'month' : 'months'}`;
+      if (months === 0) return `${years} ${years === 1 ? 'year' : 'years'}`;
+      return `${years} ${years === 1 ? 'year' : 'years'} ${months} ${months === 1 ? 'month' : 'months'}`;
+    } else {
+      // 中文顯示
+      if (years === 0) return `${months}個月`;
+      if (months === 0) return `${years}年`;
+      return `${years}年${months}個月`;
+    }
   };
 
   if (isLoading) {
@@ -122,7 +133,41 @@ const CV = () => {
       company,
       companyNote: companyMap[company][0].companyNote,
       positions: companyMap[company],
+      totalDuration: calculateTotalCompanyDuration(companyMap[company])  // 新增：計算公司總時長
     }));
+  };
+
+  // 計算同一公司多個職位的總工作時間
+  const calculateTotalCompanyDuration = (positions: any[]): { years: number; months: number } => {
+    if (positions.length === 1) {
+      return calculateExperienceYears(positions[0].period);
+    }
+
+    let earliestDate: string | null = null;
+    let latestDate: string | null = null;
+
+    positions.forEach(position => {
+      const [start, end] = position.period.split(' - ');
+      
+      if (!earliestDate || new Date(start.replace('/', '-')) < new Date(earliestDate.replace('/', '-'))) {
+        earliestDate = start;
+      }
+      
+      const isCurrentPosition = end === '現在';
+      if (!latestDate || isCurrentPosition || 
+         (end !== '現在' && new Date(end.replace('/', '-')) > new Date(latestDate.replace('/', '-')))) {
+        latestDate = end;
+      }
+    });
+
+    if (earliestDate && latestDate) {
+      // 使用已有的函數來計算總時長
+      return calculateExperienceYears(`${earliestDate} - ${latestDate}`);
+    }
+    
+    return { years: 0, months: 0 };
+
+    return { years: 0, months: 0 };
   };
 
   const groupedExperiences = groupExperiencesByCompany(experiences);
@@ -314,10 +359,17 @@ const CV = () => {
           {groupedExperiences.map((group) => (
             <div key={group.company} className="experience-company-block">
               <div className="experience-company-header">
-                <span className="experience-company-name">{group.company}</span>
-                {group.companyNote && (
-                  <span className="company-note">{group.companyNote}</span>
-                )}
+                <div className="company-title-wrapper">
+                  <span className="experience-company-name">{group.company}</span>
+                  {group.totalDuration && (
+                    <span className="company-total-duration">
+                      {formatExperienceDuration(group.totalDuration)}
+                    </span>
+                  )}
+                  {group.companyNote && (
+                    <span className="company-note">{group.companyNote}</span>
+                  )}
+                </div>
               </div>
               <div className="experience-company-positions">
                 {group.positions.map((exp, idx) => (
