@@ -46,7 +46,10 @@ const CV = () => {
   const calculateExperienceYears = (period: string): { years: number; months: number } => {
     const [start, end] = period.split(' - ');
     const startDate = new Date(start.replace('/', '-'));
-    const endDate = end === '現在' ? new Date() : new Date(end.replace('/', '-'));
+    
+    // 處理多語系的「現在」或「Present」
+    const isCurrentDate = end === '現在' || end === 'Present';
+    const endDate = isCurrentDate ? new Date() : new Date(end.replace('/', '-'));
     
     const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
     const totalMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.44));
