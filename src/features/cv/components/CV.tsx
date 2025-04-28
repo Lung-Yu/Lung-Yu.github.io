@@ -1,5 +1,6 @@
 import { useCV } from '../hooks/useCV';
 import '../styles/CV.css';
+import '../styles/experience-details.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt, faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -69,11 +70,14 @@ const CV = () => {
 
   const renderDetailItem = (item: string, index: number) => {
     if (item.startsWith('- ')) {
+      // 標準巢狀項目
       return <li key={index} className="nested-item">{item.substring(2)}</li>;
     } else if (item.endsWith(':')) {
-      return <li key={index} className="nested-header">{item}</li>;
+      // 項目標題
+      return <h4 key={index} className="detail-section-title">{item}</h4>;
     } else {
-      return <li key={index}>{item}</li>;
+      // 主要項目
+      return <li key={index} className="main-item">{item}</li>;
     }
   };
 
@@ -132,11 +136,11 @@ const CV = () => {
             </ul>
           </div>
           <div className="experience-details">
-            <ul>
+            <div className="detail-sections">
               {exp.details.map((item: string, idx: number) => (
                 renderDetailItem(item, idx)
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       );
@@ -203,7 +207,7 @@ const CV = () => {
           </button>
         </div>
         <div className="experience-timeline">
-          {groupedExperiences.map((group, groupIdx) => (
+          {groupedExperiences.map((group) => (
             <div key={group.company} className="experience-company-block">
               <div className="experience-company-header">
                 <span className="experience-company-name">{group.company}</span>
