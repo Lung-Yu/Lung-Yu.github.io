@@ -1,5 +1,8 @@
 import { useCV } from '../hooks/useCV';
 import '../styles/CV.css';
+import '../styles/experience-details.css';
+import '../styles/section-controls.css';
+import '../styles/company-duration.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt, faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +14,8 @@ const CV = () => {
   const [expandedEdu, setExpandedEdu] = useState<number | null>(null);
   const [allExperiencesExpanded, setAllExperiencesExpanded] = useState(false);
   const [allEducationExpanded, setAllEducationExpanded] = useState(false);
+  // 新增：用於存儲已展開的類別區域
+  const [expandedSections, setExpandedSections] = useState<{[key: string]: boolean}>({});
 
   const toggleExperience = (index: number) => {
     setExpandedExp(expandedExp === index ? null : index);
@@ -41,7 +46,10 @@ const CV = () => {
   const calculateExperienceYears = (period: string): { years: number; months: number } => {
     const [start, end] = period.split(' - ');
     const startDate = new Date(start.replace('/', '-'));
-    const endDate = end === '現在' ? new Date() : new Date(end.replace('/', '-'));
+    
+    // 處理多語系的「現在」或「Present」
+    const isCurrentDate = end === '現在' || end === 'Present';
+    const endDate = isCurrentDate ? new Date() : new Date(end.replace('/', '-'));
     
     const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
     const totalMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.44));
@@ -54,9 +62,19 @@ const CV = () => {
 
   const formatExperienceDuration = (duration: { years: number; months: number }): string => {
     const { years, months } = duration;
-    if (years === 0) return `${months}個月`;
-    if (months === 0) return `${years}年`;
-    return `${years}年${months}個月`;
+    // 判斷當前語言的簡單方法：檢查 cvData 中的標題，如果包含中文就是中文界面
+    const isEnglish = cvData.title.includes('Full-Stack');
+    
+    if (isEnglish) {
+      if (years === 0) return `${months} ${months === 1 ? 'month' : 'months'}`;
+      if (months === 0) return `${years} ${years === 1 ? 'year' : 'years'}`;
+      return `${years} ${years === 1 ? 'year' : 'years'} ${months} ${months === 1 ? 'month' : 'months'}`;
+    } else {
+      // 中文顯示
+      if (years === 0) return `${months}個月`;
+      if (months === 0) return `${years}年`;
+      return `${years}年${months}個月`;
+    }
   };
 
   if (isLoading) {
@@ -67,15 +85,95 @@ const CV = () => {
   const education = Array.isArray(cvData.education) ? cvData.education : [];
   const skills = Array.isArray(cvData.skills) ? cvData.skills : [];
 
+  // 更智能的详细信息处理，包含分组功能
+  const processDetailItems = (details: string[]) => {
+    const sections: { title: string; items: string[] }[] = [];
+    let currentSection: { title: string; items: string[] } = { title: '', items: [] };
+    
+    details.forEach(item => {
+      if (item.endsWith(':')) {
+        // 新的分类标题
+        if (currentSection.title) {
+          sections.push({ ...currentSection });
+        }
+        currentSection = { title: item, items: [] };
+      } else {
+        // 添加到当前分类
+        currentSection.items.push(item);
+      }
+    });
+    
+    // 添加最后一个分类
+    if (currentSection.title || currentSection.items.length > 0) {
+      sections.push(currentSection);
+    }
+    
+    return sections;
+  };
+
   const renderDetailItem = (item: string, index: number) => {
     if (item.startsWith('- ')) {
+      // 標準巢狀項目
       return <li key={index} className="nested-item">{item.substring(2)}</li>;
-    } else if (item.endsWith(':')) {
-      return <li key={index} className="nested-header">{item}</li>;
     } else {
-      return <li key={index}>{item}</li>;
+      // 主要項目
+      return <li key={index} className="main-item">{item}</li>;
     }
   };
+
+  // Group experiences by company, preserving order
+  const groupExperiencesByCompany = (experiences: any[]) => {
+    const companyMap: { [company: string]: any[] } = {};
+    const companyOrder: string[] = [];
+    experiences.forEach(exp => {
+      if (!companyMap[exp.company]) {
+        companyMap[exp.company] = [];
+        companyOrder.push(exp.company);
+      }
+      companyMap[exp.company].push(exp);
+    });
+    return companyOrder.map(company => ({
+      company,
+      companyNote: companyMap[company][0].companyNote,
+      positions: companyMap[company],
+      totalDuration: calculateTotalCompanyDuration(companyMap[company])  // 新增：計算公司總時長
+    }));
+  };
+
+  // 計算同一公司多個職位的總工作時間
+  const calculateTotalCompanyDuration = (positions: any[]): { years: number; months: number } => {
+    if (positions.length === 1) {
+      return calculateExperienceYears(positions[0].period);
+    }
+
+    let earliestDate: string | null = null;
+    let latestDate: string | null = null;
+
+    positions.forEach(position => {
+      const [start, end] = position.period.split(' - ');
+      
+      if (!earliestDate || new Date(start.replace('/', '-')) < new Date(earliestDate.replace('/', '-'))) {
+        earliestDate = start;
+      }
+      
+      const isCurrentPosition = end === '現在';
+      if (!latestDate || isCurrentPosition || 
+         (end !== '現在' && new Date(end.replace('/', '-')) > new Date(latestDate.replace('/', '-')))) {
+        latestDate = end;
+      }
+    });
+
+    if (earliestDate && latestDate) {
+      // 使用已有的函數來計算總時長
+      return calculateExperienceYears(`${earliestDate} - ${latestDate}`);
+    }
+    
+    return { years: 0, months: 0 };
+
+    return { years: 0, months: 0 };
+  };
+
+  const groupedExperiences = groupExperiencesByCompany(experiences);
 
   const renderExperienceContent = (exp: any, index: number) => {
     const duration = calculateExperienceYears(exp.period);
@@ -97,14 +195,6 @@ const CV = () => {
                   {isCurrentJob && <span className="current-job-badge">目前</span>}
                 </span>
               </div>
-              <div className="experience-company">
-                {exp.company}
-                {exp.companyNote && (
-                  <span className="company-note">
-                    {exp.companyNote}
-                  </span>
-                )}
-              </div>
               <div className="experience-position">{exp.position}</div>
             </div>
             <FontAwesomeIcon 
@@ -120,11 +210,65 @@ const CV = () => {
             </ul>
           </div>
           <div className="experience-details">
-            <ul>
-              {exp.details.map((item: string, idx: number) => (
-                renderDetailItem(item, idx)
-              ))}
-            </ul>
+            <div className="detail-sections">
+              {processDetailItems(exp.details).map((section, sectionIndex) => {
+                const expIndex = experiences.indexOf(exp);
+                const isExpanded = section.title ? isSectionExpanded(expIndex, section.title) : true;
+                
+                return (
+                  <div key={sectionIndex} className="detail-section">
+                    {section.title && (
+                      <div 
+                        className={`detail-section-header ${isExpanded ? 'expanded' : ''}`}
+                        onClick={(e) => {
+                          e.stopPropagation(); // 防止觸發父元素的點擊事件
+                          toggleSection(expIndex, section.title);
+                        }}
+                      >
+                        <h4 className="detail-section-title">{section.title}</h4>
+                        <FontAwesomeIcon 
+                          icon={faChevronDown} 
+                          className={`section-toggle-icon ${isExpanded ? 'expanded' : ''}`}
+                        />
+                      </div>
+                    )}
+                    <div className={`detail-section-content ${isExpanded ? 'expanded' : ''}`}>
+                      <ul className="detail-items">
+                        {isExpanded && section.items.map((item, itemIndex) => (
+                          renderDetailItem(item, itemIndex)
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
+              {exp.details.length > 3 && (
+                <div className="section-controls">
+                  <button 
+                    className="toggle-sections-button" 
+                    onClick={(e) => {
+                      e.stopPropagation(); // 防止觸發父元素的點擊事件
+                      const expIndex = experiences.indexOf(exp);
+                      const sections = processDetailItems(exp.details);
+                      toggleAllSections(expIndex, sections, true);
+                    }}
+                  >
+                    {t('actions.expandAll')}
+                  </button>
+                  <button 
+                    className="toggle-sections-button" 
+                    onClick={(e) => {
+                      e.stopPropagation(); // 防止觸發父元素的點擊事件
+                      const expIndex = experiences.indexOf(exp);
+                      const sections = processDetailItems(exp.details);
+                      toggleAllSections(expIndex, sections, false);
+                    }}
+                  >
+                    {t('actions.collapseAll')}
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       );
@@ -145,6 +289,30 @@ const CV = () => {
         </ul>
       </div>
     );
+  };
+
+  // 切換特定類別的展開狀態
+  const toggleSection = (expIndex: number, sectionTitle: string) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [`${expIndex}-${sectionTitle}`]: !prev[`${expIndex}-${sectionTitle}`]
+    }));
+  };
+
+  // 檢查特定類別是否已展開
+  const isSectionExpanded = (expIndex: number, sectionTitle: string) => {
+    return expandedSections[`${expIndex}-${sectionTitle}`] === true;
+  };
+
+  // 展開或收起所有類別
+  const toggleAllSections = (expIndex: number, sections: {title: string; items: string[]}[], expand: boolean) => {
+    const updates: {[key: string]: boolean} = {};
+    sections.forEach(section => {
+      if (section.title) {
+        updates[`${expIndex}-${section.title}`] = expand;
+      }
+    });
+    setExpandedSections(prev => ({...prev, ...updates}));
   };
 
   return (
@@ -191,9 +359,28 @@ const CV = () => {
           </button>
         </div>
         <div className="experience-timeline">
-          {experiences.map((exp, index) => (
-            <div key={index} className="experience-item">
-              {renderExperienceContent(exp, index)}
+          {groupedExperiences.map((group) => (
+            <div key={group.company} className="experience-company-block">
+              <div className="experience-company-header">
+                <div className="company-title-wrapper">
+                  <span className="experience-company-name">{group.company}</span>
+                  {group.totalDuration && (
+                    <span className="company-total-duration">
+                      {formatExperienceDuration(group.totalDuration)}
+                    </span>
+                  )}
+                  {group.companyNote && (
+                    <span className="company-note">{group.companyNote}</span>
+                  )}
+                </div>
+              </div>
+              <div className="experience-company-positions">
+                {group.positions.map((exp, idx) => (
+                  <div key={idx} className="experience-item">
+                    {renderExperienceContent(exp, experiences.indexOf(exp))}
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>

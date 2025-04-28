@@ -1,0 +1,32 @@
+/* 公司標題與總時間顯示樣式 */
+.company-title-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.company-total-duration {
+  font-size: 0.9rem;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  display: inline-block;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  box-shadow: 0 2px 4px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* 在小螢幕上調整公司標題區域的排版 */
+@media screen and (max-width: 768px) {
+  .company-title-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .company-total-duration {
+    margin-left: 0;
+  }
+}
