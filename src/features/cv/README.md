@@ -1,70 +1,89 @@
 # CV Feature
 
-The CV feature displays professional experience, education, skills, and conferences in a visually appealing layout.
+## Description
+The CV (Curriculum Vitae) feature displays a comprehensive professional profile, including work experiences, education background, skills, and conference presentations. It provides an interactive and detailed view of professional qualifications, with expandable sections for detailed information.
 
-## Features
+## Functionality
+- **Work Experience**: Shows professional history with company details, positions, responsibilities, and achievements
+- **Education**: Displays academic background with degree, major, and relevant projects
+- **Skills**: Lists technical, security, and management capabilities categorized by domain
+- **Conferences**: Presents speaking engagements, with details about venues, organizers, and topics
+- **Interactive UI**: Includes expandable/collapsible sections for detailed information
+- **Internationalization**: Fully supports multiple languages (English and Traditional Chinese)
 
-- Responsive design for all screen sizes
-- Multi-language support with language switching
-- Expandable sections for detailed information
-- Timeline view for work experience
-- Card-based display for education and conferences
+## Components
+1. **CV.tsx**: Main component that renders the entire CV section
+   - Handles the display of all CV sections (experiences, education, skills, conferences)
+   - Manages interactive elements like expanding/collapsing sections
+   - Formats time periods and calculates experience durations
+
+2. **useCV.ts**: Custom hook that provides CV data and translation functionality
+   - Fetches data from i18n translation files
+   - Handles language switching and provides functions for formatted text
+
+## Data Structure
+The CV data follows this structure:
+```typescript
+interface CVData {
+  name: string;
+  title: string;
+  summary: string;
+  sections: {
+    skills: string;
+    experience: string;
+    education: string;
+    conferences: string;
+  };
+  skills: Array<{
+    category: string;
+    items: string[];
+  }>;
+  experiences: Array<{
+    company: string;
+    companyNote?: string;
+    position: string;
+    period: string;
+    description: string[];
+    brief: string[];
+    details: string[];
+  }>;
+  education: Array<{
+    school: string;
+    degree: string;
+    period: string;
+    major: string;
+    description?: string[];
+  }>;
+  conferences: Array<{
+    title: string;
+    date: string;
+    venue?: string;
+    organizer?: string;
+    tags?: string[];
+    url?: string;
+  }>;
+}
+```
 
 ## Usage
+Import and include the CV component in your page layout:
+```tsx
+import CV from '../features/cv/components/CV';
 
-The CV feature imports data from localized JSON files and supports both English and Traditional Chinese (zh-TW). Content is displayed in a structured format with expandable sections that can be toggled individually or all at once.
+const CVPage = () => {
+  return (
+    <div className="cv-page">
+      <CV />
+    </div>
+  );
+};
 
-## Structure
-
-- `components/CV.tsx` - Main component that renders the CV
-- `hooks/useCV.ts` - Custom hook to fetch and process CV data
-- `styles/CV.css` - Styles for the CV component
-
-## Data Format
-
-The CV data is structured as follows:
-
-```json
-{
-  "name": "Name",
-  "title": "Professional Title",
-  "summary": "Professional summary",
-  "sections": {
-    "skills": "Skills",
-    "experience": "Experience",
-    "education": "Education",
-    "conferences": "Conferences"
-  },
-  "skills": [...],
-  "experiences": [...],
-  "education": [...],
-  "conferences": [...]
-}
+export default CVPage;
 ```
 
-For experience entries, use the following format for proper hierarchical display:
-
-```json
-{
-  "company": "Company Name",
-  "position": "Position Title",
-  "period": "YYYY/MM - YYYY/MM",
-  "brief": [
-    "Brief point 1",
-    "Brief point 2"
-  ],
-  "details": [
-    "Category 1:",
-    "- Detail point 1",
-    "- Detail point 2",
-    "Category 2:",
-    "- Detail point 3",
-    "- Detail point 4"
-  ]
-}
-```
-
-The details section supports hierarchical formatting where:
-- Strings ending with ":" are rendered as section titles
-- Strings starting with "- " are rendered as nested items
-- Other strings are rendered as main items
+## Styling
+The CV feature includes several CSS files for styling different sections:
+- **CV.css**: Main styling for the CV layout and container
+- **experience-details.css**: Styles for work experience sections
+- **section-controls.css**: Styles for expand/collapse controls
+- **company-duration.css**: Styling for company information and duration display

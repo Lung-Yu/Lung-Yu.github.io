@@ -1,7 +1,7 @@
 {
   "name": "Tygrus",
   "title": "Cybersecurity Expert and Full-Stack Developer",
-  "summary": "Focused on software development and cybersecurity, with multiple international certifications. Dedicated to integrating security into the development process to create more secure and stable software systems.",
+  "summary": "Focused on software development and cybersecurity, with multiple international certifications. Dedicated to integrating security into the development process to create more secure and stable software systems. Experienced teacher at AINetwork and speaker in DevSecOps, CyberSec, and CISA (Chinese Software Association).",
   "sections": {
     "skills": "Skills",
     "experience": "Experience",
@@ -46,6 +46,22 @@
     }
   ],
   "experiences": [
+    {
+      "company": "AINetwork",
+      "position": "Teacher",
+      "period": "2025/04 - Present",
+      "brief": [
+        "Technical Training",
+        "Curriculum Development"
+      ],
+      "details": [
+        "Teaching Responsibilities:",
+        "- DevSecOps course development and delivery",
+        "- Cybersecurity fundamentals and advanced topics",
+        "- Secure coding practices and training",
+        "- Software development best practices"
+      ]
+    },
     {
       "company": "Cloudforce Co., Ltd.",
       "companyNote": "formerly Digicentre, a subsidiary of Gamania Group",
