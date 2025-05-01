@@ -4,6 +4,7 @@ import '../styles/experience-details.css';
 import '../styles/section-controls.css';
 import '../styles/company-duration.css';
 import '../styles/highlights.css';
+import '../styles/skills-display.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -475,15 +476,25 @@ const CV = () => {
 
       <section className="cv-section">
         <h2>{cvData.sections.skills}</h2>
-        <div className="skills-grid">
+        <div className="cv-skills-grid">
           {skills.map((skillGroup, index) => (
-            <div key={index} className="skill-category">
+            <div 
+              key={index} 
+              className="cv-skill-category" 
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               <h3>{skillGroup.category}</h3>
-              <ul className="skill-list">
+              <ul className="cv-skill-list">
                 {skillGroup.items?.map((skill, skillIndex) => (
-                  <li key={skillIndex}>
-                    <FontAwesomeIcon icon={getSkillIcon(skill)} className="skill-icon" />
-                    {skill}
+                  <li 
+                    key={skillIndex} 
+                    className="cv-skill-item"
+                    style={{ animationDelay: `${skillIndex * 0.08}s` }}
+                  >
+                    <span className="cv-skill-icon">
+                      <FontAwesomeIcon icon={getSkillIcon(skill)} />
+                    </span>
+                    <span className="cv-skill-name">{skill}</span>
                   </li>
                 ))}
               </ul>
