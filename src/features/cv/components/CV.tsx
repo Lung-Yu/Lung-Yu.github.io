@@ -437,8 +437,8 @@ const CV = () => {
           <p>{cvData.summary}</p>
           
           <div className="cv-contact-details">
-            <a href={`mailto:${cvData.email || 'contact@example.com'}`} className="cv-contact-item">
-              <i className="cv-icon">✉</i> {cvData.email || 'contact@example.com'}
+            <a href={`mailto:${cvData.email || 'workfile975@gmail.com'}`} className="cv-contact-item">
+              <i className="cv-icon">✉</i> {cvData.email || 'workfile975@gmail.com'}
             </a>
             {cvData.phone && (
               <a href={`tel:${cvData.phone}`} className="cv-contact-item">
