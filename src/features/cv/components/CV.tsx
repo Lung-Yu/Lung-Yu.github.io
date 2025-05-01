@@ -3,10 +3,80 @@ import '../styles/CV.css';
 import '../styles/experience-details.css';
 import '../styles/section-controls.css';
 import '../styles/company-duration.css';
+import '../styles/highlights.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faExternalLinkAlt, 
+  faChevronDown,
+  faShield, 
+  faCode, 
+  faUsers, 
+  faCodeBranch,
+  faTrophy,
+  faCertificate,
+  faCalendarAlt,
+  faMapMarkerAlt,
+  faBuilding,
+  faDatabase,
+  faCloud,
+  faTools,
+  faClipboardList,
+  faProjectDiagram,
+  faHeadset,
+  faGavel,
+  faClipboard,
+  faCog,
+  faPalette,
+  faImage,
+  faVolumeUp,
+  faGamepad,
+  faVrCardboard,
+  faCube,
+  faRobot,
+  faBrain,
+  faMicrochip,
+  faCommentDots,
+  faEye,
+  faAward,
+  faChartLine,
+  faLightbulb,
+  faBolt,
+  faAtom,
+  faCar,
+  faCity,
+  faFileContract,
+  faCoins,
+  faGem,
+  faWallet,
+  faShieldAlt,
+  faLock,
+  faBug,
+  faClipboardCheck,
+  faExclamationTriangle,
+  faShieldVirus,
+  faChalkboardTeacher,
+  faFileAlt,
+  faArchway,
+  faCogs,
+  faBoxOpen,
+  faWrench,
+  faServer,
+  faMobileAlt,
+  faIndustry,
+  faGlobe,
+  faSearch,
+  faPenFancy,
+  faBullhorn,
+  faUserSecret,
+  faUsersCog
+} from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+
+// Helper function to get the correct icon for a skill
+const getSkillIcon = (skill: string) => {
+  return skillIcons[skill] || faCode; // Default to code icon if not found
+};
 
 const CV = () => {
   const { cvData, isLoading, t } = useCV();
@@ -92,7 +162,7 @@ const CV = () => {
     
     details.forEach(item => {
       if (item.endsWith(':')) {
-        // 新的分类标题
+        // 新的分類標題
         if (currentSection.title) {
           sections.push({ ...currentSection });
         }
@@ -173,17 +243,15 @@ const CV = () => {
     return { years: 0, months: 0 };
   };
 
-  const groupedExperiences = groupExperiencesByCompany(experiences);
-
-  const renderExperienceContent = (exp: any, index: number) => {
+  const groupedExperiences = groupExperiencesByCompany(experiences);    const renderExperienceContent = (exp: any, index: number) => {
     const duration = calculateExperienceYears(exp.period);
     const durationText = formatExperienceDuration(duration);
-    const isCurrentJob = exp.period.includes('現在');
+    const isCurrentJob = exp.period.includes('現在') || exp.period.includes('Present');
 
     if (exp.brief && exp.details) {
       return (
         <div 
-          className={`experience-content ${(expandedExp === index || expandedExp === -1) ? 'expanded' : ''}`}
+          className={`experience-content ${(expandedExp === index || expandedExp === -1) ? 'expanded' : ''} ${isCurrentJob ? 'current' : ''}`}
           onClick={() => toggleExperience(index)}
         >
           <div className="experience-summary">
@@ -192,7 +260,7 @@ const CV = () => {
                 {exp.period}
                 <span className="experience-duration">
                   ({durationText})
-                  {isCurrentJob && <span className="current-job-badge">目前</span>}
+                  {isCurrentJob && <span className="current-job-badge">{t('currentPosition', 'Current')}</span>}
                 </span>
               </div>
               <div className="experience-position">{exp.position}</div>
@@ -315,6 +383,52 @@ const CV = () => {
     setExpandedSections(prev => ({...prev, ...updates}));
   };
 
+  // Prepare highlight items
+  const renderHighlights = () => {
+    const isEnglish = cvData.title.includes('Full-Stack');
+    
+    const highlights = [
+      {
+        icon: faCertificate,
+        title: isEnglish ? "Multiple Cybersecurity Certifications" : "多項資安認證",
+        description: isEnglish ? 
+          "Certified in various security domains including CISSP, CEH, and more." : 
+          "擁有多項國際資安證照，包括CISSP、CEH等"
+      },
+      {
+        icon: faCodeBranch,
+        title: isEnglish ? "DevSecOps Expert" : "DevSecOps 專家",
+        description: isEnglish ? 
+          "Experienced in integrating security into development workflows." : 
+          "專精於將資安融入開發流程"
+      },
+      {
+        icon: faTrophy,
+        title: isEnglish ? "Award Winner" : "獲獎經歷",
+        description: isEnglish ? 
+          "2023 Gama Star Award and multiple technical competitions." : 
+          "2023 Gama Star 獎項及多項技術競賽獎項"
+      },
+      {
+        icon: faUsers,
+        title: isEnglish ? "Conference Speaker" : "演講講者",
+        description: isEnglish ? 
+          "Regular speaker at security and development conferences." : 
+          "多場資安與開發技術研討會講者"
+      }
+    ];
+
+    return highlights.map((highlight, index) => (
+      <div className="highlight-item" key={index}>
+        <h3>
+          <FontAwesomeIcon icon={highlight.icon} className="highlight-icon" />
+          {highlight.title}
+        </h3>
+        <p>{highlight.description}</p>
+      </div>
+    ));
+  };
+
   return (
     <div className="cv-container">
       <header className="cv-header">
@@ -322,11 +436,44 @@ const CV = () => {
           <h1>{cvData.name}</h1>
           <div className="title">{cvData.title}</div>
           <p>{cvData.summary}</p>
+          
+          <div className="cv-contact-details">
+            <a href={`mailto:${cvData.email || 'contact@example.com'}`} className="cv-contact-item">
+              <i className="cv-icon">✉</i> {cvData.email || 'contact@example.com'}
+            </a>
+            {cvData.phone && (
+              <a href={`tel:${cvData.phone}`} className="cv-contact-item">
+                <i className="cv-icon">📱</i> {cvData.phone}
+              </a>
+            )}
+            {cvData.location && (
+              <span className="cv-contact-item">
+                <i className="cv-icon">📍</i> {cvData.location}
+              </span>
+            )}
+            {cvData.website && (
+              <a href={cvData.website} className="cv-contact-item" target="_blank" rel="noopener noreferrer">
+                <i className="cv-icon">🌐</i> {cvData.website.replace(/^https?:\/\//, '')}
+              </a>
+            )}
+            {cvData.linkedin && (
+              <a href={cvData.linkedin} className="cv-contact-item" target="_blank" rel="noopener noreferrer">
+                <i className="cv-icon">in</i> LinkedIn
+              </a>
+            )}
+          </div>
         </div>
         <div className="language-switcher-container">
           <LanguageSwitcher />
         </div>
       </header>
+      
+      <section className="cv-section highlights-section">
+        <h2>{t('sections.highlights', 'Highlights')}</h2>
+        <div className="highlights-container">
+          {renderHighlights()}
+        </div>
+      </section>
 
       <section className="cv-section">
         <h2>{cvData.sections.skills}</h2>
@@ -336,7 +483,10 @@ const CV = () => {
               <h3>{skillGroup.category}</h3>
               <ul className="skill-list">
                 {skillGroup.items?.map((skill, skillIndex) => (
-                  <li key={skillIndex}>{skill}</li>
+                  <li key={skillIndex}>
+                    <FontAwesomeIcon icon={getSkillIcon(skill)} className="skill-icon" />
+                    {skill}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -490,6 +640,90 @@ const CV = () => {
       )}
     </div>
   );
+};
+
+const skillIcons: { [key: string]: any } = {
+  // 工程相關
+  '全端工程師': faCode,
+  '前端工程師': faCode,
+  '後端工程師': faCode,
+  'UI/UX 設計師': faCode,
+  '資料庫管理': faDatabase,
+  '系統架構': faBuilding,
+  '雲端服務': faCloud,
+  'DevOps': faTools,
+  '測試工程師': faTrophy,
+  
+  // 管理相關
+  '產品經理': faClipboardList,
+  '專案經理': faProjectDiagram,
+  '行銷專員': faBullhorn,
+  '客服專員': faHeadset,
+  '人資專員': faUsers,
+  '財務專員': faCoins,
+  '法務專員': faGavel,
+  '行政專員': faClipboard,
+  '運維工程師': faCog,
+  
+  // 設計相關
+  '網頁設計師': faPalette,
+  '平面設計師': faImage,
+  '插畫師': faPenFancy,
+  '動畫師': faImage,
+  '音效師': faVolumeUp,
+  
+  // 遊戲相關
+  '遊戲測試': faGamepad,
+  '遊戲設計': faGamepad,
+  '遊戲開發': faGamepad,
+  '虛擬實境': faVrCardboard,
+  '擴增實境': faCube,
+  
+  // 區塊鏈相關
+  '區塊鏈': faCode,
+  '智慧合約': faFileContract,
+  '去中心化應用': faCode,
+  '數位貨幣': faCoins,
+  '代幣經濟': faGem,
+  'NFT': faImage,
+  '數位資產': faWallet,
+  
+  // AI相關
+  '人工智慧': faRobot,
+  '機器學習': faBrain,
+  '深度學習': faMicrochip,
+  '自然語言處理': faCommentDots,
+  '電腦視覺': faEye,
+  '強化學習': faAward,
+  
+  // 數據分析相關
+  '數據分析': faChartLine,
+  '商業智慧': faLightbulb,
+  
+  // 其他科技相關
+  '雲端運算': faCloud,
+  '邊緣運算': faBolt,
+  '量子運算': faAtom,
+  '智慧城市': faCity,
+  '自動駕駛': faCar,
+  '機器人': faRobot,
+  
+  // 資安相關
+  '網路安全': faShieldAlt,
+  '資安防護': faLock,
+  '滲透測試': faBug,
+  '資安稽核': faClipboardCheck,
+  '資安風險評估': faExclamationTriangle,
+  '資安事件應變': faShieldVirus,
+  '資安教育訓練': faChalkboardTeacher,
+  '資安政策制定': faFileAlt,
+  '資安標準制定': faCertificate,
+  '資安系統整合': faCogs,
+  '資安產品管理': faBoxOpen,
+  '資安應用程式安全': faLock,
+  '資安網路安全': faShieldAlt,
+  '資安系統安全': faServer,
+  '資安資料庫安全': faDatabase
 };
 
 export default CV;
