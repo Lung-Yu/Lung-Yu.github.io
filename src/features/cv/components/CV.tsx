@@ -239,8 +239,6 @@ const CV = () => {
     }
     
     return { years: 0, months: 0 };
-
-    return { years: 0, months: 0 };
   };
 
   const groupedExperiences = groupExperiencesByCompany(experiences);    const renderExperienceContent = (exp: any, index: number) => {

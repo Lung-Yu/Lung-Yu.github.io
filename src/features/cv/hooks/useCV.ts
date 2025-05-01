@@ -8,7 +8,7 @@ export const useCV = () => {
   const getTranslatedArray = <T>(key: string): T[] => {
     try {
       const data = t(key, { returnObjects: true });
-      return Array.isArray(data) ? data : [];
+      return Array.isArray(data) ? data as T[] : [];
     } catch (error) {
       console.error(`Translation error for key ${key}:`, error);
       return [];
@@ -19,6 +19,11 @@ export const useCV = () => {
     name: t('name', { defaultValue: '' }),
     title: t('title', { defaultValue: '' }),
     summary: t('summary', { defaultValue: '' }),
+    email: t('email', { defaultValue: 'contact@example.com' }),
+    phone: t('phone', { defaultValue: '' }),
+    location: t('location', { defaultValue: '' }),
+    website: t('website', { defaultValue: '' }),
+    linkedin: t('linkedin', { defaultValue: '' }),
     sections: {
       skills: t('sections.skills', { defaultValue: '技能' }),
       experience: t('sections.experience', { defaultValue: '經歷' }),
