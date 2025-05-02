@@ -667,18 +667,18 @@ const CV = () => {
                 <div className="conference-info">
                   {conf.organizer && (
                     <div className="conference-organizer">
-                      <i className="fas fa-users-gear"></i>
-                      {conf.organizer}
+                      <FontAwesomeIcon icon={faBuilding} size="sm" className="organizer-icon" />
+                      <span className="organizer-text">{conf.organizer}</span>
                     </div>
                   )}
                   <span className="conference-date">
-                    <i className="fas fa-calendar"></i>
-                    {conf.date}
+                    <FontAwesomeIcon icon={faCalendarAlt} size="sm" />
+                    <span>{conf.date}</span>
                   </span>
                   {conf.venue && conf.venue !== '-' && (
                     <div className="conference-venue">
-                      <i className="fas fa-location-dot"></i>
-                      {conf.venue}
+                      <FontAwesomeIcon icon={faMapMarkerAlt} size="sm" className="venue-icon" />
+                      <span className="venue-text">{conf.venue}</span>
                     </div>
                   )}
                 </div>

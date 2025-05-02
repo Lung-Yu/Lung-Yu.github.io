@@ -122,21 +122,12 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
+/* 移除舊的日期樣式，讓它使用CV.css中的設定 */
+/* 
 .conference-date {
-  display: inline-flex;
-  align-items: center;
-  background-color: var(--color-primary);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  margin-right: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 500;
+  已移至CV.css中統一管理
 }
-
-.conference-date i {
-  margin-right: 0.5rem;
-}
+*/
 
 .conference-tags {
   display: flex;
@@ -175,7 +166,7 @@
   font-size: 0.8em;
 }
 
-.conference-venue, .conference-organizer {
+.conference-venue {
   display: flex;
   align-items: center;
   margin: 0.5rem 0;
@@ -183,7 +174,8 @@
   font-size: 0.9rem;
 }
 
-.conference-venue i, .conference-organizer i {
+/* 主辦方樣式已移至CV.css */
+.conference-venue i {
   margin-right: 0.5rem;
   color: var(--color-secondary);
   width: 16px;
