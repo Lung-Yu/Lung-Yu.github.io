@@ -1,114 +1,118 @@
-/* Enhanced summary section styling for CV component */
+/* 簡約素雅的CV摘要樣式 */
 .cv-summary {
-  margin: 1.5rem auto;
-  padding: 1rem 1.5rem;
-  max-width: 800px;
-  border-radius: 10px;
-  background: linear-gradient(145deg, rgba(var(--color-primary-rgb), 0.05), rgba(var(--color-secondary-rgb), 0.05));
+  margin: 1.5rem auto 2.5rem;
+  padding: 0;
+  max-width: 850px;
   position: relative;
-  overflow: hidden;
-  border-left: 4px solid var(--color-primary);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-summary-intro {
+  padding: 1.5rem 2rem;
+  background: #fdfdfd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  position: relative;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  z-index: 10;
+}
+
+.cv-summary-intro::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-primary);
+  opacity: 0.7;
 }
 
 .cv-summary p {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  font-weight: 400;
   line-height: 1.7;
   margin: 0;
-  text-align: left;
+  text-align: center;
   position: relative;
-  z-index: 5;
+  color: var(--color-text);
 }
 
-.cv-summary::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: rgba(var(--color-primary-rgb), 0.05);
-  z-index: 1;
-}
-
-.cv-summary::after {
-  content: '';
-  position: absolute;
-  bottom: -30px;
-  left: -30px;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: rgba(var(--color-secondary-rgb), 0.05);
-  z-index: 1;
-}
-
-/* Structured summary with bullet points */
-.cv-summary-points {
+/* 摘要關鍵詞列表 */
+.cv-summary-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.cv-summary-point {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 0.25rem;
-  position: relative;
-  z-index: 5;
-  flex: 1 0 40%;
-  min-width: 250px;
-}
-
-.cv-summary-point-icon {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  min-width: 24px;
-  height: 24px;
-  margin-right: 0.75rem;
-  border-radius: 50%;
-  background-color: rgba(var(--color-primary-rgb), 0.1);
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.cv-summary-tag {
+  background: rgba(var(--color-gray-50-rgb), 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  position: relative;
+  font-size: 0.95rem;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  color: var(--color-text);
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.cv-summary-tag:hover {
+  background: rgba(var(--color-primary-rgb), 0.05);
+  border-color: rgba(var(--color-primary-rgb), 0.15);
+}
+
+.cv-summary-tag-icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
   color: var(--color-primary);
+  opacity: 0.8;
 }
 
-.cv-summary-point-text {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/* Animation for summary points */
-.cv-summary-point {
+/* 簡約的淡入動畫 */
+.cv-summary-tag {
   opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInUp 0.5s forwards;
+  animation: fadeIn 0.5s forwards;
 }
 
-@keyframes fadeInUp {
+@keyframes fadeIn {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-/* Apply different animation delays to each point */
-.cv-summary-point:nth-child(1) { animation-delay: 0.1s; }
-.cv-summary-point:nth-child(2) { animation-delay: 0.2s; }
-.cv-summary-point:nth-child(3) { animation-delay: 0.3s; }
-.cv-summary-point:nth-child(4) { animation-delay: 0.4s; }
+/* 交錯延遲動畫 - 更加微妙 */
+.cv-summary-list .cv-summary-tag:nth-child(1) { animation-delay: 0.1s; }
+.cv-summary-list .cv-summary-tag:nth-child(2) { animation-delay: 0.15s; }
+.cv-summary-list .cv-summary-tag:nth-child(3) { animation-delay: 0.2s; }
+.cv-summary-list .cv-summary-tag:nth-child(4) { animation-delay: 0.25s; }
+.cv-summary-list .cv-summary-tag:nth-child(5) { animation-delay: 0.3s; }
+.cv-summary-list .cv-summary-tag:nth-child(6) { animation-delay: 0.35s; }
 
-/* Responsive styles */
+/* 自適應樣式 */
 @media (max-width: 768px) {
-  .cv-summary-point {
-    flex: 1 0 100%;
+  .cv-summary-list {
+    gap: 0.6rem;
+    justify-content: flex-start;
   }
   
-  .cv-summary {
-    padding: 1rem;
+  .cv-summary-intro {
+    padding: 1.25rem;
   }
   
   .cv-summary p {
     font-size: 1rem;
+    text-align: left;
+  }
+  
+  .cv-summary-intro::after {
+    left: 0;
+    transform: none;
   }
 }

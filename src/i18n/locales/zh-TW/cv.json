@@ -3,10 +3,15 @@
   "title": "資安專家與全端開發者",
   "summary": "資安與軟體開發領域的專業人才，透過專業技能提升系統安全性與穩定性。",
   "summaryPoints": {
-    "certifications": "擁有多項國際級資安認證",
-    "secDev": "專精安全開發流程導入",
-    "speaker": "DevSecOps與資安領域講師",
-    "awards": "技術獎項與專案成就"
+    "mainIntro": "結合資安專業與全端開發技能，打造安全穩定的系統與應用",
+    "keywords": {
+      "cert": "國際資安認證",
+      "secdev": "安全開發實踐",
+      "security": "系統防護",
+      "fullstack": "全端開發",
+      "training": "技術培訓",
+      "achievement": "專業認可"
+    }
   },
   "sections": {
     "skills": "技能",

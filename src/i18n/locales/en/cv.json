@@ -3,10 +3,15 @@
   "title": "Cybersecurity Expert and Full-Stack Developer",
   "summary": "Professional in cybersecurity and software development, enhancing system security and stability through expertise.",
   "summaryPoints": {
-    "certifications": "Multiple international security certifications",
-    "secDev": "Security integration in development",
-    "speaker": "DevSecOps and cybersecurity instructor",
-    "awards": "Technical awards and project achievements"
+    "mainIntro": "Combining cybersecurity expertise with full-stack development for secure systems",
+    "keywords": {
+      "cert": "Security Certifications",
+      "secdev": "Secure Development",
+      "security": "System Protection",
+      "fullstack": "Full-Stack Development",
+      "training": "Technical Training",
+      "achievement": "Professional Recognition"
+    }
   },
   "sections": {
     "skills": "Skills",

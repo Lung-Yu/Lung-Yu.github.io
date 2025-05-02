@@ -437,38 +437,42 @@ const CV = () => {
           <div className="title">{cvData.title}</div>
           
           <div className="cv-summary">
-            {/* 第一段簡短自我介紹 */}
-            <p>{cvData.summary ? cvData.summary.split('。')[0] + '。' : ''}</p>
+            {/* 簡約素雅的摘要介紹 */}
+            <div className="cv-summary-intro">
+              <p>{t('summaryPoints.mainIntro', '結合資安專業與全端開發技術，致力於打造安全且高效能的系統與應用')}</p>
+            </div>
             
-            {/* 結構化呈現核心重點 */}
-            <div className="cv-summary-points">
-              <div className="cv-summary-point">
-                <span className="cv-summary-point-icon">
-                  <FontAwesomeIcon icon={faCertificate} />
-                </span>
-                <span className="cv-summary-point-text">{t('summaryPoints.certifications', '擁有多項國際級資安認證')}</span>
-              </div>
+            {/* 關鍵詞標籤式展示 */}
+            <div className="cv-summary-list">
+              <span className="cv-summary-tag">
+                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faCertificate} /></span>
+                {t('summaryPoints.keywords.cert', '國際資安認證')}
+              </span>
               
-              <div className="cv-summary-point">
-                <span className="cv-summary-point-icon">
-                  <FontAwesomeIcon icon={faCodeBranch} />
-                </span>
-                <span className="cv-summary-point-text">{t('summaryPoints.secDev', '專精資安導入開發流程')}</span>
-              </div>
+              <span className="cv-summary-tag">
+                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faCodeBranch} /></span>
+                {t('summaryPoints.keywords.secdev', '安全開發實踐')}
+              </span>
               
-              <div className="cv-summary-point">
-                <span className="cv-summary-point-icon">
-                  <FontAwesomeIcon icon={faUsers} />
-                </span>
-                <span className="cv-summary-point-text">{t('summaryPoints.speaker', '資安與技術領域講師')}</span>
-              </div>
+              <span className="cv-summary-tag">
+                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faShieldAlt} /></span>
+                {t('summaryPoints.keywords.security', '系統防護')}
+              </span>
               
-              <div className="cv-summary-point">
-                <span className="cv-summary-point-icon">
-                  <FontAwesomeIcon icon={faTrophy} />
-                </span>
-                <span className="cv-summary-point-text">{t('summaryPoints.awards', '技術獎項與專案成果')}</span>
-              </div>
+              <span className="cv-summary-tag">
+                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faCode} /></span>
+                {t('summaryPoints.keywords.fullstack', '全端開發')}
+              </span>
+              
+              <span className="cv-summary-tag">
+                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faUsers} /></span>
+                {t('summaryPoints.keywords.training', '技術培訓')}
+              </span>
+              
+              <span className="cv-summary-tag">
+                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faTrophy} /></span>
+                {t('summaryPoints.keywords.achievement', '專業認可')}
+              </span>
             </div>
           </div>
           
