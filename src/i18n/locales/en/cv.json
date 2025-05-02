@@ -29,10 +29,8 @@
       "items": [
         "Security analysis and risk assessment",
         "Penetration testing and vulnerability scanning",
-        "Incident response handling",
         "Secure software development lifecycle",
-        "Security architecture planning and evaluation",
-        "Regulatory compliance and auditing"
+        "Security compliance"
       ]
     },
     {
@@ -40,19 +38,17 @@
       "items": [
         "Frontend development (React, TypeScript, JavaScript)",
         "Backend development (Node.js, Python, Java, C#)",
-        "Database design and optimization",
-        "CI/CD pipeline setup",
         "System architecture design",
-        "Code modularization and performance tuning"
+        "CI/CD automation"
       ]
     },
     {
       "category": "Management Skills",
       "items": [
-        "Project management and progress control",
-        "Team leadership and technical guidance",
-        "Cross-department communication and coordination",
-        "Technical education and training planning"
+        "Project management",
+        "Team leadership",
+        "Cross-department communication",
+        "Technical training"
       ]
     }
   ],
