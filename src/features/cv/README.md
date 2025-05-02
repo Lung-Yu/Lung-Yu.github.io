@@ -1,10 +1,42 @@
-# CV Feature
+# CV 功能
 
-## 功能說明 (Feature Description)
-
+## 功能描述
 CV (履歷) 功能是一個互動式履歷組件，提供使用者的專業背景、經驗和技能的詳細資訊。該功能支援多語言切換，能夠根據不同語言顯示對應的履歷內容。
 
-## 使用方式 (Usage)
+## 核心組件
+- **CV**: 主要顯示整體履歷內容的組件
+- **LanguageSwitcher**: 多語系切換組件，允許用戶在不同語言版本間切換
+- **useCV**: 自定義Hook，用於獲取和處理CV相關資料
+
+## 特色功能
+- 互動式工作經驗展示，可展開/收起詳細內容
+- 技能分類與圖標視覺化展示
+- 工作經驗自動計算時間長度
+- 相同公司的不同職位自動分組顯示
+- 強調個人專業亮點的區域
+- 支援多語系顯示
+- 響應式設計，適應不同螢幕尺寸
+
+## 檔案結構
+```
+cv/
+├── README.md               # 功能說明文件
+├── components/
+│   └── CV.tsx              # CV 主要組件
+├── hooks/
+│   └── useCV.ts            # 取得 CV 資料的鉤子
+├── styles/
+│   ├── CV.css              # 主要樣式
+│   ├── company-duration.css # 公司時間相關樣式
+│   ├── experience-details.css # 經驗詳細內容樣式
+│   ├── highlights.css      # 亮點部分樣式
+│   ├── skills-display.css  # 技能展示樣式
+│   └── section-controls.css # 區塊控制相關樣式
+└── types/
+    └── index.ts            # CV 資料的型別定義
+```
+
+## 使用方式
 
 ### 基本使用
 
@@ -18,16 +50,9 @@ const MyPage = () => {
 };
 ```
 
-### 功能特點
-
-1. **多語言支援**：透過內建的 `LanguageSwitcher` 組件可在不同語言版本之間切換
-2. **經驗時間計算**：自動計算每段工作經驗的時間長度
-3. **可展開/收起詳細資訊**：工作經驗和教育經歷的詳細內容可展開查看
-4. **按公司分組**：相同公司的不同職位會被分組顯示，並計算在該公司的總工作時間
-
 ### 資料結構
 
-CV 組件期望從 `useCV` 鉤子獲得以下資料結構：
+CV 組件透過 `useCV` 鉤子獲得以下資料結構：
 
 ```typescript
 interface CVData {
@@ -67,39 +92,22 @@ interface CVData {
   }>;
   conferences?: Array<{
     title: string;
-    organizer?: string;
     date: string;
     venue?: string;
-    url?: string;
+    organizer?: string;
     tags?: string[];
+    url?: string;
   }>;
 }
 ```
 
-## 檔案結構 (File Structure)
-
-```
-cv/
-├── README.md               # 功能說明文件
-├── components/
-│   └── CV.tsx              # CV 主要組件
-├── hooks/
-│   └── useCV.ts            # 取得 CV 資料的鉤子
-└── styles/
-    ├── CV.css              # 主要樣式
-    ├── company-duration.css # 公司時間相關樣式
-    ├── experience-details.css # 經驗詳細內容樣式
-    ├── highlights.css      # 亮點部分樣式
-    └── section-controls.css # 區塊控制相關樣式
-```
-
-## 注意事項 (Notes)
+## 注意事項
 
 - 確保 FontAwesome 圖標已正確導入，以顯示技能圖標
 - 若需調整顯示樣式，請修改對應的 CSS 文件
 - 使用 i18n 配置來支援多語言功能
 
-## 技能顯示設計 (Skills Display Design)
+## 技能顯示設計
 
 技能區塊採用現代化卡片設計，具有以下特點：
 

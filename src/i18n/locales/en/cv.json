@@ -1,7 +1,13 @@
 {
   "name": "Tygrus",
   "title": "Cybersecurity Expert and Full-Stack Developer",
-  "summary": "Focused on software development and cybersecurity, with multiple international certifications. Dedicated to integrating security into the development process to create more secure and stable software systems. Experienced teacher at AINetwork and speaker in DevSecOps, CyberSec, and CISA (Chinese Software Association).",
+  "summary": "Professional in cybersecurity and software development, enhancing system security and stability through expertise.",
+  "summaryPoints": {
+    "certifications": "Multiple international security certifications",
+    "secDev": "Security integration in development",
+    "speaker": "DevSecOps and cybersecurity instructor",
+    "awards": "Technical awards and project achievements"
+  },
   "sections": {
     "skills": "Skills",
     "experience": "Experience",

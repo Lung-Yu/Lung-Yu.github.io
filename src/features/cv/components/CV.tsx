@@ -5,6 +5,7 @@ import '../styles/section-controls.css';
 import '../styles/company-duration.css';
 import '../styles/highlights.css';
 import '../styles/skills-display.css';
+import '../styles/summary.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -434,7 +435,42 @@ const CV = () => {
         <div>
           <h1>{cvData.name}</h1>
           <div className="title">{cvData.title}</div>
-          <p>{cvData.summary}</p>
+          
+          <div className="cv-summary">
+            {/* 第一段簡短自我介紹 */}
+            <p>{cvData.summary ? cvData.summary.split('。')[0] + '。' : ''}</p>
+            
+            {/* 結構化呈現核心重點 */}
+            <div className="cv-summary-points">
+              <div className="cv-summary-point">
+                <span className="cv-summary-point-icon">
+                  <FontAwesomeIcon icon={faCertificate} />
+                </span>
+                <span className="cv-summary-point-text">{t('summaryPoints.certifications', '擁有多項國際級資安認證')}</span>
+              </div>
+              
+              <div className="cv-summary-point">
+                <span className="cv-summary-point-icon">
+                  <FontAwesomeIcon icon={faCodeBranch} />
+                </span>
+                <span className="cv-summary-point-text">{t('summaryPoints.secDev', '專精資安導入開發流程')}</span>
+              </div>
+              
+              <div className="cv-summary-point">
+                <span className="cv-summary-point-icon">
+                  <FontAwesomeIcon icon={faUsers} />
+                </span>
+                <span className="cv-summary-point-text">{t('summaryPoints.speaker', '資安與技術領域講師')}</span>
+              </div>
+              
+              <div className="cv-summary-point">
+                <span className="cv-summary-point-icon">
+                  <FontAwesomeIcon icon={faTrophy} />
+                </span>
+                <span className="cv-summary-point-text">{t('summaryPoints.awards', '技術獎項與專案成果')}</span>
+              </div>
+            </div>
+          </div>
           
           <div className="cv-contact-details">
             <a href={`mailto:${cvData.email || 'workfile975@gmail.com'}`} className="cv-contact-item">

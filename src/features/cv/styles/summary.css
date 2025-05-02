@@ -1,0 +1,114 @@
+/* Enhanced summary section styling for CV component */
+.cv-summary {
+  margin: 1.5rem auto;
+  padding: 1rem 1.5rem;
+  max-width: 800px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, rgba(var(--color-primary-rgb), 0.05), rgba(var(--color-secondary-rgb), 0.05));
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid var(--color-primary);
+}
+
+.cv-summary p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+  text-align: left;
+  position: relative;
+  z-index: 5;
+}
+
+.cv-summary::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(var(--color-primary-rgb), 0.05);
+  z-index: 1;
+}
+
+.cv-summary::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgba(var(--color-secondary-rgb), 0.05);
+  z-index: 1;
+}
+
+/* Structured summary with bullet points */
+.cv-summary-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cv-summary-point {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.25rem;
+  position: relative;
+  z-index: 5;
+  flex: 1 0 40%;
+  min-width: 250px;
+}
+
+.cv-summary-point-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 24px;
+  height: 24px;
+  margin-right: 0.75rem;
+  border-radius: 50%;
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+  color: var(--color-primary);
+}
+
+.cv-summary-point-text {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Animation for summary points */
+.cv-summary-point {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply different animation delays to each point */
+.cv-summary-point:nth-child(1) { animation-delay: 0.1s; }
+.cv-summary-point:nth-child(2) { animation-delay: 0.2s; }
+.cv-summary-point:nth-child(3) { animation-delay: 0.3s; }
+.cv-summary-point:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .cv-summary-point {
+    flex: 1 0 100%;
+  }
+  
+  .cv-summary {
+    padding: 1rem;
+  }
+  
+  .cv-summary p {
+    font-size: 1rem;
+  }
+}
