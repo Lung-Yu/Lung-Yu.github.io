@@ -7,6 +7,7 @@ import '../styles/highlights.css';
 import '../styles/skills-display.css';
 import '../styles/summary.css';
 import '../styles/certificates-summary.css';
+import '../styles/conferences-accordion.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -65,7 +66,7 @@ import {
   faPenFancy,
   faBullhorn
 } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCertificates } from '../../certificates/hooks/useCertificates'; // 新增引入證書hook
 
 // Helper function to get the correct icon for a skill
@@ -82,6 +83,8 @@ const CV = () => {
   const [allEducationExpanded, setAllEducationExpanded] = useState(false);
   // 新增：用於存儲已展開的類別區域
   const [expandedSections, setExpandedSections] = useState<{[key: string]: boolean}>({});
+  // 新增：用於追蹤展開的演講年份
+  const [expandedConferenceYears, setExpandedConferenceYears] = useState<{[year: string]: boolean}>({});
 
   const toggleExperience = (index: number) => {
     setExpandedExp(expandedExp === index ? null : index);
@@ -143,13 +146,77 @@ const CV = () => {
     }
   };
 
-  // 獲取重要證書(根據value值排序取前4個)
+  // 獲取精選證書(根據value值排序取前4個)
   const getTopCertificates = () => {
     if (!certificates || certificates.length === 0) return [];
     return [...certificates]
       .sort((a, b) => (b.value || 0) - (a.value || 0))
       .slice(0, 4);
   };
+
+  // 演講資料按年份分組
+  const getConferencesByYear = () => {
+    if (!cvData.conferences || !Array.isArray(cvData.conferences) || cvData.conferences.length === 0) {
+      return [];
+    }
+
+    // 先按日期降序排序
+    const sortedConferences = [...cvData.conferences].sort((a, b) => {
+      // 假設日期格式為 'YYYY/MM/DD' 或 'YYYY-MM-DD'
+      const dateA = new Date(a.date.replace(/\//g, '-'));
+      const dateB = new Date(b.date.replace(/\//g, '-'));
+      return dateB.getTime() - dateA.getTime();
+    });
+
+    // 按年份分組
+    const conferencesByYear: { [key: string]: any[] } = {};
+    sortedConferences.forEach(conference => {
+      // 從日期提取年份
+      const year = conference.date.split(/\/|-/)[0];
+      if (!conferencesByYear[year]) {
+        conferencesByYear[year] = [];
+      }
+      conferencesByYear[year].push(conference);
+    });
+
+    // 轉換為陣列並按年份降序排序
+    return Object.keys(conferencesByYear)
+      .sort((a, b) => Number(b) - Number(a)) // 降序排序年份
+      .map(year => ({
+        year,
+        conferences: conferencesByYear[year]
+      }));
+  };
+
+  // 展開/收起年份分組
+  const toggleYearExpansion = (year: string) => {
+    setExpandedConferenceYears(prev => ({
+      ...prev,
+      [year]: !prev[year]
+    }));
+  };
+
+  // 展開/收起所有年份分組
+  const toggleAllYears = (expanded: boolean) => {
+    const years = getConferencesByYear().map(group => group.year);
+    const newState: { [year: string]: boolean } = {};
+    years.forEach(year => {
+      newState[year] = expanded;
+    });
+    setExpandedConferenceYears(newState);
+  };
+
+  // 初始展開最近一年
+  useEffect(() => {
+    const conferenceYears = getConferencesByYear();
+    if (conferenceYears.length > 0) {
+      const mostRecentYear = conferenceYears[0].year;
+      setExpandedConferenceYears(prev => ({
+        ...prev,
+        [mostRecentYear]: true
+      }));
+    }
+  }, [cvData.conferences]);
 
   if (isLoading) {
     return <div className="cv-container">Loading...</div>;
@@ -681,50 +748,96 @@ const CV = () => {
       {cvData.conferences && (
         <section className="cv-section">
           <h2>{cvData.sections.conferences}</h2>
-          <div className="conferences-grid">
-            {cvData.conferences.map((conf, index) => (
-              <div key={index} className="conference-item">
-                <div className="conference-header">
-                  <h4>
-                    {conf.title}
-                    {conf.url && (
-                      <a
-                        href={conf.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="conference-link"
-                      >
-                        <FontAwesomeIcon icon={faExternalLinkAlt} className="external-link-icon" />
-                      </a>
-                    )}
-                  </h4>
-                  {conf.tags && (
-                    <div className="conference-tags">
-                      {conf.tags.map((tag, tagIndex) => (
-                        <span key={tagIndex} className="tag">
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+          
+          {/* 控制區：展開/收起所有年份 */}
+          <div className="conferences-controls">
+            <button 
+              className="conferences-control-btn" 
+              onClick={() => toggleAllYears(true)}
+            >
+              {t('cv:expandAll')}
+            </button>
+            <button 
+              className="conferences-control-btn" 
+              onClick={() => toggleAllYears(false)}
+            >
+              {t('cv:collapseAll')}
+            </button>
+          </div>
+          
+          {/* 按年份顯示演講 */}
+          <div className="conferences-accordion">
+            {getConferencesByYear().map(yearGroup => (
+              <div key={yearGroup.year} className="conference-year-group">
+                <div 
+                  className="conference-year-header" 
+                  onClick={() => toggleYearExpansion(yearGroup.year)}
+                >
+                  <h3>
+                    <FontAwesomeIcon icon={faCalendarAlt} style={{marginRight: '0.5rem'}} />
+                    {yearGroup.year} ({yearGroup.conferences.length})
+                  </h3>
+                  <FontAwesomeIcon 
+                    icon={faChevronDown} 
+                    className={`conference-year-toggle ${expandedConferenceYears[yearGroup.year] ? 'expanded' : ''}`} 
+                  />
                 </div>
-                <div className="conference-info">
-                  {conf.organizer && (
-                    <div className="conference-organizer">
-                      <FontAwesomeIcon icon={faBuilding} size="sm" className="organizer-icon" />
-                      <span className="organizer-text">{conf.organizer}</span>
-                    </div>
-                  )}
-                  <span className="conference-date">
-                    <FontAwesomeIcon icon={faCalendarAlt} size="sm" />
-                    <span>{conf.date}</span>
-                  </span>
-                  {conf.venue && conf.venue !== '-' && (
-                    <div className="conference-venue">
-                      <FontAwesomeIcon icon={faMapMarkerAlt} size="sm" className="venue-icon" />
-                      <span className="venue-text">{conf.venue}</span>
-                    </div>
-                  )}
+                
+                <div className={`conference-year-content ${expandedConferenceYears[yearGroup.year] ? 'expanded' : ''}`}>
+                  <ul className="conference-list">
+                    {yearGroup.conferences.map((conf, index) => (
+                      <li key={index} className="conference-list-item">
+                        {/* 主要信息行：標題和日期 */}
+                        <div className="conference-primary-info">
+                          <div className="conference-title-container">
+                            <h4 className="conference-title">{conf.title}</h4>
+                            {conf.url && (
+                              <a
+                                href={conf.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="conference-external-link"
+                              >
+                                <FontAwesomeIcon icon={faExternalLinkAlt} />
+                              </a>
+                            )}
+                          </div>
+                          <div className="conference-date">
+                            <FontAwesomeIcon icon={faCalendarAlt} size="sm" />
+                            <span>{conf.date}</span>
+                          </div>
+                        </div>
+                        
+                        {/* 次要信息：組織者和地點 */}
+                        <div className="conference-secondary-info">
+                          {conf.organizer && (
+                            <div className="conference-organizer">
+                              <FontAwesomeIcon icon={faBuilding} size="sm" />
+                              <span>{conf.organizer}</span>
+                            </div>
+                          )}
+                          
+                          {conf.venue && conf.venue !== '-' && (
+                            <div className="conference-venue">
+                              <FontAwesomeIcon icon={faMapMarkerAlt} size="sm" />
+                              <span>{conf.venue}</span>
+                            </div>
+                          )}
+                        </div>
+                        
+                        {/* 標籤 */}
+                        {conf.tags && conf.tags.length > 0 && (
+                          <div className="conference-tags">
+                            {conf.tags.map((tag: string, tagIndex: number) => (
+                              <span key={tagIndex} className="conference-tag">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}
