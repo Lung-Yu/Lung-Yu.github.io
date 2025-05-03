@@ -17,12 +17,14 @@
     "skills": "Skills",
     "experience": "Experience",
     "education": "Education",
-    "conferences": "Conferences"
+    "conferences": "Conferences",
+    "certificates": "Professional Certifications"
   },
   "actions": {
     "expandAll": "Expand All",
     "collapseAll": "Collapse All"
   },
+  "ongoing": "Present",
   "skills": [
     {
       "category": "Cybersecurity Skills",

@@ -17,12 +17,14 @@
     "skills": "技能",
     "experience": "經歷",
     "education": "學歷",
-    "conferences": "演講/議程"
+    "conferences": "演講/議程",
+    "certificates": "專業證照"
   },
   "actions": {
     "expandAll": "展開全部",
     "collapseAll": "收合全部"
   },
+  "ongoing": "現在",
   "skills": [
     {
       "category": "資安技能",

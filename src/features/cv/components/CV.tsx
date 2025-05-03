@@ -6,12 +6,12 @@ import '../styles/company-duration.css';
 import '../styles/highlights.css';
 import '../styles/skills-display.css';
 import '../styles/summary.css';
+import '../styles/certificates-summary.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faExternalLinkAlt, 
   faChevronDown,
-  faShield, 
   faCode, 
   faUsers, 
   faCodeBranch,
@@ -59,21 +59,14 @@ import {
   faShieldVirus,
   faChalkboardTeacher,
   faFileAlt,
-  faArchway,
   faCogs,
   faBoxOpen,
-  faWrench,
   faServer,
-  faMobileAlt,
-  faIndustry,
-  faGlobe,
-  faSearch,
   faPenFancy,
-  faBullhorn,
-  faUserSecret,
-  faUsersCog
+  faBullhorn
 } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { useCertificates } from '../../certificates/hooks/useCertificates'; // 新增引入證書hook
 
 // Helper function to get the correct icon for a skill
 const getSkillIcon = (skill: string) => {
@@ -82,6 +75,7 @@ const getSkillIcon = (skill: string) => {
 
 const CV = () => {
   const { cvData, isLoading, t } = useCV();
+  const { certificates } = useCertificates(); // 獲取證書數據
   const [expandedExp, setExpandedExp] = useState<number | null>(null);
   const [expandedEdu, setExpandedEdu] = useState<number | null>(null);
   const [allExperiencesExpanded, setAllExperiencesExpanded] = useState(false);
@@ -149,6 +143,14 @@ const CV = () => {
     }
   };
 
+  // 獲取重要證書(根據value值排序取前4個)
+  const getTopCertificates = () => {
+    if (!certificates || certificates.length === 0) return [];
+    return [...certificates]
+      .sort((a, b) => (b.value || 0) - (a.value || 0))
+      .slice(0, 4);
+  };
+
   if (isLoading) {
     return <div className="cv-container">Loading...</div>;
   }
@@ -185,10 +187,15 @@ const CV = () => {
 
   const renderDetailItem = (item: string, index: number) => {
     if (item.startsWith('- ')) {
-      // 標準巢狀項目
-      return <li key={index} className="nested-item">{item.substring(2)}</li>;
+      // 標準巢狀項目 - 精簡顯示
+      const text = item.substring(2);
+      // 如果巢狀項目超過100字元，則進行截斷
+      if (text.length > 100) {
+        return <li key={index} className="nested-item">{text.substring(0, 100)}...</li>;
+      }
+      return <li key={index} className="nested-item">{text}</li>;
     } else {
-      // 主要項目
+      // 主要項目 - 完整顯示
       return <li key={index} className="main-item">{item}</li>;
     }
   };
@@ -429,7 +436,41 @@ const CV = () => {
     ));
   };
 
-  return (
+  // 渲染精選證書區塊
+  const renderCertificatesSection = () => {
+    const topCertificates = getTopCertificates();
+    
+    if (topCertificates.length === 0) return null;
+    
+    return (
+      <div className="cv-section certificates-summary">
+        <h2>
+          <FontAwesomeIcon icon={faCertificate} className="section-icon" />
+          {t('sections.certificates') || 'Key Certifications'}
+        </h2>
+        <div className="certificates-grid">
+          {topCertificates.map((cert, index) => (
+            <div key={index} className="certificate-card">
+              <div className="certificate-logo">
+                <img src={cert.image} alt={cert.title} />
+              </div>
+              <div className="certificate-info">
+                <h3>{cert.title}</h3>
+                <p className="certificate-institution">{cert.institution}</p>
+                <p className="certificate-period">
+                  {cert.obtainedAt} - {cert.expiryDate === '-' ? (t('ongoing') || 'Current') : cert.expiryDate}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  return isLoading ? (
+    <div>Loading...</div>
+  ) : (
     <div className="cv-container">
       <header className="cv-header">
         <div>
@@ -514,6 +555,9 @@ const CV = () => {
         </div>
       </section>
 
+      {/* 精選證書區塊 */}
+      {renderCertificatesSection()}
+      
       <section className="cv-section">
         <h2>{cvData.sections.skills}</h2>
         <div className="cv-skills-grid">
