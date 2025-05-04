@@ -43,7 +43,58 @@
     "expandAll": "展開全部",
     "collapseAll": "收合全部"
   },
+  "duration": {
+    "monthsOnly": "{{count}}個月",
+    "monthsOnly_plural": "{{count}}個月",
+    "yearsOnly": "{{count}}年",
+    "yearsOnly_plural": "{{count}}年",
+    "yearsAndMonths": "{{years}}年{{months}}個月",
+    "yearsAndMonths_plural": "{{years}}年{{months}}個月"
+  },
   "ongoing": "現在",
+  "currentPosition": "目前",
+  "loading": "載入中...",
+  "skillCategories": {
+    "security": {
+      "title": "資安技能",
+      "skills": [
+        "資安治理",
+        "法規遵循",
+        "滲透測試",
+        "弱點評估",
+        "事件響應",
+        "安全架構",
+        "風險管理",
+        "資安稽核"
+      ]
+    },
+    "development": {
+      "title": "開發技能",
+      "skills": [
+        "全端開發",
+        "JavaScript / TypeScript",
+        "React / Node.js",
+        "API 設計與整合",
+        "資料庫管理",
+        "雲端架構",
+        "容器化技術",
+        "CI/CD 自動化部署"
+      ]
+    },
+    "management": {
+      "title": "管理與溝通",
+      "skills": [
+        "團隊領導",
+        "技術培訓",
+        "專案管理",
+        "跨團隊協作",
+        "需求分析",
+        "技術文件撰寫",
+        "客戶溝通",
+        "技術演講"
+      ]
+    }
+  },
   "skills": [
     {
       "category": "資安技能",

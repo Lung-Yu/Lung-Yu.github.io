@@ -5,6 +5,7 @@ import type { CVData } from '../types';
 export const useCV = () => {
   const { t, ready } = useTranslation('cv');
 
+  // 獲取翻譯陣列，加強錯誤處理
   const getTranslatedArray = <T>(key: string): T[] => {
     try {
       const data = t(key, { returnObjects: true });
@@ -14,21 +15,32 @@ export const useCV = () => {
       return [];
     }
   };
+  
+  // 安全地獲取翻譯字符串，帶有默認值
+  const getSafeTranslation = (key: string, defaultValue: string = ''): string => {
+    try {
+      const result = t(key);
+      return typeof result === 'string' ? result : defaultValue;
+    } catch (error) {
+      console.error(`Translation error for key ${key}:`, error);
+      return defaultValue;
+    }
+  };
 
   const cvData: CVData = {
-    name: t('name', { defaultValue: '' }),
-    title: t('title', { defaultValue: '' }),
-    summary: t('summary', { defaultValue: '' }),
-    email: t('email', { defaultValue: 'workfile975@gmail.com' }),
-    phone: t('phone', { defaultValue: '' }),
-    location: t('location', { defaultValue: '' }),
-    website: t('website', { defaultValue: '' }),
-    linkedin: t('linkedin', { defaultValue: '' }),
+    name: getSafeTranslation('name'),
+    title: getSafeTranslation('title'),
+    summary: getSafeTranslation('summary'),
+    email: getSafeTranslation('email', 'workfile975@gmail.com'),
+    phone: getSafeTranslation('phone'),
+    location: getSafeTranslation('location'),
+    website: getSafeTranslation('website'),
+    linkedin: getSafeTranslation('linkedin'),
     sections: {
-      skills: t('sections.skills', { defaultValue: '技能' }),
-      experience: t('sections.experience', { defaultValue: '經歷' }),
-      education: t('sections.education', { defaultValue: '學歷' }),
-      conferences: t('sections.conferences', { defaultValue: '演講/議程' })
+      skills: getSafeTranslation('sections.skills', '技能'),
+      experience: getSafeTranslation('sections.experience', '經歷'),
+      education: getSafeTranslation('sections.education', '學歷'),
+      conferences: getSafeTranslation('sections.conferences', '演講/議程')
     },
     skills: getTranslatedArray<CVData['skills'][0]>('skills'),
     experiences: getTranslatedArray<CVData['experiences'][0]>('experiences'),

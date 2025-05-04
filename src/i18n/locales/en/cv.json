@@ -43,7 +43,58 @@
     "expandAll": "Expand All",
     "collapseAll": "Collapse All"
   },
+  "duration": {
+    "monthsOnly": "{{count}} month",
+    "monthsOnly_plural": "{{count}} months",
+    "yearsOnly": "{{count}} year",
+    "yearsOnly_plural": "{{count}} years",
+    "yearsAndMonths": "{{years}} year {{months}} month",
+    "yearsAndMonths_plural": "{{years}} years {{months}} months"
+  },
   "ongoing": "Present",
+  "currentPosition": "Current",
+  "loading": "Loading...",
+  "skillCategories": {
+    "security": {
+      "title": "Security Skills",
+      "skills": [
+        "Security Governance",
+        "Compliance Management",
+        "Penetration Testing",
+        "Vulnerability Assessment",
+        "Incident Response",
+        "Security Architecture",
+        "Risk Management",
+        "Security Auditing"
+      ]
+    },
+    "development": {
+      "title": "Development Skills",
+      "skills": [
+        "Full-Stack Development",
+        "JavaScript / TypeScript",
+        "React / Node.js",
+        "RESTful API Design",
+        "Database Management",
+        "Cloud Architecture",
+        "Containerization",
+        "CI/CD Pipeline"
+      ]
+    },
+    "management": {
+      "title": "Management & Communication",
+      "skills": [
+        "Team Leadership",
+        "Technical Training",
+        "Project Management",
+        "Cross-team Collaboration",
+        "Requirements Analysis",
+        "Technical Documentation",
+        "Client Communication",
+        "Public Speaking"
+      ]
+    }
+  },
   "skills": [
     {
       "category": "Cybersecurity Skills",

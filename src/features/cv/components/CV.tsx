@@ -74,78 +74,56 @@ import type { TFunction } from 'i18next'; // 從 i18next 引入 TFunction 型別
 
 // 渲染重設計的技能區塊
 const renderRedesignedSkills = (t: TFunction) => {
-  // 檢查當前語言環境
-  const isEnglish = t('sections.skills') === 'Skills';
+  // 安全地獲取翻譯的字符串數組
+  const getSafeTranslatedArray = (path: string, defaultValues: string[]): string[] => {
+    try {
+      const result = t(path, { returnObjects: true });
+      // 確保結果是字符串數組
+      if (Array.isArray(result)) {
+        return result.map(item => String(item));
+      }
+      return defaultValues;
+    } catch (error) {
+      console.error(`Translation error for ${path}:`, error);
+      return defaultValues;
+    }
+  };
   
+  // 安全地獲取翻譯字符串
+  const getSafeTranslation = (path: string, defaultValue: string): string => {
+    try {
+      const result = t(path);
+      return typeof result === 'string' ? result : defaultValue;
+    } catch (error) {
+      console.error(`Translation error for ${path}:`, error);
+      return defaultValue;
+    }
+  };
+  
+  // 預設技能內容 (防止翻譯文件缺少時白屏)
+  const defaultSecuritySkills = ["Security Governance", "Compliance", "Penetration Testing", "Risk Management"];
+  const defaultDevSkills = ["Full-Stack Development", "JavaScript/TypeScript", "React/Node.js", "API Design"];
+  const defaultMgmtSkills = ["Team Leadership", "Project Management", "Technical Training", "Communication"];
+  
+  // 獲取國際化的技能類別
   const skillCategories = [
     {
-      title: isEnglish ? "Security Skills" : "資安技能",
+      key: "security",
       icon: faShieldAlt,
-      skills: isEnglish ? [
-        "Security Governance",
-        "Compliance Management",
-        "Penetration Testing",
-        "Vulnerability Assessment",
-        "Incident Response",
-        "Security Architecture",
-        "Risk Management",
-        "Security Auditing"
-      ] : [
-        "資安治理",
-        "法規遵循",
-        "滲透測試",
-        "弱點評估",
-        "事件響應",
-        "安全架構",
-        "風險管理",
-        "資安稽核"
-      ]
+      title: getSafeTranslation('skillCategories.security.title', 'Security Skills'),
+      skills: getSafeTranslatedArray('skillCategories.security.skills', defaultSecuritySkills)
     },
     {
-      title: isEnglish ? "Development Skills" : "開發技能",
+      key: "development",
       icon: faCode,
-      skills: isEnglish ? [
-        "Full-Stack Development",
-        "JavaScript / TypeScript",
-        "React / Node.js",
-        "RESTful API Design",
-        "Database Management",
-        "Cloud Architecture",
-        "Containerization",
-        "CI/CD Pipeline"
-      ] : [
-        "全端開發",
-        "JavaScript / TypeScript",
-        "React / Node.js",
-        "API 設計與整合",
-        "資料庫管理",
-        "雲端架構",
-        "容器化技術",
-        "CI/CD 自動化部署"
-      ]
+      title: getSafeTranslation('skillCategories.development.title', 'Development Skills'),
+      skills: getSafeTranslatedArray('skillCategories.development.skills', defaultDevSkills)
     },
     {
-      title: isEnglish ? "Management & Communication" : "管理與溝通",
+      key: "management",
       icon: faUsers,
-      skills: isEnglish ? [
-        "Team Leadership",
-        "Technical Training",
-        "Project Management",
-        "Cross-team Collaboration",
-        "Requirements Analysis",
-        "Technical Documentation",
-        "Client Communication",
-        "Public Speaking"
-      ] : [
-        "團隊領導",
-        "技術培訓",
-        "專案管理",
-        "跨團隊協作",
-        "需求分析",
-        "技術文件撰寫",
-        "客戶溝通",
-        "技術演講"
-      ]
+      title: getSafeTranslation('skillCategories.management.title', 'Management & Communication'),
+      skills: getSafeTranslatedArray('skillCategories.management.skills', defaultMgmtSkills)
     }
   ];
   
@@ -239,7 +217,7 @@ const CV = () => {
     const startDate = new Date(start.replace('/', '-'));
     
     // 處理多語系的「現在」或「Present」
-    const isCurrentDate = end === '現在' || end === 'Present';
+    const isCurrentDate = end === t('ongoing');
     const endDate = isCurrentDate ? new Date() : new Date(end.replace('/', '-'));
     
     const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
@@ -253,19 +231,14 @@ const CV = () => {
 
   const formatExperienceDuration = (duration: { years: number; months: number }): string => {
     const { years, months } = duration;
-    // 判斷當前語言的簡單方法：檢查 cvData 中的標題，如果包含中文就是中文界面
-    const isEnglish = cvData.title.includes('Full-Stack');
     
-    if (isEnglish) {
-      if (years === 0) return `${months} ${months === 1 ? 'month' : 'months'}`;
-      if (months === 0) return `${years} ${years === 1 ? 'year' : 'years'}`;
-      return `${years} ${years === 1 ? 'year' : 'years'} ${months} ${months === 1 ? 'month' : 'months'}`;
-    } else {
-      // 中文顯示
-      if (years === 0) return `${months}個月`;
-      if (months === 0) return `${years}年`;
-      return `${years}年${months}個月`;
+    if (years === 0) {
+      return t('duration.monthsOnly', { count: months, months });
     }
+    if (months === 0) {
+      return t('duration.yearsOnly', { count: years, years });
+    }
+    return t('duration.yearsAndMonths', { years, months });
   };
 
   // 獲取精選證書(根據value值排序取前4個)
@@ -345,8 +318,19 @@ const CV = () => {
     }
   }, []);
 
+  // 安全地獲取翻譯字符串
+  const getSafeTranslation = (path: string, defaultValue: string): string => {
+    try {
+      const result = t(path);
+      return typeof result === 'string' ? result : defaultValue;
+    } catch (error) {
+      console.error(`Translation error for ${path}:`, error);
+      return defaultValue;
+    }
+  };
+
   if (isLoading) {
-    return <div className="cv-container">Loading...</div>;
+    return <div className="cv-container">{getSafeTranslation('loading', 'Loading...')}</div>;
   }
 
   const experiences = Array.isArray(cvData.experiences) ? cvData.experiences : [];
@@ -428,9 +412,9 @@ const CV = () => {
         earliestDate = start;
       }
       
-      const isCurrentPosition = end === '現在';
+      const isCurrentPosition = end === t('ongoing');
       if (!latestDate || isCurrentPosition || 
-         (end !== '現在' && new Date(end.replace('/', '-')) > new Date(latestDate.replace('/', '-')))) {
+         (end !== t('ongoing') && new Date(end.replace('/', '-')) > new Date(latestDate.replace('/', '-')))) {
         latestDate = end;
       }
     });
@@ -446,7 +430,7 @@ const CV = () => {
   const groupedExperiences = groupExperiencesByCompany(experiences);    const renderExperienceContent = (exp: any, index: number) => {
     const duration = calculateExperienceYears(exp.period);
     const durationText = formatExperienceDuration(duration);
-    const isCurrentJob = exp.period.includes('現在') || exp.period.includes('Present');
+    const isCurrentJob = exp.period.includes(t('ongoing'));
 
     if (exp.brief && exp.details) {
       return (
@@ -460,7 +444,7 @@ const CV = () => {
                 {exp.period}
                 <span className="experience-duration">
                   ({durationText})
-                  {isCurrentJob && <span className="current-job-badge">{t('currentPosition', 'Current')}</span>}
+                  {isCurrentJob && <span className="current-job-badge">{getSafeTranslation('currentPosition', 'Current')}</span>}
                 </span>
               </div>
               <div className="experience-position">{exp.position}</div>
@@ -584,27 +568,38 @@ const CV = () => {
   };
 
   // Prepare achievement items
-  const renderHighlights = () => {
+  const renderHighlights = (t: TFunction) => {
+    // 安全地獲取翻譯字符串
+    const getSafeTranslation = (path: string, defaultValue: string): string => {
+      try {
+        const result = t(path);
+        return typeof result === 'string' ? result : defaultValue;
+      } catch (error) {
+        console.error(`Translation error for ${path}:`, error);
+        return defaultValue;
+      }
+    };
+    
     const achievements = [
       {
         icon: faCertificate,
-        title: t('highlights.certifications.title', 'Multiple Security Certifications'),
-        description: t('highlights.certifications.description', 'CISSP, CEH, and 5+ more recognized certifications in cybersecurity.')
+        title: getSafeTranslation('highlights.certifications.title', 'Multiple Security Certifications'),
+        description: getSafeTranslation('highlights.certifications.description', 'CISSP, CEH, and other recognized certifications in cybersecurity.')
       },
       {
         icon: faCodeBranch,
-        title: t('highlights.devsecops.title', 'DevSecOps Expert'),
-        description: t('highlights.devsecops.description', 'Integrating security into development workflows for 6+ years.')
+        title: getSafeTranslation('highlights.devsecops.title', 'DevSecOps Expert'),
+        description: getSafeTranslation('highlights.devsecops.description', 'Integrating security into development workflows.')
       },
       {
         icon: faTrophy,
-        title: t('highlights.recognition.title', 'Industry Recognition'),
-        description: t('highlights.recognition.description', '2023 Gama Star Award recipient, recognized for technical excellence.')
+        title: getSafeTranslation('highlights.recognition.title', 'Industry Recognition'),
+        description: getSafeTranslation('highlights.recognition.description', 'Award recipient, recognized for technical excellence.')
       },
       {
         icon: faUsers,
-        title: t('highlights.speaking.title', 'Technical Speaker'),
-        description: t('highlights.speaking.description', 'Regular speaker at conferences on security and development topics.')
+        title: getSafeTranslation('highlights.speaking.title', 'Technical Speaker'),
+        description: getSafeTranslation('highlights.speaking.description', 'Regular speaker at conferences on security and development topics.')
       }
     ];
 
@@ -641,7 +636,7 @@ const CV = () => {
                 <h3>{cert.title}</h3>
                 <p className="certificate-institution">{cert.institution}</p>
                 <p className="certificate-period">
-                  {cert.obtainedAt} - {cert.expiryDate === '-' ? (t('ongoing') || 'Current') : cert.expiryDate}
+                  {cert.obtainedAt} - {cert.expiryDate === '-' ? (getSafeTranslation('ongoing', 'Present')) : cert.expiryDate}
                 </p>
               </div>
             </div>
@@ -750,7 +745,7 @@ const CV = () => {
         
         {/* 主要成就 */}
         <div className="achievement-grid">
-          {renderHighlights()}
+          {renderHighlights(t)}
         </div>
       </section>
 
