@@ -173,14 +173,6 @@
   ],
   "conferences": [
     {
-      "title": "雲原生安全：Kubernetes 漏洞與緩解策略",
-      "date": "2025/07/15",
-      "venue": "台北國際會議中心",
-      "organizer": "雲安全聯盟台灣分會",
-      "tags": ["雲端安全", "Kubernetes", "容器安全", "DevSecOps"],
-      "url": "https://csatw.org/events/2025/cloud-native-security-conf"
-    },
-    {
       "title": "DevSecOps 和自動化安全檢測的敏捷導入",
       "date": "2025/04/17",
       "venue": "南港展覽館",

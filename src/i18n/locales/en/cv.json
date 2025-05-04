@@ -173,19 +173,6 @@
   ],
   "conferences": [
     {
-      "title": "Cloud Native Security: Kubernetes Vulnerabilities and Mitigation Strategies",
-      "date": "2025/07/15",
-      "venue": "Taipei International Convention Center",
-      "organizer": "Cloud Security Alliance Taiwan Chapter",
-      "tags": [
-        "Cloud Security",
-        "Kubernetes",
-        "Container Security",
-        "DevSecOps"
-      ],
-      "url": "https://csatw.org/events/2025/cloud-native-security-conf"
-    },
-    {
       "title": "Agile Adoption of DevSecOps and Automated Security Testing",
       "date": "2025/04/17",
       "venue": "Nangang Exhibition Center",
