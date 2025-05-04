@@ -18,7 +18,26 @@
     "experience": "經歷",
     "education": "學歷",
     "conferences": "演講/議程",
-    "certificates": "專業證照"
+    "certificates": "專業證照",
+    "highlights": "專業亮點"
+  },
+  "highlights": {
+    "certifications": {
+      "title": "國際資安認證",
+      "description": "擁有CISSP、CEH等多項知名資安證照"
+    },
+    "devsecops": {
+      "title": "DevSecOps 專家",
+      "description": "六年以上安全開發經驗，專精於資安融入開發流程"
+    },
+    "recognition": {
+      "title": "產業獎項肯定",
+      "description": "2023 Gama Star 獎項得主，專業技術獲得產業肯定"
+    },
+    "speaking": {
+      "title": "技術演講講者",
+      "description": "多場資安與開發技術研討會講者，分享專業知識"
+    }
   },
   "actions": {
     "expandAll": "展開全部",

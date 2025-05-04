@@ -18,7 +18,26 @@
     "experience": "Experience",
     "education": "Education",
     "conferences": "Conferences",
-    "certificates": "Professional Certifications"
+    "certificates": "Professional Certifications",
+    "highlights": "Professional Highlights"
+  },
+  "highlights": {
+    "certifications": {
+      "title": "Multiple Security Certifications",
+      "description": "CISSP, CEH, and 5+ more recognized certifications in cybersecurity."
+    },
+    "devsecops": {
+      "title": "DevSecOps Expert",
+      "description": "Integrating security into development workflows for 6+ years."
+    },
+    "recognition": {
+      "title": "Industry Recognition",
+      "description": "2023 Gama Star Award recipient, recognized for technical excellence."
+    },
+    "speaking": {
+      "title": "Technical Speaker",
+      "description": "Regular speaker at conferences on security and development topics."
+    }
   },
   "actions": {
     "expandAll": "Expand All",

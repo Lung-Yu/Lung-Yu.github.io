@@ -19,7 +19,7 @@ export const useCV = () => {
     name: t('name', { defaultValue: '' }),
     title: t('title', { defaultValue: '' }),
     summary: t('summary', { defaultValue: '' }),
-    email: t('email', { defaultValue: 'contact@example.com' }),
+    email: t('email', { defaultValue: 'workfile975@gmail.com' }),
     phone: t('phone', { defaultValue: '' }),
     location: t('location', { defaultValue: '' }),
     website: t('website', { defaultValue: '' }),

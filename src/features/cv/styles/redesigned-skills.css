@@ -1,0 +1,102 @@
+/* 
+  重新設計的三大類技能樣式 
+*/
+
+.skills-section {
+  margin-bottom: 3rem;
+}
+
+.skills-section h2 {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.skills-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60%;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}
+
+.skills-main-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.skill-category-box {
+  background-color: var(--color-gray-50);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid var(--color-primary);
+}
+
+.skill-category-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.skill-category-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.skill-category-title h3 {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin: 0;
+}
+
+.skill-category-icon {
+  margin-right: 0.8rem;
+  color: var(--color-secondary);
+  font-size: 1.2rem;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+}
+
+@media (max-width: 400px) {
+  .skills-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skill-item {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.skill-item::before {
+  content: "•";
+  position: absolute;
+  left: 0.5rem;
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .skills-main-grid {
+    grid-template-columns: 1fr;
+  }
+}

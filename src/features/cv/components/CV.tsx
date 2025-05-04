@@ -8,7 +8,10 @@ import '../styles/skills-display.css';
 import '../styles/summary.css';
 import '../styles/certificates-summary.css';
 import '../styles/conferences-accordion.css';
+import '../styles/integrated-header.css';
+import '../styles/redesigned-skills.css';
 import LanguageSwitcher from '../../../shared/components/LanguageSwitcher/LanguageSwitcher';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faExternalLinkAlt, 
@@ -66,12 +69,103 @@ import {
   faPenFancy,
   faBullhorn
 } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect } from 'react';
 import { useCertificates } from '../../certificates/hooks/useCertificates'; // 新增引入證書hook
+import type { TFunction } from 'i18next'; // 從 i18next 引入 TFunction 型別
 
-// Helper function to get the correct icon for a skill
-const getSkillIcon = (skill: string) => {
-  return skillIcons[skill] || faCode; // Default to code icon if not found
+// 渲染重設計的技能區塊
+const renderRedesignedSkills = (t: TFunction) => {
+  // 檢查當前語言環境
+  const isEnglish = t('sections.skills') === 'Skills';
+  
+  const skillCategories = [
+    {
+      title: isEnglish ? "Security Skills" : "資安技能",
+      icon: faShieldAlt,
+      skills: isEnglish ? [
+        "Security Governance",
+        "Compliance Management",
+        "Penetration Testing",
+        "Vulnerability Assessment",
+        "Incident Response",
+        "Security Architecture",
+        "Risk Management",
+        "Security Auditing"
+      ] : [
+        "資安治理",
+        "法規遵循",
+        "滲透測試",
+        "弱點評估",
+        "事件響應",
+        "安全架構",
+        "風險管理",
+        "資安稽核"
+      ]
+    },
+    {
+      title: isEnglish ? "Development Skills" : "開發技能",
+      icon: faCode,
+      skills: isEnglish ? [
+        "Full-Stack Development",
+        "JavaScript / TypeScript",
+        "React / Node.js",
+        "RESTful API Design",
+        "Database Management",
+        "Cloud Architecture",
+        "Containerization",
+        "CI/CD Pipeline"
+      ] : [
+        "全端開發",
+        "JavaScript / TypeScript",
+        "React / Node.js",
+        "API 設計與整合",
+        "資料庫管理",
+        "雲端架構",
+        "容器化技術",
+        "CI/CD 自動化部署"
+      ]
+    },
+    {
+      title: isEnglish ? "Management & Communication" : "管理與溝通",
+      icon: faUsers,
+      skills: isEnglish ? [
+        "Team Leadership",
+        "Technical Training",
+        "Project Management",
+        "Cross-team Collaboration",
+        "Requirements Analysis",
+        "Technical Documentation",
+        "Client Communication",
+        "Public Speaking"
+      ] : [
+        "團隊領導",
+        "技術培訓",
+        "專案管理",
+        "跨團隊協作",
+        "需求分析",
+        "技術文件撰寫",
+        "客戶溝通",
+        "技術演講"
+      ]
+    }
+  ];
+  
+  return (
+    <div className="skills-main-grid">
+      {skillCategories.map((category, index) => (
+        <div key={index} className="skill-category-box">
+          <div className="skill-category-title">
+            <FontAwesomeIcon icon={category.icon} className="skill-category-icon" />
+            <h3>{category.title}</h3>
+          </div>
+          <div className="skills-list">
+            {category.skills.map((skill, idx) => (
+              <div key={idx} className="skill-item">{skill}</div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 const CV = () => {
@@ -257,7 +351,6 @@ const CV = () => {
 
   const experiences = Array.isArray(cvData.experiences) ? cvData.experiences : [];
   const education = Array.isArray(cvData.education) ? cvData.education : [];
-  const skills = Array.isArray(cvData.skills) ? cvData.skills : [];
 
   // 更智能的详细信息处理，包含分组功能
   const processDetailItems = (details: string[]) => {
@@ -490,48 +583,38 @@ const CV = () => {
     setExpandedSections(prev => ({...prev, ...updates}));
   };
 
-  // Prepare highlight items
+  // Prepare achievement items
   const renderHighlights = () => {
-    const isEnglish = cvData.title.includes('Full-Stack');
-    
-    const highlights = [
+    const achievements = [
       {
         icon: faCertificate,
-        title: isEnglish ? "Multiple Cybersecurity Certifications" : "多項資安認證",
-        description: isEnglish ? 
-          "Certified in various security domains including CISSP, CEH, and more." : 
-          "擁有多項國際資安證照，包括CISSP、CEH等"
+        title: t('highlights.certifications.title', 'Multiple Security Certifications'),
+        description: t('highlights.certifications.description', 'CISSP, CEH, and 5+ more recognized certifications in cybersecurity.')
       },
       {
         icon: faCodeBranch,
-        title: isEnglish ? "DevSecOps Expert" : "DevSecOps 專家",
-        description: isEnglish ? 
-          "Experienced in integrating security into development workflows." : 
-          "專精於將資安融入開發流程"
+        title: t('highlights.devsecops.title', 'DevSecOps Expert'),
+        description: t('highlights.devsecops.description', 'Integrating security into development workflows for 6+ years.')
       },
       {
         icon: faTrophy,
-        title: isEnglish ? "Award Winner" : "獲獎經歷",
-        description: isEnglish ? 
-          "2023 Gama Star Award and multiple technical competitions." : 
-          "2023 Gama Star 獎項及多項技術競賽獎項"
+        title: t('highlights.recognition.title', 'Industry Recognition'),
+        description: t('highlights.recognition.description', '2023 Gama Star Award recipient, recognized for technical excellence.')
       },
       {
         icon: faUsers,
-        title: isEnglish ? "Conference Speaker" : "演講講者",
-        description: isEnglish ? 
-          "Regular speaker at security and development conferences." : 
-          "多場資安與開發技術研討會講者"
+        title: t('highlights.speaking.title', 'Technical Speaker'),
+        description: t('highlights.speaking.description', 'Regular speaker at conferences on security and development topics.')
       }
     ];
 
-    return highlights.map((highlight, index) => (
-      <div className="highlight-item" key={index}>
-        <h3>
-          <FontAwesomeIcon icon={highlight.icon} className="highlight-icon" />
-          {highlight.title}
-        </h3>
-        <p>{highlight.description}</p>
+    return achievements.map((item, index) => (
+      <div className="achievement-card" key={index}>
+        <div className="achievement-title">
+          <FontAwesomeIcon icon={item.icon} className="achievement-icon" />
+          {item.title}
+        </div>
+        <p className="achievement-text">{item.description}</p>
       </div>
     ));
   };
@@ -568,89 +651,105 @@ const CV = () => {
     );
   };
 
+  // 渲染專業標籤
+  const renderProfessionalTags = () => {
+    return (
+      <div className="professional-tags">
+        <div className="professional-tag">
+          <FontAwesomeIcon icon={faCertificate} className="tag-icon" />
+          {t('summaryPoints.keywords.cert', '國際資安認證')}
+        </div>
+        
+        <div className="professional-tag">
+          <FontAwesomeIcon icon={faCodeBranch} className="tag-icon" />
+          {t('summaryPoints.keywords.secdev', '安全開發實踐')}
+        </div>
+        
+        <div className="professional-tag">
+          <FontAwesomeIcon icon={faShieldAlt} className="tag-icon" />
+          {t('summaryPoints.keywords.security', '系統防護')}
+        </div>
+        
+        <div className="professional-tag">
+          <FontAwesomeIcon icon={faCode} className="tag-icon" />
+          {t('summaryPoints.keywords.fullstack', '全端開發')}
+        </div>
+        
+        <div className="professional-tag">
+          <FontAwesomeIcon icon={faUsers} className="tag-icon" />
+          {t('summaryPoints.keywords.training', '技術培訓')}
+        </div>
+        
+        <div className="professional-tag">
+          <FontAwesomeIcon icon={faTrophy} className="tag-icon" />
+          {t('summaryPoints.keywords.achievement', '專業認可')}
+        </div>
+      </div>
+    );
+  };
+
   return isLoading ? (
     <div>Loading...</div>
   ) : (
     <div className="cv-container">
-      <header className="cv-header">
-        <div>
-          <h1>{cvData.name}</h1>
-          <div className="title">{cvData.title}</div>
-          
-          <div className="cv-summary">
-            {/* 簡約素雅的摘要介紹 */}
-            <div className="cv-summary-intro">
-              <p>{t('summaryPoints.mainIntro', '結合資安專業與全端開發技術，致力於打造安全且高效能的系統與應用')}</p>
-            </div>
-            
-            {/* 關鍵詞標籤式展示 */}
-            <div className="cv-summary-list">
-              <span className="cv-summary-tag">
-                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faCertificate} /></span>
-                {t('summaryPoints.keywords.cert', '國際資安認證')}
-              </span>
-              
-              <span className="cv-summary-tag">
-                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faCodeBranch} /></span>
-                {t('summaryPoints.keywords.secdev', '安全開發實踐')}
-              </span>
-              
-              <span className="cv-summary-tag">
-                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faShieldAlt} /></span>
-                {t('summaryPoints.keywords.security', '系統防護')}
-              </span>
-              
-              <span className="cv-summary-tag">
-                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faCode} /></span>
-                {t('summaryPoints.keywords.fullstack', '全端開發')}
-              </span>
-              
-              <span className="cv-summary-tag">
-                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faUsers} /></span>
-                {t('summaryPoints.keywords.training', '技術培訓')}
-              </span>
-              
-              <span className="cv-summary-tag">
-                <span className="cv-summary-tag-icon"><FontAwesomeIcon icon={faTrophy} /></span>
-                {t('summaryPoints.keywords.achievement', '專業認可')}
-              </span>
-            </div>
+      {/* 整合式頁頭 - 合併個人簡介與聯絡資訊 */}
+      <header className="cv-integrated-header">
+        <div className="cv-integrated-layout">
+          {/* 個人簡介區塊 */}
+          <div className="cv-intro-section">
+            <h1>{cvData.name}</h1>
+            <div className="title">{cvData.title}</div>
+            <p>{t('summaryPoints.mainIntro', '結合資安專業與全端開發技術，致力於打造安全且高效能的系統與應用')}</p>
           </div>
           
-          <div className="cv-contact-details">
+          {/* 聯絡資訊區塊 */}
+          <div className="cv-contact-section">
             <a href={`mailto:${cvData.email || 'workfile975@gmail.com'}`} className="cv-contact-item">
-              <i className="cv-icon">✉</i> {cvData.email || 'workfile975@gmail.com'}
+              <FontAwesomeIcon icon={faExternalLinkAlt} className="cv-contact-icon" />
+              {cvData.email || 'workfile975@gmail.com'}
             </a>
             {cvData.phone && (
               <a href={`tel:${cvData.phone}`} className="cv-contact-item">
-                <i className="cv-icon">📱</i> {cvData.phone}
+                <FontAwesomeIcon icon={faHeadset} className="cv-contact-icon" />
+                {cvData.phone}
               </a>
             )}
             {cvData.location && (
-              <span className="cv-contact-item">
-                <i className="cv-icon">📍</i> {cvData.location}
-              </span>
+              <div className="cv-contact-item">
+                <FontAwesomeIcon icon={faMapMarkerAlt} className="cv-contact-icon" />
+                {cvData.location}
+              </div>
             )}
             {cvData.website && (
               <a href={cvData.website} className="cv-contact-item" target="_blank" rel="noopener noreferrer">
-                <i className="cv-icon">🌐</i> {cvData.website.replace(/^https?:\/\//, '')}
+                <FontAwesomeIcon icon={faExternalLinkAlt} className="cv-contact-icon" />
+                {cvData.website.replace(/^https?:\/\//, '')}
               </a>
             )}
             {cvData.linkedin && (
               <a href={cvData.linkedin} className="cv-contact-item" target="_blank" rel="noopener noreferrer">
-                <i className="cv-icon">in</i> LinkedIn
+                <FontAwesomeIcon icon={faUsers} className="cv-contact-icon" />
+                LinkedIn
               </a>
             )}
           </div>
         </div>
-        <div className="language-switcher-container">
+        
+        {/* 語言切換器 */}
+        <div className="language-selector">
           <LanguageSwitcher />
         </div>
       </header>
       
-      <section className="cv-section highlights-section">
-        <h2>{t('sections.highlights', 'Highlights')}</h2>
-        <div className="highlights-container">
+      {/* 專業亮點區塊 - 整合標籤與成就 */}
+      <section className="cv-section professional-highlights">
+        <h2>{t('sections.highlights', 'Professional Highlights')}</h2>
+        
+        {/* 專業標籤 */}
+        {renderProfessionalTags()}
+        
+        {/* 主要成就 */}
+        <div className="achievement-grid">
           {renderHighlights()}
         </div>
       </section>
@@ -658,33 +757,9 @@ const CV = () => {
       {/* 精選證書區塊 */}
       {renderCertificatesSection()}
       
-      <section className="cv-section">
+      <section className="cv-section skills-section">
         <h2>{cvData.sections.skills}</h2>
-        <div className="cv-skills-grid">
-          {skills.map((skillGroup, index) => (
-            <div 
-              key={index} 
-              className="cv-skill-category" 
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <h3>{skillGroup.category}</h3>
-              <ul className="cv-skill-list">
-                {skillGroup.items?.map((skill, skillIndex) => (
-                  <li 
-                    key={skillIndex} 
-                    className="cv-skill-item"
-                    style={{ animationDelay: `${skillIndex * 0.08}s` }}
-                  >
-                    <span className="cv-skill-icon">
-                      <FontAwesomeIcon icon={getSkillIcon(skill)} />
-                    </span>
-                    <span className="cv-skill-name">{skill}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        {renderRedesignedSkills(t)}
       </section>
 
       <section className="cv-section">
@@ -880,7 +955,14 @@ const CV = () => {
   );
 };
 
-const skillIcons: { [key: string]: any } = {
+// This skillIcons mapping is kept for potential future use in dynamic icon generation
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// Export the CV component as default
+export default CV;
+
+// Export a mapping of skill names to their corresponding icons
+// This can be imported by other components if needed for consistency
+export const skillIcons = {
   // 工程相關
   '全端工程師': faCode,
   '前端工程師': faCode,
@@ -963,5 +1045,3 @@ const skillIcons: { [key: string]: any } = {
   '資安系統安全': faServer,
   '資安資料庫安全': faDatabase
 };
-
-export default CV;
