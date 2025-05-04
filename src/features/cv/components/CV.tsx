@@ -85,9 +85,37 @@ const CV = () => {
   const [expandedSections, setExpandedSections] = useState<{[key: string]: boolean}>({});
   // 新增：用於追蹤展開的演講年份
   const [expandedConferenceYears, setExpandedConferenceYears] = useState<{[year: string]: boolean}>({});
+  // 新增：用於追蹤是否全部展開演講年份
+  const [allConferencesExpanded, setAllConferencesExpanded] = useState(false);
 
   const toggleExperience = (index: number) => {
     setExpandedExp(expandedExp === index ? null : index);
+  };
+  
+  // 展開/收起所有演講年份分組
+  const toggleAllConferences = () => {
+    console.log(`Toggle all conferences, current state: ${allConferencesExpanded}`);
+    const years = getConferencesByYear().map(group => group.year);
+    const newState: {[year: string]: boolean} = {};
+    
+    if (allConferencesExpanded) {
+      // 如果目前是全部展開，則全部收合
+      years.forEach(year => {
+        newState[year] = false;
+      });
+      console.log("收合所有年份");
+    } else {
+      // 如果目前是部分或全部收合，則全部展開
+      years.forEach(year => {
+        newState[year] = true;
+      });
+      console.log("展開所有年份");
+    }
+    
+    // 更新狀態 - 直接完全替換之前的狀態
+    setExpandedConferenceYears(newState);
+    setAllConferencesExpanded(!allConferencesExpanded);
+    console.log("Set new states:", newState);
   };
 
   const toggleEducation = (index: number) => {
@@ -190,20 +218,18 @@ const CV = () => {
 
   // 展開/收起年份分組
   const toggleYearExpansion = (year: string) => {
-    setExpandedConferenceYears(prev => ({
-      ...prev,
-      [year]: !prev[year]
-    }));
-  };
-
-  // 展開/收起所有年份分組
-  const toggleAllYears = (expanded: boolean) => {
-    const years = getConferencesByYear().map(group => group.year);
-    const newState: { [year: string]: boolean } = {};
-    years.forEach(year => {
-      newState[year] = expanded;
+    console.log(`Toggling year ${year}`);
+    setExpandedConferenceYears(prev => {
+      // 獲取目前的展開狀態
+      const isCurrentlyExpanded = !!prev[year];
+      // 創建新的狀態對象
+      const newState = {
+        ...prev,
+        [year]: !isCurrentlyExpanded
+      };
+      console.log(`Year ${year} toggle: Current state=${isCurrentlyExpanded}, new state=${!isCurrentlyExpanded}`);
+      return newState;
     });
-    setExpandedConferenceYears(newState);
   };
 
   // 初始展開最近一年
@@ -211,12 +237,19 @@ const CV = () => {
     const conferenceYears = getConferencesByYear();
     if (conferenceYears.length > 0) {
       const mostRecentYear = conferenceYears[0].year;
-      setExpandedConferenceYears(prev => ({
-        ...prev,
-        [mostRecentYear]: true
-      }));
+      console.log(`Initializing conference years, most recent year: ${mostRecentYear}`);
+      
+      // 創建一個新的狀態對象
+      const newState: {[year: string]: boolean} = {};
+      // 只將最新年份設為展開狀態
+      newState[mostRecentYear] = true;
+      
+      // 直接設置狀態，替換先前的所有狀態
+      setExpandedConferenceYears(newState);
+      setAllConferencesExpanded(false);
+      console.log(`Initial conference state set: `, newState);
     }
-  }, [cvData.conferences]);
+  }, []);
 
   if (isLoading) {
     return <div className="cv-container">Loading...</div>;
@@ -747,21 +780,18 @@ const CV = () => {
 
       {cvData.conferences && (
         <section className="cv-section">
-          <h2>{cvData.sections.conferences}</h2>
-          
           {/* 控制區：展開/收起所有年份 */}
-          <div className="conferences-controls">
-            <button 
-              className="conferences-control-btn" 
-              onClick={() => toggleAllYears(true)}
+          <div className="section-header">
+            <h2>{cvData.sections.conferences}</h2>
+            <button
+              className={`expand-all-button ${allConferencesExpanded ? 'expanded' : ''}`}
+              onClick={toggleAllConferences}
             >
-              {t('cv:expandAll')}
-            </button>
-            <button 
-              className="conferences-control-btn" 
-              onClick={() => toggleAllYears(false)}
-            >
-              {t('cv:collapseAll')}
+              {allConferencesExpanded ? t('actions.collapseAll') : t('actions.expandAll')}
+              <FontAwesomeIcon
+                icon={faChevronDown}
+                className={`toggle-icon ${allConferencesExpanded ? 'expanded' : ''}`}
+              />
             </button>
           </div>
           
@@ -770,7 +800,7 @@ const CV = () => {
             {getConferencesByYear().map(yearGroup => (
               <div key={yearGroup.year} className="conference-year-group">
                 <div 
-                  className="conference-year-header" 
+                  className={`conference-year-header ${expandedConferenceYears[yearGroup.year] === true ? 'active' : ''}`} 
                   onClick={() => toggleYearExpansion(yearGroup.year)}
                 >
                   <h3>
@@ -779,11 +809,13 @@ const CV = () => {
                   </h3>
                   <FontAwesomeIcon 
                     icon={faChevronDown} 
-                    className={`conference-year-toggle ${expandedConferenceYears[yearGroup.year] ? 'expanded' : ''}`} 
+                    className={`conference-year-toggle ${expandedConferenceYears[yearGroup.year] === true ? 'expanded' : ''}`} 
                   />
                 </div>
                 
-                <div className={`conference-year-content ${expandedConferenceYears[yearGroup.year] ? 'expanded' : ''}`}>
+                <div 
+                  className={`conference-year-content ${expandedConferenceYears[yearGroup.year] === true ? 'expanded' : ''}`}
+                >
                   <ul className="conference-list">
                     {yearGroup.conferences.map((conf, index) => (
                       <li key={index} className="conference-list-item">
