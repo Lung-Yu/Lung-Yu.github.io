@@ -703,18 +703,22 @@ const CV = () => {
               <FontAwesomeIcon icon={faExternalLinkAlt} className="cv-contact-icon" />
               {cvData.email || 'workfile975@gmail.com'}
             </a>
+            {/* 隱藏電話號碼
             {cvData.phone && (
               <a href={`tel:${cvData.phone}`} className="cv-contact-item">
                 <FontAwesomeIcon icon={faHeadset} className="cv-contact-icon" />
                 {cvData.phone}
               </a>
             )}
+            */}
+            {/* 隱藏地點資訊
             {cvData.location && (
               <div className="cv-contact-item">
                 <FontAwesomeIcon icon={faMapMarkerAlt} className="cv-contact-icon" />
                 {cvData.location}
               </div>
             )}
+            */}
             {cvData.website && (
               <a href={cvData.website} className="cv-contact-item" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faExternalLinkAlt} className="cv-contact-icon" />
