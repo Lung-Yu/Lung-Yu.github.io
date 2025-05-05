@@ -73,11 +73,10 @@
       "title": "開發技能",
       "skills": [
         "全端開發",
-        "JavaScript / TypeScript",
-        "React / Node.js",
         "API 設計與整合",
         "資料庫管理",
         "雲端架構",
+        "地端架構",
         "容器化技術",
         "CI/CD 自動化部署"
       ]
@@ -109,9 +108,9 @@
     {
       "category": "開發技能",
       "items": [
-        "前端開發 (React, TypeScript, JavaScript)",
-        "後端開發 (Python, Java, C#)",
+        "前後端開發",
         "系統架構設計",
+        "雲端與地端架構",
         "CI/CD 自動化"
       ]
     },

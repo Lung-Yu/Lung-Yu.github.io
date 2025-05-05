@@ -73,11 +73,10 @@
       "title": "Development Skills",
       "skills": [
         "Full-Stack Development",
-        "JavaScript / TypeScript",
-        "React / Node.js",
         "RESTful API Design",
         "Database Management",
         "Cloud Architecture",
+        "On-premises Architecture",
         "Containerization",
         "CI/CD Pipeline"
       ]
@@ -109,9 +108,9 @@
     {
       "category": "Development Skills",
       "items": [
-        "Frontend development (React, TypeScript, JavaScript)",
-        "Backend development (Node.js, Python, Java, C#)",
+        "Frontend & Backend development",
         "System architecture design",
+        "Cloud & On-premises architecture",
         "CI/CD automation"
       ]
     },

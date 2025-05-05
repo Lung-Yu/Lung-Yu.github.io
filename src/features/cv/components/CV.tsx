@@ -67,12 +67,14 @@ import {
   faBoxOpen,
   faServer,
   faPenFancy,
-  faBullhorn
+  faBullhorn,
+  faStar,
+  faSearch
 } from '@fortawesome/free-solid-svg-icons';
 import { useCertificates } from '../../certificates/hooks/useCertificates'; // 新增引入證書hook
 import type { TFunction } from 'i18next'; // 從 i18next 引入 TFunction 型別
 
-// 渲染重設計的技能區塊
+// 渲染精簡版技能區塊
 const renderRedesignedSkills = (t: TFunction) => {
   // 安全地獲取翻譯的字符串數組
   const getSafeTranslatedArray = (path: string, defaultValues: string[]): string[] => {
@@ -104,6 +106,67 @@ const renderRedesignedSkills = (t: TFunction) => {
   const defaultSecuritySkills = ["Security Governance", "Compliance", "Penetration Testing", "Risk Management"];
   const defaultDevSkills = ["Full-Stack Development", "JavaScript/TypeScript", "React/Node.js", "API Design"];
   const defaultMgmtSkills = ["Team Leadership", "Project Management", "Technical Training", "Communication"];
+  
+  // 技能對應圖示 - 為每個技能項目提供適合的圖示
+  const getSkillIcon = (skill: string) => {
+    const skillIconMap: {[key: string]: any} = {
+      // 資安技能
+      "Security Governance": faShieldVirus,
+      "Security Auditing": faClipboardCheck,
+      "Compliance Management": faFileContract,
+      "Penetration Testing": faBug,
+      "Vulnerability Assessment": faExclamationTriangle,
+      "Incident Response": faShieldAlt,
+      "Security Architecture": faLock,
+      "Risk Management": faChartLine,
+      "資安治理": faShieldVirus,
+      "資安稽核": faClipboardCheck,
+      "法規遵循": faFileContract,
+      "滲透測試": faBug,
+      "弱點評估": faExclamationTriangle,
+      "事件響應": faShieldAlt,
+      "安全架構": faLock,
+      "風險管理": faChartLine,
+      
+      // 開發技能
+      "Full-Stack Development": faCode,
+      "JavaScript / TypeScript": faCode,
+      "React / Node.js": faCode,
+      "RESTful API Design": faProjectDiagram,
+      "Database Management": faDatabase,
+      "Cloud Architecture": faCloud,
+      "On-premises Architecture": faServer,
+      "Containerization": faBoxOpen,
+      "CI/CD Pipeline": faCogs,
+      "全端開發": faCode,
+      "API 設計與整合": faProjectDiagram,
+      "資料庫管理": faDatabase,
+      "雲端架構": faCloud,
+      "地端架構": faServer,
+      "容器化技術": faBoxOpen,
+      "CI/CD 自動化部署": faCogs,
+      
+      // 管理技能
+      "Team Leadership": faUsers,
+      "Technical Training": faChalkboardTeacher,
+      "Project Management": faClipboardList,
+      "Cross-team Collaboration": faUsers,
+      "Requirements Analysis": faSearch,
+      "Technical Documentation": faFileAlt,
+      "Client Communication": faHeadset,
+      "Public Speaking": faBullhorn,
+      "團隊領導": faUsers,
+      "技術培訓": faChalkboardTeacher,
+      "專案管理": faClipboardList,
+      "跨團隊協作": faUsers,
+      "需求分析": faSearch,
+      "技術文件撰寫": faFileAlt,
+      "客戶溝通": faHeadset,
+      "技術演講": faBullhorn
+    };
+    
+    return skillIconMap[skill] || faStar;
+  };
   
   // 獲取國際化的技能類別
   const skillCategories = [
@@ -137,7 +200,10 @@ const renderRedesignedSkills = (t: TFunction) => {
           </div>
           <div className="skills-list">
             {category.skills.map((skill, idx) => (
-              <div key={idx} className="skill-item">{skill}</div>
+              <div key={idx} className="skill-item">
+                <FontAwesomeIcon icon={getSkillIcon(skill)} className="skill-item-icon" />
+                <span className="skill-item-text">{skill}</span>
+              </div>
             ))}
           </div>
         </div>
