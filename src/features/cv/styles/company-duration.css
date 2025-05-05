@@ -49,6 +49,18 @@
   font-style: italic;
   color: var(--color-text-light);
   margin-left: 0.5rem;
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Style for part-time badge specifically */
+.part-time-job .company-note {
+  background-color: rgba(102, 102, 102, 0.1);
+  color: var(--color-secondary);
+  font-weight: 500;
+  border: 1px solid rgba(102, 102, 102, 0.2);
 }
 
 .company-total-duration {

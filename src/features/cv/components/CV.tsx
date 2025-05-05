@@ -443,7 +443,7 @@ const CV = () => {
     }
   };
 
-  // Group experiences by company, preserving order
+  // Group experiences by company, prioritizing main job
   const groupExperiencesByCompany = (experiences: any[]) => {
     const companyMap: { [company: string]: any[] } = {};
     const companyOrder: string[] = [];
@@ -454,12 +454,25 @@ const CV = () => {
       }
       companyMap[exp.company].push(exp);
     });
-    return companyOrder.map(company => ({
+    
+    // Map companies to group objects
+    let result = companyOrder.map(company => ({
       company,
       companyNote: companyMap[company][0].companyNote,
       positions: companyMap[company],
-      totalDuration: calculateTotalCompanyDuration(companyMap[company])  // 新增：計算公司總時長
+      totalDuration: calculateTotalCompanyDuration(companyMap[company]),
+      isMainJob: company.includes('雲力橘子') || company === 'Cloudforce Co., Ltd.'
     }));
+    
+    // Sort to ensure main job is first, then by date
+    result.sort((a, b) => {
+      // Main job always comes first
+      if (a.isMainJob && !b.isMainJob) return -1;
+      if (!a.isMainJob && b.isMainJob) return 1;
+      return 0;
+    });
+    
+    return result;
   };
 
   // 計算同一公司多個職位的總工作時間
@@ -843,7 +856,10 @@ const CV = () => {
         </div>
         <div className="experience-timeline">
           {groupedExperiences.map((group) => (
-            <div key={group.company} className="experience-company-block">
+            <div 
+              key={group.company} 
+              className={`experience-company-block ${group.isMainJob ? 'main-job' : 'part-time-job'}`}
+            >
               <div className="experience-company-header">
                 <div className="company-title-wrapper">
                   <span className="experience-company-name">{group.company}</span>
