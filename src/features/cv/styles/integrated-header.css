@@ -183,6 +183,8 @@
   .language-selector {
     position: static;
     margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
   }
   
   .achievement-grid {
