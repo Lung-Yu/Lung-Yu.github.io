@@ -5,17 +5,21 @@ The Hero feature provides a prominent, eye-catching introduction section that ap
 
 ## Core Components
 - **Hero**: Main component that renders the hero section
-- **HeroBackground**: Component for displaying the background effects or images
-- **HeroContent**: Component for organizing the text and call-to-action elements
+- **HeroButtons**: Component for rendering call-to-action buttons
+- **FloatingOrbs**: Component for displaying animated background effects (imported from floatingOrbs feature)
 
 ## Features
-- Responsive design that looks great on all devices
-- Animated entrance effects for visual appeal
-- Integration with floating orbs or other background effects
-- Configurable content and appearance
-- Clear call-to-action buttons
-- Support for both light and dark themes
-- Multilingual support through i18n integration
+- Responsive design that adapts to all device sizes
+- Visual appeal with animated floating orbs background
+- Grid-based layout for optimal content organization
+- Social media links with icon representation
+- Profile image display with backdrop effects
+- Clear call-to-action buttons for site navigation
+- Comprehensive i18n support with:
+  - Translated greeting and role text
+  - Internationalized descriptions
+  - Proper ARIA labels for accessibility in multiple languages
+  - Translated tooltips and alt text for images
 
 ## File Structure
 ```
@@ -24,11 +28,14 @@ features/
     ├── index.ts            - Exports the main Hero component
     ├── components/         - React components for the hero feature
     │   ├── Hero.tsx        - Main hero section component
-    │   ├── HeroBackground.tsx - Background component
-    │   ├── HeroContent.tsx - Content organization component
-    │   └── ...             - Other supporting components
+    │   └── HeroButtons.tsx - Call-to-action buttons component
+    ├── hooks/              - Custom hooks for the hero feature
+    │   └── useHero.ts      - Hook for retrieving internationalized hero content
+    ├── types/              - TypeScript type definitions
+    │   └── index.ts        - Hero-related type definitions
     └── styles/             - CSS styles for hero components
-        └── Hero.css        - Styles for hero section
+        ├── Hero.css        - Styles for hero section
+        └── HeroButtons.css - Styles for call-to-action buttons
 ```
 
 ## Usage
@@ -39,25 +46,50 @@ import { Hero } from '../features/hero';
 
 const HomePage = () => {
   return (
-    <main>
-      <Hero 
-        title="John Doe" 
-        subtitle="Full Stack Developer & UI/UX Designer"
-        ctaText="View My Work"
-        ctaLink="/projects"
-      />
-      {/* Other page content */}
-    </main>
+    <section id="home" className="section-padding scroll-mt-20">
+      <Hero />
+    </section>
   );
 };
 ```
 
-## Configuration
-The Hero component accepts several props for customization:
+## i18n Implementation
 
-- `title`: Main heading text
-- `subtitle`: Secondary descriptive text
-- `ctaText`: Call-to-action button text
-- `ctaLink`: Call-to-action button link
-- `backgroundType`: Type of background to display ('gradient', 'image', 'video', 'animated')
-- `backgroundSrc`: Source URL for background image or video if applicable
+The Hero component leverages a comprehensive i18n implementation to support multiple languages:
+
+1. **Content Translation**
+   - All visible text is retrieved through the `useHero` hook, which returns internationalized content
+   - Translation keys follow a hierarchical structure (e.g., 'hero.socialLinks.github')
+   - Fallback values are provided to ensure reliability
+
+2. **Accessibility**
+   - ARIA labels are translated to match the user's language preferences
+   - Image alt texts are dynamically generated with the user's name in the correct language
+   - Tooltips for social links are internationalized
+
+3. **Configuration**
+   - Translation files are stored in `/public/locales/[language-code]/` directories
+   - The hero section's translations are part of a larger, feature-based translation structure
+
+The component uses react-i18next's `useTranslation` hook for accessing translated strings, ensuring consistent language presentation throughout the application.
+
+## Configuration
+The Hero component retrieves its content from the `useHero` hook, which provides localized data:
+
+```typescript
+// Example heroContent structure returned by useHero hook
+{
+  greeting: "Hello, I'm",
+  name: "John Doe",
+  role: "Full Stack Developer & Security Specialist",
+  description: "I create secure, user-friendly web applications with a focus on accessibility and performance.",
+  socialLinks: {
+    github: "https://github.com/johndoe",
+    linkedin: "https://linkedin.com/in/johndoe",
+    email: "contact@johndoe.com"
+  },
+  profileImage: "/images/aboutme/profile.png"
+}
+```
+
+The component automatically adapts to the user's language preferences, displaying all content in the selected language.
