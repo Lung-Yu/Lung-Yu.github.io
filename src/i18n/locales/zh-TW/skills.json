@@ -1,9 +1,9 @@
 {
   "title": "技能專長",
   "description": "專業技能與核心能力",
-  "gridView": "網格視圖",
-  "treeView": "樹狀視圖",
-  "viewSkillsAs": "查看技能為",
+  "gridView": "網格檢視",
+  "treeView": "樹狀檢視",
+  "viewSkillsAs": "技能檢視方式",
   "skillsTitle": "技能專長",
   "skillsSubtitle": "專業技能與核心能力"
 }
