@@ -1,45 +1,49 @@
 # Apps Feature
 
 ## Description
-The Apps feature showcases a collection of applications developed by the user, presented in an organized and visually appealing interface. It supports multiple languages through the i18n system.
+The Apps feature is the central application structure that includes the main App component responsible for routing and rendering all other features of the portfolio. It serves as the entry point for the application and orchestrates the integration of various features like CV, Projects, Consulting, etc. The feature supports multilingual content display through i18n integration.
 
 ## Core Components
-- **AppList**: Main component that displays a grid or list of applications
-- **AppCard**: Card component showing app preview, title, and brief description
-- **AppDetail**: Detailed view of a selected application
+- **App**: Main component that handles routing and application structure
+- **HomePage**: Component that renders the landing page with multiple sections
 
 ## Features
-- Responsive grid layout for app display
-- Filtering capabilities by technology or category
-- Detailed view for each application with screenshots and technical details
+- Centralized routing system for all portfolio pages
+- Smooth scrolling to page sections via hash navigation
+- Modal system for displaying image previews
+- Integration with the CV feature while maintaining its independence
+- Responsive layout across different device sizes
+- Navigation bar integration across routes
+- Section-based homepage organization
 - Multilingual support through i18n integration
 
 ## File Structure
 ```
 features/
 └── apps/
-    ├── index.ts        - Exports the main Apps components
+    ├── index.ts        - Exports the main App component
     ├── components/     - React components for the Apps feature
-    │   ├── AppList.tsx - Main component for displaying apps
-    │   ├── AppCard.tsx - Card component for individual apps
+    │   ├── App.tsx     - Main application component with routing
     │   └── ...         - Other supporting components
     └── styles/         - CSS styles for the Apps feature
-        └── Apps.css    - Styles for Apps components
+        └── App.css     - Styles for the main App component
 ```
 
 ## Usage
-Import the components from the apps feature:
+The App component is typically the root component of the application and is rendered directly in the main entry point:
 
 ```tsx
-import { AppList, AppCard } from '../features/apps';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './features/apps/components/App';
+import './index.css';
 
-const MyPage = () => {
-  return (
-    <div>
-      <AppList />
-      {/* Or with custom props */}
-      <AppList filter="mobile" />
-    </div>
-  );
-};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+The App component handles all routing and integrates all other features, including the CV feature which remains independently accessible while being part of the overall application structure.
 ```
