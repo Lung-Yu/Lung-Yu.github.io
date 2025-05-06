@@ -1,51 +1,146 @@
 {
   "name": "Tygrus",
   "title": "Cybersecurity Expert and Full-Stack Developer",
-  "summary": "Focused on software development and cybersecurity, with multiple international certifications. Dedicated to integrating security into the development process to create more secure and stable software systems.",
+  "summary": "Professional in cybersecurity and software development, enhancing system security and stability through expertise.",
+  "linkedin": "https://www.linkedin.com/in/lung-yu-tsai-633865100/",
+  "summaryPoints": {
+    "mainIntro": "Combining cybersecurity expertise with full-stack development for secure systems",
+    "keywords": {
+      "cert": "Security Certifications",
+      "secdev": "Secure Development",
+      "security": "System Protection",
+      "fullstack": "Full-Stack Development",
+      "training": "Technical Training",
+      "achievement": "Professional Recognition"
+    }
+  },
   "sections": {
     "skills": "Skills",
     "experience": "Experience",
     "education": "Education",
-    "conferences": "Conferences"
+    "conferences": "Conferences",
+    "certificates": "Professional Certifications",
+    "highlights": "Professional Highlights"
+  },
+  "highlights": {
+    "certifications": {
+      "title": "Multiple Security Certifications",
+      "description": "CISSP, CSSLP, CEH, and other recognized certifications."
+    },
+    "devsecops": {
+      "title": "DevSecOps Expert",
+      "description": "Integrating security into development workflows for 10+ years."
+    },
+    "recognition": {
+      "title": "Industry Recognition",
+      "description": "2023 Gama Star Award recipient, recognized for proactivity and impact."
+    },
+    "speaking": {
+      "title": "Technical Speaker",
+      "description": "Speaker at IThome CyberRes Security Conference, DevSecOps events, and software association conferences."
+    }
   },
   "actions": {
     "expandAll": "Expand All",
     "collapseAll": "Collapse All"
   },
+  "duration": {
+    "monthsOnly": "{{count}} month",
+    "monthsOnly_plural": "{{count}} months",
+    "yearsOnly": "{{count}} year",
+    "yearsOnly_plural": "{{count}} years",
+    "yearsAndMonths": "{{years}} year {{months}} month",
+    "yearsAndMonths_plural": "{{years}} years {{months}} months"
+  },
+  "ongoing": "Present",
+  "currentPosition": "Current",
+  "loading": "Loading...",
+  "skillCategories": {
+    "security": {
+      "title": "Security Skills",
+      "skills": [
+        "Security Governance",
+        "Compliance Management",
+        "Penetration Testing",
+        "Vulnerability Assessment",
+        "Incident Response",
+        "Security Architecture",
+        "Risk Management",
+        "Security Auditing"
+      ]
+    },
+    "development": {
+      "title": "Development Skills",
+      "skills": [
+        "Full-Stack Development",
+        "RESTful API Design",
+        "Database Management",
+        "Cloud Architecture",
+        "On-premises Architecture",
+        "Containerization",
+        "CI/CD Pipeline"
+      ]
+    },
+    "management": {
+      "title": "Management & Communication",
+      "skills": [
+        "Team Leadership",
+        "Technical Training",
+        "Project Management",
+        "Cross-team Collaboration",
+        "Requirements Analysis",
+        "Technical Documentation",
+        "Client Communication",
+        "Public Speaking"
+      ]
+    }
+  },
   "skills": [
     {
-      "category": "Cybersecurity Skills",
+      "category": "Security Expertise",
       "items": [
-        "Security analysis and risk assessment",
-        "Penetration testing and vulnerability scanning",
-        "Incident response handling",
-        "Secure software development lifecycle",
-        "Security architecture planning and evaluation",
-        "Regulatory compliance and auditing"
+        "CSSLP (Certified Secure Software Lifecycle Professional)",
+        "CISSP (Certified Information Systems Security Professional)",
+        "ISO 27001:2022 Lead Auditor",
+        "CEH (Certified Ethical Hacker)"
       ]
     },
     {
-      "category": "Development Skills",
+      "category": "Secure Development",
       "items": [
-        "Frontend development (React, TypeScript, JavaScript)",
-        "Backend development (Node.js, Python, Java, C#)",
-        "Database design and optimization",
-        "CI/CD pipeline setup",
-        "System architecture design",
-        "Code modularization and performance tuning"
+        "Secure Software Development Lifecycle (SSDLC)",
+        "DevSecOps implementation and practices",
+        "Secure architecture design and API protection",
+        "Automated security testing integration"
       ]
     },
     {
       "category": "Management Skills",
       "items": [
-        "Project management and progress control",
-        "Team leadership and technical guidance",
-        "Cross-department communication and coordination",
-        "Technical education and training planning"
+        "Project management",
+        "Team leadership",
+        "Cross-department communication",
+        "Technical training"
       ]
     }
   ],
   "experiences": [
+    {
+      "company": "AINetwork",
+      "companyNote": "Part-time position",
+      "position": "Teacher",
+      "period": "2025/04 - Present",
+      "brief": [
+        "Technical Training",
+        "Curriculum Development"
+      ],
+      "details": [
+        "Teaching Responsibilities:",
+        "- Developed and delivered DevSecOps and cybersecurity courses",
+        "- Provided enterprise secure coding practices training",
+        "- Shared software development security best practices"
+      ]
+    },
     {
       "company": "Cloudforce Co., Ltd.",
       "companyNote": "formerly Digicentre, a subsidiary of Gamania Group",
@@ -96,16 +191,11 @@
         "Security Tools Integration"
       ],
       "details": [
-        "DevSecOps Implementation:",
-        "- Fortify SCA tool integration",
-        "- Automated scanning process",
-        "- Secure development workflow",
-        "Technical Promotion:",
-        "- Secure code consulting",
-        "- Training program planning",
-        "- DevSecOps platform development",
-        "Achievement:",
-        "- 2023 Gama Star Award (2024/01/26)"
+        "Key Achievements:",
+        "- Integrated security tools into development processes and optimized automated scanning",
+        "- Designed and implemented enterprise-level DevSecOps workflow",
+        "- Provided secure coding consulting and developed training programs",
+        "- Received 2023 Gama Star Award for proactivity and impact on projects"
       ]
     },
     {
@@ -117,29 +207,14 @@
         "Enterprise security testing"
       ],
       "details": [
-        "Security Testing:",
-        "- Vulnerability Assessment",
-        "- Penetration Testing ",
-        "- Malware Analysis",
-        "Automation Tools:",
-        "- DAST vulnerability statistics script",
-        "- Windows security config analysis (GCB standards)",
-        "- Linux security config analysis (CIS standards)",
-        "Security Consulting:",
-        "- Internal control establishment",
-        "- IT management consulting",
-        "- Software security consulting",
-        "Financial Regulatory Compliance Audit:",
-        "- Information Security Assessment Method for Computer Systems of Financial Institutions",
-        "- Computer System Security Assessment Standards",
-        "- Security Control Operations Standards for Financial Institutions Handling Electronic Banking Business",
-        "- Security Control Specifications for Financial Institutions Using IoT Devices",
-        "- SWIFT Security Standards",
-        "- Operational Specifications for Financial Institutions Providing Mobile Device Applications",
-        "- Operational Specifications for Financial Institutions Using Emerging Technologies",
-        "- Security Control Specifications for Financial Institutions Providing QR Code Payment Applications",
-        "- Security Control Operations Standards for Open API Business",
-        "- OWASP Mobile checklist L2"
+        "Security Testing & Automation:",
+        "- Conducted vulnerability scanning, penetration testing, and malware analysis",
+        "- Developed security configuration analysis and vulnerability statistics automation tools",
+        "- Enhanced security testing processes for improved efficiency",
+        "Security Consulting & Compliance:",
+        "- Provided internal control and IT security management consulting",
+        "- Performed financial sector regulatory compliance assessments and audits",
+        "- Helped enterprises meet international security standards and best practices"
       ]
     }
   ],
@@ -150,11 +225,9 @@
       "period": "2016 - 2019",
       "major": "Department of Computer Science and Information Engineering",
       "description": [
-        "Research topics include image processing, audio processing, machine learning, and deep learning.",
-        "Baby cry detection and recognition system",
-        "License plate recognition development and performance tuning on Android APP",
-        "Paper form text recognition development on Android APP",
-        "CVGIP 2017 Conference System"
+        "Research areas: AI applications, image processing, audio recognition",
+        "Thesis project: Baby cry detection and emotion recognition system",
+        "Applied projects: License plate recognition and document scanning applications"
       ]
     },
     {
@@ -163,10 +236,9 @@
       "period": "2012 - 2016",
       "major": "Department of Computer Science and Information Engineering",
       "description": [
-        "National College Smart Electronics Integration Talent Cultivation Competition 3C-3C Electronic Creativity Group Excellence Award",
-        "iBeacon indoor positioning technology transfer project",
-        "Advertising wall advertisement management system development",
-        "ASUS Cloud File Management System"
+        "Core focus: System development, mobile application design",
+        "Award: Excellence Award in National College Smart Electronics Integration Competition",
+        "Applied projects: Cloud file management system, IoT indoor positioning applications"
       ]
     }
   ],

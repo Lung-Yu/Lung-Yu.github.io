@@ -1,56 +1,32 @@
 import { useTranslation } from 'react-i18next';
-import { useState, useRef, useEffect } from 'react';
 import './styles/LanguageSwitcher.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const languages = {
-    tw: '中文',
+    'zh-TW': '中文',
     en: 'English'
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-    setIsOpen(false);
+  const toggleLanguage = () => {
+    // Toggle between English and Chinese
+    const nextLang = i18n.language === 'en' ? 'zh-TW' : 'en';
+    i18n.changeLanguage(nextLang);
   };
 
   return (
-    <div className="language-switcher" ref={dropdownRef}>
+    <div className="language-switcher">
       <button 
-        className="lang-select-btn"
-        onClick={() => setIsOpen(!isOpen)}
+        className="lang-toggle-btn"
+        onClick={toggleLanguage}
+        aria-label="Toggle language"
       >
-        {languages[i18n.language as keyof typeof languages]}
-        <span className={`arrow ${isOpen ? 'up' : 'down'}`}>▼</span>
+        <FontAwesomeIcon icon={faLanguage} className="lang-icon" />
+        <span>{languages[i18n.language as keyof typeof languages]}</span>
       </button>
-      
-      {isOpen && (
-        <div className="lang-dropdown">
-          {Object.entries(languages).map(([code, name]) => (
-            <button
-              key={code}
-              className={`lang-option ${code === i18n.language ? 'active' : ''}`}
-              onClick={() => changeLanguage(code)}
-            >
-              {name}
-            </button>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

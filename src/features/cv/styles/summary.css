@@ -1,0 +1,118 @@
+/* 簡約素雅的CV摘要樣式 */
+.cv-summary {
+  margin: 1.5rem auto 2.5rem;
+  padding: 0;
+  max-width: 850px;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-summary-intro {
+  padding: 1.5rem 2rem;
+  background: #fdfdfd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  position: relative;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  z-index: 10;
+}
+
+.cv-summary-intro::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-primary);
+  opacity: 0.7;
+}
+
+.cv-summary p {
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0;
+  text-align: center;
+  position: relative;
+  color: var(--color-text);
+}
+
+/* 摘要關鍵詞列表 */
+.cv-summary-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.cv-summary-tag {
+  background: rgba(var(--color-gray-50-rgb), 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  position: relative;
+  font-size: 0.95rem;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  color: var(--color-text);
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.cv-summary-tag:hover {
+  background: rgba(var(--color-primary-rgb), 0.05);
+  border-color: rgba(var(--color-primary-rgb), 0.15);
+}
+
+.cv-summary-tag-icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  opacity: 0.8;
+}
+
+/* 簡約的淡入動畫 */
+.cv-summary-tag {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* 交錯延遲動畫 - 更加微妙 */
+.cv-summary-list .cv-summary-tag:nth-child(1) { animation-delay: 0.1s; }
+.cv-summary-list .cv-summary-tag:nth-child(2) { animation-delay: 0.15s; }
+.cv-summary-list .cv-summary-tag:nth-child(3) { animation-delay: 0.2s; }
+.cv-summary-list .cv-summary-tag:nth-child(4) { animation-delay: 0.25s; }
+.cv-summary-list .cv-summary-tag:nth-child(5) { animation-delay: 0.3s; }
+.cv-summary-list .cv-summary-tag:nth-child(6) { animation-delay: 0.35s; }
+
+/* 自適應樣式 */
+@media (max-width: 768px) {
+  .cv-summary-list {
+    gap: 0.6rem;
+    justify-content: flex-start;
+  }
+  
+  .cv-summary-intro {
+    padding: 1.25rem;
+  }
+  
+  .cv-summary p {
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  .cv-summary-intro::after {
+    left: 0;
+    transform: none;
+  }
+}

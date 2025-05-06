@@ -1,0 +1,181 @@
+/* 演講/議程區塊摺疊式列表樣式 */
+.conferences-accordion {
+  margin-top: 1rem;
+}
+
+/* 年份分組區塊 */
+.conference-year-group {
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* 年份標題 - 可點擊摺疊/展開 */
+.conference-year-header {
+  background-color: var(--color-gray-50);
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.conference-year-header:hover {
+  background-color: var(--color-gray-100);
+}
+
+.conference-year-header.active {
+  background-color: var(--color-gray-100);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.conference-year-header h3 {
+  font-size: 1rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  color: var(--color-text);
+}
+
+.conference-year-toggle {
+  transition: transform 0.3s;
+  font-size: 0.85rem;
+}
+
+.conference-year-toggle.expanded {
+  transform: rotate(180deg);
+}
+
+/* 年份內容 - 可折疊 */
+.conference-year-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  opacity: 0;
+  padding: 0;
+}
+
+.conference-year-content.expanded {
+  max-height: 2000px; /* 大值確保內容能完全展開 */
+  opacity: 1;
+  padding: 0.75rem 0;
+  transition: all 0.5s ease;
+}
+
+/* 單個演講項目列表 */
+.conference-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.conference-list-item {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-gray-100);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.conference-list-item:last-child {
+  border-bottom: none;
+}
+
+.conference-list-item:hover {
+  background-color: rgba(var(--color-primary-rgb), 0.04);
+}
+
+/* 基本信息行 - 標題與日期 */
+.conference-primary-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.conference-title-container {
+  flex: 1;
+  min-width: 200px;
+}
+
+.conference-title {
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+  display: inline;
+}
+
+.conference-external-link {
+  margin-left: 0.4rem;
+  color: var(--color-gray-400);
+  transition: color 0.2s;
+}
+
+.conference-external-link:hover {
+  color: var(--color-primary);
+}
+
+.conference-date {
+  white-space: nowrap;
+  font-size: 0.85rem;
+  color: var(--color-gray-500);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* 次要信息 - 只有在懸停或展開時顯示詳情 */
+.conference-secondary-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--color-gray-500);
+  margin-top: 0.3rem;
+}
+
+.conference-secondary-info > div {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* 標籤顯示 */
+.conference-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.conference-tag {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.5rem;
+  background-color: var(--color-gray-100);
+  border-radius: 12px;
+  color: var(--color-gray-600);
+  transition: all 0.2s;
+}
+
+.conference-tag:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+/* 響應式設計 */
+@media (max-width: 600px) {
+  .conference-primary-info {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .conference-date {
+    align-self: flex-start;
+  }
+}
+
+/* 控制按鈕將使用與其他區塊一致的樣式 (外部從section-controls.css導入) */

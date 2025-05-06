@@ -2,6 +2,11 @@ export interface CVData {
   name: string;
   title: string;
   summary: string;
+  email?: string;
+  phone?: string;
+  location?: string;
+  website?: string;
+  linkedin?: string;
   sections: {
     skills: string;
     experience: string;
