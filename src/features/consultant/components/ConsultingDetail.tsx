@@ -1,3 +1,4 @@
+// filepath: /Users/tygr/Desktop/projects/personal-porfolio/src/features/consultant/components/ConsultingDetail.tsx
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +10,17 @@ const ConsultingDetail = () => {
   const { t } = useTranslation('consultant');
   const { consultingPath } = useParams();
   const [modalImage, setModalImage] = useState<string | null>(null);
-  const { consulting } = useConsulting();
+  const { consulting, loading } = useConsulting();
+  
+  if (loading) {
+    return (
+      <div className="consulting-detail">
+        <div className="loading-container">
+          <p>Loading...</p>
+        </div>
+      </div>
+    );
+  }
   
   const project = consulting.find(p => p.detailPath === consultingPath);
 
@@ -49,7 +60,7 @@ const ConsultingDetail = () => {
               </ul>
             </div>
 
-            {project.results && (
+            {project.results && project.results.length > 0 && (
               <div className="consulting-results">
                 <h2>{t('detail.results')}</h2>
                 <ul>
@@ -59,21 +70,28 @@ const ConsultingDetail = () => {
                 </ul>
               </div>
             )}
+          </div>
+        </div>
 
-            <div className="consulting-tags">
-              {project.tags.map(tag => (
-                <span key={tag} className="consulting-tag">{tag}</span>
+        {project.gallery && project.gallery.length > 0 && (
+          <div className="consulting-gallery">
+            <h2>{t('detail.relatedImages')}</h2>
+            <div className="gallery-grid">
+              {project.gallery.map((image, index) => (
+                <div key={index} className="gallery-item" onClick={() => openModal(image)}>
+                  <img src={image} alt={`${project.title} - ${index + 1}`} />
+                </div>
               ))}
             </div>
           </div>
-        </div>
+        )}
+
+        {modalImage && (
+          <Modal onClose={closeModal}>
+            <img src={modalImage} alt="Full size" className="modal-image" />
+          </Modal>
+        )}
       </div>
-      {modalImage && (
-        <Modal 
-          image={modalImage} 
-          onClose={closeModal} 
-        />
-      )}
     </div>
   );
 };
