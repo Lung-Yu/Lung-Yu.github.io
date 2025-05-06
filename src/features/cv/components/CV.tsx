@@ -662,23 +662,23 @@ const CV = () => {
     const achievements = [
       {
         icon: faCertificate,
-        title: getSafeTranslation('highlights.certifications.title', 'Multiple Security Certifications'),
-        description: getSafeTranslation('highlights.certifications.description', 'CISSP, CEH, and other recognized certifications in cybersecurity.')
+        title: getSafeTranslation('highlights.certifications.title', '國際資安認證'),
+        description: getSafeTranslation('highlights.certifications.description', '擁有CISSP、CSSLP (ISC²資安軟體生命週期專家)、CEH等多項知名資安證照')
       },
       {
         icon: faCodeBranch,
-        title: getSafeTranslation('highlights.devsecops.title', 'DevSecOps Expert'),
-        description: getSafeTranslation('highlights.devsecops.description', 'Integrating security into development workflows.')
+        title: getSafeTranslation('highlights.devsecops.title', 'DevSecOps 專家'),
+        description: getSafeTranslation('highlights.devsecops.description', '六年以上安全開發經驗，專精於資安融入開發流程')
       },
       {
         icon: faTrophy,
-        title: getSafeTranslation('highlights.recognition.title', 'Industry Recognition'),
-        description: getSafeTranslation('highlights.recognition.description', 'Award recipient, recognized for technical excellence.')
+        title: getSafeTranslation('highlights.recognition.title', '產業獎項肯定'),
+        description: getSafeTranslation('highlights.recognition.description', '2023 Gama Star 獎項得主，專業技術獲得產業肯定')
       },
       {
         icon: faUsers,
-        title: getSafeTranslation('highlights.speaking.title', 'Technical Speaker'),
-        description: getSafeTranslation('highlights.speaking.description', 'Regular speaker at conferences on security and development topics.')
+        title: getSafeTranslation('highlights.speaking.title', '技術演講講者'),
+        description: getSafeTranslation('highlights.speaking.description', '多場資安與開發技術研討會講者，分享專業知識')
       }
     ];
 

@@ -25,11 +25,11 @@
   "highlights": {
     "certifications": {
       "title": "Multiple Security Certifications",
-      "description": "CISSP, CEH, and 5+ more recognized certifications in cybersecurity."
+      "description": "CISSP, CSSLP, CEH, and other recognized certifications."
     },
     "devsecops": {
       "title": "DevSecOps Expert",
-      "description": "Integrating security into development workflows for 6+ years."
+      "description": "Integrating security into development workflows for 10+ years."
     },
     "recognition": {
       "title": "Industry Recognition",
@@ -97,21 +97,21 @@
   },
   "skills": [
     {
-      "category": "Cybersecurity Skills",
+      "category": "Security Expertise",
       "items": [
-        "Security analysis and risk assessment",
-        "Penetration testing and vulnerability scanning",
-        "Secure software development lifecycle",
-        "Security compliance"
+        "CSSLP (Certified Secure Software Lifecycle Professional)",
+        "CISSP (Certified Information Systems Security Professional)",
+        "ISO 27001:2022 Lead Auditor",
+        "CEH (Certified Ethical Hacker)"
       ]
     },
     {
-      "category": "Development Skills",
+      "category": "Secure Development",
       "items": [
-        "Frontend & Backend development",
-        "System architecture design",
-        "Cloud & On-premises architecture",
-        "CI/CD automation"
+        "Secure Software Development Lifecycle (SSDLC)",
+        "DevSecOps implementation and practices",
+        "Secure architecture design and API protection",
+        "Automated security testing integration"
       ]
     },
     {
