@@ -4,26 +4,62 @@
 Skills 功能用於展示個人的專業技能與能力，採用視覺化的方式呈現不同類型的技能與熟練度。此功能與 CV 功能中的技能區塊相互補充，但更加專注於技能分類、熟練度展示以及更詳細的技能描述。
 
 ## 核心元件 (Core Components)
-- **SkillsGrid**: 主要技能展示網格，以卡片式布局展示各類技能
-- **SkillCard**: 單一技能卡片，展示技能名稱、圖標和熟練度
-- **SkillCategory**: 技能分類區塊，將相關技能組織在一起
+- **Skills**: 主要技能展示組件，以卡片式布局展示各類技能
 
 ## 檔案結構
 ```
 skills/
 ├── README.md             # 功能說明文件
 ├── components/
-│   ├── SkillsGrid.tsx    # 主要技能網格元件
-│   ├── SkillCard.tsx     # 技能卡片元件
-│   └── SkillCategory.tsx # 技能分類元件
+│   └── Skills.tsx        # 主要技能展示元件
+├── data/                 # 多語系資料存放處
+│   ├── en.json           # 英文技能資料
+│   └── zh-TW.json        # 繁體中文技能資料
 ├── hooks/
-│   └── useSkills.ts      # 技能資料相關 hook
+│   └── useSkills.ts      # 技能資料載入與處理 hook
 ├── styles/
-│   ├── Skills.css        # 主要樣式
-│   ├── SkillCard.css     # 技能卡片樣式
-│   └── SkillCategory.css # 分類樣式
+│   └── Skills.css        # 主要樣式
 └── types/
     └── index.ts          # 技能相關型別定義
+```
+
+## 多語系資料結構
+
+本功能遵循 feature-based 架構模式進行國際化設計。每個功能包含自己的 data 目錄，內有針對不同語言的 JSON 檔案：
+
+- `data/en.json` - 包含英文版技能資料
+- `data/zh-TW.json` - 包含繁體中文版技能資料
+
+UI 文字（如按鈕、區段標題等）仍保留在全局 i18n 資源中。
+
+### 資料結構
+
+每個語言檔案使用以下結構：
+
+```json
+{
+  "skillCategories": {
+    "security": {
+      "title": "Information Security",
+      "description": "Security Assessment and Protection",
+      "icon": "faShieldHalved",
+      "items": [
+        "Penetration Testing & Vulnerability Scanning",
+        "Security Incident Response",
+        "Secure Software Development Lifecycle"
+      ]
+    },
+    "development": {
+      "title": "Software Development",
+      "description": "Full-stack Development Skills",
+      "icon": "faCode",
+      "items": [
+        "Frontend: React, TypeScript, JavaScript",
+        "Backend: Node.js, Python, Java"
+      ]
+    }
+  }
+}
 ```
 
 ## 特色功能

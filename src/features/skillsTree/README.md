@@ -5,41 +5,114 @@ The Skills Tree feature provides an interactive, hierarchical visualization of t
 
 ## Core Components
 - **SkillsTree**: Main component that renders the interactive skills tree
-- **SkillNode**: Component representing an individual skill or competency
-- **SkillBranch**: Component for grouping related skills
-- **SkillsLegend**: Component explaining the skill level indicators
+- **SkillNodeComponent**: Child component that recursively renders individual skill nodes
 
 ## Features
 - Interactive tree visualization with expandable/collapsible nodes
-- Visual representation of skill relationships and dependencies
+- Visual representation of skill relationships and hierarchies
 - Color-coded skill proficiency levels
-- Zoom and pan capabilities for large skill trees
-- Tooltips with detailed skill descriptions
-- Search functionality to find specific skills
 - Responsive design adapting to different screen sizes
 - Animation effects for improved user experience
-- Multilingual support through i18n integration
+- Multilingual support through feature-based i18n integration
 
 ## File Structure
 ```
-features/
-└── skillsTree/
-    ├── index.ts                - Exports the main SkillsTree components
-    ├── components/             - React components for the skills tree feature
-    │   ├── SkillsTree.tsx      - Main tree visualization component
-    │   ├── SkillNode.tsx       - Individual skill node component
-    │   ├── SkillBranch.tsx     - Skill grouping component
-    │   ├── SkillsLegend.tsx    - Legend component
-    │   └── ...                 - Other supporting components
-    ├── data/                   - Skills data (if not fetched from API)
-    │   └── skillsTree.ts       - Hierarchical skills data structure
-    ├── hooks/                  - Custom hooks for tree functionality
-    │   └── useSkillsTree.ts    - Hook for managing tree data and state
-    ├── styles/                 - CSS styles for tree components
-    │   └── SkillsTree.css      - Styles for tree visualization
-    └── types/                  - TypeScript type definitions
-        └── skillsTree.types.ts - Types for skills tree data
+skillsTree/
+├── README.md             - Documentation for the skills tree feature
+├── index.ts              - Exports the main SkillsTree component
+├── components/           - React components for the skills tree feature
+│   └── SkillsTree.tsx    - Main tree visualization component with embedded SkillNodeComponent
+├── data/                 - Multilingual data for skills tree
+│   ├── en.json           - English skills tree data
+│   └── zh-TW.json        - Traditional Chinese skills tree data
+├── hooks/                - Custom hooks for tree functionality
+│   └── useSkillsTree.ts  - Hook for loading and managing tree data
+├── styles/               - CSS styles for tree components
+│   └── SkillsTree.css    - Styles for tree visualization
+└── types/                - TypeScript type definitions
+    └── index.ts          - Types for skills tree data
 ```
+
+## Multilingual Data Structure
+
+This feature follows the feature-based architecture pattern for internationalization. Each feature contains its own data directory with language-specific JSON files:
+
+- `data/en.json` - Contains skills tree data in English
+- `data/zh-TW.json` - Contains skills tree data in Traditional Chinese
+
+### Data Structure
+
+Each language file follows this hierarchical structure:
+
+```json
+{
+  "skillTree": {
+    "title": "Skills Tree",
+    "description": "Hierarchical view of my technical skills",
+    "root": {
+      "name": "Technical Skills",
+      "children": [
+        {
+          "name": "Information Security",
+          "level": "expert",
+          "children": [
+            {
+              "name": "Offensive Security",
+              "level": "advanced",
+              "children": [
+                {"name": "Penetration Testing", "level": "expert"},
+                {"name": "Vulnerability Assessment", "level": "expert"}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+## Data Loading
+
+The `useSkillsTree` hook handles dynamically loading data based on the current language setting:
+
+```tsx
+const { skillTreeData, loading } = useSkillsTree();
+```
+
+The hook:
+1. Detects the current language from i18n
+2. Dynamically imports the corresponding data file (e.g., `en.json` or `zh-TW.json`)
+3. Falls back to English if the current language data is not available
+4. Returns:
+   - `skillTreeData`: The hierarchical skills data structure
+   - `loading`: Boolean indicating if data is being loaded
+
+## Usage
+
+```tsx
+import { SkillsTree } from '../features/skillsTree';
+
+const SkillsPage = () => {
+  return (
+    <section>
+      <h1>My Skills</h1>
+      <SkillsTree />
+    </section>
+  );
+};
+```
+
+## Best Practices for Maintenance
+
+When adding or updating skills tree data:
+
+1. Maintain the same hierarchical structure across all language versions
+2. Use consistent skill level terminology: 'basic', 'intermediate', 'advanced', 'expert'
+3. Keep node names concise and clear
+4. Organize skills in a logical hierarchy
+5. Test the tree with different language settings to verify correct rendering
+6. Keep the tree depth to a maximum of 3-4 levels for better user experience
 
 ## Usage
 Import the component from the skillsTree feature:

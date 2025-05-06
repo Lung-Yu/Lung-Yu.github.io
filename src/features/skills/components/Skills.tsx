@@ -7,13 +7,32 @@ import { faShieldHalved, faCode, faGears } from '@fortawesome/free-solid-svg-ico
 
 const Skills = () => {
   const { t } = useTranslation('skills');
-  const { skills } = useSkills();
+  const { skills, loading } = useSkills();
 
-  const categoryIcons: Record<string, IconDefinition> = {
-    security: faShieldHalved,
-    development: faCode,
-    devops: faGears
+  const getIcon = (iconName: string): IconDefinition => {
+    switch (iconName) {
+      case 'faShieldHalved': return faShieldHalved;
+      case 'faCode': return faCode;
+      case 'faGears': return faGears;
+      default: return faCode;
+    }
   };
+
+  if (loading || !skills) {
+    return (
+      <section className="skills" id="skills">
+        <div className="skills-container">
+          <div className="skills-header">
+            <h2>{t('title')}</h2>
+            <p>{t('description')}</p>
+          </div>
+          <div className="skills-loading">
+            <p>Loading skills...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="skills" id="skills">
@@ -24,15 +43,15 @@ const Skills = () => {
         </div>
 
         <div className="skills-grid">
-          {Object.keys(skills.categories).map((key) => (
+          {Object.entries(skills.skillCategories).map(([key, category]) => (
             <div key={key} className="skill-card">
               <div className="skill-icon">
-                <FontAwesomeIcon icon={categoryIcons[key] || faCode} />
+                <FontAwesomeIcon icon={getIcon(category.icon)} />
               </div>
-              <h3>{t(`categories.${key}.title`)}</h3>
-              <p>{t(`categories.${key}.description`)}</p>
+              <h3>{category.title}</h3>
+              <p>{category.description}</p>
               <ul className="skill-list">
-                {skills.items[key]?.map((item: string, index: number) => (
+                {category.items.map((item: string, index: number) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>

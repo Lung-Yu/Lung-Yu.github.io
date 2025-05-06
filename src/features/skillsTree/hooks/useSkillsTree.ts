@@ -1,37 +1,37 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { SkillsData } from '../types';
+import type { SkillTreeData } from '../types';
 
-export const useSkills = () => {
+export const useSkillsTree = () => {
   const { i18n } = useTranslation();
-  const [skills, setSkills] = useState<SkillsData | null>(null);
+  const [skillTreeData, setSkillTreeData] = useState<SkillTreeData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const loadSkills = async () => {
+    const loadSkillTree = async () => {
       setLoading(true);
       try {
         // Dynamically load data based on current language
         const lang = i18n.language || 'en';
         const module = await import(`../data/${lang}.json`);
-        setSkills(module.default as SkillsData);
+        setSkillTreeData(module.default as SkillTreeData);
       } catch (error) {
-        console.error('Error loading skills data:', error);
+        console.error('Error loading skills tree data:', error);
         // Fallback to English if specific language data fails to load
         try {
           const fallbackModule = await import(`../data/en.json`);
-          setSkills(fallbackModule.default as SkillsData);
+          setSkillTreeData(fallbackModule.default as SkillTreeData);
         } catch (fallbackError) {
-          console.error('Error loading fallback skills data:', fallbackError);
-          setSkills(null);
+          console.error('Error loading fallback skills tree data:', fallbackError);
+          setSkillTreeData(null);
         }
       } finally {
         setLoading(false);
       }
     };
 
-    loadSkills();
+    loadSkillTree();
   }, [i18n.language]); // Reload when language changes
 
-  return { skills, loading };
+  return { skillTreeData, loading };
 };
