@@ -1,0 +1,193 @@
+/* 
+  整合式頁頭樣式 - 結合個人簡介與聯絡資訊
+*/
+
+.cv-integrated-header {
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  border-radius: 10px;
+  background: linear-gradient(145deg, var(--color-gray-50), var(--color-gray-100));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.cv-integrated-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cv-intro-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.cv-intro-section h1 {
+  color: var(--color-primary);
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.cv-intro-section .title {
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.cv-intro-section p {
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+.cv-contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  min-width: 220px;
+}
+
+.cv-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.cv-contact-item:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cv-contact-icon {
+  color: var(--color-secondary);
+  width: 16px;
+  text-align: center;
+}
+
+.language-selector {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+/* 專業亮點區塊樣式 */
+.professional-highlights {
+  margin: 2rem 0;
+}
+
+.highlights-container {
+  margin-top: 1.5rem;
+}
+
+.professional-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.professional-tag {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.professional-tag:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.tag-icon {
+  color: var(--color-secondary);
+  margin-right: 0.6rem;
+}
+
+/* 主要成就卡片 */
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.achievement-card {
+  background: linear-gradient(145deg, var(--color-gray-50), var(--color-gray-100));
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.achievement-icon {
+  color: var(--color-secondary);
+}
+
+.achievement-text {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .cv-integrated-layout {
+    flex-direction: column;
+  }
+  
+  .cv-intro-section {
+    width: 100%;
+  }
+  
+  .cv-contact-section {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .cv-contact-item {
+    font-size: 0.9rem;
+  }
+  
+  .language-selector {
+    position: static;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .achievement-grid {
+    grid-template-columns: 1fr;
+  }
+}

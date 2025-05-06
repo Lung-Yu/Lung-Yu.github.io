@@ -1,0 +1,71 @@
+/* Experience details hierarchical styling */
+.detail-sections {
+  margin: 0;
+  padding: 0;
+}
+
+.detail-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin: 1rem 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px dashed var(--color-gray-200);
+}
+
+.detail-section-title:first-child {
+  margin-top: 0;
+}
+
+.main-item {
+  margin: 0.5rem 0;
+  padding-left: 0.5rem;
+  list-style-type: none;
+  position: relative;
+  font-weight: 500;
+}
+
+.nested-item {
+  margin: 0.4rem 0 0.4rem 1.2rem;
+  list-style-type: none;
+  position: relative;
+  padding-left: 1rem;
+  font-weight: normal;
+}
+
+.nested-item::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+/* For nested items that follow a detail section title */
+.detail-section-title + .nested-item {
+  margin-top: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  .detail-section-title {
+    font-size: 1rem;
+  }
+  
+  /* Make main job and part-time job more distinguishable on mobile */
+  .main-job .experience-company-header,
+  .part-time-job .experience-company-header {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .main-job .experience-company-name {
+    font-size: 1.15rem;
+  }
+  
+  .part-time-job .experience-company-name {
+    font-size: 1rem;
+  }
+  
+  .main-item,
+  .nested-item {
+    font-size: 0.9rem;
+  }
+}

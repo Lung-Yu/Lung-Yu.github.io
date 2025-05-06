@@ -1,0 +1,227 @@
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #fff;
+    color: #333;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 95%;
+    max-width: 1400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.close {
+    color: #333;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.modal-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.modal-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.modal-details {
+    flex: 2;
+    text-align: left;
+}
+
+.modal-details p {
+    margin: 10px 0;
+}
+
+/* RWD Adjustments */
+@media (max-width: 1200px) {
+    .modal-content {
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .modal-image-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .modal-details {
+        padding: 0 15px;
+        width: 100%;
+    }
+
+    .modal-image {
+        max-height: 50vh;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .modal-header {
+        margin-bottom: 15px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.3rem;
+        margin-right: 25px; /* 為關閉按鈕留出空間 */
+    }
+
+    .modal-details {
+        padding: 0 10px;
+    }
+
+    .modal-details p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 8px 0;
+    }
+
+    .close {
+        top: 12px;
+        right: 12px;
+        font-size: 20px;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-content {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        padding: 12px;
+        margin: 0;
+    }
+
+    .modal {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-image-container {
+        margin-bottom: 15px;
+    }
+
+    .modal-image {
+        max-height: 35vh;
+    }
+
+    .modal-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .modal-details p {
+        font-size: 0.9rem;
+        margin: 6px 0;
+    }
+}
+
+/* 橫向螢幕優化 */
+@media (max-height: 600px) and (orientation: landscape) {
+    .modal-content {
+        max-height: 95vh;
+    }
+
+    .modal-body {
+        flex-direction: row;
+    }
+
+    .modal-image {
+        max-height: 70vh;
+    }
+}
+
+/* 針對較矮的螢幕做優化 */
+@media (max-height: 600px) {
+    .modal-content {
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
+    .modal-image {
+        max-height: 45vh;
+    }
+
+    .modal-body {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .modal-image-container {
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    .modal-details {
+        flex: 1;
+    }
+}
+
+/* 針對 iPad 等平板直向顯示優化 */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .modal-image {
+        max-height: 45vh;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+        overflow-y: auto;
+    }
+}

@@ -1,0 +1,538 @@
+/* 
+  Certificate Gallery Style 
+  Enhanced gallery-style display for certificates section
+*/
+
+.certificates-gallery {
+  margin-top: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+.certificates-gallery .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.certificates-gallery .section-icon {
+  color: var(--color-secondary);
+  margin-right: 0.5rem;
+}
+
+/* 輪播畫廊容器 */
+.certificates-carousel-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 1.5rem auto;
+  padding: 0 0.5rem;
+  overflow: hidden;
+  max-height: 320px; /* 確保只有一行高度 */
+  width: 95%; /* 控制畫廊的總寬度，讓其略小於頁面寬度 */
+  max-width: 1060px; /* 
+    設置固定的最大寬度，剛好顯示4張卡片 
+    計算方式: (250px卡片寬度 * 4) + (10px間距 * 3) + 20px邊距 = 1060px
+  */
+}
+
+/* 添加左右漸變遮罩效果 */
+.certificates-carousel-container::before,
+.certificates-carousel-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.certificates-carousel-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-background, white) 20%, rgba(255, 255, 255, 0.5) 60%, transparent);
+}
+
+.certificates-carousel-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-background, white) 20%, rgba(255, 255, 255, 0.5) 60%, transparent);
+}
+
+/* 證書輪播畫廊 */
+.certificates-carousel {
+  position: relative;
+  display: flex;
+  gap: 10px; /* 減小間隔以讓更多卡片顯示 */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden; /* 防止垂直滾動 */
+  scroll-behavior: smooth;
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem auto;
+  height: 320px; /* 固定高度，保持單排證書 */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  
+  /* 讓移動端可以左右滑動，支援觸摸滑動 */
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+/* 隱藏滾動條 */
+.certificates-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* 滾動貼合效果 */
+.certificates-carousel > .certificate-card {
+  scroll-snap-align: start;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 當卡片處於焦點位置(從JS中添加此類) */
+.certificate-card.in-focus {
+  box-shadow: 0 5px 15px rgba(0, 112, 243, 0.2);
+  border: 1px solid var(--color-primary-light, rgba(0, 112, 243, 0.3));
+}
+
+/* 添加鍵盤導航的焦點樣式 */
+.certificates-carousel:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.3);
+  border-radius: 4px;
+}
+
+/* 確保鍵盤可導航性 */
+.certificates-carousel:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* 導航按鈕樣式 */
+.carousel-nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-background-lighter, #ffffff);
+  border: 1px solid var(--color-gray-200, #e0e0e0);
+  color: var(--color-primary);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+  position: relative;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  z-index: 5; /* 提高疊層順序，確保按鈕在卡片上方 */
+  flex-shrink: 0;
+  margin: 0;
+  
+  /* 添加脈動動畫提示可以滑動 */
+  animation: pulse 2s infinite;
+  
+  /* 確保按鈕在滑鼠停留時有適當的視覺反饋 */
+  opacity: 0.85;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 112, 243, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(0, 112, 243, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 112, 243, 0); }
+}
+
+.carousel-nav-button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-nav-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-400);
+  box-shadow: none;
+}
+
+.prev-button {
+  margin-right: 0.5rem;
+  left: -5px;
+  position: absolute;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.next-button {
+  margin-left: 0.5rem;
+  right: -5px;
+  position: absolute;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.prev-icon {
+  transform: rotate(90deg);
+}
+
+.next-icon {
+  transform: rotate(-90deg);
+}
+
+/* 分頁指示器（點點點）樣式 */
+.carousel-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.pagination-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-gray-300, #d1d1d1);
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.pagination-dot:hover {
+  background-color: var(--color-gray-500, #a0a0a0);
+}
+
+.pagination-dot.active {
+  background-color: var(--color-primary);
+  transform: scale(1.2);
+}
+
+.certificates-gallery {
+  position: relative;
+}
+
+/* 畫廊控制區 */
+.gallery-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 證書計數器 */
+.certificates-counter {
+  font-size: 0.9rem;
+  color: var(--color-text-light, #666);
+  background-color: var(--color-gray-100, #f5f5f5);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* 滾動提示 */
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  animation: fadeInOut 2s infinite alternate ease-in-out;
+}
+
+.scroll-text {
+  margin: 0 0.2rem;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+.certificate-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  background: var(--color-background-lighter, #ffffff);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+  height: 280px; /* 固定高度以保持單一行 */
+  min-width: 230px;
+  width: 250px;  /* 更窄的固定寬度，剛好顯示4張卡片 */
+  flex: 0 0 auto;  /* 不要讓項目伸縮，保持固定大小 */
+  opacity: 0.95;
+  animation: cardAppear 0.5s forwards;
+  margin-bottom: 0.5rem; /* 確保有足夠底部空間 */
+  border: 1px solid var(--color-gray-100, rgba(0, 0, 0, 0.05));
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  opacity: 1;
+  z-index: 2;
+  border-color: var(--color-primary-light, rgba(0, 112, 243, 0.3));
+}
+
+/* 第五張開始的卡片，右側會有漸變效果 */
+.certificate-card.overflow-card {
+  position: relative;
+  opacity: 0.85; /* 稍微降低第5張以後卡片的透明度 */
+}
+
+/* 在懸停時恢復透明度 */
+.certificate-card.overflow-card:hover {
+  opacity: 1;
+}
+
+/* 移除這個效果，因為已經在容器上添加了全局淡化效果
+.certificate-card.overflow-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, var(--color-background, white) 90%);
+  pointer-events: none;
+}
+*/
+
+.certificate-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: var(--color-primary-dark);
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 8px;
+  font-weight: 500;
+  opacity: 0.85;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.certificate-logo {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-gray-100);
+  padding-bottom: 0.5rem;
+}
+
+.certificate-logo img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.certificate-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.certificate-info h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: var(--color-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  max-height: 2.4em; /* 約兩行文字高度的備用方案 */
+}
+
+.certificate-institution {
+  font-weight: 500;
+  color: var(--color-secondary);
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.certificate-period {
+  margin-top: auto;
+  font-size: 0.8rem;
+  color: var(--color-text-light, #666);
+  line-height: 1.3;
+}
+
+.period-label {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.certificates-count {
+  display: inline-block;
+  text-align: center;
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  font-style: italic;
+  position: relative;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.03);
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+/* 在顯示所有證書時添加漸變邊框效果 */
+.certificates-grid.expanded-grid + .certificates-count {
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(0, 112, 243, 0.2);
+}
+
+/* 在證書網格底部添加淡入淡出效果（在收起狀態下） */
+.certificates-grid.compact-grid::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to top, var(--color-background, white), transparent);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Responsive adjustments */
+/* 證書輪播畫廊的響應式設計 */
+@media (max-width: 768px) {
+  /* 調整平板大小的輪播 */
+  .certificate-card {
+    min-width: 200px;
+    width: 220px;
+    height: 260px; /* 調整為更小的高度 */
+  }
+  
+  .certificate-logo {
+    height: 90px;
+  }
+  
+  /* 在小屏幕上隱藏輪播分頁指示器 */
+  .carousel-pagination {
+    display: none;
+  }
+  
+  /* 讓導航按鈕更明顯 */
+  .carousel-nav-button {
+    width: 36px;
+    height: 36px;
+    margin: 0 0.2rem;
+  }
+  
+  /* 調整控制區在平板上的布局 */
+  .gallery-controls {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  /* 在平板上滾動提示更加醒目 */
+  .scroll-hint {
+    font-size: 0.8rem;
+    background-color: rgba(0, 112, 243, 0.08);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+  }
+  
+  /* 調整輪播高度 */
+  .certificates-carousel {
+    height: 280px;
+    gap: 8px; /* 在平板上減小間隙 */
+  }
+  
+  .certificates-carousel-container {
+    max-height: 280px;
+    width: 98%; /* 在平板上佔據更多寬度 */
+    max-width: 700px; /* 顯示約3張卡片 */
+  }
+}
+
+@media (max-width: 480px) {
+  /* 調整手機版輪播 */
+  .certificate-card {
+    min-width: 180px;
+    width: 190px;
+    min-height: 230px;
+  }
+  
+  .certificate-logo {
+    height: 80px;
+  }
+  
+  .certificate-info h3 {
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+  }
+  
+  .certificate-institution {
+    font-size: 0.8rem;
+  }
+  
+  .certificate-period {
+    font-size: 0.75rem;
+  }
+  
+  /* 讓導航按鈕更小但更醒目 */
+  .carousel-nav-button {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .prev-button {
+    left: -8px;
+  }
+  
+  .next-button {
+    right: -8px;
+  }
+  
+  /* 確保卡片在手機上有合適的外觀 */
+  .certificates-carousel {
+    padding: 1rem 0.5rem;
+    gap: 6px; /* 在手機上更小的間隙 */
+  }
+  
+  /* 手機上顯示2張卡片 */
+  .certificates-carousel-container {
+    width: 100%;
+    max-width: 400px; /* 顯示約2張卡片 */
+  }
+}

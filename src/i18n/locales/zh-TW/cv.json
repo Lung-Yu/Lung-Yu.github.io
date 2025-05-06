@@ -1,0 +1,310 @@
+{
+  "name": "Tygrus",
+  "title": "資安專家與全端開發者",
+  "summary": "資安與軟體開發領域的專業人才，透過專業技能提升系統安全性與穩定性。",
+  "linkedin": "https://www.linkedin.com/in/lung-yu-tsai-633865100/",
+  "summaryPoints": {
+    "mainIntro": "結合資安專業與全端開發技能，打造安全穩定的系統與應用",
+    "keywords": {
+      "cert": "國際資安認證",
+      "secdev": "安全開發實踐",
+      "security": "系統防護",
+      "fullstack": "全端開發",
+      "training": "技術培訓",
+      "achievement": "專業認可"
+    }
+  },
+  "sections": {
+    "skills": "技能",
+    "experience": "經歷",
+    "education": "學歷",
+    "conferences": "演講/議程",
+    "certificates": "專業證照",
+    "highlights": "專業亮點"
+  },
+  "highlights": {
+    "certifications": {
+      "title": "國際資安認證",
+      "description": "擁有CISSP、CSSLP、CEH等多項知名資安證照"
+    },
+    "devsecops": {
+      "title": "DevSecOps 專家",
+      "description": "10年以上安全開發經驗，專精於資安融入開發流程"
+    },
+    "recognition": {
+      "title": "產業獎項肯定",
+      "description": "2023 Gama Star 獎項得主，表彰專案積極度與影響力"
+    },
+    "speaking": {
+      "title": "技術演講講者",
+      "description": "IThome 資安大會、DevSecOps、中華軟體協會等研討會講者，分享專業知識"
+    }
+  },
+  "actions": {
+    "expandAll": "展開全部",
+    "collapseAll": "收合全部"
+  },
+  "duration": {
+    "monthsOnly": "{{count}}個月",
+    "monthsOnly_plural": "{{count}}個月",
+    "yearsOnly": "{{count}}年",
+    "yearsOnly_plural": "{{count}}年",
+    "yearsAndMonths": "{{years}}年{{months}}個月",
+    "yearsAndMonths_plural": "{{years}}年{{months}}個月"
+  },
+  "ongoing": "現在",
+  "currentPosition": "目前",
+  "loading": "載入中...",
+  "skillCategories": {
+    "security": {
+      "title": "資安技能",
+      "skills": [
+        "資安治理",
+        "法規遵循",
+        "滲透測試",
+        "弱點評估",
+        "事件響應",
+        "安全架構",
+        "風險管理",
+        "資安稽核"
+      ]
+    },
+    "development": {
+      "title": "開發技能",
+      "skills": [
+        "全端開發",
+        "API 設計與整合",
+        "資料庫管理",
+        "雲端架構",
+        "地端架構",
+        "容器化技術",
+        "CI/CD 自動化部署"
+      ]
+    },
+    "management": {
+      "title": "管理與溝通",
+      "skills": [
+        "團隊領導",
+        "技術培訓",
+        "專案管理",
+        "跨團隊協作",
+        "需求分析",
+        "技術文件撰寫",
+        "客戶溝通",
+        "技術演講"
+      ]
+    }
+  },
+  "skills": [
+    {
+      "category": "資安專業能力",
+      "items": [
+        "CSSLP資安軟體生命週期專家認證",
+        "CISSP資訊系統安全專家認證",
+        "ISO 27001:2022主導稽核員",
+        "CEH資安滲透測試技術"
+      ]
+    },
+    {
+      "category": "安全開發技能",
+      "items": [
+        "安全軟體開發生命週期(SSDLC)",
+        "DevSecOps流程整合與實踐",
+        "安全架構設計與API保護",
+        "自動化安全測試整合"
+      ]
+    },
+    {
+      "category": "管理技能",
+      "items": [
+        "專案管理",
+        "團隊領導",
+        "跨部門溝通",
+        "技術培訓"
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "company": "全智網科技 (AINetwork)",
+      "companyNote": "兼職講師",
+      "position": "講師",
+      "period": "2025/04 - 現在",
+      "brief": [
+        "技術培訓",
+        "課程開發"
+      ],
+      "details": [
+        "教學職責:",
+        "- 開發與授課DevSecOps與資安相關課程",
+        "- 提供企業安全程式碼實踐培訓",
+        "- 分享軟體開發安全最佳實務"
+      ]
+    },
+    {
+      "company": "雲力橘子股份有限公司",
+      "companyNote": "原果核數位，橘子集團子公司",
+      "position": "技術開發二部 技術經理",
+      "period": "2025/04 - 現在",
+      "brief": [
+        "產品負責人與技術領導",
+        "軟體開發安全標準制定"
+      ],
+      "details": [
+        "產品開發:",
+        "- 擔任產品負責人 (Product Owner)",
+        "- 專案時程與需求管理",
+        "- 跨部門溝通協調",
+        "安全開發:",
+        "- 制定軟體開發安全規範",
+        "- 執行架構安全評估",
+        "- 建立自動化安全測試",
+        "- 提供安全程式碼改善建議"
+      ]
+    },
+    {
+      "company": "果核數位股份有限公司",
+      "position": "技術開發二部 副理",
+      "period": "2024/08 - 2025/03",
+      "brief": [
+        "產品負責人與技術領導",
+        "軟體開發安全標準制定"
+      ],
+      "details": [
+        "產品開發:",
+        "- 擔任產品負責人 (Product Owner)",
+        "- 專案時程與需求管理",
+        "- 跨部門溝通協調",
+        "安全開發:",
+        "- 制定軟體開發安全規範",
+        "- 執行架構安全評估",
+        "- 建立自動化安全測試",
+        "- 提供安全程式碼改善建議"
+      ]
+    },
+    {
+      "company": "果核數位股份有限公司",
+      "position": "軟體開發安全部 副理",
+      "period": "2021/09 - 2024/07",
+      "brief": [
+        "DevSecOps 流程優化與推廣",
+        "安全工具整合自動化"
+      ],
+      "details": [
+        "技術成就:",
+        "- 整合安全工具到開發流程及優化自動化掃描機制",
+        "- 設計與推動企業級DevSecOps流程",
+        "- 提供安全程式碼諮詢與規劃教育訓練課程",
+        "- 獲頒2023 Gama Star獎表彰專案積極度與影響力"
+      ]
+    },
+    {
+      "company": "資誠聯合會計師事務所 (PwC Taiwan)",
+      "position": "風險與控制部門 顧問",
+      "period": "2020/09 - 2021/09",
+      "brief": [
+        "金融業資安評估與法遵稽核",
+        "企業資安測試與分析"
+      ],
+      "details": [
+        "安全測試與自動化:",
+        "- 執行弱點掃描、滲透測試與惡意軟體分析",
+        "- 開發安全配置分析與漏洞統計自動化工具",
+        "- 優化安全測試流程提升效率",
+        "資安顧問與法規遵循:",
+        "- 提供內部控制制度與IT安全管理諮詢",
+        "- 執行金融業法規遵循評估與稽核",
+        "- 協助企業符合國際安全標準與最佳實踐"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "國立雲林科技大學",
+      "degree": "碩士",
+      "period": "2016 - 2019",
+      "major": "資訊工程系",
+      "description": [
+        "研究領域：人工智慧應用、影像處理、聲音辨識",
+        "論文專題：嬰兒哭聲偵測與情緒識別系統",
+        "實作專案：車牌辨識與文件識別應用程式開發"
+      ]
+    },
+    {
+      "school": "崑山科技大學",
+      "degree": "學士",
+      "period": "2012 - 2016",
+      "major": "資訊工程系",
+      "description": [
+        "主要專長：系統開發、行動應用程式設計",
+        "獲獎紀錄：全國大專院校智慧電子整合人才培育競賽優等獎",
+        "實作專案：雲端檔案管理系統、IoT室內定位應用"
+      ]
+    }
+  ],
+  "conferences": [
+    {
+      "title": "DevSecOps 和自動化安全檢測的敏捷導入",
+      "date": "2025/04/17",
+      "venue": "南港展覽館",
+      "organizer": "CyberRes 2025 臺灣資安大會",
+      "tags": ["DevSecOps", "自動化安全檢測", "敏捷開發"],
+      "url": "https://cybersec.ithome.com.tw/2025/session-page/3607"
+    },
+    {
+      "title": "常見之軟體與企業的安全威脅分析",
+      "date": "2024/09/25",
+      "organizer": "OpenText & 果核數位 聯合技術分享會",
+      "tags": ["安全威脅", "企業安全", "威脅分析"]
+    },
+    {
+      "title": "DevSecOps 與 AI：雙面刃的挑戰與機遇",
+      "date": "2024/08/30",
+      "venue": "線上直播",
+      "organizer": "CISA中華民國資訊軟體協會",
+      "tags": ["DevSecOps", "AI", "安全開發"]
+    },
+    {
+      "title": "DevOps + Sec 是強力援手還是搗亂者",
+      "date": "2024/07/10",
+      "venue": "瓶蓋工廠",
+      "organizer": "DevOpsDays Taipei 2024",
+      "tags": ["DevOps", "Security", "開發流程"]
+    },
+    {
+      "title": "那些沒有被說出口的資安需求",
+      "date": "2023/10/19",
+      "organizer": "OpenText & 果核數位 聯合技術分享會",
+      "tags": ["安全需求", "需求分析", "安全開發"]
+    },
+    {
+      "title": "稽核與被稽核的那些事",
+      "date": "2023/09/15",
+      "organizer": "BSI & KPMG & 果核數位 聯合技術分享會",
+      "tags": ["安全稽核", "合規", "稽核經驗"],
+      "url": "https://www.ithome.com.tw/pr/159495"
+    },
+    {
+      "title": "企業安全開發流程升級之路",
+      "date": "2023/05/09",
+      "venue": "南港展覽館",
+      "organizer": "CyberRes 2023 臺灣資安大會",
+      "tags": ["安全開發", "流程優化", "企業實踐"],
+      "url": "https://cyber.ithome.com.tw/2023/session-page/1858"
+    },
+    {
+      "title": "企業面臨的安全開發挑戰",
+      "date": "2023/04/12",
+      "organizer": "OpenText & 果核數位 聯合技術分享會",
+      "tags": ["企業安全", "開發挑戰", "最佳實踐"],
+      "url": "https://www.ithome.com.tw/pr/156836"
+    },
+    {
+      "title": "開發與資安的合作之路從互相理解開始",
+      "date": "2023/03/18",
+      "organizer": "果核數位 Hacker Talk 論壇",
+      "tags": ["團隊溝通", "安全開發", "跨部門合作"],
+      "url": "https://www.ithome.com.tw/pr/156206"
+    }
+  ]
+}

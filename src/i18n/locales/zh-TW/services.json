@@ -1,0 +1,35 @@
+{
+  "title": "服務項目",
+  "subtitle": "專業服務內容",
+  "categories": {
+    "security": {
+      "title": "資安顧問",
+      "description": "提供全方位的資訊安全評估與建議",
+      "services": {
+        "audit": "資安稽核",
+        "assessment": "弱點評估",
+        "pentesting": "滲透測試",
+        "consultation": "資安諮詢"
+      }
+    },
+    "training": {
+      "title": "教育訓練",
+      "description": "客製化的資安意識與技術培訓",
+      "services": {
+        "awareness": "資安意識",
+        "technical": "技術培訓",
+        "compliance": "法規遵循",
+        "workshops": "實作工作坊"
+      }
+    },
+    "development": {
+      "title": "安全開發",
+      "description": "安全軟體開發與程式碼審查",
+      "services": {
+        "secureSDLC": "安全開發生命週期",
+        "codeReview": "程式碼審查",
+        "security": "安全性整合"
+      }
+    }
+  }
+}

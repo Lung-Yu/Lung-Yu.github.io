@@ -1,0 +1,29 @@
+{
+    "menuItems": [
+      {
+        "title": "navigation.home",
+        "href": "#home",
+        "isExact": false
+      },
+      {
+        "title": "navigation.skills",
+        "href": "#skills",
+        "isExact": false
+      },
+      {
+        "title": "navigation.projects",
+        "href": "#projects",
+        "isExact": false
+      },
+      {
+        "title": "navigation.certificates",
+        "href": "#certificates",
+        "isExact": false
+      },
+      {
+        "title": "navigation.cv",
+        "href": "/cv",
+        "isExact": true
+      }
+    ]
+}

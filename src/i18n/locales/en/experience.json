@@ -1,0 +1,29 @@
+{
+  "title": "Experience",
+  "description": "My Professional Journey",
+  "workHistory": {
+    "title": "Work History",
+    "current": "Current Position",
+    "previous": "Previous Positions"
+  },
+  "education": {
+    "title": "Education",
+    "degree": "Degree",
+    "major": "Major",
+    "university": "University"
+  },
+  "certifications": {
+    "title": "Certifications",
+    "list": {
+      "cissp": "CISSP - Certified Information Systems Security Professional",
+      "ceh": "CEH - Certified Ethical Hacker",
+      "oscp": "OSCP - Offensive Security Certified Professional"
+    }
+  },
+  "achievements": {
+    "title": "Achievements",
+    "publications": "Publications",
+    "speaking": "Speaking Engagements",
+    "awards": "Awards"
+  }
+}

@@ -1,0 +1,275 @@
+:root {
+  --primary-color: #0070f3;
+  --secondary-color: #00a6ff;
+  --text-primary: #4a5568;
+  --spacing-small: 1.25rem;
+  --spacing-medium: 2rem;
+  --spacing-large: 2.2rem;
+  --font-size-large: 3.5rem;
+  --font-size-medium: 1.4rem;
+  --font-size-small: 1.1rem;
+  --line-height: 1.8;
+}
+
+/* 主要容器樣式 */
+.hero {
+  min-height: 90vh;
+  position: relative;
+  overflow: hidden;
+  padding: var(--spacing-medium) 0;
+}
+
+/* 不規則形狀裝飾 */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+.hero::before {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, rgba(0, 112, 243, 0.1), rgba(0, 166, 255, 0.1));
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  top: 10%;
+  right: -100px;
+  animation: morphing 15s ease-in-out infinite;
+}
+
+.hero::after {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(-45deg, rgba(0, 166, 255, 0.1), rgba(0, 112, 243, 0.1));
+  border-radius: 58% 42% 38% 62% / 42% 55% 45% 58%;
+  bottom: 10%;
+  left: -100px;
+  animation: morphing 12s ease-in-out infinite reverse;
+}
+
+/* 內容區域樣式 */
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-medium);
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hero-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-medium);
+  width: 100%;
+}
+
+/* 文字區域樣式 */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+  padding-right: var(--spacing-medium);
+  animation: slideUp 0.8s ease forwards;
+}
+
+.hero-title {
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: var(--font-size-large);
+  margin: 0.5rem 0;
+}
+
+.role {
+  font-size: var(--font-size-medium);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.hero-description {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height);
+  color: var(--text-primary);
+  max-width: 500px;
+  margin: 1rem 0;
+}
+
+/* 圖片區域樣式 */
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  animation: fadeIn 1s ease forwards;
+}
+
+.hero-image img,
+.image-backdrop {
+  width: 360px;
+  height: 360px;
+  border-radius: 16px;
+}
+
+.hero-image img {
+  position: relative;
+  z-index: 1;
+  object-fit: cover;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.image-backdrop {
+  position: absolute;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  transform: rotate(-6deg) translateY(4px);
+  opacity: 0.08;
+  filter: blur(2px);
+}
+
+/* 社交連結容器 */
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  /* 增加圖示間距 */
+  margin-top: 2rem;
+  /* 與上方元素保持適當距離 */
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  /* 加大點擊區域 */
+  height: 48px;
+  border-radius: 50%;
+  color: var(--primary-color);
+  background: rgba(0, 112, 243, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 112, 243, 0.2);
+}
+
+/* 圖示大小調整 */
+.social-links .icon {
+  font-size: 1.5rem;
+}
+
+/* 添加工具提示 */
+.social-links a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) scale(1);
+}
+
+/* 響應式設計 */
+@media (max-width: 1024px) {
+  .hero-grid-container {
+    gap: 1.5rem;
+  }
+
+  .hero-image img,
+  .image-backdrop {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 40px 0;
+  }
+
+  .hero-grid-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-text {
+    padding-right: 0;
+    align-items: center;
+  }
+
+  .hero-description {
+    margin: 1rem auto;
+  }
+
+  .hero-image {
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .social-links {
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+}
+
+/* 動畫效果 */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes morphing {
+  0% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transform: rotate(0deg);
+  }
+
+  50% {
+    border-radius: 58% 42% 38% 62% / 42% 55% 45% 58%;
+    transform: rotate(180deg);
+  }
+
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transform: rotate(360deg);
+  }
+}

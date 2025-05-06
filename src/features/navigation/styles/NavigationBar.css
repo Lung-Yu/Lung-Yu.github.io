@@ -1,0 +1,145 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 0.8rem 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(0, 112, 243, 0.08);
+  color: #0070f3;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 250px;
+    flex-direction: column;
+    background-color: white;
+    padding: 5rem 2rem 2rem;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .language-switcher {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+  }
+
+  /* 漢堡選單動畫 */
+  .nav-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .nav-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+
+/* 背景遮罩 */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-overlay.active {
+  display: block;
+  opacity: 1;
+}

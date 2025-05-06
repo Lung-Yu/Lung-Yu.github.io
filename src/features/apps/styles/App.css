@@ -1,0 +1,73 @@
+/* 移除原本的 section 通用間距 */
+section {
+  margin: 0; /* 改為 0 */
+  padding: 0; /* 改為 0 */
+}
+
+/* Hero section 特殊處理 */
+.hero {
+  margin: 0;
+  padding-top: 64px; /* 只保留頂部padding，配合navbar高度 */
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Projects section 特殊處理 */
+.projects {
+  margin-top: -4rem; /* 使用負margin與hero區段重疊 */
+  padding: 4rem 0;
+  position: relative;
+  z-index: 1; /* 確保內容可見 */
+}
+
+/* 確保背景效果平滑過渡 */
+.projects-background {
+  opacity: 0.8; /* 降低背景透明度 */
+  transition: opacity 0.3s ease;
+}
+
+/* 動畫效果調整 */
+#projects,
+#consulting,
+#certificates {
+  opacity: 1; /* 移除淡入效果 */
+  transform: none;
+  animation: none;
+}
+
+.back-to-home-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-home-button:hover {
+  transform: scale(1.1);
+  background-color: var(--color-primary-dark);
+}
+
+.floating-back-to-home-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.floating-back-to-home-button:hover {
+  transform: scale(1.1);
+  background-color: var(--color-primary-dark);
+}

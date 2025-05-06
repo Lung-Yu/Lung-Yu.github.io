@@ -1,0 +1,16 @@
+{
+  "title": "證書",
+  "description": "",
+  "categories": {
+    "all": "全部",
+    "cyber-security": "網路安全",
+    "development": "開發",
+    "infrastructure": "基礎設施",
+    "data-science": "資料科學",
+    "hardware": "嵌入式"
+  },
+  "actions": {
+    "viewDetails": "查看詳情",
+    "close": "關閉"
+  }
+}

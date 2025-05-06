@@ -1,0 +1,224 @@
+.consulting {
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 0;
+    background-color: var(--color-background); /* 修改背景顏色 */; /* 修改背景顏色 */
+}
+
+.consulting::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(45deg, rgba(0, 112, 243, 0.1), rgba(0, 166, 255, 0.1));
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    top: 10%;
+    right: -100px;
+    animation: morphing 15s ease-in-out infinite;
+    z-index: -1;
+}
+
+.consulting::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(-45deg, rgba(0, 166, 255, 0.1), rgba(0, 112, 243, 0.1));
+    border-radius: 58% 42% 38% 62% / 42% 55% 45% 58%;
+    bottom: 10%;
+    left: -100px;
+    animation: morphing 12s ease-in-out infinite reverse;
+    z-index: -1;
+}
+
+.consulting-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.consulting-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.consulting-header h2 {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); /* 修改文字顏色 */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.consulting-header p {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.consulting-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.consulting-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.8s ease forwards;
+    animation-delay: calc(var(--index) * 0.1s);
+}
+
+.consulting-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.consulting-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.consulting-card:hover .consulting-image {
+    transform: scale(1.1);
+}
+
+.consulting-content {
+    padding: 1.5rem;
+}
+
+.consulting-content h3 {
+    font-size: 1.25rem;
+    color: var(--primary-color); /* 修改文字顏色 */ /* 修改文字顏色 */
+    margin-bottom: 0.5rem;
+}
+
+.consulting-content p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.consulting-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.consulting-tag {
+    padding: 0.25rem 0.75rem;
+    background: var(--primary-color); /* 修改標籤背景顏色 */ /* 修改標籤背景顏色 */
+    color: white;
+    border-radius: 999px;
+    font-size: 0.875rem;
+}
+
+.consulting-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    color: var(--primary-color); /* 修改連結顏色 */ /* 修改連結顏色 */
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.consulting-link:hover {
+    background: var(--primary-color); /* 修改連結懸停背景顏色 */ /* 修改連結懸停背景顏色 */
+    color: white;
+    border-color: transparent;
+}
+
+.show-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.show-more-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    border: 2px solid var(--primary-color); /* 修改按鈕邊框顏色 */ /* 修改按鈕邊框顏色 */
+    color: var(--primary-color); /* 修改按鈕文字顏色 */ /* 修改按鈕文字顏色 */
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.show-more-button:hover {
+    background: var(--primary-color); /* 修改按鈕懸停背景顏色 */ /* 修改按鈕懸停背景顏色 */
+    color: white;
+    border-color: transparent;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .consulting-header h2 {
+        font-size: 2rem;
+    }
+
+    .consulting-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .consulting-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 390px) {
+    .consulting {
+        padding: 3rem 0;
+    }
+
+    .consulting-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .consulting-content {
+        padding: 1rem;
+    }
+
+    .consulting-content h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Animations */
+@keyframes morphing {
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(0deg);
+    }
+    50% {
+        border-radius: 58% 42% 38% 62% / 42% 55% 45% 58%;
+        transform: rotate(180deg);
+    }
+    100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

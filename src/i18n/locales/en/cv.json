@@ -1,0 +1,341 @@
+{
+  "name": "Tygrus",
+  "title": "Cybersecurity Expert and Full-Stack Developer",
+  "summary": "Professional in cybersecurity and software development, enhancing system security and stability through expertise.",
+  "linkedin": "https://www.linkedin.com/in/lung-yu-tsai-633865100/",
+  "summaryPoints": {
+    "mainIntro": "Combining cybersecurity expertise with full-stack development for secure systems",
+    "keywords": {
+      "cert": "Security Certifications",
+      "secdev": "Secure Development",
+      "security": "System Protection",
+      "fullstack": "Full-Stack Development",
+      "training": "Technical Training",
+      "achievement": "Professional Recognition"
+    }
+  },
+  "sections": {
+    "skills": "Skills",
+    "experience": "Experience",
+    "education": "Education",
+    "conferences": "Conferences",
+    "certificates": "Professional Certifications",
+    "highlights": "Professional Highlights"
+  },
+  "highlights": {
+    "certifications": {
+      "title": "Multiple Security Certifications",
+      "description": "CISSP, CSSLP, CEH, and other recognized certifications."
+    },
+    "devsecops": {
+      "title": "DevSecOps Expert",
+      "description": "Integrating security into development workflows for 10+ years."
+    },
+    "recognition": {
+      "title": "Industry Recognition",
+      "description": "2023 Gama Star Award recipient, recognized for proactivity and impact."
+    },
+    "speaking": {
+      "title": "Technical Speaker",
+      "description": "Speaker at IThome CyberRes Security Conference, DevSecOps events, and software association conferences."
+    }
+  },
+  "actions": {
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All"
+  },
+  "duration": {
+    "monthsOnly": "{{count}} month",
+    "monthsOnly_plural": "{{count}} months",
+    "yearsOnly": "{{count}} year",
+    "yearsOnly_plural": "{{count}} years",
+    "yearsAndMonths": "{{years}} year {{months}} month",
+    "yearsAndMonths_plural": "{{years}} years {{months}} months"
+  },
+  "ongoing": "Present",
+  "currentPosition": "Current",
+  "loading": "Loading...",
+  "skillCategories": {
+    "security": {
+      "title": "Security Skills",
+      "skills": [
+        "Security Governance",
+        "Compliance Management",
+        "Penetration Testing",
+        "Vulnerability Assessment",
+        "Incident Response",
+        "Security Architecture",
+        "Risk Management",
+        "Security Auditing"
+      ]
+    },
+    "development": {
+      "title": "Development Skills",
+      "skills": [
+        "Full-Stack Development",
+        "RESTful API Design",
+        "Database Management",
+        "Cloud Architecture",
+        "On-premises Architecture",
+        "Containerization",
+        "CI/CD Pipeline"
+      ]
+    },
+    "management": {
+      "title": "Management & Communication",
+      "skills": [
+        "Team Leadership",
+        "Technical Training",
+        "Project Management",
+        "Cross-team Collaboration",
+        "Requirements Analysis",
+        "Technical Documentation",
+        "Client Communication",
+        "Public Speaking"
+      ]
+    }
+  },
+  "skills": [
+    {
+      "category": "Security Expertise",
+      "items": [
+        "CSSLP (Certified Secure Software Lifecycle Professional)",
+        "CISSP (Certified Information Systems Security Professional)",
+        "ISO 27001:2022 Lead Auditor",
+        "CEH (Certified Ethical Hacker)"
+      ]
+    },
+    {
+      "category": "Secure Development",
+      "items": [
+        "Secure Software Development Lifecycle (SSDLC)",
+        "DevSecOps implementation and practices",
+        "Secure architecture design and API protection",
+        "Automated security testing integration"
+      ]
+    },
+    {
+      "category": "Management Skills",
+      "items": [
+        "Project management",
+        "Team leadership",
+        "Cross-department communication",
+        "Technical training"
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "company": "AINetwork",
+      "companyNote": "Part-time position",
+      "position": "Teacher",
+      "period": "2025/04 - Present",
+      "brief": [
+        "Technical Training",
+        "Curriculum Development"
+      ],
+      "details": [
+        "Teaching Responsibilities:",
+        "- Developed and delivered DevSecOps and cybersecurity courses",
+        "- Provided enterprise secure coding practices training",
+        "- Shared software development security best practices"
+      ]
+    },
+    {
+      "company": "Cloudforce Co., Ltd.",
+      "companyNote": "formerly Digicentre, a subsidiary of Gamania Group",
+      "position": "Technical Manager of Technical Development Department II",
+      "period": "2025/04 - Present",
+      "brief": [
+        "Product Owner & Technical Leadership",
+        "Secure Development Standards"
+      ],
+      "details": [
+        "Product Development:",
+        "- Product Owner role",
+        "- Project scheduling and requirement management",
+        "- Cross-department coordination",
+        "Secure Development:",
+        "- Establish secure development standards",
+        "- Conduct architecture security assessments",
+        "- Implement automated security testing",
+        "- Provide secure code improvement guidance"
+      ]
+    },
+    {
+      "company": "Digicentre Co., Ltd.",
+      "position": "Deputy Manager of Technical Development Department II",
+      "period": "2024/08 - 2025/03",
+      "brief": [
+        "Product Owner & Technical Leadership",
+        "Secure Development Standards"
+      ],
+      "details": [
+        "Product Development:",
+        "- Product Owner role",
+        "- Project scheduling and requirement management",
+        "- Cross-department coordination",
+        "Secure Development:",
+        "- Establish secure development standards",
+        "- Conduct architecture security assessments",
+        "- Implement automated security testing",
+        "- Provide secure code improvement guidance"
+      ]
+    },
+    {
+      "company": "Digicentre Co., Ltd.",
+      "position": "Deputy Manager of Software Development Security Department",
+      "period": "2021/09 - 2024/07",
+      "brief": [
+        "DevSecOps Process Optimization",
+        "Security Tools Integration"
+      ],
+      "details": [
+        "Key Achievements:",
+        "- Integrated security tools into development processes and optimized automated scanning",
+        "- Designed and implemented enterprise-level DevSecOps workflow",
+        "- Provided secure coding consulting and developed training programs",
+        "- Received 2023 Gama Star Award for proactivity and impact on projects"
+      ]
+    },
+    {
+      "company": "PwC Taiwan",
+      "position": "Security Consultant",
+      "period": "2020/09 - 2021/09",
+      "brief": [
+        "Financial sector security assessment",
+        "Enterprise security testing"
+      ],
+      "details": [
+        "Security Testing & Automation:",
+        "- Conducted vulnerability scanning, penetration testing, and malware analysis",
+        "- Developed security configuration analysis and vulnerability statistics automation tools",
+        "- Enhanced security testing processes for improved efficiency",
+        "Security Consulting & Compliance:",
+        "- Provided internal control and IT security management consulting",
+        "- Performed financial sector regulatory compliance assessments and audits",
+        "- Helped enterprises meet international security standards and best practices"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "National Yunlin University of Science and Technology",
+      "degree": "Master's",
+      "period": "2016 - 2019",
+      "major": "Department of Computer Science and Information Engineering",
+      "description": [
+        "Research areas: AI applications, image processing, audio recognition",
+        "Thesis project: Baby cry detection and emotion recognition system",
+        "Applied projects: License plate recognition and document scanning applications"
+      ]
+    },
+    {
+      "school": "Kun Shan University",
+      "degree": "Bachelor's",
+      "period": "2012 - 2016",
+      "major": "Department of Computer Science and Information Engineering",
+      "description": [
+        "Core focus: System development, mobile application design",
+        "Award: Excellence Award in National College Smart Electronics Integration Competition",
+        "Applied projects: Cloud file management system, IoT indoor positioning applications"
+      ]
+    }
+  ],
+  "conferences": [
+    {
+      "title": "Agile Adoption of DevSecOps and Automated Security Testing",
+      "date": "2025/04/17",
+      "venue": "Nangang Exhibition Center",
+      "organizer": "CyberRes 2025 Taiwan Security Conference",
+      "tags": [
+        "DevSecOps",
+        "Automated Security Testing",
+        "Agile Development"
+      ],
+      "url": "https://cybersec.ithome.com.tw/2025/session-page/3607"
+    },
+    {
+      "title": "Common Software and Enterprise Security Threat Analysis",
+      "date": "2024/09/25",
+      "organizer": "OpenText & Cloudforce Joint Technology Sharing Session"
+    },
+    {
+      "title": "DevSecOps and AI: Challenges and Opportunities of a Double-Edged Sword",
+      "date": "2024/08/30",
+      "venue": "on Live Stream",
+      "organizer": "CISA Chinese Software Association",
+      "tags": [
+        "DevSecOps",
+        "AI",
+        "Secure Development"
+      ]
+    },
+    {
+      "title": "DevOps + Sec: Powerful Ally or Disruptive Force?",
+      "date": "2024/07/10",
+      "venue": "Bottle Cap Factory",
+      "organizer": "DevOpsDays Taipei 2024",
+      "tags": [
+        "DevOps",
+        "Security",
+        "Development Process"
+      ]
+    },
+    {
+      "title": "Security Requirements That Need to be Addressed",
+      "date": "2023/10/19",
+      "organizer": "OpenText & Digicentre Joint Technology Sharing Session",
+      "tags": [
+        "Security Requirements",
+        "Requirement Analysis",
+        "Secure Development"
+      ]
+    },
+    {
+      "title": "Stories of Auditors and Auditees",
+      "date": "2023/09/15",
+      "organizer": "BSI & KPMG & Digicentre Joint Technology Sharing Session",
+      "tags": [
+        "Security Audit",
+        "Compliance",
+        "Audit Experience"
+      ],
+      "url": "https://www.ithome.com.tw/pr/159495"
+    },
+    {
+      "title": "The Journey of Upgrading Enterprise Security Development Processes",
+      "date": "2023/05/09",
+      "venue": "Nangang Exhibition Center",
+      "organizer": "CyberRes 2023 Taiwan Cybersecurity Conference",
+      "tags": [
+        "Secure Development",
+        "Process Optimization",
+        "Enterprise Practice"
+      ],
+      "url": "https://cyber.ithome.com.tw/2023/session-page/1858"
+    },
+    {
+      "title": "Challenges of Enterprises Facing Secure Development",
+      "date": "2023/04/12",
+      "organizer": "OpenText & Digicentre Joint Technology Sharing Session",
+      "tags": [
+        "Enterprise Security",
+        "Development Challenges",
+        "Best Practices"
+      ],
+      "url": "https://www.ithome.com.tw/pr/156836"
+    },
+    {
+      "title": "Building Secure Software Starts with Effective Communication",
+      "date": "2023/03/18",
+      "organizer": "Digicentre Hacker Talk Forum",
+      "tags": [
+        "Team Communication",
+        "Secure Development",
+        "Cross-Department Collaboration"
+      ],
+      "url": "https://www.ithome.com.tw/pr/156206"
+    }
+  ]
+}

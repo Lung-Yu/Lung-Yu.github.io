@@ -1,0 +1,24 @@
+{
+  "title": "關於我",
+  "subtitle": "我的專業背景",
+  "introduction": {
+    "title": "你好，我是龔隆裕",
+    "description": "擁有超過10年的資訊安全與軟體開發經驗，專注於網路安全、系統架構與自動化解決方案。",
+    "mission": "致力於協助企業建立更安全的數位環境，並推動資安意識的提升。"
+  },
+  "experience": {
+    "title": "工作經驗",
+    "years": "{{count}} 年經驗",
+    "projects": "{{count}}+ 專案完成",
+    "clients": "{{count}}+ 合作客戶"
+  },
+  "expertise": {
+    "title": "專業領域",
+    "areas": {
+      "security": "資訊安全",
+      "development": "軟體開發",
+      "consulting": "資安顧問",
+      "training": "教育訓練"
+    }
+  }
+}

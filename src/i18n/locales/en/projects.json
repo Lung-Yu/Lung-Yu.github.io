@@ -1,0 +1,39 @@
+{
+    "title": "Portfolio",
+    "subtitle": "My Project Works",
+    "description": "This showcases my main works and projects. Each project represents different technical challenges and solutions.",
+    "filters": {
+        "all": "All",
+        "webApp": "Web Application",
+        "security": "Security Tools",
+        "automation": "Automation Tools"
+    },
+    "actions": {
+        "viewGithub": "View GitHub",
+        "viewDemo": "View Demo",
+        "viewDetails": "View Details",
+        "expandAll": "Expand All",
+        "collapseAll": "Collapse All",
+        "showMore": "Show More",
+        "showLess": "Show Less"
+    },
+    "highlights": "Highlights",
+    "features": "Features",
+    "demonstration": "Demonstration",
+    "installation": "Installation",
+    "configuration": "Configuration",
+    "details": {
+        "mailServer": "Mail Server Settings",
+        "monitorSettings": "Monitor Settings",
+        "step": "Step {{number}}",
+        "next": "Next",
+        "previous": "Previous"
+    },
+    "sections": {
+        "projectImages": "Project Images",
+        "projectDates": "Project Timeline",
+        "startDate": "Start Date",
+        "endDate": "End Date",
+        "ongoing": "Ongoing"
+    }
+}
