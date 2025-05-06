@@ -1,6 +1,7 @@
 {
     "certificates": [
         {
+            "id": "ceh",
             "title": "Ethical Hacking",
             "category": "Cyber Security",
             "institution": "EC-Council",
@@ -13,6 +14,7 @@
             "value": 8
         },
         {
+            "id": "iso-27001-2022",
             "title": "ISO 27001: 2022 Lead Auditor",
             "category": "Cyber Security",
             "institution": "BSI",
@@ -25,6 +27,7 @@
             "value": 8
         },
         {
+            "id": "csslp",
             "title": "CSSLP",
             "category": "Cyber Security",
             "institution": "ISC2",
@@ -37,6 +40,7 @@
             "value": 9
         },
         {
+            "id": "cissp",
             "title": "CISSP",
             "category": "Cyber Security",
             "institution": "ISC2",
@@ -49,6 +53,7 @@
             "value": 10
         },
         {
+            "id": "ipas-security-l1",
             "title": "iPAS 資安初級",
             "category": "Cyber Security",
             "institution": "iPAS",

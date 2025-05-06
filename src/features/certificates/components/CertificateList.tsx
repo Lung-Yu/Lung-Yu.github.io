@@ -37,11 +37,23 @@ const CertificateList = () => {
       </div>
       <div className="gallery">
         {filteredCertificates.map((certificate, index) => (
-          <div className="certificate" key={index} onClick={() => setSelectedCertificate(certificate)}>
-            <img src={getImageUrl(certificate.image)} alt={certificate.title} className="certificate-image" />
+          <div 
+            className="certificate" 
+            key={index} 
+            onClick={() => setSelectedCertificate(certificate)}
+            role="button"
+            aria-label={t('viewCertificateDetails', 'View details of {{title}} certificate', {
+              title: t(`certificates.${certificate.id}.title`, certificate.title)
+            })}
+          >
+            <img 
+              src={getImageUrl(certificate.image)} 
+              alt={t(`certificates.${certificate.id}.title`, certificate.title)}
+              className="certificate-image" 
+            />
             <div className="certificate-info">
-              <h3>{certificate.title}</h3>
-              <p>{certificate.description}</p>
+              <h3>{t(`certificates.${certificate.id}.title`, certificate.title)}</h3>
+              <p>{t(`certificates.${certificate.id}.shortDescription`, certificate.description)}</p>
             </div>
           </div>
         ))}

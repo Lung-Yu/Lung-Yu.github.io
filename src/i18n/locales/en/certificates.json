@@ -1,6 +1,8 @@
 {
   "title": "Certificates",
-  "description": "",
+  "description": "Browse my professional certifications in various domains. Click on a certificate to view more details.",
+  "categoryFilterLabel": "Filter certificates by category",
+  "viewCertificateDetails": "View details of {{title}} certificate",
   "categories": {
     "all": "All",
     "cyber-security": "Cyber Security",
@@ -9,8 +11,55 @@
     "data-science": "Data Science",
     "hardware": "Hardware"
   },
+  "institution": "Institution",
+  "fullName": "Full Name",
+  "abbreviation": "Abbreviation",
+  "obtainedAt": "Obtained At",
+  "expiryDate": "Expiry Date",
   "actions": {
     "viewDetails": "View Details",
     "close": "Close"
+  },
+  "certificates": {
+    "ceh": {
+      "title": "Ethical Hacking",
+      "shortDescription": "Advanced security certification focused on ethical hacking techniques",
+      "description": "Certified Ethical Hacker (CEH) is a qualification obtained by demonstrating knowledge of assessing the security of computer systems by looking for weaknesses and vulnerabilities in target systems, using the same knowledge and tools as a malicious hacker, but in a lawful and legitimate manner to assess the security posture of a target system.",
+      "institution": "EC-Council",
+      "fullName": "Certified Ethical Hacker",
+      "abbreviation": "CEH"
+    },
+    "iso-27001-2022": {
+      "title": "ISO 27001: 2022 Lead Auditor",
+      "shortDescription": "Information security management systems auditing certification",
+      "description": "The ISO 27001 Lead Auditor training course will equip participants with the skills and ability to perform audits by applying widely recognized audit principles, procedures and techniques. During this training course, participants will acquire the knowledge and skills to plan and carry out internal and external audits in compliance with ISO 19011 and ISO/IEC 17021-1 certification process.",
+      "institution": "BSI",
+      "fullName": "ISO/IEC 27001: 2022 Auditor Conversion (Information Security Management Systems) Training Course",
+      "abbreviation": "ISO 27001: 2022 LA"
+    },
+    "csslp": {
+      "title": "CSSLP",
+      "shortDescription": "Security certification focused on secure software development lifecycle",
+      "description": "The Certified Secure Software Lifecycle Professional (CSSLP) is a certification designed to ensure that security is considered throughout the entire software development lifecycle. CSSLPs are trained in application security, security design principles, and compliance issues.",
+      "institution": "ISC2", 
+      "fullName": "Certified Secure Software Lifecycle Professional",
+      "abbreviation": "CSSLP"
+    },
+    "cissp": {
+      "title": "CISSP",
+      "shortDescription": "Gold standard certification for security professionals",
+      "description": "The Certified Information Systems Security Professional (CISSP) is a certification for information technology security professionals. It was created by the International Information Systems Security Certification Consortium (ISC)², an international non-profit specializing in managing security certifications.",
+      "institution": "ISC2",
+      "fullName": "Certified Information Systems Security Professional",
+      "abbreviation": "CISSP"
+    },
+    "ipas-security-l1": {
+      "title": "iPAS Security Engineer L1",
+      "shortDescription": "Foundational security certification from Taiwan's industrial development bureau",
+      "description": "The iPAS Security Engineer Level 1, offered by Taiwan's Industrial Development Bureau, certifies foundational knowledge in information security protection and technical implementation capabilities.",
+      "institution": "iPAS",
+      "fullName": "Information Security Engineer Professional Certification - Level 1",
+      "abbreviation": "iPAS Security Engineer L1"
+    }
   }
 }

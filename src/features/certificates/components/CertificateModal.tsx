@@ -20,25 +20,53 @@ const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClos
     };
 
     return (
-        <div className="modal" onClick={onClose}>
+        <div 
+            className="modal" 
+            onClick={onClose} 
+            role="dialog" 
+            aria-labelledby="certificate-modal-title"
+            aria-modal="true"
+        >
             <div className="modal-content" onClick={handleModalClick}>
-                <span className="close" onClick={onClose}>
+                <span 
+                    className="close" 
+                    onClick={onClose} 
+                    aria-label={t('actions.close', 'Close')}
+                >
                     <FontAwesomeIcon icon={faTimes} />
                 </span>
                 <div className="modal-header">
-                    <h2>{certificate.title}</h2>
+                    <h2 id="certificate-modal-title">
+                        {t(`certificates.${certificate.id}.title`, certificate.title)}
+                    </h2>
                 </div>
                 <div className="modal-body">
                     <div className="modal-image-container">
-                        <img src={certificate.image} alt={certificate.title} className="modal-image" />
+                        <img 
+                            src={certificate.image} 
+                            alt={t(`certificates.${certificate.id}.title`, certificate.title)} 
+                            className="modal-image" 
+                        />
                     </div>
                     <div className="modal-details">
-                        <p>{certificate.description}</p>
-                        <p><strong>{t('institution')}:</strong> {certificate.institution}</p>
-                        <p><strong>{t('fullName')}:</strong> {certificate.fullName}</p>
-                        <p><strong>{t('abbreviation')}:</strong> {certificate.abbreviation}</p>
-                        <p><strong>{t('obtainedAt')}:</strong> {certificate.obtainedAt}</p>
-                        {certificate.expiryDate && <p><strong>{t('expiryDate')}:</strong> {certificate.expiryDate}</p>}
+                        <p>{t(`certificates.${certificate.id}.description`, certificate.description)}</p>
+                        <p>
+                            <strong>{t('institution')}:</strong> {t(`certificates.${certificate.id}.institution`, certificate.institution)}
+                        </p>
+                        <p>
+                            <strong>{t('fullName')}:</strong> {t(`certificates.${certificate.id}.fullName`, certificate.fullName)}
+                        </p>
+                        <p>
+                            <strong>{t('abbreviation')}:</strong> {t(`certificates.${certificate.id}.abbreviation`, certificate.abbreviation)}
+                        </p>
+                        <p>
+                            <strong>{t('obtainedAt')}:</strong> {certificate.obtainedAt}
+                        </p>
+                        {certificate.expiryDate && certificate.expiryDate !== "-" && (
+                            <p>
+                                <strong>{t('expiryDate')}:</strong> {certificate.expiryDate}
+                            </p>
+                        )}
                     </div>
                 </div>
             </div>
