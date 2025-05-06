@@ -9,13 +9,17 @@ import { useHero } from '../hooks/useHero';
 import { useTranslation } from 'react-i18next';
 
 const Hero: React.FC = () => {
-  const { heroContent } = useHero();
+  const { heroContent, loading } = useHero();
   const { t } = useTranslation();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.querySelector(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
+  
+  if (loading) {
+    return <div className="hero-loading">Loading...</div>;
+  }
 
   return (
     <section className="hero" aria-label={t('hero.sectionAriaLabel', 'Hero section')}>
@@ -25,38 +29,38 @@ const Hero: React.FC = () => {
           {/* Text content area */}
           <div className="hero-text">
             <div className="hero-title">
-              <span className="greeting">{t('hero.greeting', heroContent.greeting)}</span>
-              <h1>{t('hero.name', heroContent.name)}</h1>
-              <span className="role">{t('hero.role', heroContent.role)}</span>
+              <span className="greeting">{heroContent.greeting}</span>
+              <h1>{heroContent.name}</h1>
+              <span className="role">{heroContent.role || heroContent.title}</span>
             </div>
-            <p className="hero-description">{t('hero.description', heroContent.description)}</p>
+            <p className="hero-description">{heroContent.description}</p>
 
             <HeroButtons onNavigate={scrollToSection} />
 
             {/* Social links */}
             <div className="social-links" aria-label={t('hero.socialLinksLabel', 'Social media links')}>
               <a
-                href={heroContent.socialLinks.github}
+                href={heroContent.socialLinks?.github || heroContent.social?.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={t('hero.socialLinks.github', 'GitHub')}
-                data-tooltip={t('hero.socialLinks.github', 'GitHub')}
+                aria-label="GitHub"
+                data-tooltip="GitHub"
               >
                 <FontAwesomeIcon icon={faGithub} className="icon" />
               </a>
               <a
-                href={heroContent.socialLinks.linkedin}
+                href={heroContent.socialLinks?.linkedin || heroContent.social?.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={t('hero.socialLinks.linkedin', 'LinkedIn')}
-                data-tooltip={t('hero.socialLinks.linkedin', 'LinkedIn')}
+                aria-label="LinkedIn"
+                data-tooltip="LinkedIn"
               >
                 <FontAwesomeIcon icon={faLinkedin} className="icon" />
               </a>
               <a
-                href={`mailto:${heroContent.socialLinks.email}`}
-                aria-label={t('hero.socialLinks.email', 'Email')}
-                data-tooltip={t('hero.socialLinks.email', 'Email')}
+                href={`mailto:${heroContent.socialLinks?.email || heroContent.social?.email}`}
+                aria-label="Email"
+                data-tooltip="Email"
               >
                 <FontAwesomeIcon icon={faEnvelope} className="icon" />
               </a>
@@ -68,7 +72,7 @@ const Hero: React.FC = () => {
             <div className="image-backdrop" aria-hidden="true" />
             <img 
               src={heroContent.profileImage} 
-              alt={t('hero.profileImageAlt', 'Profile picture of {{name}}', { name: t('hero.name', heroContent.name) })}
+              alt={`Profile picture of ${heroContent.name}`}
               loading="eager"
             />
           </div>

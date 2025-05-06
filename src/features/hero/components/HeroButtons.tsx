@@ -6,7 +6,11 @@ interface HeroButtonsProps {
 }
 
 const HeroButtons: React.FC<HeroButtonsProps> = ({ onNavigate }) => {
-  const { heroContent } = useHero();
+  const { heroContent, loading } = useHero();
+
+  if (loading || !heroContent?.cta) {
+    return <div className="hero-cta-loading">Loading...</div>;
+  }
 
   return (
     <div className="hero-cta">

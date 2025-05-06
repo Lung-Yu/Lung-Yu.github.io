@@ -25,6 +25,7 @@ The Hero feature provides a prominent, eye-catching introduction section that ap
 ```
 features/
 └── hero/
+    ├── README.md           - Feature documentation (this file)
     ├── index.ts            - Exports the main Hero component
     ├── components/         - React components for the hero feature
     │   ├── Hero.tsx        - Main hero section component
@@ -33,6 +34,9 @@ features/
     │   └── useHero.ts      - Hook for retrieving internationalized hero content
     ├── types/              - TypeScript type definitions
     │   └── index.ts        - Hero-related type definitions
+    ├── data/               - Language-specific data files
+    │   ├── en.json         - English content data
+    │   └── zh-TW.json      - Traditional Chinese content data
     └── styles/             - CSS styles for hero components
         ├── Hero.css        - Styles for hero section
         └── HeroButtons.css - Styles for call-to-action buttons
@@ -55,41 +59,56 @@ const HomePage = () => {
 
 ## i18n Implementation
 
-The Hero component leverages a comprehensive i18n implementation to support multiple languages:
+The Hero component now uses feature-based internationalization:
 
-1. **Content Translation**
-   - All visible text is retrieved through the `useHero` hook, which returns internationalized content
-   - Translation keys follow a hierarchical structure (e.g., 'hero.socialLinks.github')
-   - Fallback values are provided to ensure reliability
+1. **Content Data**
+   - Content is stored in language-specific JSON files in the `data/` directory
+   - The `useHero` hook dynamically loads the appropriate data file based on the current language
+   - Content structure is consistent across all language files
+   - English (en.json) serves as the fallback if the current language data is unavailable
 
-2. **Accessibility**
-   - ARIA labels are translated to match the user's language preferences
-   - Image alt texts are dynamically generated with the user's name in the correct language
-   - Tooltips for social links are internationalized
+2. **UI Text Translation**
+   - UI elements like section labels and ARIA attributes use the i18n translation system
+   - Content data (like name, role, description) comes directly from language-specific JSON files
+   - This separation allows for different approaches to content vs. UI elements
 
-3. **Configuration**
-   - Translation files are stored in `/public/locales/[language-code]/` directories
-   - The hero section's translations are part of a larger, feature-based translation structure
+3. **Accessibility**
+   - ARIA labels use appropriate language-specific text
+   - Image alt texts are generated using the loaded content data
+   - Tooltips for social links come directly from the content data
 
 The component uses react-i18next's `useTranslation` hook for accessing translated strings, ensuring consistent language presentation throughout the application.
 
-## Configuration
-The Hero component retrieves its content from the `useHero` hook, which provides localized data:
+## Data Structure
 
-```typescript
-// Example heroContent structure returned by useHero hook
+Each language file in the `data/` directory follows this structure:
+
+```json
 {
-  greeting: "Hello, I'm",
-  name: "John Doe",
-  role: "Full Stack Developer & Security Specialist",
-  description: "I create secure, user-friendly web applications with a focus on accessibility and performance.",
-  socialLinks: {
-    github: "https://github.com/johndoe",
-    linkedin: "https://linkedin.com/in/johndoe",
-    email: "contact@johndoe.com"
-  },
-  profileImage: "/images/aboutme/profile.png"
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "John Doe",
+    "role": "Full Stack Developer & Security Specialist",
+    "description": "I create secure, user-friendly web applications...",
+    "profileImage": "/images/aboutme/profile.png",
+    "socialLinks": {
+      "github": "https://github.com/johndoe",
+      "linkedin": "https://linkedin.com/in/johndoe",
+      "email": "contact@johndoe.com"
+    },
+    "cta": {
+      "portfolio": "View Portfolio",
+      "contact": "Contact Me"
+    }
+  }
 }
 ```
 
-The component automatically adapts to the user's language preferences, displaying all content in the selected language.
+The `useHero` hook loads this data based on the current language setting and provides it to the components. When the language changes, the hook dynamically loads the new language file and updates the UI accordingly.
+
+## Implementation Notes
+
+1. **Loading State**: The component handles loading states to prevent UI issues during data fetch
+2. **Type Safety**: TypeScript interfaces ensure consistent data structure across languages
+3. **Fallback Mechanism**: If a specific language file fails to load, the system falls back to English
+4. **Backward Compatibility**: The implementation preserves compatibility with previous code
