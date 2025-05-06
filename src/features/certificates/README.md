@@ -13,7 +13,7 @@
 - 證照有效期限自動化顯示
 - 頒發機構和認證資訊展示
 - 證照價值評分系統，標示重要性
-- 完整的i18n多語系支援
+- 完整的i18n多語系支援，遵循feature-based架構
 
 ## 檔案結構
 ```
@@ -37,20 +37,89 @@ features/
 ```
 
 ## i18n 實現
-本功能完整支援多語系，證照資料存儲在:
+本功能完整支援多語系，按照feature-based架構組織：
+
+### 多語系資料 (Data)
+證照資料存儲在每個功能的 data/ 目錄中：
 
 - `src/features/certificates/data/en.json` (英文)
 - `src/features/certificates/data/zh-TW.json` (繁體中文)
 
 每個證照對象包含以下多語系欄位:
+- id: 唯一識別符（保持一致，不翻譯）
 - title: 證照標題
 - category: 證照類別
 - description: 證照描述
 - fullName: 完整名稱
+- institution: 機構名稱
+- abbreviation: 縮寫（通常不翻譯）
+- obtainedAt: 取得日期（ISO格式）
+- expiryDate: 到期日期（ISO格式）
+- value: 重要性值（用於排序）
 
-UI介面標籤和文字存儲在:
+### UI文字 (UI Text)
+UI介面標籤和文字存儲在全局i18n資源目錄：
 - `/src/i18n/locales/en/certificates.json` (英文)
 - `/src/i18n/locales/zh-TW/certificates.json` (繁體中文)
+
+### 資料處理鉤子 (Hook)
+自定義鉤子 `useCertificates.ts` 處理多語系資料載入與處理：
+
+```ts
+export const useCertificates = () => {
+  const { i18n } = useTranslation('certificates');
+  const [certificates, setCertificates] = useState<Certificate[]>([]);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    const loadCertificates = async () => {
+      setLoading(true);
+      try {
+        // 根據當前語言動態載入資料
+        let lang = i18n.language || 'en';
+        if (lang.startsWith('zh')) {
+          lang = 'zh-TW';
+        } else {
+          lang = 'en';
+        }
+        
+        const data = await import(`../data/${lang}.json`);
+        
+        // 處理資料，添加額外屬性
+        const processedCertificates = data.certificates.map(cert => ({
+          ...cert,
+          id: cert.id || generateCertificateId(cert),
+          categoryKey: getCategoryKey(cert.category)
+        }));
+        
+        // 依照重要性和日期排序
+        setCertificates(processedCertificates.sort((a, b) => {
+          if (b.value === a.value) {
+            return new Date(b.obtainedAt).getTime() - new Date(a.obtainedAt).getTime();
+          }
+          return b.value - a.value;
+        }));
+      } catch (error) {
+        // 載入失敗時，嘗試載入英文資料作為後備
+        const fallbackData = await import(`../data/en.json`);
+        // 處理後備資料...
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadCertificates();
+  }, [i18n.language]); // 當語言變更時重新載入
+  
+  // 返回處理後的資料與相關狀態
+  return {
+    certificates,
+    categories,
+    categoryToKeyMap,
+    loading
+  };
+};
+```
 
 ## 使用方式
 在需要顯示證照的頁面中引入相關組件:
@@ -68,27 +137,134 @@ const CertificatesPage = () => {
 };
 ```
 
-### 載入多語系資料
+### 組件中使用多語系
 
-證照資料會根據當前選擇的語言動態載入：
+CertificateList.tsx 組件中使用翻譯函數展示UI文字：
 
 ```tsx
-// 在 useCertificates 中
-useEffect(() => {
-  const loadCertificates = async () => {
-    const lang = i18n.language || 'en';
-    // 根據語言載入對應資料
-    const data = await import(`../data/${lang}.json`);
-    // 處理資料...
-  };
+const CertificateList = () => {
+  const { t, i18n } = useTranslation('certificates');
+  const { certificates, categories, loading } = useCertificates();
   
-  loadCertificates();
-}, [i18n.language]); // 當語言變更時重新載入
+  return (
+    <section className="certificates">
+      <h2>{t('title')}</h2>
+      <p>{t('description')}</p>
+      
+      {loading ? (
+        <div className="loading">{t('loading')}</div>
+      ) : (
+        <>
+          <div className="categories">
+            {categories.map(category => {
+              const categoryKey = getCategoryKey(category);
+              const translatedCategory = t(`categories.${categoryKey}`, category);
+              
+              return (
+                <button>
+                  {translatedCategory}
+                </button>
+              );
+            })}
+          </div>
+          
+          <div className="gallery">
+            {certificates.map(certificate => (
+              <div className="certificate">
+                <h3>{certificate.title}</h3>
+                <p>{certificate.institution}</p>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </section>
+  );
+};
 ```
 
-### 顯示效果
+### 多語系最佳實踐
 
-- 自動創建類別過濾器，讓用戶可以按領域瀏覽證照
+- 保持資料 ID 一致：所有語言版本中，同一證照的 ID 必須一致
+- 區分資料與 UI 文字：資料存放在 data/ 目錄，UI 文字存放在全局 i18n 資源中
+- 避免硬編碼：所有顯示文字都通過翻譯函數獲取
+- 維護資料對應：添加新證照時，確保所有語言中都添加對應條目
+- 命名規範：使用語言代碼命名資料檔案（如 en.json, zh-TW.json）
+
+## 添加新證照流程
+
+當需要添加新的專業證照時，請按照以下流程：
+
+1. 為每種支持的語言添加證照資訊：
+
+```json
+// 英文版本 - en.json
+{
+  "certificates": [
+    {
+      "id": "new-cert-id",
+      "title": "New Certification Title",
+      "category": "Cyber Security",
+      "institution": "Issuing Organization",
+      "image": "/images/certifications/org/cert-image.jpg",
+      "description": "Detailed description of the certification in English...",
+      "fullName": "Complete Official Name of Certification",
+      "abbreviation": "NCT",
+      "obtainedAt": "2024-01-15",
+      "expiryDate": "2027-01-15",
+      "value": 8
+    },
+    // ...existing certificates
+  ]
+}
+
+// 繁體中文版本 - zh-TW.json
+{
+  "certificates": [
+    {
+      "id": "new-cert-id",  // 保持ID一致
+      "title": "新證照中文標題",
+      "category": "網路安全",
+      "institution": "發證機構",
+      "image": "/images/certifications/org/cert-image.jpg",  // 圖片路徑通常保持一致
+      "description": "證照的中文詳細描述...",
+      "fullName": "證照的完整官方名稱（中文）",
+      "abbreviation": "NCT",  // 縮寫通常不翻譯
+      "obtainedAt": "2024-01-15",
+      "expiryDate": "2027-01-15",
+      "value": 8  // 重要性值保持一致
+    },
+    // ...既有證照
+  ]
+}
+```
+
+2. 若新證照屬於新類別，確保在UI翻譯檔案中添加對應的類別翻譯：
+
+```json
+// src/i18n/locales/en/certificates.json
+{
+  "categories": {
+    "all": "All Categories",
+    "cyber-security": "Cyber Security",
+    "new-category": "New Category"  // 添加新類別
+  }
+}
+
+// src/i18n/locales/zh-TW/certificates.json
+{
+  "categories": {
+    "all": "全部類別",
+    "cyber-security": "網路安全",
+    "new-category": "新類別名稱"  // 添加對應中文翻譯
+  }
+}
+```
+
+3. 確保新證照的圖片放置在正確的目錄中：
+   - `/public/images/certifications/<organization>/<image-file>`
+
+按照此流程，確保所有語言版本中資料結構一致，保持良好的多語系支援。
 - 顯示證照縮略圖和機構名稱
 - 點擊證照顯示詳細資訊彈出視窗
 - 支持響應式佈局，適應各種螢幕尺寸

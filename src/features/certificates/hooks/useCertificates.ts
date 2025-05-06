@@ -2,7 +2,10 @@ import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Certificate } from '../types';
 
-// Generate a slug from certificate title and abbreviation for use as i18n key
+/**
+ * Generate a standardized ID from certificate title and abbreviation for use as i18n key
+ * This ensures consistent IDs across languages
+ */
 const generateCertificateId = (cert: any): string => {
   const base = cert.abbreviation || cert.title;
   return base.toLowerCase()
@@ -12,7 +15,10 @@ const generateCertificateId = (cert: any): string => {
     .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
 };
 
-// Convert any category string to a standardized i18n key
+/**
+ * Convert any category string to a standardized i18n key
+ * This ensures consistent category keys across languages
+ */
 const getCategoryKey = (category: string): string => {
   // Handle special case for "All"
   if (category === 'All' || category === '全部') return 'all';
@@ -21,6 +27,10 @@ const getCategoryKey = (category: string): string => {
   return category.toLowerCase().replace(/ /g, '-');
 };
 
+/**
+ * Custom hook to load and manage certificate data based on the current language
+ * Follows the pattern described in the multi-language implementation guidelines
+ */
 export const useCertificates = () => {
   const { i18n } = useTranslation('certificates');
   const [certificates, setCertificates] = useState<Certificate[]>([]);
@@ -30,6 +40,7 @@ export const useCertificates = () => {
   useEffect(() => {
     const loadCertificates = async () => {
       setLoading(true);
+      
       try {
         // 根據當前語言動態載入資料
         let lang = i18n.language || 'en';
@@ -48,14 +59,15 @@ export const useCertificates = () => {
           throw new Error(`Certificates data in ${lang}.json is not properly formatted or empty`);
         }
         
-        // Add categoryKey to each certificate
+        // Process and enhance each certificate with additional fields
         const processedCertificates: Certificate[] = data.certificates.map((cert: any) => ({
           ...cert,
           id: cert.id || generateCertificateId(cert),
           categoryKey: getCategoryKey(cert.category)
         }));
         
-        // Sort certificates by value and then by date
+        // Sort certificates by value (importance) and then by obtainedAt date
+        // This ensures consistent ordering across languages
         const sortedCertificates = processedCertificates.sort((a, b) => {
           if (b.value === a.value) {
             return new Date(b.obtainedAt).getTime() - new Date(a.obtainedAt).getTime();
@@ -73,18 +85,21 @@ export const useCertificates = () => {
         console.error('Error loading certificates:', error);
         // 如果特定語言資料載入失敗，嘗試載入英文資料作為後備
         try {
+          console.log('Attempting to load fallback data from en.json');
           const fallbackData = await import('../data/en.json');
           
           if (!fallbackData || !fallbackData.certificates) {
             throw new Error('Fallback data could not be loaded');
           }
           
+          // Process certificates with the same logic as primary data
           const processedCertificates = fallbackData.certificates.map((cert: any) => ({
             ...cert,
             id: cert.id || generateCertificateId(cert),
             categoryKey: getCategoryKey(cert.category)
           }));
           
+          // Maintain consistent sorting logic
           setCertificates(processedCertificates.sort((a: Certificate, b: Certificate) => {
             if (b.value === a.value) {
               return new Date(b.obtainedAt).getTime() - new Date(a.obtainedAt).getTime();
@@ -92,9 +107,12 @@ export const useCertificates = () => {
             return b.value - a.value;
           }));
           
+          // Load category mappings if available
           if (fallbackData.categories) {
             setCategoryMap(fallbackData.categories);
           }
+          
+          console.log('Successfully loaded fallback certificate data');
         } catch (fallbackError) {
           console.error('Failed to load fallback data:', fallbackError);
           setCertificates([]);

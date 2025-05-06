@@ -1,24 +1,28 @@
 {
-  "title": "證書",
+  "title": "專業證照",
   "description": "瀏覽我在各領域的專業認證。點擊證書查看更多詳細資訊。",
-  "categoryFilterLabel": "按類別篩選證書",
+  "loading": "載入證照中...",
+  "categoryFilterLabel": "依類別篩選",
   "viewCertificateDetails": "查看 {{title}} 證書的詳細資訊",
   "categories": {
-    "all": "全部",
+    "all": "全部類別",
     "cyber-security": "網路安全",
-    "development": "開發",
+    "development": "軟體開發",
     "infrastructure": "基礎設施",
     "data-science": "資料科學",
-    "hardware": "嵌入式"
+    "hardware": "硬體工程"
   },
-  "institution": "機構",
+  "institution": "核發機構",
   "fullName": "完整名稱",
   "abbreviation": "縮寫",
+  "category": "類別",
   "obtainedAt": "取得日期",
   "expiryDate": "到期日期",
+  "noExpiryDate": "無到期日",
   "actions": {
     "viewDetails": "查看詳情",
-    "close": "關閉"
+    "close": "關閉",
+    "filter": "篩選"
   },
   "certificates": {
     "ceh": {

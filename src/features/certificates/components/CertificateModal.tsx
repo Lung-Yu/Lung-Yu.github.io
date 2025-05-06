@@ -10,6 +10,10 @@ interface CertificateModalProps {
     onClose: () => void;
 }
 
+/**
+ * CertificateModal component - displays detailed information about a selected certificate
+ * Implements multi-language support according to feature-based architecture guidelines
+ */
 const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClose }) => {
     const { t } = useTranslation('certificates');
 
@@ -18,6 +22,24 @@ const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClos
     const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
     };
+
+    // Format dates according to the user's locale
+    const formatDate = (dateString: string): string => {
+        if (!dateString || dateString === '-' || dateString === '') {
+            return t('noExpiryDate');
+        }
+        
+        try {
+            return new Date(dateString).toLocaleDateString();
+        } catch (error) {
+            console.error("Invalid date format:", dateString);
+            return dateString;
+        }
+    };
+
+    // Try to get translated category from the i18n system
+    const categoryKey = certificate.category.toLowerCase().replace(/ /g, '-');
+    const translatedCategory = t(`categories.${categoryKey}`, certificate.category);
 
     return (
         <div 
@@ -31,7 +53,7 @@ const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClos
                 <span 
                     className="close" 
                     onClick={onClose} 
-                    aria-label={t('actions.close', 'Close')}
+                    aria-label={t('actions.close')}
                 >
                     <FontAwesomeIcon icon={faTimes} />
                 </span>
@@ -61,27 +83,24 @@ const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClos
                                 <strong>{t('abbreviation')}:</strong> {certificate.abbreviation}
                             </p>
                             <p>
-                                <strong>{t('category')}:</strong> {certificate.category}
+                                <strong>{t('category')}:</strong> {translatedCategory}
                             </p>
                         </div>
                         <div className="certificate-dates">
                             <p>
-                                <strong>{t('obtainedAt')}:</strong> {new Date(certificate.obtainedAt).toLocaleDateString()}
+                                <strong>{t('obtainedAt')}:</strong> {formatDate(certificate.obtainedAt)}
                             </p>
                             {certificate.expiryDate && certificate.expiryDate !== "-" && (
                                 <p>
-                                    <strong>{t('expiryDate')}:</strong> {new Date(certificate.expiryDate).toLocaleDateString()}
+                                    <strong>{t('expiryDate')}:</strong> {formatDate(certificate.expiryDate)}
+                                </p>
+                            )}
+                            {(!certificate.expiryDate || certificate.expiryDate === "-") && (
+                                <p>
+                                    <strong>{t('expiryDate')}:</strong> {t('noExpiryDate')}
                                 </p>
                             )}
                         </div>
-                        <p>
-                            <strong>{t('obtainedAt')}:</strong> {certificate.obtainedAt}
-                        </p>
-                        {certificate.expiryDate && certificate.expiryDate !== "-" && (
-                            <p>
-                                <strong>{t('expiryDate')}:</strong> {certificate.expiryDate}
-                            </p>
-                        )}
                     </div>
                 </div>
             </div>

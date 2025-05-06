@@ -1,24 +1,28 @@
 {
-  "title": "Certificates",
+  "title": "Professional Certifications",
   "description": "Browse my professional certifications in various domains. Click on a certificate to view more details.",
-  "categoryFilterLabel": "Filter certificates by category",
+  "loading": "Loading certificates...",
+  "categoryFilterLabel": "Filter by Category",
   "viewCertificateDetails": "View details of {{title}} certificate",
   "categories": {
-    "all": "All",
+    "all": "All Categories",
     "cyber-security": "Cyber Security",
     "development": "Development",
     "infrastructure": "Infrastructure",
     "data-science": "Data Science",
-    "hardware": "Hardware"
+    "hardware": "Hardware Engineering"
   },
   "institution": "Institution",
   "fullName": "Full Name",
   "abbreviation": "Abbreviation",
-  "obtainedAt": "Obtained At",
+  "category": "Category",
+  "obtainedAt": "Obtained at",
   "expiryDate": "Expiry Date",
+  "noExpiryDate": "No Expiry Date",
   "actions": {
     "viewDetails": "View Details",
-    "close": "Close"
+    "close": "Close",
+    "filter": "Filter"
   },
   "certificates": {
     "ceh": {
