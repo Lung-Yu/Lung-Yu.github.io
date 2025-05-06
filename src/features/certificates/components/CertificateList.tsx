@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useCertificates } from '../hooks/useCertificates';
 import { Certificate } from '../types';
 import CertificateModal from './CertificateModal';
@@ -12,15 +12,17 @@ const getImageUrl = (url: string) => {
 
 const CertificateList = () => {
   const { t, i18n } = useTranslation('certificates');
-  const { certificates, categories } = useCertificates();
+  const { certificates, categories, categoryToKeyMap } = useCertificates();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
 
-  // If selected category is 'All', show all certificates
-  // Otherwise filter by matching the selected category
-  const filteredCertificates = selectedCategory === 'All'
-    ? certificates
-    : certificates.filter(cert => cert.category === selectedCategory);
+  // Filter certificates based on selected category
+  const filteredCertificates = useMemo(() => {
+    if (selectedCategory === 'All') {
+      return certificates;
+    }
+    return certificates.filter(cert => cert.category === selectedCategory);
+  }, [certificates, selectedCategory]);
 
   return (
     <section className="certificates">
@@ -28,17 +30,15 @@ const CertificateList = () => {
       <p>{t('description')}</p>
       <div className="categories">
         {categories.map((category, index) => {
-          // Convert category to a format usable in i18n keys
-          const categoryKey = category.toLowerCase().replace(/ /g, '-');
+          // Get the i18n key for this category
+          const categoryKey = category === 'All' 
+            ? 'all' 
+            : categoryToKeyMap.get(category) || category.toLowerCase().replace(/ /g, '-');
           
           // Get the display text for this category based on i18n
-          let displayText;
-          if (category === 'All') {
-            displayText = t('categories.all', 'All');
-          } else {
-            // Try to translate using the kebab-case version of the category
-            displayText = t(`categories.${categoryKey}`, { defaultValue: category });
-          }
+          const displayText = category === 'All' 
+            ? t('categories.all', 'All')
+            : t(`categories.${categoryKey}`, { defaultValue: category });
           
           return (
             <button
@@ -46,6 +46,8 @@ const CertificateList = () => {
               onClick={() => setSelectedCategory(category)}
               className={selectedCategory === category ? 'active' : ''}
               aria-label={`Filter by ${displayText}`}
+              data-category={category}
+              data-category-key={categoryKey}
             >
               {displayText}
             </button>

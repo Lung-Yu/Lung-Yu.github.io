@@ -214,7 +214,7 @@ const renderRedesignedSkills = (t: TFunction) => {
 
 const CV = () => {
   const { cvData, isLoading, t } = useCV();
-  const { certificates } = useCertificates(); // 獲取證書數據
+  const { certificates } = useCertificates(); // 獲取證書資料
   const [expandedExp, setExpandedExp] = useState<number | null>(null);
   const [expandedEdu, setExpandedEdu] = useState<number | null>(null);
   const [allExperiencesExpanded, setAllExperiencesExpanded] = useState(false);
@@ -1097,8 +1097,8 @@ export const skillIcons = {
   '電腦視覺': faEye,
   '強化學習': faAward,
   
-  // 數據分析相關
-  '數據分析': faChartLine,
+  // 資料分析相關
+  '資料分析': faChartLine,
   '商業智慧': faLightbulb,
   
   // 其他科技相關

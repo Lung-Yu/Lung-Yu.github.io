@@ -14,7 +14,7 @@
     {
       "id": 1,
       "title": "天氣種子",
-      "description": "近年來綠色永續議題抬頭，本團隊認為空氣品質是重要的議題。透過感測器取得環境數據，並透過視覺化方式呈現。",
+      "description": "近年來綠色永續議題抬頭，本團隊認為空氣品質是重要的議題。透過感測器取得環境資料，並透過視覺化方式呈現。",
       "image": "/images/projects/11_weather_seed/prototype.jpg",
       "tags": [
         "IoT",

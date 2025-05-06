@@ -3,6 +3,7 @@ export interface Certificate {
     title: string;
     institution: string;
     category: string;
+    categoryKey?: string; // Standardized category key for i18n lookups
     image: string;
     description: string;
     fullName: string;

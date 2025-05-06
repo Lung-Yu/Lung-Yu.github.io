@@ -12,6 +12,32 @@ const generateCertificateId = (cert: any): string => {
     .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
 };
 
+// Convert any category string to a standardized i18n key
+const getCategoryKey = (category: string): string => {
+  // Handle special case for "All"
+  if (category === 'All' || category === '全部') return 'all';
+  
+  // Convert to lowercase kebab-case
+  return category.toLowerCase().replace(/ /g, '-');
+};
+
+// Map categories between languages
+const categoryMappings: Record<string, string> = {
+  // English to i18n keys
+  'Cyber Security': 'cyber-security',
+  'Development': 'development', 
+  'Infrastructure': 'infrastructure',
+  'Data Science': 'data-science',
+  'Hardware': 'hardware',
+  
+  // Chinese to i18n keys
+  '網路安全': 'cyber-security',
+  '開發': 'development',
+  '基礎設施': 'infrastructure',
+  '資料科學': 'data-science',
+  '嵌入式': 'hardware'
+};
+
 export const useCertificates = () => {
   const { t, i18n } = useTranslation(['certificates', 'certificatesData']);
   
@@ -27,7 +53,9 @@ export const useCertificates = () => {
     // Add an id property to each certificate if it doesn't already have one
     const data: Certificate[] = certificatesData.map((cert: any) => ({
       ...cert,
-      id: cert.id || generateCertificateId(cert)
+      id: cert.id || generateCertificateId(cert),
+      // Store the original category and its standardized key
+      categoryKey: categoryMappings[cert.category] || getCategoryKey(cert.category)
     }));
     
     return data.sort((a, b) => {
@@ -38,18 +66,31 @@ export const useCertificates = () => {
     });
   }, [t, i18n.language]); // Re-run when language or t function changes
 
-  // Get unique categories from the certificates and sort them
-  const categories = useMemo(() => {
+  // Get unique categories from the certificates and create a mapping to i18n keys
+  const { categories, categoryToKeyMap } = useMemo(() => {
     // Extract unique categories from certificates
     const uniqueCategories = [...new Set(certificates.map(cert => cert.category))];
     // Sort categories alphabetically for consistent display
     uniqueCategories.sort((a, b) => a.localeCompare(b));
+
+    // Create mapping between category values in data and their i18n keys
+    const categoryMap = new Map<string, string>();
+    uniqueCategories.forEach(category => {
+      // Use our predefined mappings or generate a key
+      const key = categoryMappings[category] || getCategoryKey(category);
+      categoryMap.set(category, key);
+    });
+    
     // Return categories with 'All' as the first option
-    return ['All', ...uniqueCategories];
+    return {
+      categories: ['All', ...uniqueCategories],
+      categoryToKeyMap: categoryMap
+    };
   }, [certificates]);
 
   return {
     certificates,
-    categories
+    categories,
+    categoryToKeyMap
   };
 };
