@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { ConsultingProject } from '../types';
 
 export const useConsulting = () => {
-  const { i18n, t } = useTranslation('consultant');
+  const { i18n } = useTranslation('consultant');
   const [consulting, setConsulting] = useState<ConsultingProject[]>([]);
   const [loading, setLoading] = useState(true);
 
