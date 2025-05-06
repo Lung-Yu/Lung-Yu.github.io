@@ -23,6 +23,8 @@ import cvEN from './locales/en/cv.json';
 import cvTW from './locales/zh-TW/cv.json';
 import certificatesEN from './locales/en/certificates.json';
 import certificatesTW from './locales/zh-TW/certificates.json';
+import certificatesDataEN from './locales/en/certificatesData.json';
+import certificatesDataTW from './locales/zh-TW/certificatesData.json';
 import skillsEN from './locales/en/skills.json';
 import skillsTW from './locales/zh-TW/skills.json';
 
@@ -38,6 +40,7 @@ const resources = {
     consultant: consultantEN,
     cv: cvEN,
     certificates: certificatesEN,
+    certificatesData: certificatesDataEN,
     skills: skillsEN,
   },
   'zh-TW': {
@@ -51,6 +54,7 @@ const resources = {
     consultant: consultantTW,
     cv: cvTW,
     certificates: certificatesTW,
+    certificatesData: certificatesDataTW,
     skills: skillsTW,
   }
 };
