@@ -21,6 +21,8 @@ import cvEN from './locales/en/cv.json';
 import cvTW from './locales/zh-TW/cv.json';
 import certificatesEN from './locales/en/certificates.json'; // UI translations only, not certificates data
 import certificatesTW from './locales/zh-TW/certificates.json';
+import skillsEN from './locales/en/skills.json'; // UI translations only, not skills data
+import skillsTW from './locales/zh-TW/skills.json';
 
 const resources = {
   en: {
@@ -33,6 +35,7 @@ const resources = {
     consultant: consultantEN,
     cv: cvEN,
     certificates: certificatesEN,
+    skills: skillsEN,
   },
   'zh-TW': {
     common: commonTW,
@@ -44,6 +47,7 @@ const resources = {
     consultant: consultantTW,
     cv: cvTW,
     certificates: certificatesTW,
+    skills: skillsTW,
   }
 };
 

@@ -1,0 +1,98 @@
+{
+  "title": "Consulting Services",
+  "description": "Professional information security consulting services to help enterprises establish comprehensive security protection systems."
+    "list": [
+      {
+        "id": 1,
+        "title": "Enterprise Security Risk Assessment",
+        "description": "Conducted comprehensive information security risk assessment for a tech company, including system vulnerability scanning, penetration testing, and security policy review.",
+        "image": "images/consulting/risk-assessment.jpg",
+        "tags": [
+          "Security Assessment",
+          "Penetration Testing",
+          "Policy Review"
+        ],
+        "services": [
+          "System vulnerability scanning and analysis",
+          "Penetration testing",
+          "Social engineering testing",
+          "Security policy review",
+          "Improvement recommendations report"
+        ],
+        "detailPath": "risk-assessment",
+        "results": [
+          "Identified and helped fix 3 high-risk vulnerabilities",
+          "Enhanced security policy documentation",
+          "Established incident response procedures"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Bank Security Assessment",
+        "description": "Conducted security assessment for a bank, including penetration testing, malware analysis, packet capture, and compliance review.",
+        "image": "images/consulting/bank-security.jpg",
+        "tags": [
+          "Security Assessment",
+          "Penetration Testing",
+          "Malware Analysis",
+          "Packet Capture",
+          "Compliance Review"
+        ],
+        "services": [
+          "Penetration testing",
+          "Malware analysis",
+          "Packet capture",
+          "Compliance review",
+          "Improvement recommendations report"
+        ],
+        "detailPath": "bank-security",
+        "results": [
+          "Identified and fixed 4 high-risk vulnerabilities",
+          "Detected and removed malware",
+          "Enhanced packet filtering rules",
+          "Ensured compliance"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Gaming Website Security Review",
+        "description": "Conducted security testing and review for a major gaming website to ensure security and stability under high traffic.",
+        "image": "images/consulting/game-site-security.jpg",
+        "tags": [
+          "Security Testing",
+          "Website Security",
+          "High Traffic"
+        ],
+        "services": [
+          "Website vulnerability scanning",
+          "Penetration testing",
+          "Load testing",
+          "Security review",
+          "Improvement recommendations report"
+        ],
+        "detailPath": "game-site-security",
+        "results": [
+          "Identified and fixed 5 high-risk vulnerabilities",
+          "Improved website stability under high traffic",
+          "Established security monitoring system"
+        ],
+        "gallery": [
+          "images/consulting/game-site-security-1.jpg",
+          "images/consulting/game-site-security-2.jpg"
+        ]
+      }
+    ]
+  },
+  "actions": {
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "learnMore": "Learn More"
+  },
+  "detail": {
+    "projectOverview": "Project Overview",
+    "services": "Services",
+    "results": "Project Results",
+    "relatedImages": "Related Images",
+    "notFound": "Project Not Found"
+  }
+}
