@@ -37,28 +37,43 @@ const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClos
                 </span>
                 <div className="modal-header">
                     <h2 id="certificate-modal-title">
-                        {t(`certificates.${certificate.id}.title`, certificate.title)}
+                        {certificate.title}
                     </h2>
+                    <p className="certificate-institution">{certificate.institution}</p>
                 </div>
                 <div className="modal-body">
                     <div className="modal-image-container">
                         <img 
                             src={certificate.image} 
-                            alt={t(`certificates.${certificate.id}.title`, certificate.title)} 
+                            alt={certificate.title} 
                             className="modal-image" 
                         />
                     </div>
                     <div className="modal-details">
-                        <p>{t(`certificates.${certificate.id}.description`, certificate.description)}</p>
-                        <p>
-                            <strong>{t('institution')}:</strong> {t(`certificates.${certificate.id}.institution`, certificate.institution)}
-                        </p>
-                        <p>
-                            <strong>{t('fullName')}:</strong> {t(`certificates.${certificate.id}.fullName`, certificate.fullName)}
-                        </p>
-                        <p>
-                            <strong>{t('abbreviation')}:</strong> {t(`certificates.${certificate.id}.abbreviation`, certificate.abbreviation)}
-                        </p>
+                        <div className="description">
+                            <p>{certificate.description}</p>
+                        </div>
+                        <div className="certificate-meta">
+                            <p>
+                                <strong>{t('fullName')}:</strong> {certificate.fullName}
+                            </p>
+                            <p>
+                                <strong>{t('abbreviation')}:</strong> {certificate.abbreviation}
+                            </p>
+                            <p>
+                                <strong>{t('category')}:</strong> {certificate.category}
+                            </p>
+                        </div>
+                        <div className="certificate-dates">
+                            <p>
+                                <strong>{t('obtainedAt')}:</strong> {new Date(certificate.obtainedAt).toLocaleDateString()}
+                            </p>
+                            {certificate.expiryDate && certificate.expiryDate !== "-" && (
+                                <p>
+                                    <strong>{t('expiryDate')}:</strong> {new Date(certificate.expiryDate).toLocaleDateString()}
+                                </p>
+                            )}
+                        </div>
                         <p>
                             <strong>{t('obtainedAt')}:</strong> {certificate.obtainedAt}
                         </p>

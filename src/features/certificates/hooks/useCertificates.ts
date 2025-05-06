@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Certificate } from '../types';
 
@@ -21,50 +21,91 @@ const getCategoryKey = (category: string): string => {
   return category.toLowerCase().replace(/ /g, '-');
 };
 
-// Map categories between languages
-const categoryMappings: Record<string, string> = {
-  // English to i18n keys
-  'Cyber Security': 'cyber-security',
-  'Development': 'development', 
-  'Infrastructure': 'infrastructure',
-  'Data Science': 'data-science',
-  'Hardware': 'hardware',
-  
-  // Chinese to i18n keys
-  '網路安全': 'cyber-security',
-  '開發': 'development',
-  '基礎設施': 'infrastructure',
-  '資料科學': 'data-science',
-  '嵌入式': 'hardware'
-};
-
 export const useCertificates = () => {
-  const { t, i18n } = useTranslation(['certificates', 'certificatesData']);
+  const { i18n } = useTranslation('certificates');
+  const [certificates, setCertificates] = useState<Certificate[]>([]);
+  const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState(true);
   
-  const certificates = useMemo(() => {
-    // Use the certificatesData namespace from i18n resources
-    const certificatesData = t('certificatesData:certificates', { returnObjects: true }) as any[];
-    
-    if (!certificatesData || !Array.isArray(certificatesData)) {
-      console.error('Failed to load certificates data from i18n');
-      return [];
-    }
-    
-    // Add an id property to each certificate if it doesn't already have one
-    const data: Certificate[] = certificatesData.map((cert: any) => ({
-      ...cert,
-      id: cert.id || generateCertificateId(cert),
-      // Store the original category and its standardized key
-      categoryKey: categoryMappings[cert.category] || getCategoryKey(cert.category)
-    }));
-    
-    return data.sort((a, b) => {
-      if (b.value === a.value) {
-        return new Date(b.obtainedAt).getTime() - new Date(a.obtainedAt).getTime();
+  useEffect(() => {
+    const loadCertificates = async () => {
+      setLoading(true);
+      try {
+        // 根據當前語言動態載入資料
+        let lang = i18n.language || 'en';
+        // 如果是zh-TW或其他zh開頭，統一使用zh-TW
+        if (lang.startsWith('zh')) {
+          lang = 'zh-TW';
+        } else {
+          lang = 'en'; // 其他語言預設使用英文
+        }
+        
+        console.log(`Loading certificates data from language: ${lang}`);
+        
+        const data = await import(`../data/${lang}.json`);
+      
+        if (!data || !data.certificates || !Array.isArray(data.certificates)) {
+          throw new Error(`Certificates data in ${lang}.json is not properly formatted or empty`);
+        }
+        
+        // Add categoryKey to each certificate
+        const processedCertificates: Certificate[] = data.certificates.map((cert: any) => ({
+          ...cert,
+          id: cert.id || generateCertificateId(cert),
+          categoryKey: getCategoryKey(cert.category)
+        }));
+        
+        // Sort certificates by value and then by date
+        const sortedCertificates = processedCertificates.sort((a, b) => {
+          if (b.value === a.value) {
+            return new Date(b.obtainedAt).getTime() - new Date(a.obtainedAt).getTime();
+          }
+          return b.value - a.value;
+        });
+        
+        setCertificates(sortedCertificates);
+        
+        // Set category mappings
+        if (data.categories) {
+          setCategoryMap(data.categories);
+        }
+      } catch (error) {
+        console.error('Error loading certificates:', error);
+        // 如果特定語言資料載入失敗，嘗試載入英文資料作為後備
+        try {
+          const fallbackData = await import('../data/en.json');
+          
+          if (!fallbackData || !fallbackData.certificates) {
+            throw new Error('Fallback data could not be loaded');
+          }
+          
+          const processedCertificates = fallbackData.certificates.map((cert: any) => ({
+            ...cert,
+            id: cert.id || generateCertificateId(cert),
+            categoryKey: getCategoryKey(cert.category)
+          }));
+          
+          setCertificates(processedCertificates.sort((a: Certificate, b: Certificate) => {
+            if (b.value === a.value) {
+              return new Date(b.obtainedAt).getTime() - new Date(a.obtainedAt).getTime();
+            }
+            return b.value - a.value;
+          }));
+          
+          if (fallbackData.categories) {
+            setCategoryMap(fallbackData.categories);
+          }
+        } catch (fallbackError) {
+          console.error('Failed to load fallback data:', fallbackError);
+          setCertificates([]);
+        }
+      } finally {
+        setLoading(false);
       }
-      return b.value - a.value;
-    });
-  }, [t, i18n.language]); // Re-run when language or t function changes
+    };
+    
+    loadCertificates();
+  }, [i18n.language]); // 當語言變更時重新載入資料
 
   // Get unique categories from the certificates and create a mapping to i18n keys
   const { categories, categoryToKeyMap } = useMemo(() => {
@@ -76,21 +117,26 @@ export const useCertificates = () => {
     // Create mapping between category values in data and their i18n keys
     const categoryMap = new Map<string, string>();
     uniqueCategories.forEach(category => {
-      // Use our predefined mappings or generate a key
-      const key = categoryMappings[category] || getCategoryKey(category);
+      // Use the category key from each certificate
+      const key = getCategoryKey(category);
       categoryMap.set(category, key);
     });
     
+    // Get the localized "All" option
+    const allCategory = i18n.language.startsWith('zh') ? '全部' : 'All';
+    
     // Return categories with 'All' as the first option
     return {
-      categories: ['All', ...uniqueCategories],
+      categories: [allCategory, ...uniqueCategories],
       categoryToKeyMap: categoryMap
     };
-  }, [certificates]);
+  }, [certificates, i18n.language]);
 
   return {
     certificates,
     categories,
-    categoryToKeyMap
+    categoryToKeyMap,
+    categoryMap,
+    loading
   };
 };
