@@ -9,10 +9,10 @@ import '../styles/Projects.css';
 import { useTranslation } from 'react-i18next';
 
 const ProjectList: React.FC = () => {
-  const { t } = useTranslation(['projects', 'projectsData']);
+  const { t } = useTranslation(['projects']);
   const [showAll, setShowAll] = useState(false);
   const [currentFilter, setCurrentFilter] = useState<string>('all');
-  const { projects } = useProjects();
+  const { projects, loading } = useProjects();
   const initialDisplayCount = 6;
 
   const filteredProjects = projects.filter(project => {
@@ -22,6 +22,14 @@ const ProjectList: React.FC = () => {
   const displayedProjects = showAll 
     ? filteredProjects 
     : filteredProjects.slice(0, initialDisplayCount);
+
+  if (loading) {
+    return (
+      <div className="projects-loading">
+        <p>Loading projects...</p>
+      </div>
+    );
+  }
 
   return (
     <section className="projects" id="projects">

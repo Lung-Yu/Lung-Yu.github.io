@@ -1,0 +1,122 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Weather Seed",
+      "description": "With the rising focus on green sustainability, our team identified air quality as a crucial issue. We collect environmental data through sensors and present it through visualization.",
+      "image": "/images/projects/11_weather_seed/prototype.jpg",
+      "tags": [
+        "IoT",
+        "Arduino",
+        "Environmental Monitoring"
+      ],
+      "detailPath": "weather-seed",
+      "gallery": [
+        "/images/projects/11_weather_seed/egg_print.jpg",
+        "/images/projects/11_weather_seed/box.jpg",
+        "/images/projects/11_weather_seed/prototype.jpg"
+      ],
+      "startDate": "2015-02-01",
+      "endDate": "2015-07-30",
+      "type": "webApp"
+    },
+    {
+      "id": 2,
+      "title": "iWatchMan Network Security Monitoring System",
+      "description": "A Raspberry Pi-based network security monitoring system designed to detect and defend against malicious DHCP server attacks, protecting local network security.",
+      "image": "/images/projects/10_i_watch_man/架構圖.png",
+      "tags": [
+        "Network Security",
+        "Raspberry Pi",
+        "DHCP Snooping"
+      ],
+      "detailPath": "i-watch-man",
+      "gallery": [
+        "/images/projects/10_i_watch_man/架構圖.png",
+        "/images/projects/10_i_watch_man/DHCP_Spoofing情境說明圖.png",
+        "/images/projects/10_i_watch_man/操作畫面圖.png",
+        "/images/projects/10_i_watch_man/系統硬體建置圖.png"
+      ],
+      "startDate": "2014-01-01",
+      "endDate": "2014-10-01",
+      "type": "security"
+    },
+    {
+      "id": 3,
+      "title": "Web Form Auto-fill Tool",
+      "description": "A tool that automatically fills web forms by reading data from existing system support files, significantly improving data entry efficiency.",
+      "image": "/images/projects/20_Auto-fill_web_form_tool/auto_fill.png",
+      "tags": [
+        "Automation Tool",
+        "Web Scraping",
+        "Data Integration"
+      ],
+      "detailPath": "auto-fill-web-form",
+      "gallery": [
+        "/images/projects/20_Auto-fill_web_form_tool/auto_fill.png",
+        "/images/projects/20_Auto-fill_web_form_tool/auto_fill_2.png",
+        "/images/projects/20_Auto-fill_web_form_tool/load_data.png",
+        "/images/projects/20_Auto-fill_web_form_tool/rawdata.png"
+      ],
+      "startDate": "2019-08-01",
+      "endDate": "2019-9-30",
+      "type": "automation"
+    },
+    {
+      "id": 4,
+      "title": "File Monitor System",
+      "description": "A system directory monitoring tool for detecting unauthorized file modifications, capable of real-time detection of potential security incidents, suitable for monitoring online systems for hacker intrusions or malicious changes.",
+      "image": "/images/projects/file_monitor/main.png",
+      "tags": [
+        "Security Monitoring",
+        "System Protection",
+        "Python",
+        "File Integrity"
+      ],
+      "github": "https://github.com/Lung-Yu/File-Monitor",
+      "detailPath": "file-monitor",
+      "gallery": [
+        "/images/projects/file_monitor/main.png",
+        "/images/projects/file_monitor/config.png",
+        "/images/projects/file_monitor/execution.png"
+      ],
+      "highlights": [
+        {
+          "title": "Real-time Monitoring",
+          "description": "Automatically monitors directory and file changes, immediately detecting anomalies",
+          "icon": "monitor"
+        },
+        {
+          "title": "Notification Mechanism",
+          "description": "Real-time email notifications to administrators about abnormal situations",
+          "icon": "mail"
+        },
+        {
+          "title": "Flexible Configuration",
+          "description": "Customizable monitoring scope, notification settings and display methods",
+          "icon": "settings"
+        }
+      ],
+      "demoSteps": [
+        {
+          "title": "Configuration Preparation",
+          "description": "Copy default_config.xml to config.xml and place it in the executable directory",
+          "image": "/images/projects/file_monitor/config.png"
+        },
+        {
+          "title": "System Initialization",
+          "description": "The first execution will create a file index as a basis for subsequent comparison",
+          "image": "/images/projects/file_monitor/execution.png"
+        },
+        {
+          "title": "Start Monitoring",
+          "description": "The system automatically runs and sends notifications when anomalies are found",
+          "image": "/images/projects/file_monitor/main.png"
+        }
+      ],
+      "startDate": "2020-01-01",
+      "endDate": "2020-10-01",
+      "type": "security"
+    }
+  ]
+}
