@@ -10,26 +10,103 @@ interface Position {
   y: number;
 }
 
-// 用於存儲和管理連接線的組件
+// 定義連線樣式枚舉
+enum ConnectionStyle {
+  CURVE = 'curve',
+  DOTTED = 'dotted',
+  GRADIENT = 'gradient',
+  ANIMATED = 'animated'
+}
+
+// 完全重寫的 SVG 連線組件
 const ConnectionLine: React.FC<{ 
   startX: number; 
   startY: number; 
   endX: number; 
   endY: number;
-}> = ({ startX, startY, endX, endY }) => {
+  nodeLevel?: string;
+  connectionStyle?: ConnectionStyle;
+}> = ({ startX, startY, endX, endY, nodeLevel, connectionStyle = ConnectionStyle.CURVE }) => {
+  // 根據技能級別設置不同的顏色
+  const getLineColor = () => {
+    switch (nodeLevel) {
+      case 'basic': return '#a3c4f3';
+      case 'intermediate': return '#8ccc85';
+      case 'advanced': return '#f193a5';
+      case 'expert': return '#ffc107';
+      default: return '#ddd';
+    }
+  };
+
+  // 計算連線長度和角度以配置SVG
   const length = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
   const angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI;
-  
+
+  // 使用欺騙技巧 - 仍然使用div作為容器，在其中放置SVG
   return (
-    <div 
-      className="connection-line"
+    <div
+      className="connection-container"
       style={{
-        width: `${length}px`,
+        position: 'absolute',
         left: `${startX}px`,
         top: `${startY}px`,
+        width: `${length}px`,
+        height: '2px',
         transform: `rotate(${angle}deg)`,
+        transformOrigin: '0 0',
+        zIndex: 1,
+        pointerEvents: 'none',
       }}
-    />
+    >
+      {/* 根據連線樣式使用不同的元素 */}
+      {connectionStyle === ConnectionStyle.DOTTED && (
+        <div 
+          className="connection-line connection-dotted" 
+          style={{ 
+            backgroundColor: getLineColor(),
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      )}
+
+      {connectionStyle === ConnectionStyle.ANIMATED && (
+        <div 
+          className="connection-line connection-animated" 
+          style={{ 
+            backgroundColor: getLineColor(),
+            width: '100%',
+            height: '100%',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
+          <div className="connection-pulse" style={{ backgroundColor: getLineColor() }}></div>
+        </div>
+      )}
+
+      {connectionStyle === ConnectionStyle.GRADIENT && (
+        <div 
+          className="connection-line connection-gradient" 
+          style={{ 
+            background: `linear-gradient(to right, #ddd, ${getLineColor()})`,
+            width: '100%',
+            height: '100%'
+          }}
+        />
+      )}
+
+      {connectionStyle === ConnectionStyle.CURVE && (
+        <div 
+          className="connection-line" 
+          style={{ 
+            backgroundColor: getLineColor(),
+            width: '100%',
+            height: '100%'
+          }}
+        />
+      )}
+    </div>
   );
 };
 
@@ -322,15 +399,35 @@ const TreeNode: React.FC<{
       
       {expanded && hasChildren && (
         <>
-          {connections.map((connection, idx) => (
-            <ConnectionLine 
-              key={`conn-${idx}`}
-              startX={0}
-              startY={0}
-              endX={connection.end.x}
-              endY={connection.end.y}
-            />
-          ))}
+          {connections.map((connection, idx) => {
+            // 動態選擇連線樣式，使每個節點的連線不同
+            let style = ConnectionStyle.CURVE;
+
+            // 根節點使用漸變效果
+            if (level === 0) {
+              style = ConnectionStyle.GRADIENT;
+            } 
+            // 第一層使用動畫效果
+            else if (level === 1) {
+              style = idx % 2 === 0 ? ConnectionStyle.ANIMATED : ConnectionStyle.DOTTED;
+            }
+            // 更深層的節點使用點線和常規效果交替
+            else {
+              style = idx % 2 === 0 ? ConnectionStyle.DOTTED : ConnectionStyle.CURVE;
+            }
+
+            return (
+              <ConnectionLine 
+                key={`conn-${idx}`}
+                startX={0}
+                startY={0}
+                endX={connection.end.x}
+                endY={connection.end.y}
+                nodeLevel={node.children?.[idx]?.level}
+                connectionStyle={style}
+              />
+            );
+          })}
           
           <div className="skill-node-children">
             {children.map((childData, index) => (

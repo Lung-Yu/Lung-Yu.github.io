@@ -246,6 +246,81 @@
   transition: width 0.3s ease, transform 0.3s ease;
 }
 
+/* 新的活潑連線樣式 */
+.connection-container {
+  position: absolute;
+  transform-origin: 0 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 點線效果 */
+.connection-dotted {
+  height: 2px;
+  background: transparent !important;
+  background-image: linear-gradient(to right, currentColor 50%, transparent 50%) !important;
+  background-repeat: repeat-x !important;
+  background-size: 10px 1px !important;
+  animation: moveRightToLeft 20s linear infinite;
+}
+
+/* 脈動動畫連線效果 */
+.connection-animated {
+  position: relative;
+  overflow: hidden;
+}
+
+.connection-pulse {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  animation: pulseMove 2s linear infinite;
+  opacity: 0.7;
+  filter: blur(5px);
+}
+
+/* 漸變色連線效果 */
+.connection-gradient {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  height: 2px;
+  animation: shimmer 3s infinite;
+}
+
+/* 定義動畫 */
+@keyframes moveRightToLeft {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100px 0;
+  }
+}
+
+@keyframes pulseMove {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.7;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    opacity: 0.7;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+}
+
 /* Skill Levels */
 .skill-level-basic .skill-node-header {
   border-color: #a3c4f3;
@@ -380,5 +455,64 @@
   .legend-item {
     margin-right: 0;
     margin-bottom: 0.5rem;
+  }
+}
+
+/* 增強的連線動畫效果 */
+
+/* 連線基本樣式 */
+.connection-line {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* 默認路徑樣式 */
+.connection-default-path {
+  transition: stroke-width 0.3s ease;
+}
+
+/* 點線路徑效果 */
+.connection-dotted-path {
+  stroke-dasharray: 5, 5;
+  animation: dashOffset 30s linear infinite;
+}
+
+/* 動畫連線效果 */
+.connection-animated-path {
+  stroke-dasharray: 10;
+  stroke-dashoffset: 20;
+  animation: flowDash 3s linear infinite;
+}
+
+/* 漸變色連線效果 */
+.connection-gradient-path {
+  filter: drop-shadow(0 0 2px rgba(200, 200, 200, 0.3));
+  transition: all 0.3s ease;
+}
+
+/* 點擊節點時設置的連線特效 */
+.skill-node.dragging .connection-line path {
+  stroke-width: 3;
+  opacity: 0.7;
+}
+
+/* 節點懸浮時增強連線顯示 */
+.skill-node:hover > .connection-line path {
+  stroke-width: 3;
+  filter: brightness(1.2);
+}
+
+/* 定義動畫 */
+@keyframes dashOffset {
+  to {
+    stroke-dashoffset: 200;
+  }
+}
+
+@keyframes flowDash {
+  to {
+    stroke-dashoffset: 0;
   }
 }
