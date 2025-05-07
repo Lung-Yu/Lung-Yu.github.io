@@ -1,0 +1,203 @@
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSkillsTree } from '../../hooks/useSkillsTree';
+import '../../styles/tree/SkillsTree.css';
+import type { SkillNode } from '../../types/tree';
+
+// Individual tree node component
+const TreeNode: React.FC<{ 
+  node: SkillNode; 
+  level: number;
+  expandAll: boolean;
+  collapseAll: boolean;
+  resetTrigger: number;
+}> = ({ node, level, expandAll, collapseAll, resetTrigger }) => {
+  const { t } = useTranslation('skills');
+  const [expanded, setExpanded] = useState(level < 2);
+  const hasChildren = node.children && node.children.length > 0;
+  
+  // Handle expand all / collapse all
+  useEffect(() => {
+    if (expandAll && hasChildren) {
+      setExpanded(true);
+    }
+  }, [expandAll, hasChildren]);
+  
+  useEffect(() => {
+    if (collapseAll && hasChildren && level > 0) {
+      setExpanded(false);
+    }
+  }, [collapseAll, hasChildren, level]);
+  
+  // Reset to default state when resetTrigger changes
+  useEffect(() => {
+    setExpanded(level < 2);
+  }, [resetTrigger, level]);
+
+  const getLevelClass = (skillLevel?: string) => {
+    switch (skillLevel) {
+      case 'basic': return 'skill-level-basic';
+      case 'intermediate': return 'skill-level-intermediate';
+      case 'advanced': return 'skill-level-advanced';
+      case 'expert': return 'skill-level-expert';
+      default: return '';
+    }
+  };
+  
+  const getTranslatedLevel = (skillLevel?: string) => {
+    if (!skillLevel) return '';
+    return t(`skillTree.levels.${skillLevel}`, skillLevel);
+  };
+
+  const handleToggle = () => {
+    if (hasChildren) {
+      setExpanded(!expanded);
+    }
+  };
+
+  return (
+    <div className={`skill-node skill-node-level-${level} ${getLevelClass(node.level)}`}>
+      <div 
+        className={`skill-node-header ${hasChildren ? 'has-children' : ''}`}
+        onClick={handleToggle}
+      >
+        {hasChildren && (
+          <span className={`skill-node-toggle ${expanded ? 'expanded' : 'collapsed'}`}>
+            {expanded ? '−' : '+'}
+          </span>
+        )}
+        <span className="skill-node-name">{node.name}</span>
+        {node.level && <span className={`skill-node-level-badge ${getLevelClass(node.level)}`}>{getTranslatedLevel(node.level)}</span>}
+      </div>
+      
+      {expanded && hasChildren && (
+        <div className="skill-node-children">
+          {node.children?.map((child: SkillNode, index: number) => (
+            <TreeNode 
+              key={index} 
+              node={child} 
+              level={level + 1} 
+              expandAll={expandAll} 
+              collapseAll={collapseAll} 
+              resetTrigger={resetTrigger}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const SkillsTree: React.FC = () => {
+  const { t } = useTranslation('skills');
+  const { skillTreeData, loading } = useSkillsTree();
+  const [expandAllFlag, setExpandAllFlag] = useState(false);
+  const [collapseAllFlag, setCollapseAllFlag] = useState(false);
+  const [resetTrigger, setResetTrigger] = useState(0);
+
+  // Reset the flags after they've been processed
+  useEffect(() => {
+    if (expandAllFlag) {
+      const timer = setTimeout(() => setExpandAllFlag(false), 100);
+      return () => clearTimeout(timer);
+    }
+  }, [expandAllFlag]);
+
+  useEffect(() => {
+    if (collapseAllFlag) {
+      const timer = setTimeout(() => setCollapseAllFlag(false), 100);
+      return () => clearTimeout(timer);
+    }
+  }, [collapseAllFlag]);
+  
+  const handleExpandAll = () => {
+    setCollapseAllFlag(false);
+    setExpandAllFlag(true);
+  };
+  
+  const handleCollapseAll = () => {
+    setExpandAllFlag(false);
+    setCollapseAllFlag(true);
+  };
+  
+  const handleReset = () => {
+    setExpandAllFlag(false);
+    setCollapseAllFlag(false);
+    setResetTrigger(prev => prev + 1);
+  };
+
+  if (loading || !skillTreeData) {
+    return (
+      <section className="skills-tree" id="skills-tree">
+        <div className="skills-tree-container">
+          <div className="skills-tree-header">
+            <h2>{t('skillTree.title', 'Skills Tree')}</h2>
+            <p>{t('skillTree.description', 'Interactive visualization of my technical skills')}</p>
+          </div>
+          <div className="skills-tree-loading">Loading skills tree...</div>
+        </div>
+      </section>
+    );
+  }
+
+  const { title, description, root } = skillTreeData.skillTree;
+
+  return (
+    <section className="skills-tree" id="skills-tree">
+      <div className="skills-tree-container">
+        <div className="skills-tree-header">
+          <h2>{title}</h2>
+          <p>{description}</p>
+          
+          <div className="skills-tree-controls">
+            <button className="tree-control-btn" onClick={handleExpandAll}>
+              {t('skillTree.expandAll', 'Expand All')}
+            </button>
+            <button className="tree-control-btn" onClick={handleCollapseAll}>
+              {t('skillTree.collapseAll', 'Collapse All')}
+            </button>
+            <button className="tree-control-btn" onClick={handleReset}>
+              {t('skillTree.reset', 'Reset')}
+            </button>
+          </div>
+        </div>
+
+        <div className="skills-tree-visualization">
+          <div className="skills-tree-legend">
+            <div className="legend-title">{t('skillTree.proficiencyLevels', 'Proficiency Levels')}: </div>
+            <div className="legend-items-container">
+              <div className="legend-item">
+                <span className="legend-color skill-level-basic"></span>
+                <span className="legend-label">{t('skillTree.levels.basic', 'Basic')}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-color skill-level-intermediate"></span>
+                <span className="legend-label">{t('skillTree.levels.intermediate', 'Intermediate')}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-color skill-level-advanced"></span>
+                <span className="legend-label">{t('skillTree.levels.advanced', 'Advanced')}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-color skill-level-expert"></span>
+                <span className="legend-label">{t('skillTree.levels.expert', 'Expert')}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="skills-tree-content">
+            <TreeNode 
+              node={root} 
+              level={0} 
+              expandAll={expandAllFlag} 
+              collapseAll={collapseAllFlag} 
+              resetTrigger={resetTrigger}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default SkillsTree;

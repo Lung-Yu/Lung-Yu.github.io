@@ -13,6 +13,7 @@
     "expandAll": "展開所有",
     "collapseAll": "收起所有",
     "reset": "重設視圖",
+    "instructions": "拖曳節點來調整位置。使用滑鼠滾輪縮放視圖。",
     "levels": {
       "basic": "基礎",
       "intermediate": "進階",

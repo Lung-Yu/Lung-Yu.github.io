@@ -13,6 +13,7 @@
     "expandAll": "Expand All",
     "collapseAll": "Collapse All",
     "reset": "Reset View",
+    "instructions": "Drag nodes to rearrange. Use mouse wheel to zoom in/out.",
     "levels": {
       "basic": "Basic",
       "intermediate": "Intermediate",
