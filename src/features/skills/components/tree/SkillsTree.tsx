@@ -5,6 +5,7 @@ import '../../styles/tree/SkillsTree.css';
 import type { SkillNode } from '../../types/tree';
 
 const SkillNodeComponent: React.FC<{ node: SkillNode; level: number }> = ({ node, level }) => {
+  const { t } = useTranslation('skills');
   const [expanded, setExpanded] = React.useState(level < 2);
   const hasChildren = node.children && node.children.length > 0;
 
@@ -16,6 +17,12 @@ const SkillNodeComponent: React.FC<{ node: SkillNode; level: number }> = ({ node
       case 'expert': return 'skill-level-expert';
       default: return '';
     }
+  };
+  
+  const getTranslatedLevel = (skillLevel?: string) => {
+    if (!skillLevel) return '';
+    
+    return t(`skillTree.levels.${skillLevel}`, skillLevel);
   };
 
   const handleToggle = () => {
@@ -32,11 +39,11 @@ const SkillNodeComponent: React.FC<{ node: SkillNode; level: number }> = ({ node
       >
         {hasChildren && (
           <span className={`skill-node-toggle ${expanded ? 'expanded' : 'collapsed'}`}>
-            {expanded ? '▼' : '►'}
+            {expanded ? '−' : '+'}
           </span>
         )}
         <span className="skill-node-name">{node.name}</span>
-        {node.level && <span className={`skill-node-level-badge ${getLevelClass(node.level)}`}>{node.level}</span>}
+        {node.level && <span className={`skill-node-level-badge ${getLevelClass(node.level)}`}>{getTranslatedLevel(node.level)}</span>}
       </div>
       
       {expanded && hasChildren && (
@@ -80,21 +87,24 @@ const SkillsTree: React.FC = () => {
 
         <div className="skills-tree-visualization">
           <div className="skills-tree-legend">
-            <div className="legend-item">
-              <span className="legend-color skill-level-basic"></span>
-              <span className="legend-label">Basic</span>
-            </div>
-            <div className="legend-item">
-              <span className="legend-color skill-level-intermediate"></span>
-              <span className="legend-label">Intermediate</span>
-            </div>
-            <div className="legend-item">
-              <span className="legend-color skill-level-advanced"></span>
-              <span className="legend-label">Advanced</span>
-            </div>
-            <div className="legend-item">
-              <span className="legend-color skill-level-expert"></span>
-              <span className="legend-label">Expert</span>
+            <div className="legend-title">{t('skillTree.proficiencyLevels', '專業程度')}: </div>
+            <div className="legend-items-container">
+              <div className="legend-item">
+                <span className="legend-color skill-level-basic"></span>
+                <span className="legend-label">{t('skillTree.levels.basic', 'Basic')}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-color skill-level-intermediate"></span>
+                <span className="legend-label">{t('skillTree.levels.intermediate', 'Intermediate')}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-color skill-level-advanced"></span>
+                <span className="legend-label">{t('skillTree.levels.advanced', 'Advanced')}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-color skill-level-expert"></span>
+                <span className="legend-label">{t('skillTree.levels.expert', 'Expert')}</span>
+              </div>
             </div>
           </div>
 

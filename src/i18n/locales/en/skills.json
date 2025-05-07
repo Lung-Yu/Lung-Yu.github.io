@@ -5,5 +5,16 @@
   "treeView": "Tree View",
   "viewSkillsAs": "View Skills as",
   "skillsTitle": "Skills & Expertise",
-  "skillsSubtitle": "Professional skills and core competencies"
+  "skillsSubtitle": "Professional skills and core competencies",
+  "skillTree": {
+    "title": "Skills Tree",
+    "description": "Interactive visualization of my technical skills",
+    "proficiencyLevels": "Proficiency Levels",
+    "levels": {
+      "basic": "Basic",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced",
+      "expert": "Expert"
+    }
+  }
 }

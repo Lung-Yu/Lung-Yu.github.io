@@ -5,5 +5,16 @@
   "treeView": "樹狀檢視",
   "viewSkillsAs": "技能檢視方式",
   "skillsTitle": "技能專長",
-  "skillsSubtitle": "專業技能與核心能力"
+  "skillsSubtitle": "專業技能與核心能力",
+  "skillTree": {
+    "title": "技能樹",
+    "description": "我的技術技能層級視圖",
+    "proficiencyLevels": "專業程度",
+    "levels": {
+      "basic": "基礎",
+      "intermediate": "進階",
+      "advanced": "高級",
+      "expert": "專家"
+    }
+  }
 }

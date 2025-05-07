@@ -1,0 +1,406 @@
+/* Skills Tree View CSS */
+.skills-tree {
+  padding: 2rem 0;
+}
+
+.skills-tree-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.skills-tree-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.skills-tree-header h2 {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.skills-tree-header p {
+  color: var(--color-text);
+  font-size: 1.1rem;
+}
+
+.skills-tree-visualization {
+  margin-top: 2rem;
+  background: var(--color-background-alt);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-lg, 2rem) var(--space-md, 1.5rem);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0, 112, 243, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.skills-tree-visualization::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(0, 112, 243, 0.1), rgba(0, 112, 243, 0.5), rgba(0, 112, 243, 0.1));
+}
+
+.skills-tree-loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-light);
+}
+
+.skills-tree-legend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding: var(--space-sm, 1rem);
+  border-radius: var(--radius-md, 8px);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 112, 243, 0.15);
+  box-shadow: var(--shadow-sm);
+}
+
+.legend-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.legend-items-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 100px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill, 100px);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 112, 243, 0.1);
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.legend-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.skills-tree-content {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 1.5rem 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Skill node styling */
+.skill-node {
+  margin: 0.7rem 0;
+  padding-left: 1.25rem;
+  border-left: 1px solid rgba(0, 112, 243, 0.15);
+  position: relative;
+}
+
+.skill-node-level-0 {
+  border-left: none;
+  padding-left: 0;
+}
+
+.skill-node-level-1 {
+  border-left-width: 2px;
+}
+
+.skill-node-header {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border-radius: var(--radius-md, 6px);
+  transition: all 0.2s ease;
+  margin-bottom: 0.25rem;
+}
+
+.skill-node-header:hover {
+  background-color: rgba(0, 112, 243, 0.08);
+  transform: translateX(2px);
+}
+
+.skill-node-header.has-children {
+  font-weight: 600;
+}
+
+.skill-node-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  margin-right: 0.75rem;
+  font-size: 0.7rem;
+  background-color: rgba(0, 112, 243, 0.1);
+  border-radius: 50%;
+  color: var(--color-primary);
+}
+
+.skill-node-name {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+.skill-node-header:hover .skill-node-name {
+  color: var(--color-primary);
+}
+
+.skill-node-level-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-pill, 100px);
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.skill-node-children {
+  padding-left: 1.25rem;
+  border-left: 1px solid rgba(0, 112, 243, 0.1);
+  margin-left: 0.5rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+
+/* Skill level colors - 使用單一顏色系統 */
+.skill-level-basic {
+  background-color: rgba(0, 112, 243, 0.08);
+  border: 1px solid rgba(0, 112, 243, 0.2);
+  color: var(--color-primary-dark);
+}
+
+.skill-level-intermediate {
+  background-color: rgba(0, 112, 243, 0.12);
+  border: 1px solid rgba(0, 112, 243, 0.25);
+  color: var(--color-primary);
+}
+
+.skill-level-advanced {
+  background-color: rgba(0, 112, 243, 0.18);
+  border: 1px solid rgba(0, 112, 243, 0.35);
+  color: var(--color-primary);
+}
+
+.skill-level-expert {
+  background-color: rgba(0, 112, 243, 0.25);
+  border: 1px solid rgba(0, 112, 243, 0.5);
+  color: var(--color-primary-dark);
+}
+
+/* Legend color blocks - 使用單一顏色系統的漸層 */
+.legend-color.skill-level-basic {
+  background-color: rgba(0, 112, 243, 0.3);
+  border: 1px solid var(--color-primary);
+}
+
+.legend-color.skill-level-intermediate {
+  background-color: rgba(0, 112, 243, 0.5);
+  border: 1px solid var(--color-primary);
+}
+
+.legend-color.skill-level-advanced {
+  background-color: rgba(0, 112, 243, 0.7);
+  border: 1px solid var(--color-primary);
+}
+
+.legend-color.skill-level-expert {
+  background-color: rgba(0, 112, 243, 0.9);
+  border: 1px solid var(--color-primary);
+}
+
+/* 新增的讓視覺層次更分明的樣式 */
+.skill-node-level-0 > .skill-node-header {
+  font-size: 1.1rem;
+  background-color: rgba(0, 112, 243, 0.05);
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(0, 112, 243, 0.1);
+  border-radius: 8px 8px 0 0;
+  padding: 0.75rem 1rem;
+}
+
+.skill-node-level-1 > .skill-node-header {
+  font-size: 1rem;
+}
+
+/* 修改展開/折疊圖標 */
+.skill-node-toggle {
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  color: var(--color-primary);
+  background-color: rgba(0, 112, 243, 0.08);
+  border: 1px solid rgba(0, 112, 243, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.skill-node-toggle.expanded {
+  background-color: rgba(0, 112, 243, 0.15);
+}
+
+.skill-node-toggle:hover {
+  background-color: rgba(0, 112, 243, 0.2);
+}
+
+/* 為不同層級添加不同的視覺效果 */
+.skill-node-level-1 {
+  margin-left: 0.5rem;
+  border-left: 2px solid rgba(0, 112, 243, 0.15);
+}
+
+.skill-node-level-2 {
+  margin-left: 1rem;
+  border-left: 1px solid rgba(0, 112, 243, 0.1);
+}
+
+.skill-node-level-3 {
+  margin-left: 1.5rem;
+  border-left: 1px dashed rgba(0, 112, 243, 0.1);
+}
+
+/* 為每個層級添加獨特視覺標示 */
+.skill-node:before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 14px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-background);
+  border: 1px solid rgba(0, 112, 243, 0.3);
+}
+
+.skill-node-level-0:before {
+  display: none;
+}
+
+.skill-node-level-1:before {
+  background-color: rgba(0, 112, 243, 0.1);
+}
+
+/* Responsive design */
+/* 添加更多視覺細節 */
+.skill-node:hover:before {
+  border-color: var(--color-primary);
+  background-color: rgba(0, 112, 243, 0.2);
+}
+
+/* 改善整體佈局 */
+.skills-tree-visualization {
+  position: relative;
+}
+
+.skills-tree-content {
+  position: relative;
+}
+
+/* 使滾動更順暢 */
+.skills-tree-content::-webkit-scrollbar {
+  height: 8px;
+}
+
+.skills-tree-content::-webkit-scrollbar-track {
+  background: rgba(0, 112, 243, 0.05);
+  border-radius: 10px;
+}
+
+.skills-tree-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 112, 243, 0.2);
+  border-radius: 10px;
+}
+
+.skills-tree-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 112, 243, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+  .skills-tree-header h2 {
+    font-size: 2rem;
+  }
+  
+  .skills-tree-visualization {
+    padding: 1.5rem 1rem;
+  }
+  
+  .skills-tree-legend {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+  
+  .legend-items-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 8px;
+    gap: 0.35rem;
+  }
+  
+  .legend-item {
+    padding: 0.15rem 0.5rem;
+    margin: 0.1rem;
+    flex: 0 0 calc(50% - 0.5rem);
+    justify-content: flex-start;
+  }
+  
+  .skill-node-header {
+    padding: 0.4rem 0.5rem;
+  }
+  
+  .skill-node-toggle {
+    margin-right: 0.5rem;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+  }
+  
+  .skill-node-name {
+    font-size: 0.9rem;
+  }
+  
+  .skill-node-level-badge {
+    padding: 0.1rem 0.4rem;
+    font-size: 0.7rem;
+  }
+  
+  .skill-node {
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+  }
+  
+  .skill-node-children {
+    padding-left: 1rem;
+  }
+  
+  .skill-node-level-0 > .skill-node-header {
+    padding: 0.6rem 0.75rem;
+  }
+}

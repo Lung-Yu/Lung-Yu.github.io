@@ -50,13 +50,13 @@ const Skills = () => {
               className={`toggle-btn ${viewMode === 'grid' ? 'active' : ''}`}
               onClick={() => setViewMode('grid')}
             >
-              {t('viewModes.grid', 'Grid View')}
+              {t('gridView', 'Grid View')}
             </button>
             <button 
               className={`toggle-btn ${viewMode === 'tree' ? 'active' : ''}`}
               onClick={() => setViewMode('tree')}
             >
-              {t('viewModes.tree', 'Tree View')}
+              {t('treeView', 'Tree View')}
             </button>
           </div>
         </div>
