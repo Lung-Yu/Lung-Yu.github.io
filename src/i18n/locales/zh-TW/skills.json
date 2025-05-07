@@ -10,6 +10,7 @@
     "title": "技能樹",
     "description": "我的技術技能層級視圖",
     "proficiencyLevels": "專業程度",
+    "connectionTypes": "連線類型",
     "expandAll": "展開所有",
     "collapseAll": "收起所有",
     "reset": "重設視圖",
@@ -19,6 +20,12 @@
       "intermediate": "進階",
       "advanced": "高級",
       "expert": "專家"
+    },
+    "connections": {
+      "solid": "第一層",
+      "dotted": "第二層",
+      "dashed": "第三層",
+      "wavy": "第四層+"
     }
   }
 }

@@ -10,6 +10,7 @@
     "title": "Skills Tree",
     "description": "Interactive visualization of my technical skills",
     "proficiencyLevels": "Proficiency Levels",
+    "connectionTypes": "Connection Types",
     "expandAll": "Expand All",
     "collapseAll": "Collapse All",
     "reset": "Reset View",
@@ -19,6 +20,12 @@
       "intermediate": "Intermediate",
       "advanced": "Advanced",
       "expert": "Expert"
+    },
+    "connections": {
+      "solid": "Level 1",
+      "dotted": "Level 2",
+      "dashed": "Level 3",
+      "wavy": "Level 4+"
     }
   }
 }

@@ -12,24 +12,46 @@ interface Position {
 
 // 定義連線樣式枚舉
 enum ConnectionStyle {
-  CURVE = 'curve',
+  SOLID = 'solid',
   DOTTED = 'dotted',
-  GRADIENT = 'gradient',
-  ANIMATED = 'animated'
+  DASHED = 'dashed',
+  WAVY = 'wavy'
 }
 
-// 完全重寫的 SVG 連線組件
+// 改進的連線組件 - 實現點到點最短距離連線
 const ConnectionLine: React.FC<{ 
-  startX: number; 
-  startY: number; 
-  endX: number; 
+  // 起始和結束點座標
+  startX: number;
+  startY: number;
+  endX: number;
   endY: number;
-  nodeLevel?: string;
-  connectionStyle?: ConnectionStyle;
-}> = ({ startX, startY, endX, endY, nodeLevel, connectionStyle = ConnectionStyle.CURVE }) => {
-  // 根據技能級別設置不同的顏色
-  const getLineColor = () => {
-    switch (nodeLevel) {
+  
+  // 連線設置
+  connectionLevel: number;
+  childType?: string;
+}> = ({ 
+  startX,
+  startY,
+  endX,
+  endY,
+  connectionLevel,
+  childType
+}) => {
+  // 根據層級決定連線樣式
+  const getConnectionStyle = (): ConnectionStyle => {
+    // 固定規律：每個層級都有特定的連線樣式
+    switch (connectionLevel % 4) {
+      case 0: return ConnectionStyle.SOLID;
+      case 1: return ConnectionStyle.DOTTED;
+      case 2: return ConnectionStyle.DASHED; 
+      case 3: return ConnectionStyle.WAVY;
+      default: return ConnectionStyle.SOLID;
+    }
+  };
+  
+  // 根據子節點的技能級別設置連線顏色
+  const getLineColor = (): string => {
+    switch (childType) {
       case 'basic': return '#a3c4f3';
       case 'intermediate': return '#8ccc85';
       case 'advanced': return '#f193a5';
@@ -37,76 +59,31 @@ const ConnectionLine: React.FC<{
       default: return '#ddd';
     }
   };
-
-  // 計算連線長度和角度以配置SVG
-  const length = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
-  const angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI;
-
-  // 使用欺騙技巧 - 仍然使用div作為容器，在其中放置SVG
+  
+  // 計算連線長度和角度
+  const dx = endX - startX;
+  const dy = endY - startY;
+  const length = Math.sqrt(dx * dx + dy * dy);
+  const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+  
+  // 獲取連線樣式類名
+  const style = getConnectionStyle();
+  const styleClass = `connection-${style}`;
+  
   return (
     <div
-      className="connection-container"
+      className={`connection-line ${styleClass}`}
       style={{
         position: 'absolute',
         left: `${startX}px`,
         top: `${startY}px`,
         width: `${length}px`,
         height: '2px',
+        backgroundColor: getLineColor(),
+        transformOrigin: 'left center',
         transform: `rotate(${angle}deg)`,
-        transformOrigin: '0 0',
-        zIndex: 1,
-        pointerEvents: 'none',
       }}
-    >
-      {/* 根據連線樣式使用不同的元素 */}
-      {connectionStyle === ConnectionStyle.DOTTED && (
-        <div 
-          className="connection-line connection-dotted" 
-          style={{ 
-            backgroundColor: getLineColor(),
-            width: '100%',
-            height: '100%',
-          }}
-        />
-      )}
-
-      {connectionStyle === ConnectionStyle.ANIMATED && (
-        <div 
-          className="connection-line connection-animated" 
-          style={{ 
-            backgroundColor: getLineColor(),
-            width: '100%',
-            height: '100%',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-        >
-          <div className="connection-pulse" style={{ backgroundColor: getLineColor() }}></div>
-        </div>
-      )}
-
-      {connectionStyle === ConnectionStyle.GRADIENT && (
-        <div 
-          className="connection-line connection-gradient" 
-          style={{ 
-            background: `linear-gradient(to right, #ddd, ${getLineColor()})`,
-            width: '100%',
-            height: '100%'
-          }}
-        />
-      )}
-
-      {connectionStyle === ConnectionStyle.CURVE && (
-        <div 
-          className="connection-line" 
-          style={{ 
-            backgroundColor: getLineColor(),
-            width: '100%',
-            height: '100%'
-          }}
-        />
-      )}
-    </div>
+    />
   );
 };
 
@@ -192,12 +169,17 @@ const TreeNode: React.FC<{
     const newChildren: { node: SkillNode, position: Position, nodeId: string }[] = [];
     const newConnections: { start: Position, end: Position }[] = [];
     
+    // 獲取當前節點的尺寸
+    const parentNodeRect = nodeRef.current.getBoundingClientRect();
+    const parentWidth = parentNodeRect.width;
+    const parentHeight = parentNodeRect.height;
+    
+    // 父節點的中心點已經是座標系統的原點 (0,0)
+    
     // 根據級別計算不同的放射距離和角度增量
-    // 增加子節點之間的間距以避免重疊
     const childDistance = distance - level * 40;
     const totalChildren = node.children.length;
     
-    // 根據子節點數量和層級調整角度範圍
     // 較少的子節點使用較大的角度範圍，避免過度集中
     const angleRange = level === 0 ? 360 : Math.min(180, 60 + totalChildren * 15);
     const angleStep = angleRange / Math.max(1, totalChildren);
@@ -212,7 +194,8 @@ const TreeNode: React.FC<{
       const radians = childAngle * (Math.PI / 180);
       
       // 根據節點數量調整距離
-      const adjustedDistance = childDistance * (1 + (index % 2) * 0.2);
+      const childDistanceMultiplier = 1 + level * 0.2;
+      const adjustedDistance = childDistance * childDistanceMultiplier * (1 + (index % 2) * 0.2);
       
       return {
         x: adjustedDistance * Math.cos(radians),
@@ -271,16 +254,31 @@ const TreeNode: React.FC<{
         nodeId: childId
       });
       
-      // 連接線總是從父節點中心到子節點的實際位置
+      // 計算從父節點邊緣到子節點位置的連線
+      const dx = childPosition.x;
+      const dy = childPosition.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      
+      // 父節點邊緣比例 (簡單估計邊緣位置)
+      const parentNodeRadius = Math.min(parentWidth, parentHeight) / 2 * 0.9;
+      const edgeRatio = parentNodeRadius / distance;
+      
+      // 計算從邊緣出發的起點 (近似估計)
+      const startPoint = {
+        x: dx * edgeRatio,
+        y: dy * edgeRatio
+      };
+      
+      // 連線從父節點邊緣到子節點的實際位置
       newConnections.push({
-        start: { x: 0, y: 0 },
+        start: startPoint,
         end: childPosition
       });
     });
     
     setChildren(newChildren);
     setConnections(newConnections);
-  }, [expanded, node.children, hasChildren, distance, angle, level, nodeId, savedPositions]);
+  }, [expanded, hasChildren, node.children, level, angle, distance, nodeId, savedPositions, nodeRef]);
 
   const getLevelClass = (skillLevel?: string) => {
     switch (skillLevel) {
@@ -399,32 +397,16 @@ const TreeNode: React.FC<{
       
       {expanded && hasChildren && (
         <>
-          {connections.map((connection, idx) => {
-            // 動態選擇連線樣式，使每個節點的連線不同
-            let style = ConnectionStyle.CURVE;
-
-            // 根節點使用漸變效果
-            if (level === 0) {
-              style = ConnectionStyle.GRADIENT;
-            } 
-            // 第一層使用動畫效果
-            else if (level === 1) {
-              style = idx % 2 === 0 ? ConnectionStyle.ANIMATED : ConnectionStyle.DOTTED;
-            }
-            // 更深層的節點使用點線和常規效果交替
-            else {
-              style = idx % 2 === 0 ? ConnectionStyle.DOTTED : ConnectionStyle.CURVE;
-            }
-
+          {connections.map((conn, idx) => {
             return (
               <ConnectionLine 
                 key={`conn-${idx}`}
-                startX={0}
-                startY={0}
-                endX={connection.end.x}
-                endY={connection.end.y}
-                nodeLevel={node.children?.[idx]?.level}
-                connectionStyle={style}
+                startX={conn.start.x}
+                startY={conn.start.y}
+                endX={conn.end.x}
+                endY={conn.end.y}
+                connectionLevel={level}
+                childType={children[idx]?.node.level}
               />
             );
           })}
@@ -650,6 +632,28 @@ export const SkillsTree: React.FC = () => {
               <div className="legend-item">
                 <span className="legend-color skill-level-expert"></span>
                 <span className="legend-label">{t('skillTree.levels.expert', 'Expert')}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="skills-tree-legend connection-legend">
+            <div className="legend-title">{t('skillTree.connectionTypes', 'Connection Types')}: </div>
+            <div className="legend-items-container">
+              <div className="legend-item">
+                <span className="legend-connection connection-solid-sample"></span>
+                <span className="legend-label">{t('skillTree.connections.solid', 'Level 1')}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-connection connection-dotted-sample"></span>
+                <span className="legend-label">{t('skillTree.connections.dotted', 'Level 2')}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-connection connection-dashed-sample"></span>
+                <span className="legend-label">{t('skillTree.connections.dashed', 'Level 3')}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-connection connection-wavy-sample"></span>
+                <span className="legend-label">{t('skillTree.connections.wavy', 'Level 4+')}</span>
               </div>
             </div>
           </div>
