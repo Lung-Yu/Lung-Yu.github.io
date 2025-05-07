@@ -5,7 +5,7 @@ import '../styles/Skills.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faShieldHalved, faCode, faGears, faNetworkWired } from '@fortawesome/free-solid-svg-icons';
-import SkillsTree from './tree/SkillsTree';
+import { SkillsTree } from './tree/SkillsTree';
 
 const Skills = () => {
   const { t } = useTranslation('skills');

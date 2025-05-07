@@ -1,38 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSkillsTree } from '../../hooks/useSkillsTree';
 import '../../styles/tree/SkillsTree.css';
 import type { SkillNode } from '../../types/tree';
 
-// Individual tree node component
-const TreeNode: React.FC<{ 
-  node: SkillNode; 
-  level: number;
-  expandAll: boolean;
-  collapseAll: boolean;
-  resetTrigger: number;
-}> = ({ node, level, expandAll, collapseAll, resetTrigger }) => {
+const SkillNodeComponent: React.FC<{ node: SkillNode; level: number }> = ({ node, level }) => {
   const { t } = useTranslation('skills');
-  const [expanded, setExpanded] = useState(level < 2);
+  const [expanded, setExpanded] = React.useState(level < 2);
   const hasChildren = node.children && node.children.length > 0;
-  
-  // Handle expand all / collapse all
-  useEffect(() => {
-    if (expandAll && hasChildren) {
-      setExpanded(true);
-    }
-  }, [expandAll, hasChildren]);
-  
-  useEffect(() => {
-    if (collapseAll && hasChildren && level > 0) {
-      setExpanded(false);
-    }
-  }, [collapseAll, hasChildren, level]);
-  
-  // Reset to default state when resetTrigger changes
-  useEffect(() => {
-    setExpanded(level < 2);
-  }, [resetTrigger, level]);
 
   const getLevelClass = (skillLevel?: string) => {
     switch (skillLevel) {
@@ -46,6 +21,7 @@ const TreeNode: React.FC<{
   
   const getTranslatedLevel = (skillLevel?: string) => {
     if (!skillLevel) return '';
+    
     return t(`skillTree.levels.${skillLevel}`, skillLevel);
   };
 
@@ -73,14 +49,7 @@ const TreeNode: React.FC<{
       {expanded && hasChildren && (
         <div className="skill-node-children">
           {node.children?.map((child: SkillNode, index: number) => (
-            <TreeNode 
-              key={index} 
-              node={child} 
-              level={level + 1} 
-              expandAll={expandAll} 
-              collapseAll={collapseAll} 
-              resetTrigger={resetTrigger}
-            />
+            <SkillNodeComponent key={index} node={child} level={level + 1} />
           ))}
         </div>
       )}
@@ -88,43 +57,9 @@ const TreeNode: React.FC<{
   );
 };
 
-export const SkillsTree: React.FC = () => {
+const SkillsTree: React.FC = () => {
   const { t } = useTranslation('skills');
   const { skillTreeData, loading } = useSkillsTree();
-  const [expandAllFlag, setExpandAllFlag] = useState(false);
-  const [collapseAllFlag, setCollapseAllFlag] = useState(false);
-  const [resetTrigger, setResetTrigger] = useState(0);
-
-  // Reset the flags after they've been processed
-  useEffect(() => {
-    if (expandAllFlag) {
-      const timer = setTimeout(() => setExpandAllFlag(false), 100);
-      return () => clearTimeout(timer);
-    }
-  }, [expandAllFlag]);
-
-  useEffect(() => {
-    if (collapseAllFlag) {
-      const timer = setTimeout(() => setCollapseAllFlag(false), 100);
-      return () => clearTimeout(timer);
-    }
-  }, [collapseAllFlag]);
-  
-  const handleExpandAll = () => {
-    setCollapseAllFlag(false);
-    setExpandAllFlag(true);
-  };
-  
-  const handleCollapseAll = () => {
-    setExpandAllFlag(false);
-    setCollapseAllFlag(true);
-  };
-  
-  const handleReset = () => {
-    setExpandAllFlag(false);
-    setCollapseAllFlag(false);
-    setResetTrigger(prev => prev + 1);
-  };
 
   if (loading || !skillTreeData) {
     return (
@@ -148,23 +83,11 @@ export const SkillsTree: React.FC = () => {
         <div className="skills-tree-header">
           <h2>{title}</h2>
           <p>{description}</p>
-          
-          <div className="skills-tree-controls">
-            <button className="tree-control-btn" onClick={handleExpandAll}>
-              {t('skillTree.expandAll', 'Expand All')}
-            </button>
-            <button className="tree-control-btn" onClick={handleCollapseAll}>
-              {t('skillTree.collapseAll', 'Collapse All')}
-            </button>
-            <button className="tree-control-btn" onClick={handleReset}>
-              {t('skillTree.reset', 'Reset')}
-            </button>
-          </div>
         </div>
 
         <div className="skills-tree-visualization">
           <div className="skills-tree-legend">
-            <div className="legend-title">{t('skillTree.proficiencyLevels', 'Proficiency Levels')}: </div>
+            <div className="legend-title">{t('skillTree.proficiencyLevels', '專業程度')}: </div>
             <div className="legend-items-container">
               <div className="legend-item">
                 <span className="legend-color skill-level-basic"></span>
@@ -186,13 +109,7 @@ export const SkillsTree: React.FC = () => {
           </div>
 
           <div className="skills-tree-content">
-            <TreeNode 
-              node={root} 
-              level={0} 
-              expandAll={expandAllFlag} 
-              collapseAll={collapseAllFlag} 
-              resetTrigger={resetTrigger}
-            />
+            <SkillNodeComponent node={root} level={0} />
           </div>
         </div>
       </div>

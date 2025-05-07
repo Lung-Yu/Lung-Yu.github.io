@@ -10,6 +10,9 @@
     "title": "技能樹",
     "description": "我的技術技能層級視圖",
     "proficiencyLevels": "專業程度",
+    "expandAll": "展開所有",
+    "collapseAll": "收起所有",
+    "reset": "重設視圖",
     "levels": {
       "basic": "基礎",
       "intermediate": "進階",

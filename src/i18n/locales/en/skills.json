@@ -10,6 +10,9 @@
     "title": "Skills Tree",
     "description": "Interactive visualization of my technical skills",
     "proficiencyLevels": "Proficiency Levels",
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All",
+    "reset": "Reset View",
     "levels": {
       "basic": "Basic",
       "intermediate": "Intermediate",
