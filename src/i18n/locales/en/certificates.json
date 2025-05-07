@@ -5,7 +5,7 @@
   "categoryFilterLabel": "Filter by Category",
   "viewCertificateDetails": "View details of {{title}} certificate",
   "categories": {
-    "all": "All Categories",
+    "all": "All",
     "cyber-security": "Cyber Security",
     "development": "Development",
     "infrastructure": "Infrastructure",

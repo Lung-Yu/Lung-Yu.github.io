@@ -5,7 +5,7 @@
   "categoryFilterLabel": "依類別篩選",
   "viewCertificateDetails": "查看 {{title}} 證書的詳細資訊",
   "categories": {
-    "all": "全部類別",
+    "all": "全部",
     "cyber-security": "網路安全",
     "development": "軟體開發",
     "infrastructure": "基礎設施",

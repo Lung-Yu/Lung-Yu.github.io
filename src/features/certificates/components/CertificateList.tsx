@@ -21,7 +21,7 @@ const CertificateList = () => {
   const { t, i18n } = useTranslation('certificates');
   const { certificates, categories, categoryToKeyMap, loading } = useCertificates();
   const [selectedCategory, setSelectedCategory] = useState<string>(
-    i18n.language.startsWith('zh') ? '全部類別' : 'All Categories'
+    i18n.language.startsWith('zh') ? '全部' : 'All'
   );
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
 
@@ -29,7 +29,7 @@ const CertificateList = () => {
   const filteredCertificates = useMemo(() => {
     if (!certificates) return [];
     
-    const allCategory = i18n.language.startsWith('zh') ? '全部類別' : 'All Categories';
+    const allCategory = i18n.language.startsWith('zh') ? '全部' : 'All';
     
     if (selectedCategory === allCategory) {
       return certificates;
@@ -49,7 +49,7 @@ const CertificateList = () => {
           <div className="categories" aria-label={t('categoryFilterLabel')}>
             {categories.map((category, index) => {
               // Get the i18n key for this category
-              const categoryKey = (category === 'All Categories' || category === '全部類別') 
+              const categoryKey = (category === 'All' || category === '全部') 
                 ? 'all' 
                 : categoryToKeyMap.get(category) || category.toLowerCase().replace(/ /g, '-');
               
