@@ -1,6 +1,8 @@
 /* 演講/議程區塊摺疊式列表樣式 */
 .conferences-accordion {
   margin-top: 1rem;
+  width: 100%;
+  text-align: left;
 }
 
 /* 年份分組區塊 */
@@ -9,6 +11,7 @@
   border: 1px solid var(--color-gray-200);
   border-radius: 6px;
   overflow: hidden;
+  text-align: left;
 }
 
 /* 年份標題 - 可點擊摺疊/展開 */
@@ -20,6 +23,7 @@
   align-items: center;
   cursor: pointer;
   transition: background-color 0.2s, border-color 0.2s;
+  text-align: left;
 }
 
 .conference-year-header:hover {
@@ -37,6 +41,7 @@
   display: flex;
   align-items: center;
   color: var(--color-text);
+  text-align: left;
 }
 
 .conference-year-toggle {

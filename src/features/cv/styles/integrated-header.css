@@ -20,6 +20,7 @@
 .cv-intro-section {
   flex: 1;
   min-width: 250px;
+  text-align: left;
 }
 
 .cv-intro-section h1 {
@@ -27,6 +28,7 @@
   font-size: 2.8rem;
   margin-bottom: 0.5rem;
   font-weight: 700;
+  text-align: left;
 }
 
 .cv-intro-section .title {
@@ -34,6 +36,7 @@
   color: var(--color-secondary);
   margin-bottom: 1.5rem;
   font-weight: 600;
+  text-align: left;
 }
 
 .cv-intro-section p {
@@ -42,6 +45,7 @@
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
   max-width: 600px;
+  text-align: left;
 }
 
 .cv-contact-section {
