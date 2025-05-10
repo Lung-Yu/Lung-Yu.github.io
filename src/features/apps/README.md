@@ -30,36 +30,63 @@ The Apps feature is the central application structure that includes the main App
 
 ## File Structure
 ```
-features/
-└── apps/
-    ├── index.ts                 - Exports the main App component and supporting components
-    ├── components/              - React components for the Apps feature
-    │   ├── App.tsx              - Main application component with routing
-    │   ├── SectionIndicator.tsx - Navigation dots component for section navigation 
-    │   ├── ScrollProgressBar.tsx- Visual indicator for scroll progress
-    │   ├── BackToTopButton.tsx  - Button for quickly returning to the top of the page
-    │   ├── AnimatedSection.tsx  - Section component with intersection observer animations
-    │   ├── ScrollAnimation.tsx  - Component for scroll-triggered animations
-    │   └── ...                  - Other supporting components
-    └── styles/                  - CSS styles for the Apps feature
-        └── App.css              - Optimized styles for the one-page layout design with theme support
+apps/
+├── README.md                 # Feature documentation
+├── components/               # Feature components
+│   ├── App.tsx               # Main application component
+│   ├── AnimatedSection.tsx   # Section with animations
+│   ├── BackToTopButton.tsx   # Button to scroll to top
+│   ├── ScrollAnimation.tsx   # Animation utilities
+│   ├── ScrollProgressBar.tsx # Progress indicator
+│   └── SectionIndicator.tsx  # Navigation indicators
+├── data/                     # Multilanguage data
+│   ├── en.json               # English data
+│   └── zh-TW.json            # Traditional Chinese data
+├── hooks/                    # Custom hooks
+│   ├── useAppData.ts         # Hook for loading app data
+│   └── index.ts              # Hook exports
+├── styles/                   # Component styles
+└── types/                    # TypeScript definitions
+    └── index.ts              # Types for app data
 ```
+
+## Multi-language Implementation
+The apps feature implements multi-language support following the feature-based architecture guidelines:
+
+1. **Data Organization**:
+   - Language-specific data is stored in separate JSON files in the `data/` directory
+   - Each language file (`en.json`, `zh-TW.json`) contains structured data for UI elements
+
+2. **Data Loading**:
+   - The `useAppData` hook dynamically loads language data based on the current language setting
+   - Implements fallback mechanism to load English data if the chosen language data is not available
+
+3. **Component Integration**:
+   - Components access translated content via the `useAppData` hook
+   - UI elements are rendered with the appropriate language content
+   - Components properly handle loading states while language data is being fetched
+
+4. **Type Safety**:
+   - Strong typing through TypeScript interfaces ensures data consistency across languages
+   - The `AppData` interface defines the structure of language data
 
 ## Usage
-The App component is typically the root component of the application and is rendered directly in the main entry point:
+Import components from the apps feature as needed:
 
 ```tsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './features/apps/components/App';
-import './index.css';
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import { App, SectionIndicator, BackToTopButton } from '../features/apps';
 ```
 
-The App component handles all routing and integrates all other features, including the CV feature which remains independently accessible while being part of the overall application structure.
+To access multilingual app data:
+
+```tsx
+import { useAppData } from '../features/apps';
+
+const MyComponent = () => {
+  const { appData, loading } = useAppData();
+  
+  if (loading) return <div>Loading...</div>;
+  
+  return <div>{appData.app.sections.home}</div>;
+};
 ```

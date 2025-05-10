@@ -9,6 +9,14 @@ import { Hero } from '../../hero';
 import { CV } from '../../cv';
 import { Skills } from '../../skills';
 import { Modal } from '../../../shared/components/modal';
+import { useAppData } from '../hooks/useAppData';
+
+// Import components
+import SectionIndicator from './SectionIndicator';
+import AnimatedSection from './AnimatedSection';
+import ScrollProgressBar from './ScrollProgressBar';
+import BackToTopButton from './BackToTopButton';
+import ScrollAnimation from './ScrollAnimation';
 
 const scrollToSection = (elementId: string) => {
   const element = document.getElementById(elementId);
@@ -25,15 +33,13 @@ const scrollToSection = (elementId: string) => {
   }
 };
 
-// Import components
-import SectionIndicator from './SectionIndicator';
-import AnimatedSection from './AnimatedSection';
-
 // 主頁面組件
 const HomePage = () => {
   const { hash } = useLocation();
+  const { appData, loading } = useAppData();
+  
   const sections = ['home', 'skills', 'projects', 'consulting', 'certificates'];
-
+  
   useEffect(() => {
     if (hash) {
       // 移除 # 符號
@@ -45,6 +51,14 @@ const HomePage = () => {
       window.scrollTo(0, 0);
     }
   }, [hash]);
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        {appData?.app?.navigation?.loading || "Loading..."}
+      </div>
+    );
+  }
 
   return (
     <div className="home-page">
@@ -78,13 +92,9 @@ const HomePage = () => {
   );
 };
 
-// Import components
-import ScrollProgressBar from './ScrollProgressBar';
-import BackToTopButton from './BackToTopButton';
-import ScrollAnimation from './ScrollAnimation';
-
 function App() {
   const [modalImage, setModalImage] = useState<string | null>(null);
+  const { appData } = useAppData();
 
   const closeModal = () => {
     setModalImage(null);
@@ -114,7 +124,11 @@ function App() {
           onClose={closeModal}
         >
           {modalImage && (
-            <img src={modalImage} alt="預覽圖片" className="modal-image" />
+            <img 
+              src={modalImage} 
+              alt={appData?.app?.meta?.imageAlt || "Preview Image"} 
+              className="modal-image" 
+            />
           )}
         </Modal>
         

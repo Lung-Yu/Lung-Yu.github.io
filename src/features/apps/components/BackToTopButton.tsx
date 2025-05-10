@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useAppData } from '../hooks/useAppData';
 
 const BackToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { appData } = useAppData();
+  const backToTopText = appData?.app?.navigation?.backToTop || "Back to Top";
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -30,8 +33,8 @@ const BackToTopButton: React.FC = () => {
     <button
       className={`back-to-top ${isVisible ? 'visible' : ''}`}
       onClick={scrollToTop}
-      aria-label="Back to top"
-      title="Back to top"
+      aria-label={backToTopText}
+      title={backToTopText}
     >
       <svg 
         width="16" 

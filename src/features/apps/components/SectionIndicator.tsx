@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useAppData } from '../hooks/useAppData';
 
 interface SectionIndicatorProps {
   sections: string[];
@@ -6,6 +7,7 @@ interface SectionIndicatorProps {
 
 const SectionIndicator: React.FC<SectionIndicatorProps> = ({ sections }) => {
   const [activeSection, setActiveSection] = useState<string>(sections[0]);
+  const { appData } = useAppData();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,6 +54,17 @@ const SectionIndicator: React.FC<SectionIndicatorProps> = ({ sections }) => {
     }
   };
 
+  // Get section title from app data or fallback to capitalized section name
+  const getSectionTitle = (section: string) => {
+    // First try to get from app data
+    if (appData?.app?.sections && appData.app.sections[section]) {
+      return appData.app.sections[section];
+    }
+    
+    // Fallback: capitalize first letter
+    return section.charAt(0).toUpperCase() + section.slice(1);
+  };
+
   return (
     <div className="section-indicator" aria-hidden="true">
       {sections.map((section) => (
@@ -59,7 +72,7 @@ const SectionIndicator: React.FC<SectionIndicatorProps> = ({ sections }) => {
           key={section}
           className={`section-indicator-dot ${activeSection === section ? 'active' : ''}`}
           onClick={() => handleDotClick(section)}
-          title={section.charAt(0).toUpperCase() + section.slice(1)}
+          title={getSectionTitle(section)}
         />
       ))}
     </div>

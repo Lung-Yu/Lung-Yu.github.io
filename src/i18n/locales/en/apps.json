@@ -1,0 +1,24 @@
+{
+  "title": "Personal Portfolio",
+  "navigation": {
+    "home": "Home",
+    "skills": "Skills",
+    "projects": "Projects",
+    "consulting": "Consulting Services",
+    "certificates": "Certifications",
+    "cv": "Curriculum Vitae",
+    "backToTop": "Back to Top"
+  },
+  "sections": {
+    "home": "Home",
+    "skills": "Skills",
+    "projects": "Projects",
+    "consulting": "Consulting",
+    "certificates": "Certificates"
+  },
+  "loading": "Loading...",
+  "modal": {
+    "close": "Close",
+    "imageAlt": "Preview Image"
+  }
+}

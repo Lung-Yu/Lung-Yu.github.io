@@ -1,0 +1,24 @@
+{
+  "title": "個人作品集",
+  "navigation": {
+    "home": "首頁",
+    "skills": "技能",
+    "projects": "專案",
+    "consulting": "顧問服務",
+    "certificates": "證照",
+    "cv": "履歷",
+    "backToTop": "回到頂部"
+  },
+  "sections": {
+    "home": "首頁",
+    "skills": "技能",
+    "projects": "專案",
+    "consulting": "顧問服務",
+    "certificates": "證照"
+  },
+  "loading": "載入中...",
+  "modal": {
+    "close": "關閉",
+    "imageAlt": "預覽圖片"
+  }
+}
