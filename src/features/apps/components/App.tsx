@@ -9,13 +9,26 @@ import { Hero } from '../../hero';
 import { CV } from '../../cv';
 import { Skills } from '../../skills';
 import { Modal } from '../../../shared/components/modal';
+import { useAppData } from '../hooks/useAppData';
+
+// Import components
+import SectionIndicator from './SectionIndicator';
+import AnimatedSection from './AnimatedSection';
+import ScrollProgressBar from './ScrollProgressBar';
+import BackToTopButton from './BackToTopButton';
+import ScrollAnimation from './ScrollAnimation';
 
 const scrollToSection = (elementId: string) => {
   const element = document.getElementById(elementId);
   if (element) {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
+    // 計算導航欄高度偏移量
+    const navbarHeight = 64; // 根據需要調整
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
     });
   }
 };
@@ -23,7 +36,10 @@ const scrollToSection = (elementId: string) => {
 // 主頁面組件
 const HomePage = () => {
   const { hash } = useLocation();
-
+  const { appData, loading } = useAppData();
+  
+  const sections = ['home', 'skills', 'projects', 'consulting', 'certificates'];
+  
   useEffect(() => {
     if (hash) {
       // 移除 # 符號
@@ -36,29 +52,49 @@ const HomePage = () => {
     }
   }, [hash]);
 
+  if (loading) {
+    return (
+      <div className="loading-container">
+        {appData?.app?.navigation?.loading || "Loading..."}
+      </div>
+    );
+  }
+
   return (
     <div className="home-page">
-      <section id="home" className="section-padding scroll-mt-20">
+      {/* Section Indicator for navigation */}
+      <SectionIndicator sections={sections} />
+      
+      <AnimatedSection id="home" className="section home-section scroll-mt-16" threshold={0.1}>
         <Hero />
-      </section>
-      <section id="skills" className="section-padding scroll-mt-20">
+      </AnimatedSection>
+      
+      <AnimatedSection id="skills" className="section skills-section scroll-mt-16" threshold={0.2} delay={100}>
+        <div className="section-divider"></div>
         <Skills />
-      </section>
-      <section id="projects" className="section-padding scroll-mt-20">
+      </AnimatedSection>
+      
+      <AnimatedSection id="projects" className="section projects-section scroll-mt-16" threshold={0.2} delay={200}>
+        <div className="section-divider"></div>
         <ProjectList />
-      </section>
-      <section id="consulting" className="section-padding scroll-mt-20">
+      </AnimatedSection>
+      
+      <AnimatedSection id="consulting" className="section consulting-section scroll-mt-16" threshold={0.2} delay={300}>
+        <div className="section-divider"></div>
         <ConsultingList />
-      </section>
-      <section id="certificates" className="section-padding scroll-mt-20">
+      </AnimatedSection>
+      
+      <AnimatedSection id="certificates" className="section certificates-section scroll-mt-16" threshold={0.2} delay={400}>
+        <div className="section-divider"></div>
         <CertificateList />
-      </section>
+      </AnimatedSection>
     </div>
   );
 };
 
 function App() {
   const [modalImage, setModalImage] = useState<string | null>(null);
+  const { appData } = useAppData();
 
   const closeModal = () => {
     setModalImage(null);
@@ -67,10 +103,13 @@ function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
+        {/* Add scroll progress bar */}
+        <ScrollProgressBar />
         <Routes>
           <Route path="/" element={<NavigationBar />} />
           <Route path="/project/*" element={<NavigationBar />} />
           <Route path="/consulting/*" element={<NavigationBar />} />
+          {/* <Route path="/cv" element={<NavigationBar />} /> */}
         </Routes>
         <main className="flex-grow">
           <Routes>
@@ -85,9 +124,19 @@ function App() {
           onClose={closeModal}
         >
           {modalImage && (
-            <img src={modalImage} alt="預覽圖片" className="modal-image" />
+            <img 
+              src={modalImage} 
+              alt={appData?.app?.meta?.imageAlt || "Preview Image"} 
+              className="modal-image" 
+            />
           )}
         </Modal>
+        
+        {/* Back to Top Button */}
+        <BackToTopButton />
+        
+        {/* Add scroll-based animations to section headers */}
+        <ScrollAnimation selector=".section-header" />
       </div>
     </Router>
   );

@@ -214,7 +214,7 @@ const renderRedesignedSkills = (t: TFunction) => {
 
 const CV = () => {
   const { cvData, isLoading, t } = useCV();
-  const { certificates } = useCertificates(); // 獲取證書數據
+  const { certificates } = useCertificates(); // 獲取證書資料
   const [expandedExp, setExpandedExp] = useState<number | null>(null);
   const [expandedEdu, setExpandedEdu] = useState<number | null>(null);
   const [allExperiencesExpanded, setAllExperiencesExpanded] = useState(false);
@@ -799,7 +799,7 @@ const CV = () => {
             )}
             */}
             {cvData.website && (
-              <a href={cvData.website} className="cv-contact-item" target="_blank" rel="noopener noreferrer">
+              <a href={cvData.websiteUrl || cvData.website} className="cv-contact-item" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faExternalLinkAlt} className="cv-contact-icon" />
                 {cvData.website.replace(/^https?:\/\//, '')}
               </a>
@@ -835,11 +835,13 @@ const CV = () => {
       {/* 精選證書區塊 */}
       {renderCertificatesSection()}
       
+      {/* 技能區塊 */}
       <section className="cv-section skills-section">
         <h2>{cvData.sections.skills}</h2>
         {renderRedesignedSkills(t)}
       </section>
 
+      {/* 工作經歷區塊 */}
       <section className="cv-section">
         <div className="section-header">
           <h2>{cvData.sections.experience}</h2>
@@ -885,6 +887,7 @@ const CV = () => {
         </div>
       </section>
 
+      {/* 教育背景區塊 */}
       <section className="cv-section">
         <div className="section-header">
           <h2>{cvData.sections.education}</h2>
@@ -934,6 +937,7 @@ const CV = () => {
         </div>
       </section>
 
+      {/* 演講區塊 */}
       {cvData.conferences && (
         <section className="cv-section">
           {/* 控制區：展開/收起所有年份 */}
@@ -1097,8 +1101,8 @@ export const skillIcons = {
   '電腦視覺': faEye,
   '強化學習': faAward,
   
-  // 數據分析相關
-  '數據分析': faChartLine,
+  // 資料分析相關
+  '資料分析': faChartLine,
   '商業智慧': faLightbulb,
   
   // 其他科技相關

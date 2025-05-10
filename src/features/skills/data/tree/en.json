@@ -1,0 +1,110 @@
+{
+  "skillTree": {
+    "title": "Skills Tree",
+    "description": "Hierarchical view of my technical skills",
+    "root": {
+      "name": "Technical Skills",
+      "children": [
+        {
+          "name": "Information Security",
+          "level": "expert",
+          "children": [
+            {
+              "name": "Offensive Security",
+              "level": "advanced",
+              "children": [
+                {"name": "Penetration Testing", "level": "expert"},
+                {"name": "Vulnerability Assessment", "level": "expert"},
+                {"name": "Malware Analysis", "level": "intermediate"}
+              ]
+            },
+            {
+              "name": "Defensive Security",
+              "level": "advanced",
+              "children": [
+                {"name": "Incident Response", "level": "advanced"},
+                {"name": "Security Monitoring", "level": "advanced"},
+                {"name": "Threat Intelligence", "level": "intermediate"}
+              ]
+            },
+            {
+              "name": "Security Governance",
+              "level": "intermediate",
+              "children": [
+                {"name": "Risk Management", "level": "intermediate"},
+                {"name": "Compliance", "level": "intermediate"},
+                {"name": "Security Policies", "level": "advanced"}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Software Development",
+          "level": "advanced",
+          "children": [
+            {
+              "name": "Frontend",
+              "level": "advanced",
+              "children": [
+                {"name": "React", "level": "advanced"},
+                {"name": "TypeScript", "level": "advanced"},
+                {"name": "HTML/CSS", "level": "advanced"}
+              ]
+            },
+            {
+              "name": "Backend",
+              "level": "advanced",
+              "children": [
+                {"name": "Node.js", "level": "advanced"},
+                {"name": "Python", "level": "advanced"},
+                {"name": "Java", "level": "intermediate"}
+              ]
+            },
+            {
+              "name": "Database",
+              "level": "intermediate",
+              "children": [
+                {"name": "SQL", "level": "advanced"},
+                {"name": "MongoDB", "level": "intermediate"},
+                {"name": "Redis", "level": "basic"}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "DevOps",
+          "level": "intermediate",
+          "children": [
+            {
+              "name": "CI/CD",
+              "level": "intermediate",
+              "children": [
+                {"name": "GitHub Actions", "level": "advanced"},
+                {"name": "Jenkins", "level": "intermediate"},
+                {"name": "GitLab CI", "level": "basic"}
+              ]
+            },
+            {
+              "name": "Containerization",
+              "level": "intermediate",
+              "children": [
+                {"name": "Docker", "level": "advanced"},
+                {"name": "Kubernetes", "level": "intermediate"},
+                {"name": "Docker Compose", "level": "advanced"}
+              ]
+            },
+            {
+              "name": "Cloud Services",
+              "level": "intermediate",
+              "children": [
+                {"name": "AWS", "level": "intermediate"},
+                {"name": "Azure", "level": "basic"},
+                {"name": "GCP", "level": "basic"}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

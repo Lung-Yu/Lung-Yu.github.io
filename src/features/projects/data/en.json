@@ -1,15 +1,4 @@
 {
-  "title": "Projects",
-  "description": "These are the projects I have worked on.",
-  "projectNotFound": "Project not found",
-  "projectImages": "Project Images",
-  "projectVideos": "Related Videos",
-  "projectDates": "Project Dates",
-  "startDate": "Start Date",
-  "endDate": "End Date",
-  "ongoing": "Ongoing",
-  "githubSource": "GitHub Source",
-  "onlineDemo": "Online Demo",
   "projects": [
     {
       "id": 1,
@@ -28,7 +17,8 @@
         "/images/projects/11_weather_seed/prototype.jpg"
       ],
       "startDate": "2015-02-01",
-      "endDate": "2015-07-30"
+      "endDate": "2015-07-30",
+      "type": "webApp"
     },
     {
       "id": 2,
@@ -48,7 +38,8 @@
         "/images/projects/10_i_watch_man/系統硬體建置圖.png"
       ],
       "startDate": "2014-01-01",
-      "endDate": "2014-10-01"
+      "endDate": "2014-10-01",
+      "type": "security"
     },
     {
       "id": 3,
@@ -68,13 +59,14 @@
         "/images/projects/20_Auto-fill_web_form_tool/rawdata.png"
       ],
       "startDate": "2019-08-01",
-      "endDate": "2019-9-30"
+      "endDate": "2019-9-30",
+      "type": "automation"
     },
     {
       "id": 4,
       "title": "File Monitor System",
       "description": "A system directory monitoring tool for detecting unauthorized file modifications, capable of real-time detection of potential security incidents, suitable for monitoring online systems for hacker intrusions or malicious changes.",
-      "image": "/images/projects/file_monitor/file_monitor.png",
+      "image": "/images/projects/file_monitor/main.png",
       "tags": [
         "Security Monitoring",
         "System Protection",
@@ -84,11 +76,47 @@
       "github": "https://github.com/Lung-Yu/File-Monitor",
       "detailPath": "file-monitor",
       "gallery": [
-        "/images/projects/file_monitor/screenshot1.png",
-        "/images/projects/file_monitor/screenshot2.png"
+        "/images/projects/file_monitor/main.png",
+        "/images/projects/file_monitor/config.png",
+        "/images/projects/file_monitor/execution.png"
+      ],
+      "highlights": [
+        {
+          "title": "Real-time Monitoring",
+          "description": "Automatically monitors directory and file changes, immediately detecting anomalies",
+          "icon": "monitor"
+        },
+        {
+          "title": "Notification Mechanism",
+          "description": "Real-time email notifications to administrators about abnormal situations",
+          "icon": "mail"
+        },
+        {
+          "title": "Flexible Configuration",
+          "description": "Customizable monitoring scope, notification settings and display methods",
+          "icon": "settings"
+        }
+      ],
+      "demoSteps": [
+        {
+          "title": "Configuration Preparation",
+          "description": "Copy default_config.xml to config.xml and place it in the executable directory",
+          "image": "/images/projects/file_monitor/config.png"
+        },
+        {
+          "title": "System Initialization",
+          "description": "The first execution will create a file index as a basis for subsequent comparison",
+          "image": "/images/projects/file_monitor/execution.png"
+        },
+        {
+          "title": "Start Monitoring",
+          "description": "The system automatically runs and sends notifications when anomalies are found",
+          "image": "/images/projects/file_monitor/main.png"
+        }
       ],
       "startDate": "2020-01-01",
-      "endDate": "2020-10-01"
+      "endDate": "2020-10-01",
+      "type": "security"
     }
   ]
 }

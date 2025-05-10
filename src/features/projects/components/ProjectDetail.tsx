@@ -11,14 +11,22 @@ const ProjectDetail = () => {
   const { projectPath } = useParams();
   const [modalImage, setModalImage] = useState<string | null>(null);
   const [currentDemoStep, setCurrentDemoStep] = useState(0);
-  const { t } = useTranslation(['projects', 'projectsData']);
+  const { t } = useTranslation(['projects']);
 
-  const { projects } = useProjects();
+  const { projects, loading } = useProjects();
 
+  if (loading) {
+    return (
+      <div className="project-detail-loading">
+        <p>Loading project details...</p>
+      </div>
+    );
+  }
+  
   const project = projects.find(p => p.detailPath === projectPath);
 
   if (!project) {
-    return <div className="project-detail-error">{t('projects:projectNotFound')}</div>;
+    return <div className="project-detail-error">{t('projectNotFound')}</div>;
   }
 
   const openModal = (image: string) => {

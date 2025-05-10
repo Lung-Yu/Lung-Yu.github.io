@@ -1,48 +1,37 @@
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { SkillsData } from '../types';
 
 export const useSkills = () => {
-  const { t } = useTranslation('skills');
-  
-  const skills: SkillsData = {
-    categories: {
-      security: {
-        title: t('categories.security.title'),
-        description: t('categories.security.description')
-      },
-      development: {
-        title: t('categories.development.title'),
-        description: t('categories.development.description')
-      },
-      devops: {
-        title: t('categories.devops.title'),
-        description: t('categories.devops.description')
-      }
-    },
-    items: {
-      security: [
-        t('items.security.pentest'),
-        t('items.security.incident'),
-        t('items.security.sdlc'),
-        t('items.security.architecture'),
-        t('items.security.compliance')
-      ],
-      development: [
-        t('items.development.frontend'),
-        t('items.development.backend'),
-        t('items.development.database'),
-        t('items.development.api'),
-        t('items.development.architecture')
-      ],
-      devops: [
-        t('items.devops.cicd'),
-        t('items.devops.container'),
-        t('items.devops.automation'),
-        t('items.devops.cloud'),
-        t('items.devops.monitoring')
-      ]
-    }
-  } as SkillsData;
+  const { i18n } = useTranslation();
+  const [skills, setSkills] = useState<SkillsData | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  return { skills };
+  useEffect(() => {
+    const loadSkills = async () => {
+      setLoading(true);
+      try {
+        // Dynamically load data based on current language
+        const lang = i18n.language || 'en';
+        const module = await import(`../data/${lang}.json`);
+        setSkills(module.default as SkillsData);
+      } catch (error) {
+        console.error('Error loading skills data:', error);
+        // Fallback to English if specific language data fails to load
+        try {
+          const fallbackModule = await import(`../data/en.json`);
+          setSkills(fallbackModule.default as SkillsData);
+        } catch (fallbackError) {
+          console.error('Error loading fallback skills data:', fallbackError);
+          setSkills(null);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadSkills();
+  }, [i18n.language]); // Reload when language changes
+
+  return { skills, loading };
 };

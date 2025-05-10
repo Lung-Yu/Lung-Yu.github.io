@@ -1,0 +1,40 @@
+{
+  "skillCategories": {
+    "security": {
+      "title": "Information Security",
+      "description": "Security Assessment and Protection",
+      "icon": "faShieldHalved",
+      "items": [
+        "Penetration Testing & Vulnerability Scanning",
+        "Security Incident Response",
+        "Secure Software Development Lifecycle",
+        "Security Architecture Planning & Assessment",
+        "Regulatory Compliance & Auditing"
+      ]
+    },
+    "development": {
+      "title": "Software Development",
+      "description": "Full-stack Development Skills",
+      "icon": "faCode",
+      "items": [
+        "Frontend: React, TypeScript, JavaScript",
+        "Backend: Node.js, Python, Java",
+        "Database Design & Optimization",
+        "RESTful API Design",
+        "System Architecture Planning"
+      ]
+    },
+    "devops": {
+      "title": "DevOps",
+      "description": "Automation and Deployment",
+      "icon": "faGears",
+      "items": [
+        "CI/CD Pipeline Implementation",
+        "Container Technologies: Docker & K8s",
+        "Automated Testing & Deployment",
+        "Cloud Services Integration",
+        "Monitoring & Log Management"
+      ]
+    }
+  }
+}

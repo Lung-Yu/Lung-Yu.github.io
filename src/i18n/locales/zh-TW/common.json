@@ -5,7 +5,7 @@
     "projects": "作品集",
     "certificates": "證照資歷",
     "contact": "聯絡我",
-    "cv": "CV"
+    "cv": "履歷表"
   },
   "language": {
     "en": "English",
@@ -16,7 +16,7 @@
     "dark": "深色模式"
   },
   "footer": {
-    "copyright": "© 2025 龔隆裕. 保留所有權利.",
+    "copyright": "© 2025 Lung-Yu Tsai. 保留所有權利.",
     "poweredBy": "Powered by React & Next.js"
   }
 }

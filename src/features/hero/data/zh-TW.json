@@ -1,0 +1,23 @@
+{
+  "hero": {
+    "greeting": "你好，我是",
+    "name": "Tygrus",
+    "role": "資安專家 & 開發者",
+    "description": "專注於軟體開發與資安領域，擁有多張國際認證。致力於將安全性融入開發流程，打造更安全且穩定的軟體系統。",
+    "buttons": {
+      "viewProjects": "查看作品",
+      "contactMe": "聯絡我"
+    },
+    "socialLinks": {
+      "github": "https://github.com/Lung-Yu",
+      "linkedin": "https://www.linkedin.com/in/lung-yu-tsai-633865100/",
+      "email": "workfile975@gmail.com"
+    },
+    "profileImage": "/images/aboutme/profile.png",
+    "cta": {
+      "portfolio": "查看作品集",
+      "contact": "聯絡我"
+    },
+    "heroButton": "點擊這裡"
+  }
+}

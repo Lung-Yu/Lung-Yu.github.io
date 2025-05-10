@@ -23,6 +23,34 @@
 .skills-header p {
   color: var(--color-text);
   font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+}
+
+.toggle-btn {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid var(--color-primary);
+  background-color: transparent;
+  color: var(--color-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.toggle-btn:hover:not(.active) {
+  background-color: rgba(var(--color-primary-rgb), 0.1);
 }
 
 .skills-grid {
@@ -99,6 +127,13 @@
   color: white;
 }
 
+.skills-tree-view {
+  background: var(--color-gray-50);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
   .skills-header h2 {
     font-size: 2rem;
@@ -106,5 +141,10 @@
   
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .view-toggle {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }

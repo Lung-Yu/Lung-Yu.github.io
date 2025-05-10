@@ -1,73 +1,628 @@
-/* 移除原本的 section 通用間距 */
-section {
-  margin: 0; /* 改為 0 */
-  padding: 0; /* 改為 0 */
+/* 主題變量 - 確保整個應用的一致性 */
+:root {
+  /* 主色調 */
+  --color-primary: #0070f3;
+  --color-primary-dark: #005bc2;
+  --color-secondary: #00a6ff;
+  --color-accent: #7928ca;
+  
+  /* 文字顏色 */
+  --color-text: #333;
+  --color-text-secondary: #666;
+  --color-text-tertiary: #999;
+  
+  /* 背景顏色 */
+  --color-background: #fff;
+  --color-background-secondary: #f7faff;
+  --color-card-bg: #fff;
+  
+  /* 間距 */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem; 
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  
+  /* 陰影 */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+  
+  /* 圓角 */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  
+  /* 過渡 */
+  --transition-normal: all 0.3s ease;
+  --transition-fast: all 0.15s ease;
 }
 
-/* Hero section 特殊處理 */
+/* 深色主題變量 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #e0e0e0;
+    --color-text-secondary: #a0a0a0;
+    --color-text-tertiary: #707070;
+    
+    --color-background: #121212;
+    --color-background-secondary: #1e1e1e;
+    --color-card-bg: #1e1e1e;
+    
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* 深色模式下的區段分隔線 */
+  .section-divider {
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+  }
+  
+  /* 深色模式下的背景連接器 */
+  .section-connector {
+    background: linear-gradient(to bottom, transparent, rgba(40, 40, 40, 0.5));
+  }
+}
+
+/* 優化一頁式設計的通用樣式 - 恢復間距 */
+section {
+  margin: 1.5rem 0; /* 恢復上下間距 */
+  padding: 2rem 0;  /* 增加內邊距 */
+  position: relative;
+}
+
+/* 所有區段共用的內容容器樣式 */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Hero section 優化處理 - 恢復適當高度和間距 */
 .hero {
   margin: 0;
-  padding-top: 64px; /* 只保留頂部padding，配合navbar高度 */
-  min-height: 90vh;
+  padding-top: 70px; /* 配合navbar高度並增加一些空間 */
+  min-height: 90vh; /* 恢復較高的視窗高度 */
   display: flex;
   align-items: center;
+  margin-bottom: 2rem; /* 增加底部間距 */
 }
 
-/* Projects section 特殊處理 */
+/* 內容區塊間銜接處理 - 恢復適當間距 */
 .projects {
-  margin-top: -4rem; /* 使用負margin與hero區段重疊 */
-  padding: 4rem 0;
+  margin-top: 0; /* 移除負邊距，恢復正常間距 */
+  padding: 4rem 0 5rem; /* 增加上下內邊距 */
   position: relative;
-  z-index: 1; /* 確保內容可見 */
+  z-index: 1;
+}
+
+.skills {
+  padding: 4rem 0 5rem; /* 增加內邊距 */
+  margin-bottom: 2rem; /* 增加區段底部間距 */
+  background: linear-gradient(to bottom, rgba(247, 250, 255, 0.8), rgba(255, 255, 255, 1));
+}
+
+.consulting {
+  padding: 4rem 0 5rem; /* 增加內邊距 */
+  margin: 2rem 0; /* 增加區段上下間距 */
+}
+
+.certificates {
+  padding: 4rem 0 5rem; /* 增加內邊距 */
+  margin-top: 2rem; /* 增加區段頂部間距 */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(247, 250, 255, 0.8));
 }
 
 /* 確保背景效果平滑過渡 */
-.projects-background {
-  opacity: 0.8; /* 降低背景透明度 */
+.section-background {
+  opacity: 0.7;
   transition: opacity 0.3s ease;
 }
 
-/* 動畫效果調整 */
+/* 移除不必要的動畫效果 */
 #projects,
 #consulting,
 #certificates {
-  opacity: 1; /* 移除淡入效果 */
+  opacity: 1;
   transform: none;
   animation: none;
 }
 
+/* 區段分隔線 - 增強視覺效果並增加間距 */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(0, 112, 243, 0.3), transparent);
+  margin: 3rem auto;
+  width: 70%;
+  max-width: 800px;
+  position: relative;
+}
+
+/* 區段通用樣式 */
+.section {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+/* 區段標題統一樣式 */
+.section h2 {
+  margin-bottom: 1rem;
+}
+
+/* 區段描述統一樣式 */
+.section p.section-description {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+  color: #666;
+}
+
+/* 統一的區段標題樣式 */
+.section-header {
+  text-align: center;
+  margin-bottom: 1.5rem; /* 減少標題與內容間的間距 */
+}
+
+.section-header h2 {
+  font-size: 2.25rem;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary, #00a6ff));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--color-text-secondary, #666);
+}
+
+/* 滾動觸發動畫 */
+.section-header {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section-header.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 卡片元素樣式優化 */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* 內容容器間距調整 */
+.content-container {
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 卡片網格佈局優化 */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0.5rem;
+}
+
+/* 回到頂部按鈕樣式 */
 .back-to-home-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
   background-color: var(--color-primary);
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 50px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, background-color 0.2s ease;
   z-index: 1000;
+  font-size: 0.9rem;
 }
 
 .back-to-home-button:hover {
-  transform: scale(1.1);
+  transform: translateY(-3px);
   background-color: var(--color-primary-dark);
 }
 
+/* 懸浮按鈕樣式 */
 .floating-back-to-home-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
   background-color: var(--color-primary);
   color: white;
-  padding: 10px 20px;
-  border-radius: 50px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
   z-index: 1000;
 }
 
 .floating-back-to-home-button:hover {
-  transform: scale(1.1);
-  background-color: var(--color-primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* 回到頂部按鈕的箭頭樣式 */
+.back-to-top svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.back-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+/* 漸入漸出效果 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.back-to-top.visible {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* 平滑區段過渡動畫 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 區段導航指示器 */
+.section-indicator {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 100;
+}
+
+.section-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.section-indicator-dot.active {
+  background-color: var(--color-primary);
+  transform: scale(1.5);
+}
+
+/* 滾动进度条 */
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  z-index: 1001;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary, #00a6ff));
+  width: 0;
+  transition: width 0.1s ease;
+}
+
+/* 僅在桌面顯示指示器 */
+@media screen and (max-width: 768px) {
+  .section-indicator {
+    display: none;
+  }
+}
+
+/* 響應式設計優化 - 恢復適當間距 */
+@media screen and (max-width: 768px) {
+  .hero {
+    min-height: 80vh; /* 稍微增加高度 */
+  }
+  
+  /* 恢復手機上的內邊距 */
+  .skills,
+  .projects,
+  .consulting,
+  .certificates {
+    padding: 3rem 0 4rem; /* 增加內邊距 */
+    margin: 2rem 0; /* 增加區段間距 */
+  }
+  
+  .section-container {
+    padding: 0 1.5rem; /* 增加兩側內邊距 */
+  }
+  
+  /* 調整標題大小但保持可讀性 */
+  .section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem; /* 增加標題下方間距 */
+  }
+  
+  /* 在移動設備上增加區段之間的間距 */
+  .animated-section {
+    margin: 2.5rem 0;
+    padding-bottom: 1.5rem;
+  }
+  
+  /* 卡片在手機上顯示單列 */
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* 減少區段間分隔線的寬度 */
+  .section-divider {
+    width: 70%;
+  }
+}
+
+/* 較小螢幕（如iPhone等）的特殊處理 - 保持適當間距 */
+@media screen and (max-width: 480px) {
+  .hero {
+    min-height: 75vh; /* 增加一些高度 */
+    padding-top: 60px; /* 稍微減少頂部間距 */
+  }
+  
+  .section h2 {
+    font-size: 1.85rem; /* 稍微增加標題大小 */
+    margin-bottom: 1.2rem; /* 保持可讀性的間距 */
+  }
+  
+  /* 調整小螢幕上的區段間距 */
+  .section {
+    margin: 1rem 0;
+    padding: 1.5rem 0;
+  }
+  
+  /* 保持卡片間距以提高可讀性 */
+  .card-grid {
+    gap: 1.2rem;
+  }
+  
+  /* 區段間分隔線樣式調整 */
+  .section-divider {
+    margin: 2rem auto;
+  }
+  
+  /* 小螢幕上的按鈕樣式調整 */
+  .back-to-home-button,
+  .floating-back-to-home-button {
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .section-divider {
+    background: linear-gradient(to right, transparent, rgba(0, 166, 255, 0.2), transparent);
+  }
+  
+  .card {
+    background: var(--color-card-bg, #1a1a1a);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* 平滑滾動效果 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 確保最後一個區段有足夠的底部間距 */
+.certificates-section {
+  margin-bottom: 2rem;
+}
+
+/* 根據用戶偏好減少動畫 */
+@media (prefers-reduced-motion: reduce) {
+  .card:hover {
+    transform: none;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* 針對不同區段的優化背景與過渡效果 */
+.home-section {
+  z-index: 2;
+}
+
+.skills-section {
+  z-index: 3;
+  position: relative;
+}
+
+.projects-section {
+  z-index: 4;
+}
+
+.consulting-section {
+  z-index: 5;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(247, 250, 255, 0.8));
+}
+
+.certificates-section {
+  z-index: 6;
+}
+
+/* 區段間視覺連接 - 增強間距效果 */
+.section-connector {
+  position: absolute;
+  height: 100px; /* 增加高度 */
+  width: 100%;
+  top: -50px; /* 調整位置 */
+  z-index: -1;
+  background: linear-gradient(to bottom, transparent, rgba(247, 250, 255, 0.7));
+  margin-bottom: 2rem; /* 增加底部間距 */
+}
+
+/* 減少重複內容邊距，讓內容更緊湊 */
+.content-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* 根據視窗寬度自動調整布局 */
+@media (min-width: 1024px) {
+  .section-container {
+    max-width: 90%;
+  }
+}
+
+/* 動畫區段樣式 - 增加間距和改善過渡效果 */
+.animated-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  margin: 3rem 0; /* 增加上下間距 */
+  padding-top: 1rem; /* 增加頂部內邊距 */
+  padding-bottom: 2rem; /* 增加底部內邊距 */
+}
+
+.animated-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 各區段延遲時間 */
+.animated-section:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.animated-section:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.animated-section:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.animated-section:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.animated-section:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+/* 滾動觸發動畫 */
+.card-item {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+/* 交錯動畫延遲 */
+.card-item:nth-child(1) { animation-delay: 0.1s; }
+.card-item:nth-child(2) { animation-delay: 0.2s; }
+.card-item:nth-child(3) { animation-delay: 0.3s; }
+.card-item:nth-child(4) { animation-delay: 0.4s; }
+.card-item:nth-child(5) { animation-delay: 0.5s; }
+.card-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* 對減弱動畫的偏好設置進行響應 */
+@media (prefers-reduced-motion: reduce) {
+  .section-header {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  .card-item {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* 區段頂部和底部額外間距 */
+.section-spacing-top {
+  height: 2rem;
+  width: 100%;
+}
+
+.section-spacing-bottom {
+  height: 3rem;
+  width: 100%;
+}
+
+/* 針對不同區段調整間距 */
+.home-section .section-spacing-top {
+  height: 1rem;
+}
+
+.skills-section .section-spacing-top {
+  height: 2.5rem;
+}
+
+.projects-section .section-spacing-top {
+  height: 2.5rem;
+}
+
+.consulting-section .section-spacing-top {
+  height: 3rem;
+}
+
+.certificates-section .section-spacing-top {
+  height: 3rem;
+}
+
+/* 區段底部間距 */
+.home-section .section-spacing-bottom {
+  height: 4rem;
+}
+
+.skills-section .section-spacing-bottom {
+  height: 3.5rem;
+}
+
+.projects-section .section-spacing-bottom {
+  height: 3.5rem;
+}
+
+.consulting-section .section-spacing-bottom {
+  height: 3rem;
 }

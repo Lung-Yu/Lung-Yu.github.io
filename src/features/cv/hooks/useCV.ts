@@ -35,6 +35,7 @@ export const useCV = () => {
     phone: getSafeTranslation('phone'),
     location: getSafeTranslation('location'),
     website: getSafeTranslation('website'),
+    websiteUrl: getSafeTranslation('websiteUrl'),
     linkedin: getSafeTranslation('linkedin'),
     sections: {
       skills: getSafeTranslation('sections.skills', '技能'),
