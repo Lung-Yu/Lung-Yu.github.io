@@ -835,11 +835,13 @@ const CV = () => {
       {/* 精選證書區塊 */}
       {renderCertificatesSection()}
       
+      {/* 技能區塊 */}
       <section className="cv-section skills-section">
         <h2>{cvData.sections.skills}</h2>
         {renderRedesignedSkills(t)}
       </section>
 
+      {/* 工作經歷區塊 */}
       <section className="cv-section">
         <div className="section-header">
           <h2>{cvData.sections.experience}</h2>
@@ -885,6 +887,7 @@ const CV = () => {
         </div>
       </section>
 
+      {/* 教育背景區塊 */}
       <section className="cv-section">
         <div className="section-header">
           <h2>{cvData.sections.education}</h2>
@@ -934,6 +937,7 @@ const CV = () => {
         </div>
       </section>
 
+      {/* 演講區塊 */}
       {cvData.conferences && (
         <section className="cv-section">
           {/* 控制區：展開/收起所有年份 */}
