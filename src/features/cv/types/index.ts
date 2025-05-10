@@ -6,6 +6,7 @@ export interface CVData {
   phone?: string;
   location?: string;
   website?: string;
+  websiteUrl?: string;
   linkedin?: string;
   sections: {
     skills: string;

@@ -799,7 +799,7 @@ const CV = () => {
             )}
             */}
             {cvData.website && (
-              <a href={cvData.website} className="cv-contact-item" target="_blank" rel="noopener noreferrer">
+              <a href={cvData.websiteUrl || cvData.website} className="cv-contact-item" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faExternalLinkAlt} className="cv-contact-icon" />
                 {cvData.website.replace(/^https?:\/\//, '')}
               </a>
