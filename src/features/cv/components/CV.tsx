@@ -226,6 +226,39 @@ const CV = () => {
   // 新增：用於追蹤是否全部展開演講年份
   const [allConferencesExpanded, setAllConferencesExpanded] = useState(false);
 
+  // 根據教育描述內容選擇合適的圖標
+  const getEducationIcon = (desc: string) => {
+    if (desc.toLowerCase().includes('research') || desc.toLowerCase().includes('研究')) {
+      return faMicrochip;
+    } else if (desc.toLowerCase().includes('thesis') || desc.toLowerCase().includes('論文')) {
+      return faFileAlt;
+    } else if (desc.toLowerCase().includes('award') || desc.toLowerCase().includes('獎')) {
+      return faTrophy;
+    } else if (desc.toLowerCase().includes('project') || desc.toLowerCase().includes('專案')) {
+      return faProjectDiagram;
+    } else if (desc.toLowerCase().includes('development') || desc.toLowerCase().includes('開發')) {
+      return faCode;
+    } else if (desc.toLowerCase().includes('design') || desc.toLowerCase().includes('設計')) {
+      return faPalette;
+    } else if (desc.toLowerCase().includes('system') || desc.toLowerCase().includes('系統')) {
+      return faServer;
+    } else if (desc.toLowerCase().includes('cloud') || desc.toLowerCase().includes('雲端')) {
+      return faCloud;
+    } else if (desc.toLowerCase().includes('position') || desc.toLowerCase().includes('定位')) {
+      return faMapMarkerAlt;
+    } else if (desc.toLowerCase().includes('ai') || desc.toLowerCase().includes('人工智慧')) {
+      return faRobot;
+    } else if (desc.toLowerCase().includes('image') || desc.toLowerCase().includes('影像')) {
+      return faImage;
+    } else if (desc.toLowerCase().includes('audio') || desc.toLowerCase().includes('聲音')) {
+      return faVolumeUp;
+    } else if (desc.toLowerCase().includes('core') || desc.toLowerCase().includes('核心')) {
+      return faBolt;
+    } else {
+      return faAward; // 預設圖標
+    }
+  };
+
   const toggleExperience = (index: number) => {
     setExpandedExp(expandedExp === index ? null : index);
   };
@@ -926,7 +959,10 @@ const CV = () => {
                   <div className="education-details">
                     <ul className="education-description">
                       {edu.description.map((desc, descIndex) => (
-                        <li key={descIndex}>{desc}</li>
+                        <li key={descIndex}>
+                          <FontAwesomeIcon icon={getEducationIcon(desc)} className="education-icon" />
+                          {desc}
+                        </li>
                       ))}
                     </ul>
                   </div>

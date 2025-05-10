@@ -651,12 +651,13 @@
   transition: all 0.3s ease;
   border: 1px solid var(--color-gray-100);
   cursor: pointer;
+  border-left: 4px solid var(--color-primary);
 }
 
 .education-content:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  border-color: var(--color-gray-200);
+  border-color: var(--color-primary);
 }
 
 .education-header {
@@ -693,17 +694,23 @@
 .education-description li {
   margin: 0.8rem 0;
   position: relative;
-  padding-left: 1.2rem;
+  padding-left: 2rem;
   color: var(--color-text);
   font-size: 0.95rem;
   line-height: 1.5;
+  display: flex;
+  align-items: center;
 }
 
-.education-description li::before {
-  content: "▹";
+.education-icon {
   position: absolute;
   left: 0;
   color: var(--color-primary);
+  width: 1.2rem;
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .education-content .toggle-icon {
