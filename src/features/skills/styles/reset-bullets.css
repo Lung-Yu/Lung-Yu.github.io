@@ -1,0 +1,36 @@
+/* 
+  Reset stylesheet specifically to prevent bullet points 
+  and override any global styles that might add bullets/dots to our skill items 
+*/
+
+/* Target the specific skills component to avoid affecting other components */
+.skills-feature-namespace .skills-items-list {
+  list-style-type: none !important;
+  list-style-image: none !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Create a completely clean slate for our list items */
+.skills-feature-namespace .skills-items-list li,
+.skills-feature-namespace .skills-items-list li.skills-item {
+  list-style-type: none !important;
+  list-style-image: none !important;
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+/* Override any ::before or ::after pseudo-elements */
+.skills-feature-namespace .skills-items-list li::before,
+.skills-feature-namespace .skills-items-list li::after,
+.skills-feature-namespace .skills-items-list li.skills-item::before,
+.skills-feature-namespace .skills-items-list li.skills-item::after {
+  content: none !important;
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  position: static !important;
+}
