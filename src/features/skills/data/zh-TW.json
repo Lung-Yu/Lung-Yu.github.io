@@ -1,39 +1,47 @@
 {
   "skillCategories": {
     "security": {
-      "title": "資訊安全",
+      "title": "資安技能",
       "description": "安全防護與風險管理",
       "icon": "faShieldHalved",
       "items": [
-        "滲透測試與漏洞掃描",
-        "資安事件應變處理",
-        "安全軟體開發生命週期",
-        "資安架構規劃與評估",
-        "法規遵循與稽核"
+        "資安治理",
+        "法規遵循",
+        "滲透測試",
+        "弱點評估",
+        "事件響應",
+        "安全架構",
+        "風險管理",
+        "資安稽核"
       ]
     },
     "development": {
-      "title": "軟體開發",
+      "title": "開發技能",
       "description": "全端開發與系統架構",
       "icon": "faCode",
       "items": [
-        "前端技術: React, TypeScript, JavaScript",
-        "後端技術: Node.js, Python, Java",
-        "資料庫設計與最佳化",
-        "RESTful API 設計",
-        "系統架構規劃"
+        "全端開發",
+        "API 設計與整合",
+        "資料庫管理",
+        "雲端架構",
+        "地端架構",
+        "容器化技術",
+        "CI/CD 自動化部署"
       ]
     },
-    "devops": {
-      "title": "DevOps",
-      "description": "持續整合與部署",
-      "icon": "faGears",
+    "management": {
+      "title": "管理與溝通",
+      "description": "團隊領導與協作能力",
+      "icon": "faUsers",
       "items": [
-        "CI/CD Pipeline 建置",
-        "容器化技術 Docker & K8s",
-        "自動化測試與部署",
-        "雲端服務整合",
-        "監控與日誌管理"
+        "團隊領導",
+        "技術培訓",
+        "專案管理",
+        "跨團隊協作",
+        "需求分析",
+        "技術文件撰寫",
+        "客戶溝通",
+        "技術演講"
       ]
     }
   }

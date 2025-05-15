@@ -5,11 +5,14 @@
       "description": "Security Assessment and Protection",
       "icon": "faShieldHalved",
       "items": [
-        "Penetration Testing & Vulnerability Scanning",
-        "Security Incident Response",
-        "Secure Software Development Lifecycle",
-        "Security Architecture Planning & Assessment",
-        "Regulatory Compliance & Auditing"
+        "Security Governance",
+        "Compliance Management",
+        "Penetration Testing",
+        "Vulnerability Assessment",
+        "Incident Response",
+        "Security Architecture",
+        "Risk Management",
+        "Security Auditing"
       ]
     },
     "development": {
@@ -17,23 +20,28 @@
       "description": "Full-stack Development Skills",
       "icon": "faCode",
       "items": [
-        "Frontend: React, TypeScript, JavaScript",
-        "Backend: Node.js, Python, Java",
-        "Database Design & Optimization",
+        "Full-Stack Development",
         "RESTful API Design",
-        "System Architecture Planning"
+        "Database Management",
+        "Cloud Architecture",
+        "On-premises Architecture",
+        "Containerization",
+        "CI/CD Pipeline"
       ]
     },
-    "devops": {
-      "title": "DevOps",
-      "description": "Automation and Deployment",
-      "icon": "faGears",
+    "management": {
+      "title": "Management & Communication",
+      "description": "Leadership and Team Collaboration",
+      "icon": "faUsers",
       "items": [
-        "CI/CD Pipeline Implementation",
-        "Container Technologies: Docker & K8s",
-        "Automated Testing & Deployment",
-        "Cloud Services Integration",
-        "Monitoring & Log Management"
+        "Team Leadership",
+        "Technical Training",
+        "Project Management",
+        "Cross-team Collaboration",
+        "Requirements Analysis",
+        "Technical Documentation",
+        "Client Communication",
+        "Public Speaking"
       ]
     }
   }

@@ -1,26 +1,26 @@
-.skills {
+.skills-feature-namespace {
   padding: 4rem 0;
   background: var(--color-background);
 }
 
-.skills-container {
+.skills-feature-namespace .skills-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.skills-header {
+.skills-feature-namespace .skills-header {
   text-align: center;
   margin-bottom: 3rem;
 }
 
-.skills-header h2 {
+.skills-feature-namespace .skills-header h2 {
   font-size: 2.5rem;
   color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
-.skills-header p {
+.skills-feature-namespace .skills-header p {
   color: var(--color-text);
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
@@ -53,58 +53,205 @@
   background-color: rgba(var(--color-primary-rgb), 0.1);
 }
 
-.skills-grid {
+.skills-feature-namespace .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
 }
 
-.skill-card {
-  background: var(--color-gray-50);
-  border-radius: 12px;
-  padding: 2rem;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* 使用更具體的選擇器覆蓋全局樣式 */
+.skills-feature-namespace .skill-card-custom {
+  position: relative;
+  z-index: 1;
 }
 
-.skill-card:hover {
+.skills-feature-namespace .skills-list-wrapper {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* 針對所有可能影響到我們元素的全局選擇器 */
+.skills .skills-item::before,
+.skills .skills-item::after,
+#skills .skills-item::before,
+#skills .skills-item::after,
+.skills-grid .skill-card .skills-item::before,
+.skills-grid .skill-card .skills-item::after {
+  display: none !important;
+  content: none !important;
+  visibility: hidden !important;
+}
+
+.skills-feature-namespace .skill-card {
+  background: var(--color-gray-50);
+  border-radius: 12px;
+  padding: 1.8rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 更明確的選擇器來提高優先級 */
+.skills-grid .skill-card .skill-list li {
+  list-style-type: none !important;
+}
+
+.skills-grid .skill-card .skill-list li::before,
+.skills-grid .skill-card .skill-list li::after {
+  content: none !important;
+  display: none !important;
+}
+
+.skills-feature-namespace .skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: transform 0.4s ease;
+}
+
+.skills-feature-namespace .skill-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: rgba(var(--color-primary-rgb), 0.2);
+}
+
+.skills-feature-namespace .skill-card:hover::before {
+  transform: scaleX(1);
+}
+
+.skills-feature-namespace .skill-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.skills-feature-namespace .skill-title {
+  flex: 1;
 }
 
 .skill-icon {
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: var(--color-primary);
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background-color: rgba(var(--color-primary-rgb), 0.08);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  margin-top: 0.2rem;
+}
+
+.skill-card:hover .skill-icon {
+  transform: translateY(-2px) scale(1.05);
+  background-color: rgba(var(--color-primary-rgb), 0.12);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .skill-card h3 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--color-text);
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .skill-card p {
   color: var(--color-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
-.skill-list {
-  list-style: none;
-  padding: 0;
+/* 使用命名空間強化樣式的獨立性 */
+.skills-feature-namespace .skills-items-list {
+  list-style: none !important;
+  list-style-type: none !important;
+  list-style-image: none !important;
+  padding: 0 !important;
+  margin-top: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.skill-list li {
+/* 使用多層級選擇器確保樣式優先級高於其他全局樣式 */
+.skills-feature-namespace .skills-items-list.skills-clean-list li.skills-item.no-bullet {
   margin: 0.5rem 0;
-  padding-left: 1.5rem;
+  padding: 0.4rem 0.5rem;
   position: relative;
+  transition: background-color 0.2s ease;
+  border-radius: 4px;
+  list-style: none !important;
+  list-style-type: none !important;
+  list-style-image: none !important;
 }
 
-.skill-list li::before {
-  content: "▹";
-  position: absolute;
-  left: 0;
+/* 完全隔離的內容容器，避免外部樣式污染 */
+.skills-feature-namespace .skills-item-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+/* 移除所有可能的點點 - 高優先級選擇器 */
+.skills-feature-namespace .skills-clean-list li.no-bullet::before,
+.skills-feature-namespace .skills-clean-list li.no-bullet::after,
+#skills.skills-feature-namespace .skills-clean-list li.no-bullet::before,
+#skills.skills-feature-namespace .skills-clean-list li.no-bullet::after {
+  display: none !important;
+  content: none !important;
+  visibility: hidden !important;
+  width: 0 !important; 
+  height: 0 !important;
+  opacity: 0 !important;
+  position: static !important;
+}
+
+.skills-feature-namespace .skills-items-list li.skills-item:hover {
+  background-color: rgba(var(--color-primary-rgb), 0.05);
+}
+
+.skills-feature-namespace .skills-items-list .skills-item-icon {
   color: var(--color-primary);
+  font-size: 0.85rem;
+  min-width: 1.4rem;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  margin-top: 0.15rem;
+}
+
+.skills-feature-namespace .skills-items-list li.skills-item:hover .skills-item-icon {
+  transform: scale(1.15);
+}
+
+/* 技能文字樣式優化 */
+.skills-feature-namespace .skills-items-list .skills-item-text {
+  flex: 1;
+  line-height: 1.35;
+  word-wrap: break-word;
+  font-size: 0.95rem;
 }
 
 .certifications-section {
@@ -146,5 +293,48 @@
   .view-toggle {
     flex-direction: column;
     gap: 0.5rem;
+  }
+  
+  .skill-card {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+  
+  .skill-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    font-size: 1.4rem;
+  }
+  
+  .skill-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .skill-card p {
+    font-size: 0.85rem;
+  }
+  
+  .skill-list li {
+    margin: 0.4rem 0;
+    padding: 0.3rem 0.4rem;
+  }
+  
+  .skill-item-text {
+    font-size: 0.9rem;
+  }
+  
+  .skill-card-header {
+    gap: 0.8rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .skill-card {
+    min-height: 380px;
   }
 }
