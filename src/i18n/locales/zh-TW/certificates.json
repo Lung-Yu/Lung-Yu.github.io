@@ -64,6 +64,22 @@
       "institution": "iPAS",
       "fullName": "資訊安全工程師專業認證 - 初級",
       "abbreviation": "iPAS 資安工程師初級"
+    },
+    "google-cybersecurity": {
+      "title": "Google 網路安全",
+      "shortDescription": "Google 提供的全面網路安全基礎培訓課程",
+      "description": "Google 網路安全專業證書提供全面的網路安全基礎訓練，包括網路安全、事件回應、威脅偵測及安全運作。本課程涵蓋入門級網路安全專業人員所需的基本技能。",
+      "institution": "Google",
+      "fullName": "Google 網路安全專業證書",
+      "abbreviation": "Google 網路安全"
+    },
+    "google-ai-job-acceleration": {
+      "title": "用 AI 加速職涯發展",
+      "shortDescription": "專注於 AI 工具和職場生產力的專業發展課程",
+      "description": "Google AI 加速職涯證書教導如何運用人工智慧工具與技術提升職場生產力、自動化工作流程，並在各行各業中增進專業效率。",
+      "institution": "Google",
+      "fullName": "Google AI 加速職涯證書",
+      "abbreviation": "Google AI"
     }
   }
 }

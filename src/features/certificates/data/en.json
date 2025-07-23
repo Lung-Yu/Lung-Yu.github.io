@@ -235,6 +235,32 @@
       "value": 5
     },
     {
+      "id": "google-cybersecurity",
+      "title": "Google Cybersecurity",
+      "category": "Cyber Security",
+      "institution": "Google",
+      "image": "/images/certifications/google/google_cybersecurity_certificate.png",
+      "description": "Google Cybersecurity Professional Certificate provides comprehensive training in cybersecurity fundamentals, including network security, incident response, threat detection, and security operations. This program covers essential skills for entry-level cybersecurity professionals.",
+      "fullName": "Google Cybersecurity Professional Certificate",
+      "abbreviation": "Google Cybersecurity",
+      "obtainedAt": "2025-07-22",
+      "expiryDate": "",
+      "value": 7
+    },
+    {
+      "id": "google-ai-job-acceleration",
+      "title": "Accelerate Your Job with AI",
+      "category": "Development",
+      "institution": "Google",
+      "image": "/images/certifications/google/google_ai_job_acceleration_certificate.png",
+      "description": "Google Accelerate Your Job with AI certificate teaches how to leverage artificial intelligence tools and technologies to enhance workplace productivity, automate tasks, and improve professional efficiency across various industries.",
+      "fullName": "Google Accelerate Your Job with AI Certificate",
+      "abbreviation": "Google AI",
+      "obtainedAt": "2025-07-22",
+      "expiryDate": "",
+      "value": 6
+    },
+    {
       "id": "hp-ata",
       "title": "HP ATA Networking",
       "category": "Infrastructure",

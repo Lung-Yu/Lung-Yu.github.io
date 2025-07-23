@@ -64,6 +64,22 @@
       "institution": "iPAS",
       "fullName": "Information Security Engineer Professional Certification - Level 1",
       "abbreviation": "iPAS Security Engineer L1"
+    },
+    "google-cybersecurity": {
+      "title": "Google Cybersecurity",
+      "shortDescription": "Comprehensive cybersecurity fundamentals training program from Google",
+      "description": "Google Cybersecurity Professional Certificate provides comprehensive training in cybersecurity fundamentals, including network security, incident response, threat detection, and security operations. This program covers essential skills for entry-level cybersecurity professionals.",
+      "institution": "Google",
+      "fullName": "Google Cybersecurity Professional Certificate",
+      "abbreviation": "Google Cybersecurity"
+    },
+    "google-ai-job-acceleration": {
+      "title": "Accelerate Your Job with AI",
+      "shortDescription": "Professional development program focused on AI tools and workplace productivity",
+      "description": "Google Accelerate Your Job with AI certificate teaches how to leverage artificial intelligence tools and technologies to enhance workplace productivity, automate tasks, and improve professional efficiency across various industries.",
+      "institution": "Google",
+      "fullName": "Google Accelerate Your Job with AI Certificate",
+      "abbreviation": "Google AI"
     }
   }
 }

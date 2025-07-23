@@ -222,6 +222,32 @@
       "value": 5
     },
     {
+      "id": "google-cybersecurity",
+      "title": "Google 網路安全",
+      "category": "網路安全",
+      "institution": "Google",
+      "image": "/images/certifications/google/google_cybersecurity_certificate.png",
+      "description": "Google 網路安全專業證書提供全面的網路安全基礎訓練，包括網路安全、事件回應、威脅偵測及安全運作。本課程涵蓋入門級網路安全專業人員所需的基本技能。",
+      "fullName": "Google 網路安全專業證書",
+      "abbreviation": "Google 網路安全",
+      "obtainedAt": "2025-07-22",
+      "expiryDate": "",
+      "value": 7
+    },
+    {
+      "id": "google-ai-job-acceleration",
+      "title": "AI 加速職涯",
+      "category": "開發",
+      "institution": "Google",
+      "image": "/images/certifications/google/google_ai_job_acceleration_certificate.png",
+      "description": "Google AI 加速職涯證書教導如何運用人工智慧工具與技術提升職場生產力、自動化工作流程，並在各行各業中增進專業效率。",
+      "fullName": "Google AI 加速職涯證書",
+      "abbreviation": "Google AI",
+      "obtainedAt": "2025-07-22",
+      "expiryDate": "",
+      "value": 6
+    },
+    {
       "id": "hp-ata",
       "title": "HP ATA 網絡",
       "category": "基礎設施",
