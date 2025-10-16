@@ -1,0 +1,1 @@
+const e={sections:{home:"Home",skills:"Skills",projects:"Projects",consulting:"Consulting",certificates:"Certificates"},navigation:{backToTop:"Back to Top",loading:"Loading..."},meta:{imageAlt:"Preview Image"}},o={app:e};export{e as app,o as default};

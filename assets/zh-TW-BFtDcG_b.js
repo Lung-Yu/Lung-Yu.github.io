@@ -1,0 +1,1 @@
+const t={sections:{home:"首頁",skills:"技能",projects:"專案",consulting:"顧問服務",certificates:"證照"},navigation:{backToTop:"回到頂部",loading:"載入中..."},meta:{imageAlt:"預覽圖片"}},o={app:t};export{t as app,o as default};
