@@ -50,7 +50,15 @@ git remote add origin "$REPO_URL"
 echo -e "${GREEN}推送到 GitHub Pages...${NC}"
 git push -f origin HEAD:gh-pages || handle_error "推送失敗"
 
+# 回到專案根目錄
 cd ..
 
-echo -e "${GREEN}部署完成！${NC}"
+# 清理建置和 git 產生的資料夾
+echo -e "${GREEN}清理暫存檔案...${NC}"
+if [ -d "dist" ]; then
+    rm -rf dist
+    echo -e "${GREEN}已清理 dist 目錄${NC}"
+fi
+
+echo -e "${GREEN}部署完成！資料夾已清理乾淨${NC}"
 echo -e "${GREEN}請訪問 https://lung-yu.github.io/ 查看結果${NC}"
