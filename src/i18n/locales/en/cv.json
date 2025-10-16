@@ -246,6 +246,21 @@
   ],
   "conferences": [
     {
+      "title": "AI Era Team Management Challenges and Strategies",
+      "date": "2025/10/14",
+      "venue": "6F 603+604 Conference Room",
+      "organizer": "Dev Conference 2025",
+      "tags": [
+        "Leadership",
+        "Team Management",
+        "AI Impact",
+        "Software Development"
+      ],
+      "url": "https://hwdc.ithome.com.tw/2025/session-page/4017",
+      "slidesUrl": "https://s.itho.me/ccms_slides/2025/10/16/1ba2a3c4-3a1c-40ea-8842-a1855f89baa7.pdf",
+      "resourcesUrl": "https://hackmd.io/@HWDC/2025/%2FB1b039csxx"
+    },
+    {
       "title": "Agile Adoption of DevSecOps and Automated Security Testing",
       "date": "2025/04/17",
       "venue": "Nangang Exhibition Center",

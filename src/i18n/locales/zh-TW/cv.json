@@ -246,6 +246,16 @@
   ],
   "conferences": [
     {
+      "title": "AI世代下技術團隊管理的挑戰與對策",
+      "date": "2025/10/14",
+      "venue": "6F 603+604 會議室",
+      "organizer": "Dev Conference 2025",
+      "tags": ["領導與人才培訓", "團隊管理", "AI影響", "軟體開發"],
+      "url": "https://hwdc.ithome.com.tw/2025/session-page/4017",
+      "slidesUrl": "https://s.itho.me/ccms_slides/2025/10/16/1ba2a3c4-3a1c-40ea-8842-a1855f89baa7.pdf",
+      "resourcesUrl": "https://hackmd.io/@HWDC/2025/%2FB1b039csxx"
+    },
+    {
       "title": "DevSecOps 和自動化安全檢測的敏捷導入",
       "date": "2025/04/17",
       "venue": "南港展覽館",
